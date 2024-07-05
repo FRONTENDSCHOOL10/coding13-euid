@@ -26,4 +26,6 @@ module.exports = {
     trailingComma: 'es5',
     // 탭 사용 여부
     useTabs: false,
+    // tailwindCSS 자동 정렬
+    "plugins": ["prettier-plugin-tailwindcss"]
   };

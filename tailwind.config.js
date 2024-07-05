@@ -1,12 +1,47 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.html",
-  ],
+  content: ['./index.html', './src/**/*.html'],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: '#373f67',
+        secondary: '#5a85ee',
+        tertiary: '#719cf7',
+        negative: '#e11900',
+        background: '#ffffff',
+        black: '#000000',
+        white: '#ffffff',
+        contentPrimary: '#000000',
+        contentSecondary: '#919191',
+        contentTertiary: '#9da1b4',
+      },
+      fontSize: {
+        xs: '0.625rem',
+        sm: '0.6564375162124634rem',
+        base: '0.875rem',
+        lg: '1.1663750410079956rem',
+        xl: '1.5547499656677246rem',
+        '2xl': '2.072499990463257rem',
+        '3xl': '2.762624979019165rem',
+      },
+      fontFamily: { pretendard: 'Pretendard' },
+      borderRadius: {
+        'rounded-0': 'NaNrem',
+        'rounded-1': 'NaNrem',
+        'rounded-2': 'NaNrem',
+        'rounded-3': 'NaNrem',
+        'rounded-4': 'NaNrem',
+        'rounded-5': 'NaNrem',
+        'rounded-6': 'NaNrem',
+        'rounded-7': 'NaNrem',
+        'rounded-8': 'NaNrem',
+        'rounded-9': 'NaNrem',
+        'rounded-10': 'NaNrem',
+        'rounded-11': 'NaNrem',
+        'rounded-12': 'NaNrem',
+        'rounded-13': 'NaNrem',
+      },
+    },
   },
   plugins: [],
-}
-
+};
