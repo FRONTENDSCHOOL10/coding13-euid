@@ -4,9 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "clean": "rm -rf docs",
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "npm run clean && vite build",
+    "preview": "vite preview --outDir ../docs"
   },
   "devDependencies": {
     "@eslint/js": "^9.6.0",
