@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/tailwind.css" />
+    <link rel="stylesheet" href="/pages/start/start.css" />
+    <script type="module" src="/pages/start/start.js"></script>
+    <title>Enter EUID</title>
+  </head>
+  <body>
+    <div id="wrap" class="max-w-screen-md px-3 mx-auto">
+      <header class="my-[1.12rem] mt-[1.12rem] flex px-3 pt-1">
+        <a href="/pages/start/index.html"
+          ><img
+            class="w-5 h-5 mb-2 ml-2 mr-2"
+            src="/assets/direction.svg"
+            alt="이전 페이지로 돌아가기"
+        /></a>
+        <span
+          class="relative inline-block w-full border-b-[0.03125rem] border-contentSecondary"
+        >
+          <img
+            src="/assets/search.svg"
+            alt="분야로 검색하기"
+            class="pointer-events-none absolute left-1 top-[0.0625rem]"
+          />
+          <label for="search" class="sr-only">분야 검색창</label>
+          <input
+            type="text"
+            placeholder="분야 (이름)로 검색 ( ex. 프론트)"
+            id="search"
+            class="w-full pl-6"
+          />
+        </span>
+      </header>
+
+      <main class="button_container mb-[1.12rem]">
+        <button
+          aria-label="관심분야 선택하기"
+          type="button"
+          class="euid_button mx-auto mb-6 flex w-full max-w-screen-sm items-center justify-center py-2 text-[0.65644rem] font-bold"
+        >
+          <img src="/assets/position.png" class="w-[1.125rem]" alt="" />관심분야
+          선택하기
+        </button>
+
+        <div
+          class="mx-auto grid max-w-screen-sm grid-cols-2 whitespace-nowrap font-semibold leading-[150%]"
+        >
+          <button
+            type="button"
+            class="category_focus_button mx-2 my-4 flex h-[3.8125rem] items-center justify-between rounded-lg p-3"
+          >
+            <span class="flex flex-col items-start">
+              <p class="text-[0.65644rem] text-[#E9E9E9]">프로그래밍</p>
+              <p class="text-[1.16638rem] text-white">프론트엔드1</p>
+            </span>
+            <img
+              src="/assets/check.svg"
+              class="h-[1.125rem] w-[1.125rem]"
+              alt="선택됨"
+            />
+          </button>
+
+          <button
+            type="button"
+            class="category_disabled_button mx-2 my-4 flex h-[3.8125rem] items-center justify-between rounded-lg p-3"
+          >
+            <span class="flex flex-col items-start">
+              <p class="text-[0.65644rem]">프로그래밍</p>
+              <p class="text-[1.16638rem]">프론트엔드2</p>
+            </span>
+            <img
+              src="/assets/plus.svg"
+              class="h-[1.125rem] w-[1.125rem]"
+              alt="선택되지 않음"
+            />
+          </button>
+
+          <button
+            type="button"
+            class="mx-2 my-4 flex h-[3.8125rem] items-center justify-between rounded-lg bg-[#A7A7A7] p-3"
+          >
+            <span class="flex flex-col items-start">
+              <p class="text-[0.65644rem]">프로그래밍</p>
+              <p class="text-[1.16638rem]">프론트엔드</p>
+            </span>
+            <img
+              src="/assets/plus.svg"
+              class="h-[1.125rem] w-[1.125rem]"
+              alt="선택되지 않음"
+            />
+          </button>
+
+          <button
+            type="button"
+            class="mx-2 my-4 flex h-[3.8125rem] items-center justify-between rounded-lg bg-[#A7A7A7] p-3"
+          >
+            <span class="flex flex-col items-start">
+              <p class="text-[0.65644rem]">프로그래밍</p>
+              <p class="text-[1.16638rem]">프론트엔드</p>
+            </span>
+            <img
+              src="/assets/plus.svg"
+              class="h-[1.125rem] w-[1.125rem]"
+              alt="선택되지 않음"
+            />
+          </button>
+
+          <button
+            type="button"
+            class="mx-2 my-4 flex h-[3.8125rem] items-center justify-between rounded-lg bg-primary p-3 text-white"
+          >
+            <span class="flex flex-col items-start">
+              <p class="text-[0.65644rem] text-[#E9E9E9]">프로그래밍</p>
+              <p class="text-[1.16638rem]">프론트엔드</p>
+            </span>
+            <img
+              src="/assets/check.svg"
+              class="h-[1.125rem] w-[1.125rem]"
+              alt="선택됨"
+            />
+          </button>
+
+          <button
+            type="button"
+            class="mx-2 my-4 flex h-[3.8125rem] items-center justify-between rounded-lg bg-[#A7A7A7] p-3"
+          >
+            <span class="flex flex-col items-start">
+              <p class="text-[0.65644rem]">프로그래밍</p>
+              <p class="text-[1.16638rem]">프론트엔드</p>
+            </span>
+            <img
+              src="/assets/plus.svg"
+              class="h-[1.125rem] w-[1.125rem]"
+              alt="선택되지 않음"
+            />
+          </button>
+
+          <button
+            type="button"
+            class="mx-2 my-4 flex h-[3.8125rem] items-center justify-between rounded-lg bg-primary p-3"
+          >
+            <span class="flex flex-col items-start">
+              <p class="text-[0.65644rem] text-[#E9E9E9]">프로그래밍</p>
+              <p class="text-[1.16638rem] text-white">프론트엔드</p>
+            </span>
+            <img
+              src="/assets/check.svg"
+              class="h-[1.125rem] w-[1.125rem]"
+              alt="선택됨"
+            />
+          </button>
+
+          <button
+            type="button"
+            class="mx-2 my-4 flex h-[3.8125rem] items-center justify-between rounded-lg bg-[#A7A7A7] p-3"
+          >
+            <span class="flex flex-col items-start">
+              <p class="text-[0.65644rem]">프로그래밍</p>
+              <p class="text-[1.16638rem]">프론트엔드</p>
+            </span>
+            <img
+              src="/assets/plus.svg"
+              class="h-[1.125rem] w-[1.125rem]"
+              alt="선택되지 않음"
+            />
+          </button>
+
+          <button
+            type="button"
+            class="mx-2 my-4 flex h-[3.8125rem] items-center justify-between rounded-lg bg-[#A7A7A7] p-3"
+          >
+            <span class="flex flex-col items-start">
+              <p class="text-[0.65644rem]">프로그래밍</p>
+              <p class="text-[1.16638rem]">프론트엔드</p>
+            </span>
+            <img
+              src="/assets/plus.svg"
+              class="h-[1.125rem] w-[1.125rem]"
+              alt="선택되지 않음"
+            />
+          </button>
+
+          <button
+            type="button"
+            class="mx-2 my-4 flex h-[3.8125rem] items-center justify-between rounded-lg bg-[#A7A7A7] p-3"
+          >
+            <span class="flex flex-col items-start">
+              <p class="text-[0.65644rem]">프로그래밍</p>
+              <p class="text-[1.16638rem]">프론트엔드</p>
+            </span>
+            <img
+              src="/assets/plus.svg"
+              class="h-[1.125rem] w-[1.125rem]"
+              alt="선택되지 않음"
+            />
+          </button>
+        </div>
+
+        <a
+          class="euid_button mx-auto mb-6 mt-[1.12rem] flex h-9 w-full max-w-screen-sm items-center justify-center whitespace-nowrap py-2 text-[0.875rem] font-bold"
+          href="/pages/start/signup.html"
+        >
+          이대로 저장할래요
+        </a>
+      </main>
+    </div>
+  </body>
+</html>
