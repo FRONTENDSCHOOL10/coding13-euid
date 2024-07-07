@@ -1,23 +1,11 @@
 /* plus button */
 .plus_button{
-  @apply absolute flex justify-center items-center w-12 h-12 rounded-full shadow-xl before:w-0.5 before:h-4 after:w-4 after:h-0.5 after:absolute
-}
-.plus_button_default{
-  @apply plus_button bg-primary before:bg-background after:bg-background 
-}
-.plus_button_focus{
-  @apply plus_button bg-background before:bg-contentPrimary after:bg-contentPrimary
+  @apply fixed flex justify-center items-center w-12 h-12 rounded-full shadow-xl bg-primary before:w-0.5 before:h-4 before:bg-background after:absolute after:w-4 after:h-0.5 after:bg-background focus:bg-background focus:before:bg-contentPrimary focus:after:bg-contentPrimary
 }
 
 /* exchange item button */
 .exchange_item_button{
-  @apply absolute px-5 py-2.5 rounded-xl font-pretendard text-base font-semibold leading-[1.6]
-}
-.exchange_item_button_default{
-  @apply exchange_item_button bg-primary text-background
-}
-.exchange_item_button_focus{ 
-  @apply exchange_item_button bg-background text-contentPrimary
+  @apply w-full px-5 py-2.5 rounded-xl bg-primary font-pretendard text-base font-semibold text-background leading-[1.6] text-start focus:bg-background focus:text-contentPrimary
 }
 
 /* exchange state */
