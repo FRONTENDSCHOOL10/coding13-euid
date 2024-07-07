@@ -33,4 +33,15 @@ const swiper = new Swiper('.swiper', {
       `;
     },
   },
+  // 접근성
+  keyboard: {
+    enabled: true,
+  },
+  a11y: {
+    prevSlideMessage: '이전 슬라이드',
+    nextSlideMessage: '다음 슬라이드',
+    firstSlideMessage: '첫 번째 슬라이드',
+    lastSlideMessage: '마지막 슬라이드',
+    paginationBulletMessage: '{{index}}번째 슬라이드로 이동',
+  },
 });
