@@ -10,6 +10,14 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'src', 'index.html'),
         home: resolve(__dirname, 'src', '/pages/home/index.html'),
+        profile: resolve(__dirname, 'src', 'pages', 'profile', 'index.html'),
+        editProfile: resolve(
+          __dirname,
+          'src',
+          'pages',
+          'profile',
+          'edit-profile.html'
+        ),
       },
     },
   },
