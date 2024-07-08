@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ko">
   <head>
-    <title>Vite - Tailwindcss</title>
+    <title>Enter EUID</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -10,6 +10,135 @@
     <script type="module" src="/main.js"></script>
   </head>
   <body>
-    <div id="app" class="bg-blue-500">hi tailwind!</div>
+    <div id="app" role="main" aria-live="polite" class="m-auto max-w-screen-md">
+      <h1 class="sr-only">홈 페이지</h1>
+
+      <!-- 헤더 -->
+      <header
+        class="fixed top-0 z-10 flex w-full max-w-screen-md justify-between bg-background px-5 py-[0.38rem] text-lg text-contentPrimary xs:py-2"
+      >
+        <span aria-label="현재 주소" class="text-lg font-semibold xs:text-xl">남가좌제2동</span>
+        <div class="flex gap-[0.4375rem]">
+          <a href="#">
+            <img src="/assets/search.png" alt="검색" class="w-[1.625rem] xs:w-9" />
+          </a>
+          <a href="#">
+            <img src="/assets/hamburger.png" alt="메뉴바" class="w-[1.625rem] xs:w-9" />
+          </a>
+          <a href="#">
+            <img src="/assets/bell.png" alt="알림" class="w-[1.625rem] xs:w-9" />
+          </a>
+        </div>
+      </header>
+
+      <!-- 네비게이션 -->
+      <nav class="fixed bottom-0 w-full max-w-screen-md bg-background px-3 pb-6 pt-2">
+        <ul class="flex justify-between">
+          <li>
+            <a href="#" class="flex flex-col items-center text-sm">
+              <img src="/assets/homeActive.png" alt="홈" aria-hidden="true" class="w-5 xs:w-7" />
+              <span class="text-sm leading-[160%] xs:text-base">홈</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex flex-col items-center text-sm">
+              <img src="/assets/board.png" alt="게시판" aria-hidden="true" class="w-5 xs:w-7" />
+              <span class="text-sm leading-[160%] xs:text-base">게시판</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex flex-col items-center text-sm">
+              <img src="/assets/map.png" alt="내 근처" aria-hidden="true" class="w-5 xs:w-7" />
+              <span class="text-sm leading-[160%] xs:text-base">내 근처</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex flex-col items-center text-sm">
+              <img src="/assets/chat.png" alt="채팅" aria-hidden="true" class="w-5 xs:w-7" />
+              <span class="text-sm leading-[160%] xs:text-base">채팅</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex flex-col items-center text-sm">
+              <img src="/assets/my.png" alt="나의 이듬" aria-hidden="true" class="w-5 xs:w-7" />
+              <span class="text-sm leading-[160%] xs:text-base">나의 이듬</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- 추천 글 슬라이더 -->
+      <div role="region" aria-label="추천 글 슬라이더" class="swiper mt-10 h-[66.875vw] max-h-[32.125rem] xs:mt-14">
+        <div class="swiper-wrapper">
+          <!-- 슬라이드 1 -->
+          <article aria-roledescription="slide" class="swiper-slide relative max-h-[32.125rem] bg-contentTertiary">
+            <div class="p-5">
+              <h2 id="slide1-title" class="text-lg font-semibold text-background xs:text-xl">
+                풀리지 않는 버그 속<br />개발자로 살아남기
+              </h2>
+              <a href="#" aria-describedby="slide1-title" class="text-sm text-background xs:text-base">자세히 보기</a>
+            </div>
+            <img
+              src="/assets/slideImage.png"
+              alt="슬라이드1"
+              class="absolute bottom-0 right-0 w-[63.125%] [aspect-ratio:1.086021505376344]"
+            />
+          </article>
+          <!-- 슬라이드 2 -->
+          <article aria-roledescription="slide" class="swiper-slide relative max-h-[32.125rem] bg-contentTertiary">
+            <div class="p-5">
+              <h2 id="slide2-title" class="text-lg font-semibold text-background xs:text-xl">
+                풀리지 않는 버그 속<br />개발자로 살아남기
+              </h2>
+              <a href="#" aria-describedby="slide2-title" class="text-sm text-background xs:text-base">자세히 보기</a>
+            </div>
+            <img
+              src="/assets/slideImage.png"
+              alt="슬라이드2"
+              class="absolute bottom-0 right-0 w-[63.125%] [aspect-ratio:1.086021505376344]"
+            />
+          </article>
+        </div>
+        <div role="group" aria-label="슬라이드 페이지네이션" class="swiper-pagination"></div>
+      </div>
+
+      <!-- 글 목록 -->
+      <ul class="mb-[1.8125rem] flex flex-wrap gap-x-3 px-4 py-3 xs:mb-20">
+        <li class="mb-7 w-[calc((100%-0.75rem)/2)]">
+          <article>
+            <img
+              src="/assets/storyImage.png"
+              alt="대기업에 취업한 이유"
+              class="mb-3 w-full rounded-lg [aspect-ratio:8.63/6.5]"
+            />
+            <h2 class="mb-1 text-sm leading-[160%] xs:text-base">
+              디자인에 대해 하나도 알지 못했던 내가 취업할 수 있었던 이유
+            </h2>
+            <p class="text-sm leading-[160%] text-contentSecondary xs:text-base">
+              UIUX
+              <span aria-hidden="true">&#124;</span>
+              1기 수강생 박치열
+            </p>
+          </article>
+        </li>
+        <li class="mb-7 w-[calc((100%-0.75rem)/2)]">
+          <article>
+            <img
+              src="/assets/storyImage.png"
+              alt="대기업에 취업한 이유2"
+              class="mb-3 w-full rounded-lg [aspect-ratio:8.63/6.5]"
+            />
+            <h2 class="mb-1 text-sm leading-[160%] xs:text-base">
+              디자인에 대해 하나도 알지 못했던 내가 취업할 수 있었던 이유2
+            </h2>
+            <p class="text-sm leading-[160%] text-contentSecondary xs:text-base">
+              UIUX
+              <span aria-hidden="true">&#124;</span>
+              1기 수강생 박치열
+            </p>
+          </article>
+        </li>
+      </ul>
+    </div>
   </body>
 </html>
