@@ -9,25 +9,15 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'src', 'index.html'),
-        exchangeBoard: resolve(
-          __dirname,
-          'src',
-          'pages',
-          'exchangeBoard',
-          'index.html'
-        ),
+        category: resolve(__dirname, 'src', 'pages', 'category', 'index.html'),
         profile: resolve(__dirname, 'src', 'pages', 'profile', 'index.html'),
-        editProfile: resolve(
-          __dirname,
-          'src',
-          'pages',
-          'profile',
-          'edit-profile.html'
-        ),
+        editProfile: resolve(__dirname, 'src', 'pages', 'edit-profile', 'index.html'),
+        exchange: resolve(__dirname, 'src', 'pages', 'exchange', 'index.html'),
+        exchangeBoard: resolve(__dirname, 'src', 'pages', 'exchange-board', 'index.html'),
         start: resolve(__dirname, 'src', 'pages', 'start', 'index.html'),
-        category: resolve(__dirname, 'src', 'pages', 'start', 'category.html'),
-        signup: resolve(__dirname, 'src', 'pages', 'start', 'signup.html'),
-        login: resolve(__dirname, 'src', 'pages', 'start', 'login.html'),
+        search: resolve(__dirname, 'src', 'pages', 'search', 'index.html'),
+        signup: resolve(__dirname, 'src', 'pages', 'signup', 'index.html'),
+        login: resolve(__dirname, 'src', 'pages', 'login', 'index.html'),
       },
     },
   },

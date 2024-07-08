@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enter EUID</title>
+    <link rel="stylesheet" href="/styles/tailwind.css" />
+    <script type="module" src="/pages/exchange-board/exchange-board.js"></script>
+  </head>
+  <body>
+    <div id="app" role="main" aria-live="polite" class="m-auto max-w-screen-md">
+      <h1 class="sr-only">거래글 상세페이지</h1>
+      <!-- 헤더 -->
+      <header class="fixed top-0 z-10 flex w-full justify-between bg-background px-[1.125rem] py-2 xs:py-4">
+        <!-- 뒤로 가기, 홈으로 가기 -->
+        <div class="flex gap-2">
+          <a href="#">
+            <img src="/assets/icon/direction-left.svg" alt="뒤로 가기" class="w-5 xs:w-7" />
+          </a>
+          <a href="/index.html">
+            <img src="/assets/icon/home.svg" alt="홈으로 가기" class="w-5 xs:w-7" />
+          </a>
+        </div>
+
+        <!-- 공유하기, 메뉴 더보기 -->
+        <div class="flex gap-2">
+          <a href="#">
+            <img src="/assets/icon/share.svg" alt="공유하기" class="w-5 xs:w-7" />
+          </a>
+          <a href="#">
+            <img src="/assets/icon/more.svg" alt="메뉴 더보기" class="w-5 xs:w-7" />
+          </a>
+        </div>
+      </header>
+
+      <!-- 이미지 슬라이드 -->
+      <div role="region" aria-label="물품 이미지 슬라이더" class="swiper xs:mt-15 mt-9 max-h-[30rem]">
+        <div class="swiper-wrapper">
+          <div aria-roledescription="slide" class="swiper-slide">
+            <img src="/assets/exchangeItem.png" alt="물품사진1" class="max-h-[30rem] w-full object-cover" />
+          </div>
+          <div aria-roledescription="slide" class="swiper-slide">
+            <img src="/assets/exchangeItem.png" alt="물품사진2" class="max-h-[30rem] w-full object-cover" />
+          </div>
+        </div>
+        <div role="group" aria-label="슬라이드 페이지네이션" class="swiper-pagination"></div>
+      </div>
+
+      <!-- 프로필 정보 -->
+      <div
+        role="group"
+        aria-label="판매자 프로필 정보"
+        class="flex items-center justify-between px-[0.8125rem] py-[0.625rem]"
+      >
+        <!-- 아이콘, 닉네임, 주소 -->
+        <div class="flex gap-[0.38rem]">
+          <img src="/assets/profileIcon.png" alt="프로필 아이콘" class="w-10 rounded-full xs:w-14" />
+          <div class="flex flex-col">
+            <span aria-label="판매자 닉네임" class="text-base font-semibold xs:text-lg">맥이뜸</span>
+            <span aria-label="판매자 주소" class="text-sm xs:text-base">응암동</span>
+          </div>
+        </div>
+        <!-- 매너온도 -->
+        <div aria-label="매너온도: 41.2도" class="flex flex-col items-end justify-center">
+          <div class="-mb-2 flex items-center gap-[0.3125rem]">
+            <span
+              aria-labelledby="manner-label"
+              class="text-base font-semibold leading-[150%] text-secondary xs:text-lg"
+            >
+              41.2&deg;C
+            </span>
+            <span class="text-[1.4375rem] font-semibold leading-[150%] xs:text-2xl">😀</span>
+          </div>
+          <span id="manner-label" class="text-sm leading-[160%] text-contentSecondary xs:text-base">매너온도</span>
+        </div>
+      </div>
+
+      <!-- 글 내용 -->
+      <div class="p-3">
+        <h2 class="mb-1 text-lg font-semibold leading-[150%] xs:text-xl">2020 MacBook Air M1</h2>
+        <p class="mb-[0.8125rem] text-sm leading-[160%] text-contentSecondary xs:text-base">
+          컴퓨터 <span aria-hidden="true">&middot;</span> 17분전
+        </p>
+        <p class="mb-3 text-base leading-[160%] xs:text-lg">
+          상태 깨끗하고 좋아요<br />
+          왜냐하면 맥을 사용할 줄 몰라서 넷플릭스용으로만 봤어요. 집근처에서 거래 희망합니다.
+        </p>
+      </div>
+
+      <!-- 가격 및 채팅 메뉴 -->
+      <div class="mb-1 flex justify-between p-3 pb-[2.38rem]">
+        <div class="flex items-center gap-[0.8125rem]">
+          <!-- 하트 이미지 -->
+          <button type="button" aria-label="찜하기">
+            <img src="/assets/icon/heart.svg" alt="하트" class="w-5 xs:w-7" />
+          </button>
+
+          <!-- 구분선 -->
+          <div class="flex h-[2.13rem] w-[1px] bg-contentSecondary" aria-hidden="true"></div>
+
+          <!-- 가격 -->
+          <div class="flex flex-col">
+            <strong class="text-base font-semibold leading-[150%] xs:text-lg">820,000원</strong>
+            <a href="#" class="text-sm font-semibold leading-[150%] text-secondary xs:text-base">가격 제안하기</a>
+          </div>
+        </div>
+
+        <!-- 채팅하기 버튼 -->
+        <a
+          href="#"
+          class="flex items-center justify-center rounded-lg bg-secondary px-[0.875rem] py-2 text-base font-semibold leading-[150%] text-background xs:text-lg"
+        >
+          채팅하기
+        </a>
+      </div>
+
+      <!-- 연관글 목록 -->
+      <div class="border-t-[1px] border-contentSecondary px-[0.875rem] pb-4 pt-3">
+        <h3 class="mb-4 text-base font-semibold leading-[150%] xs:text-lg">이 글과 함께 봤어요</h3>
+        <!-- 목록 -->
+        <ul class="flex gap-4">
+          <li class="mb-5 w-[calc((100%-0.75rem)/2)]">
+            <article>
+              <img
+                src="/assets/storyImage.png"
+                alt="스토리 이미지"
+                class="mb-3 w-full rounded-lg [aspect-ratio:8.63/6.5]"
+              />
+              <h4 class="text-sm leading-[160%] xs:text-base">스타벅스 아메리카노</h4>
+              <strong class="text-sm font-semibold xs:text-base">10,000원</strong>
+            </article>
+          </li>
+
+          <li class="mb-5 w-[calc((100%-0.75rem)/2)]">
+            <article>
+              <img
+                src="/assets/storyImage.png"
+                alt="스토리 이미지"
+                class="mb-3 w-full rounded-lg [aspect-ratio:8.63/6.5]"
+              />
+              <h4 class="text-sm leading-[160%] xs:text-base">스타벅스 아메리카노</h4>
+              <strong class="text-sm font-semibold xs:text-base">10,000원</strong>
+            </article>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
