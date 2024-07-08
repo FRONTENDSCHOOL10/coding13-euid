@@ -9,6 +9,13 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'src', 'index.html'),
+        exchangeBoard: resolve(
+          __dirname,
+          'src',
+          'pages',
+          'exchangeBoard',
+          'index.html'
+        ),
         profile: resolve(__dirname, 'src', 'pages', 'profile', 'index.html'),
         editProfile: resolve(
           __dirname,
