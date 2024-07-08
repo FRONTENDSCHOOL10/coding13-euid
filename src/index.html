@@ -6,6 +6,7 @@
     <title>Enter EUID</title>
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <link rel="stylesheet" href="/styles/tailwind.css" />
+    <script type="module" src="/components/navigation/navigation.js"></script>
     <script type="module" src="/main.js"></script>
   </head>
   <body>
@@ -31,40 +32,7 @@
       </header>
 
       <!-- 네비게이션 -->
-      <nav class="fixed bottom-0 w-full max-w-screen-md bg-background px-3 pb-6 pt-2">
-        <ul class="flex justify-between">
-          <li>
-            <a href="#" class="flex flex-col items-center text-sm">
-              <img src="/assets/icon/fullHome.svg" alt="홈" aria-hidden="true" class="w-5 xs:w-7" />
-              <span class="text-sm leading-[160%] xs:text-base">홈</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="flex flex-col items-center text-sm">
-              <img src="/assets/icon/board.svg" alt="게시판" aria-hidden="true" class="w-5 xs:w-7" />
-              <span class="text-sm leading-[160%] xs:text-base">게시판</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="flex flex-col items-center text-sm">
-              <img src="/assets/icon/map.svg" alt="내 근처" aria-hidden="true" class="w-5 xs:w-7" />
-              <span class="text-sm leading-[160%] xs:text-base">내 근처</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="flex flex-col items-center text-sm">
-              <img src="/assets/icon/chat.svg" alt="채팅" aria-hidden="true" class="w-5 xs:w-7" />
-              <span class="text-sm leading-[160%] xs:text-base">채팅</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="flex flex-col items-center text-sm">
-              <img src="/assets/icon/my.svg" alt="나의 이듬" aria-hidden="true" class="w-5 xs:w-7" />
-              <span class="text-sm leading-[160%] xs:text-base">나의 이듬</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
+      <c-navigation data-page="홈"></c-navigation>
 
       <!-- 추천 글 슬라이더 -->
       <div role="region" aria-label="추천 글 슬라이더" class="swiper mt-10 h-[66.875vw] max-h-[32.125rem] xs:mt-14">
