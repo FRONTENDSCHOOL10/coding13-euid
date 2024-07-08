@@ -9,26 +9,34 @@
     <script type="module" src="/pages/start/start.js"></script>
   </head>
   <body>
-    <div class="flex h-lvh flex-col items-center justify-center pb-11">
-      <figure class="mb-[10.44rem] mt-[16.31rem] text-center">
+    <div class="flex flex-col items-center h-lvh justify-evenly font-pretendard">
+      <!--시간, 배터리 표시-->
+      <header></header>
+      <figure class="mt-[16.31rem] text-center">
         <img class="mx-auto mb-[3.14rem] h-[1.92044rem] w-[5.28125rem]" src="/assets/logo.png" alt="엔터 이듬" />
         <figcaption class="">
-          <h2 class="mb-[0.69rem] font-pretendard text-[1.16638rem] font-bold text-primary">당신 곁에 엔터이듬</h2>
+          <h2 class="mb-[0.69rem] text-[1.16638rem] font-bold text-primary">당신 곁에 엔터이듬</h2>
           <p class="text-base font-normal text-primary">
             With EUID’s 함께 성장하기<br />
             함께 배우고 적용하며 성장해보세요!
           </p>
         </figcaption>
       </figure>
-      <section class="mb-11 flex w-full flex-col items-center px-[0.62rem]">
+
+      <section class="mt-[10.44rem] flex w-full flex-col items-center px-[0.62rem]">
+        <h1 class="sr-only">회원가입 또는 로그인 하기</h1>
         <a
-          class="mb-6 w-full max-w-screen-sm rounded-lg bg-primary py-2 text-center text-white"
-          href="/pages/start/category.html"
+          class="w-full max-w-screen-sm py-2 mb-6 text-center text-white rounded-lg bg-primary"
+          href="/pages/category/index.html"
+          aria-label="회원가입 페이지로 이동"
         >
           시작하기
         </a>
         <span class="text-[0.65644rem] font-normal text-contentSecondary"
-          >이미 계정이 있나요?<a href="/pages/start/login.html" class="ml-[0.81rem] font-semibold text-primary"
+          >이미 계정이 있나요?<a
+            href="/pages/login/index.html"
+            class="ml-[0.81rem] font-semibold text-primary"
+            aria-label="로그인 페이지로 이동"
             >로그인</a
           ></span
         >
