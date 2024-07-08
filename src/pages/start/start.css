@@ -1,0 +1,19 @@
+.login_input {
+  @apply rounded border-[0.03125rem] border-solid border-black bg-white p-3 py-2 focus:outline-none focus:placeholder:text-black;
+}
+
+.login_button {
+  @apply rounded border-[0.03125rem] border-solid border-contentSecondary bg-white py-2 text-base font-semibold;
+}
+
+.euid_button {
+  @apply text-center text-white rounded-lg bg-primary;
+}
+
+.category_focus_button {
+  @apply bg-primary;
+}
+
+.category_disabled_button {
+  @apply bg-[#A7A7A7];
+}
