@@ -8,26 +8,26 @@
     <script type="module" src="/pages/login/login.js"></script>
   </head>
   <body>
-    <div id="wrap" class="mx-auto max-w-screen-md">
-      <nav>
-        <a href="/pages/start/category.html"
-          ><img class="my-2 ml-3 h-5 w-5" src="/assets/icon/direction-left.svg" alt="이전 페이지로 돌아가기"
+    <div id="app" class="max-w-screen-md mx-auto">
+      <nav class="flex h-9">
+        <a href="/pages/start/index.html"
+          ><img class="w-5 h-5 my-2 ml-3" src="/assets/icon/direction-left.svg" alt="이전 페이지로 돌아가기"
         /></a>
       </nav>
-      <header class="ml-3 mt-3">
-        <span class="font-pretendard text-[1.16638rem] font-semibold">안녕하세요!</span>
+      <section class="mt-3 ml-3">
+        <p class="font-pretendard text-[1.16638rem] font-semibold">안녕하세요!</p>
         <h1 class="font-pretendard text-[1.16638rem] font-semibold">휴대폰 번호로 로그인해주세요.</h1>
-        <span class="mb-[1.44rem] inline-block text-[0.65644rem]"
-          >휴대폰 번호는 안전하게 보관되며 서로에게 공개되지 않아요.</span
-        >
-      </header>
-      <main class="mx-3 flex flex-col items-center">
-        <label for="phone-number"></label>
+        <p class="mb-[1.44rem] inline-block text-[0.65644rem]">
+          휴대폰 번호는 안전하게 보관되며 서로에게 공개되지 않아요.
+        </p>
+      </section>
+      <form class="flex flex-col items-center mx-3">
+        <label for="phone-number" class="sr-only">휴대폰 번호로 로그인 하기</label>
         <input
           type="number"
           placeholder="휴대폰 번호(-없이 숫자만 입력)"
           id="phone-number"
-          class="mb-3 w-full rounded border-[0.03125rem] border-solid border-black bg-white p-3 py-2 text-base font-normal focus:outline-none focus:placeholder:text-black"
+          class="mb-3 w-full rounded border border-black py-2 pl-3 text-base font-normal focus:border-[0.03125rem] focus:border-solid focus:border-black focus:outline-none focus:placeholder:text-black"
         />
         <button
           type="button"
@@ -36,9 +36,9 @@
           인증문자 받기
         </button>
         <span class="text-[0.65644rem]"
-          >휴대폰 번호가 변경되었나요? <a href="" class="underline underline-offset-2">이메일로 계정찾기</a></span
+          >휴대폰 번호가 변경되었나요? <a href="#" class="underline underline-offset-2">이메일로 계정찾기</a></span
         >
-      </main>
+      </form>
     </div>
   </body>
 </html>
