@@ -7,10 +7,9 @@
     <link rel="stylesheet" href="/styles/tailwind.css" />
     <script type="module" src="/pages/category/category.js"></script>
   </head>
-  <body>
-    <div id="wrap" class="max-w-screen-sm px-3 mx-auto">
-      <header></header>
-      <nav class="mx-auto my-[1.12rem] flex max-w-screen-sm pt-1">
+  <body class="font-pretendard">
+    <div id="app" class="max-w-screen-sm px-3 mx-auto">
+      <header class="mx-auto my-[1.12rem] flex max-w-screen-sm pt-1">
         <a href="/pages/start/index.html"
           ><img class="w-5 h-5 mx-2 mb-2" src="/assets/icon/direction-left.svg" alt="이전 페이지로 돌아가기"
         /></a>
@@ -23,11 +22,10 @@
           <label for="search" class="sr-only">분야 검색하기</label>
           <input type="text" placeholder="분야 (이름)로 검색 ( ex. 프론트)" id="search" class="w-full pl-6" />
         </span>
-      </nav>
+      </header>
 
       <main>
         <button
-          aria-label="관심분야 선택하기"
           type="button"
           class="mx-auto mb-6 flex w-full max-w-screen-sm items-center justify-center rounded-lg bg-primary py-2 text-center text-[0.65644rem] font-bold text-white"
         >
