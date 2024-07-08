@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Enter EUID</title>
     <link rel="stylesheet" type="text/css" href="/styles/tailwind.css" />
-    <script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
+    <script type="module" src="/components/navigation/navigation.js"></script>
     <script type="module" src="/pages/profile/profile.js"></script>
   </head>
   <body
@@ -13,7 +13,9 @@
   >
     <!-- 별도의 헤더 없음 -->
     <!-- navigation: 홈, 게시판, 내 근처, 채팅, 나의 이듬 -->
-    <nav
+    <c-navigation data-page="나의 이듬"></c-navigation
+    ><!-- navigation: 홈, 게시판, 내 근처, 채팅, 나의 이듬 -->
+    <!-- <nav
       class="z-50 order-last h-16 w-full shrink-0 grow-0 border-t border-gray-200 bg-white dark:border-gray-600 dark:bg-gray-700"
     >
       <div class="mx-auto grid max-w-lg grow grid-cols-4 font-medium">
@@ -105,8 +107,8 @@
           >
         </button>
       </div>
-    </nav>
-    <!-- navigation: 홈, 게시판, 내 근처, 채팅, 나의 이듬 -->
+    </nav> -->
+
     <main class="h-0 min-h-60 flex-auto overflow-auto">
       <!-- profile menu -->
       <section class="px-[1.9375rem] pb-[1.125rem] pt-[2.625rem]">
@@ -422,7 +424,11 @@
       </section>
       <!-- reviews -->
 
-      <section id="settings" class="py-4 pl-[1.125rem] pr-[0.75rem]">
+      <!-- settings -->
+      <section
+        id="settings"
+        class="mb-[4.305rem] py-4 pl-[1.125rem] pr-[0.75rem] md:mb-[5.15rem]"
+      >
         <ul class="space-y-[1.125rem]">
           <li>
             <a href="#savedQuestions" class="text-base leading-[1.6]"
@@ -455,6 +461,7 @@
           </li>
         </ul>
       </section>
+      <!-- settings -->
     </main>
   </body>
 </html>
