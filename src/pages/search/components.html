@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/tailwind.css" />
+    <script type="module" src="/pages/search/search.js"></script>
+    <title>Enter EUID</title>
+  </head>
+  <body class="bg-slate-200">
+    <!-- keyword button -->
+    <button
+      type="button"
+      class="rounded-full border border-contentTertiary bg-background px-3 py-1.5 font-pretendard text-sm font-normal leading-[1.6] text-contentPrimary focus:border-primary focus:bg-primary focus:text-background"
+      aria-label="검색 키워드"
+    >
+      노트북 거치대
+    </button>
+    <!-- // keyword button -->
+
+    <!-- keyword button with hamburger -->
+    <button
+      type="button"
+      class="group flex items-center rounded-full border border-contentTertiary bg-background px-3 py-1.5 font-pretendard text-sm font-normal leading-[1.6] text-contentPrimary focus:border-primary focus:bg-primary focus:text-background"
+      aria-label="검색 키워드"
+    >
+      <svg
+        width="20"
+        height="17"
+        viewBox="0 0 20 17"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g id="Icon/hamburger">
+          <path
+            class="group-focus:stroke-white"
+            id="Vector"
+            d="M4.1665 12.0417H15.8332M4.1665 8.50004H15.8332M4.1665 4.95837H15.8332"
+            stroke="black"
+            stroke-width="1.16667"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </g>
+      </svg>
+      노트북 거치대
+    </button>
+    <!-- // keyword button with hamburger -->
+
+    <!-- back & search -->
+    <form
+      class="flex w-full items-center justify-center gap-4 bg-background px-4 pb-2 pt-1"
+    >
+      <button type="button" aria-label="뒤로가기">
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g id="Icon/direction">
+            <path
+              id="Vector"
+              d="M12.9422 15.8079C13.0003 15.866 13.0463 15.9349 13.0777 16.0108C13.1092 16.0867 13.1254 16.168 13.1254 16.2501C13.1254 16.3322 13.1092 16.4135 13.0777 16.4894C13.0463 16.5653 13.0003 16.6342 12.9422 16.6923C12.8841 16.7504 12.8152 16.7964 12.7393 16.8278C12.6634 16.8593 12.5821 16.8755 12.5 16.8755C12.4179 16.8755 12.3366 16.8593 12.2607 16.8278C12.1848 16.7964 12.1159 16.7504 12.0578 16.6923L5.80782 10.4423C5.74971 10.3842 5.70361 10.3153 5.67215 10.2394C5.6407 10.1636 5.62451 10.0822 5.62451 10.0001C5.62451 9.91797 5.6407 9.83664 5.67215 9.76077C5.70361 9.68489 5.74971 9.61596 5.80782 9.55792L12.0578 3.30792C12.1751 3.19064 12.3342 3.12476 12.5 3.12476C12.6659 3.12476 12.8249 3.19064 12.9422 3.30792C13.0595 3.42519 13.1254 3.58425 13.1254 3.7501C13.1254 3.91596 13.0595 4.07502 12.9422 4.19229L7.1336 10.0001L12.9422 15.8079Z"
+              fill="black"
+            />
+          </g>
+        </svg>
+      </button>
+      <label for="search" class="sr-only">검색</label>
+      <input
+        type="text"
+        id="search"
+        class="w-full rounded-lg bg-[#e9e9e9] px-2.5 py-1 font-pretendard text-base focus:outline-none"
+        placeholder="창천동 근처에서 검색"
+      />
+    </form>
+    <!-- // back & search -->
+
+    <!-- finished -->
+    <div class="absolute bottom-0 w-full bg-background px-5 py-2 text-end">
+      <button
+        type="button"
+        class="font-pretendard text-base leading-[1.6] text-secondary"
+      >
+        완료
+      </button>
+    </div>
+    <!-- // finished -->
+  </body>
+</html>
