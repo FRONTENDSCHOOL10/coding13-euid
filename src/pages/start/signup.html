@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/tailwind.css" />
+    <link rel="stylesheet" href="/pages/start/start.css" />
+    <script type="module" src="/pages/start/start.js"></script>
+    <title>Test</title>
+  </head>
+  <body class="font-pretendard">
+    <div id="wrap" class="max-w-screen-md mx-auto">
+      <nav>
+        <a href="/pages/start/category.html"
+          ><img
+            class="w-5 h-5 my-2 ml-3"
+            src="/assets/direction.svg"
+            alt="이전 페이지로 돌아가기"
+        /></a>
+      </nav>
+      <header class="mt-3 ml-3">
+        <span class="text-[1.16638rem] font-semibold">안녕하세요!</span>
+        <h1 class="text-[1.16638rem] font-semibold">
+          휴대폰 번호로 가입해주세요.
+        </h1>
+        <span class="mb-[1.44rem] inline-block text-[0.65644rem]"
+          >휴대폰 번호는 안전하게 보관되며 서로에게 공개되지 않아요.</span
+        >
+      </header>
+      <main class="flex flex-col items-center mx-3">
+        <label for="phone-number"></label>
+        <input
+          type="number"
+          placeholder="휴대폰 번호(-없이 숫자만 입력)"
+          id="phone-number"
+          class="w-full mb-3 text-base font-normal login_input"
+        />
+        <button
+          type="button"
+          class="w-full mb-3 login_button text-contentSecondary"
+        >
+          인증문자 받기
+        </button>
+        <span class="text-[0.65644rem]"
+          >휴대폰 번호가 변경되었나요?
+          <a href="" class="underline underline-offset-2"
+            >이메일로 계정찾기</a
+          ></span
+        >
+      </main>
+    </div>
+  </body>
+</html>
