@@ -9,7 +9,6 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'src', 'index.html'),
-        home: resolve(__dirname, 'src', '/pages/home/index.html'),
         profile: resolve(__dirname, 'src', 'pages', 'profile', 'index.html'),
         editProfile: resolve(
           __dirname,
@@ -18,6 +17,10 @@ export default defineConfig({
           'profile',
           'edit-profile.html'
         ),
+        start: resolve(__dirname, 'src', 'pages', 'start', 'index.html'),
+        category: resolve(__dirname, 'src', 'pages', 'start', 'category.html'),
+        signup: resolve(__dirname, 'src', 'pages', 'start', 'signup.html'),
+        login: resolve(__dirname, 'src', 'pages', 'start', 'login.html'),
       },
     },
   },
