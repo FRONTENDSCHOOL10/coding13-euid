@@ -9,8 +9,9 @@
     <script type="module" src="/pages/profile/profile.js"></script>
   </head>
   <body
-    class="box-border flex h-screen flex-col bg-background font-pretendard text-contentPrimary"
+    class="mx-auto box-border flex h-screen max-w-screen-md flex-col bg-background font-pretendard text-contentPrimary"
   >
+    <h1 class="sr-only">나의 이듬</h1>
     <!-- 별도의 헤더 없음 -->
     <!-- navigation: 홈, 게시판, 내 근처, 채팅, 나의 이듬 -->
     <c-navigation data-page="나의 이듬"></c-navigation
@@ -109,56 +110,66 @@
       </div>
     </nav> -->
 
-    <main class="h-0 min-h-60 flex-auto overflow-auto">
+    <main class="flex-auto overflow-auto">
       <!-- profile menu -->
       <section class="px-[1.9375rem] pb-[1.125rem] pt-[2.625rem]">
         <div
           id="profileSummary"
           class="mb-[0.9375rem] flex flex-col items-center"
         >
-          <div class="relative mb-2">
+          <button
+            aria-label="프로필 수정하기"
+            type="button"
+            class="relative mb-2"
+          >
             <img
-              class="h-[4.25rem] w-[4.25rem] rounded-full drop-shadow-[0_4px_4px_rgba(0,0,0,0.1)]"
               src="/assets/avatar-placeholder.png"
-              alt="avatar placeholder"
+              alt="프로필 이미지"
+              class="h-[4.25rem] w-[4.25rem] rounded-full drop-shadow-[0_4px_4px_rgba(0,0,0,0.1)]"
             />
             <div
               class="absolute bottom-0 right-0 flex h-[1.125rem] w-[1.125rem] flex-row items-center justify-center rounded-full bg-white drop-shadow-[4px_4px_4px_rgba(0,0,0,0.15)]"
             >
               <img
                 src="/assets/icon/pencil.svg"
+                alt="연필 아이콘"
                 class="h-[0.875rem] w-[0.875rem]"
               />
             </div>
-          </div>
+          </button>
 
           <div class="flex h-[1.75rem] flex-row items-center">
-            <span class="pt-[0.125rem] text-lg font-bold leading-[1.5]"
+            <span
+              aria-label="내 닉네임"
+              class="pt-[0.125rem] text-lg font-bold leading-[1.5]"
               >EUID***</span
             >
             <span
+              aria-label="내 기수"
               class="ml-[0.375rem] rounded-rounded-12 border border-secondary px-1 text-sm leading-[1.6] text-secondary"
               >4기</span
             >
           </div>
-
-          <span class="text-sm leading-[1.6] text-contentSecondary"
+          <span
+            aria-label="내가 남긴 답변"
+            class="text-sm leading-[1.6] text-contentSecondary"
             >답변 35</span
           >
         </div>
 
         <div
-          class="mx-auto flex h-[3.25rem] w-full max-w-[260px] items-end justify-between px-2"
+          class="mx-auto flex h-[3.25rem] items-end justify-center space-x-[3.875rem]"
         >
           <button
+            aria-label="나의 Q&A 바로가기"
             type="button"
-            class="inline-flex h-full w-[3.125rem] flex-col items-center justify-between"
+            class="inline-flex h-full w-fit flex-col items-center justify-between"
           >
             <!-- <i class="iconify mb-1 shrink-0 text-[1.625rem]" data-icon="hugeicons:checkmark-circle-04"></i> -->
 
             <img
               src="/assets/icon/qna.svg"
-              alt="qna icon"
+              alt="qna 아이콘"
               class="mt-1 h-[1.625rem] w-[1.625rem] shrink-0"
             />
             <span class="text-sm font-semibold leading-[1.5] text-primary"
@@ -166,23 +177,25 @@
             >
           </button>
           <button
+            aria-label="나의 프로필 바로가기"
             type="button"
-            class="inline-flex h-[3.0265rem] w-[3.125rem] flex-col items-center justify-between"
+            class="inline-flex h-[3.0265rem] w-fit flex-col items-center justify-between"
           >
             <img
               src="/assets/icon/profile.svg"
-              alt="profile icon"
+              alt="프로필 아이콘"
               class="h-[1.875rem] w-[1.875rem] shrink-0"
             /><span class="text-sm font-semibold leading-[1.5] text-primary"
               >나의 프로필</span
             ></button
           ><button
+            aria-label="내 소식 바로가기"
             type="button"
-            class="inline-flex h-[3.0265rem] w-[3.125rem] flex-col items-center justify-between"
+            class="inline-flex h-[3.0265rem] w-fit flex-col items-center justify-between"
           >
             <img
               src="/assets/icon/alarm-bell.svg"
-              alt="notification icon"
+              alt="알림 아이콘"
               class="h-[1.875rem] w-[1.875rem] shrink-0"
             /><span class="text-sm font-semibold leading-[1.5] text-primary"
               >내소식</span
@@ -207,25 +220,32 @@
 
           <div class="flex flex-col items-end">
             <div
-              class="flex h-[2.1875rem] w-[calc(63.5%+1.875rem)] flex-row items-center justify-between"
+              class="flex h-[2.1875rem] w-[calc(63.5%+1.9046875rem)] flex-row items-center justify-between"
             >
               <div class="flex h-[1.4375rem] flex-col items-center">
                 <span class="text-sm leading-[1.6] text-contentSecondary"
                   >첫 온도 36.5°C</span
                 >
-                <img src="/assets/icon/polygon.svg" alt="" />
+                <img
+                  src="/assets/icon/polygon.svg"
+                  alt="아래를 가리키는 삼각형"
+                  class="h-[0.3125rem] w-[0.55rem]"
+                />
               </div>
-              <span class="text-base font-medium text-secondary dark:text-white"
+              <span
+                aria-label="현재 나의 열정 온도"
+                class="text-base font-semibold text-secondary dark:text-white"
                 >41.2°C 😀</span
               >
             </div>
 
             <div
+              aria-label="percentage 바"
               class="mb-3 h-[0.51625rem] w-full rounded-full bg-contentSecondary"
             >
               <div
-                class="h-full rounded-full bg-primary"
-                style="width: 41.2%"
+                aria-label="41.2%"
+                class="h-full w-[41.2%] rounded-full bg-primary"
               ></div>
             </div>
           </div>
@@ -244,9 +264,15 @@
               <div class="flex flex-col items-start space-y-[0.3125rem]">
                 <div class="h-6">
                   <span class="text-sm leading-[1.6]">받은 좋아요 </span>
-                  <span class="text-sm font-semibold leading-[1.5]">100%</span>
+                  <span
+                    aria-label="내 답변에 대해 만족한 사람의 퍼센티지"
+                    class="text-sm font-semibold leading-[1.5]"
+                    >100%</span
+                  >
                 </div>
-                <span class="text-sm leading-[1.6] text-contentSecondary"
+                <span
+                  aria-label="내 답변에 대해 만족한 사람의 수"
+                  class="text-sm leading-[1.6] text-contentSecondary"
                   >11개 중 11명이 만족</span
                 >
               </div>
@@ -261,10 +287,14 @@
               />
               <div class="flex flex-col items-start">
                 <div class="h-6">
-                  <span class="text-sm leading-[1.6]">응답률 </span>
+                  <span aria-label="나의 응답률" class="text-sm leading-[1.6]"
+                    >응답률
+                  </span>
                   <span class="text-sm font-semibold leading-[1.5]">-%</span>
                 </div>
-                <span class="text-sm leading-[1.6] text-contentSecondary"
+                <span
+                  aria-label="응답률에 대한 설명"
+                  class="text-sm leading-[1.6] text-contentSecondary"
                   >표시된 만큼 충분히 채팅하지 않았어요.</span
                 >
               </div>
@@ -276,39 +306,70 @@
       <!-- passion section -->
 
       <!-- badges -->
-      <section
-        id="badge"
-        class="flex flex-row justify-between border-b-[0.01875rem] border-contentSecondary px-[1.3125rem] py-4"
-      >
-        <span class="text-base font-semibold leading-[1.5]">활동배지 10개</span>
-        <img src="/assets/icon/right.svg" />
+      <section id="badge" class="border-b-[0.01875rem] border-contentSecondary">
+        <button
+          aria-label="내 활동배지 자세히 보기"
+          type="button"
+          class="flex w-full flex-row items-center justify-between px-[1.3125rem] py-4"
+        >
+          <span
+            aria-label="내 활동배지 수"
+            class="text-base font-semibold leading-[1.5]"
+            >활동배지 10개</span
+          >
+          <img
+            src="/assets/icon/right.svg"
+            alt="오른쪽 이동 아이콘"
+            class="h-4 w-4"
+          />
+        </button>
       </section>
       <!-- badges -->
 
       <!-- my products -->
       <section
         id="listings"
-        class="flex flex-row justify-between border-b-[0.01875rem] border-contentSecondary px-[1.3125rem] py-4"
+        class="border-b-[0.01875rem] border-contentSecondary"
       >
-        <span class="text-base font-semibold leading-[1.5]">판매상품 3개</span>
-        <img src="/assets/icon/right.svg" alt="" />
+        <button
+          aria-label="내 판매상품 바로가기"
+          type="button"
+          class="flex w-full flex-row items-center justify-between px-[1.3125rem] py-4"
+        >
+          <span class="text-base font-semibold leading-[1.5]"
+            >판매상품 3개</span
+          >
+          <img
+            src="/assets/icon/right.svg"
+            alt="오른쪽 이동 아이콘"
+            class="h-4 w-4"
+          />
+        </button>
       </section>
       <!-- my products -->
 
       <!-- manner feedback -->
       <section
         id="mannerFeedback"
-        class="flex flex-col border-b-[0.01875rem] border-contentSecondary px-[18px]"
+        class="flex flex-col border-b-[0.01875rem] border-contentSecondary"
       >
-        <div class="flex flex-row justify-between py-4">
+        <button
+          aria-label="받은 매너 평가 자세히 보기"
+          type="button"
+          class="flex flex-row items-center justify-between px-[1.3125rem] py-4"
+        >
           <span class="text-base font-semibold leading-[1.5]"
             >받은 매너 평가</span
           >
-          <img src="/assets/icon/right.svg" />
-        </div>
+          <img
+            src="/assets/icon/right.svg"
+            alt="오른쪽 이동 아이콘"
+            class="h-4 w-4"
+          />
+        </button>
 
         <!-- manner reviews -->
-        <ul class="space-y-2 py-[0.875rem]">
+        <ul class="space-y-2 px-[0.625rem] py-[0.875rem]">
           <li class="flex items-center space-x-2">
             <img
               src="/assets/icon/people.svg"
@@ -376,14 +437,16 @@
         id="reviews"
         class="flex flex-col border-b-[0.01875rem] border-contentSecondary"
       >
-        <div
-          class="flex flex-row justify-between border-b-[0.01875rem] border-contentSecondary px-[18px] py-4"
+        <button
+          aria-label="받은 거래 후기 모두 보기"
+          type="button"
+          class="flex flex-row items-center justify-between border-b-[0.01875rem] border-contentSecondary px-[18px] py-4"
         >
           <span class="text-base font-semibold leading-[1.5]"
             >받은 거래 후기 1</span
           >
           <img src="/assets/icon/right.svg" />
-        </div>
+        </button>
         <!-- reviews list -->
         <ul>
           <li
@@ -392,28 +455,32 @@
             <div class="flex items-start space-x-[0.5625rem]">
               <img
                 src="/assets/reviews-avatar-placeholder.png"
-                alt="reviewer profile avatar"
+                alt="리뷰 작성자의 프로필 이미지"
                 class="h-7 w-7 rounded-full"
               />
               <div class="flex flex-col">
-                <span class="text-sm font-semibold leading-[1.5]"
+                <span
+                  aria-label="리뷰 내용"
+                  class="text-sm font-semibold leading-[1.5]"
                   >으갸갸갹</span
                 >
-                <span class="text-sm text-contentSecondary"
+                <span
+                  aria-label="리뷰 작성자 정보"
+                  class="text-sm text-contentSecondary"
                   >구매자 · 인천광역시 계양구 · 4개월 전</span
                 >
-                <div class="">
-                  <span class="mt-2 text-base leading-[1.6]"
-                    >감사감사 감사합니다</span
-                  >
-                </div>
+                <span
+                  aria-label="리뷰 작성자가 남긴 리뷰 본문"
+                  class="mt-2 text-base leading-[1.6]"
+                  >감사감사 감사합니다</span
+                >
               </div>
             </div>
             <div class="flex items-center">
-              <button>
+              <button aria-label="더보기" type="button">
                 <img
                   src="/assets/icon/more.svg"
-                  alt="more"
+                  alt="더보기 아이콘"
                   class="h-5 w-5 text-contentSecondary"
                 />
               </button>
@@ -427,7 +494,7 @@
       <!-- settings -->
       <section
         id="settings"
-        class="mb-[4.305rem] py-4 pl-[1.125rem] pr-[0.75rem] md:mb-[5.15rem]"
+        class="mb-[4.305rem] py-4 pl-[1.125rem] pr-[0.75rem] xs:mb-[5.15rem]"
       >
         <ul class="space-y-[1.125rem]">
           <li>
