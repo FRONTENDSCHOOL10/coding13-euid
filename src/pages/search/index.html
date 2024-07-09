@@ -21,7 +21,7 @@
           placeholder="창천동 근처에서 검색"
         />
       </form>
-      <section class="py-2" aria-label="검색 안내">
+      <section class="py-2" aria-label="인기 검색">
         <span class="ml-3 font-pretendard text-base font-semibold">친구들이 많이 찾고 있어요!</span>
         <div role="group" class="mt-3 flex gap-1 overflow-auto" aria-label="검색 키워드">
           <button
@@ -73,6 +73,28 @@
             노트북 쿨러
           </button>
         </div>
+      </section>
+      <section class="font-pretendard text-base" aria-label="최근 검색">
+        <div class="mx-3 mt-3 flex justify-between" role="group">
+          <span class="font-semibold">최근 검색</span>
+          <button type="button" class="text-contentTertiary">전체 삭제</button>
+        </div>
+        <ul class="mt-3" aria-label="최근 검색어">
+          <li class="flex justify-between px-3 py-1.5 hover:bg-gray-200">
+            <a href="/pages/search/" class="flex w-full items-center gap-2 text-[0.75rem]">
+              <img src="/assets/icon/time.svg" alt="시간 아이콘" aria-hidden="true" />
+              무접점 키보드
+            </a>
+            <button type="button"><img src="/assets/icon/delete.svg" alt="삭제" /></button>
+          </li>
+          <li class="flex justify-between px-3 py-1.5 hover:bg-gray-200">
+            <a href="/pages/search/" class="flex w-full items-center gap-2 text-[0.75rem]">
+              <img src="/assets/icon/time.svg" alt="시간 아이콘" aria-hidden="true" />
+              아이패드
+            </a>
+            <button type="button"><img src="/assets/icon/delete.svg" alt="삭제" /></button>
+          </li>
+        </ul>
       </section>
       <div role="region" class="absolute bottom-0 w-full bg-background px-3 py-2 text-end">
         <button
