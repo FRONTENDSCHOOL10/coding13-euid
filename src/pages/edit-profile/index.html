@@ -5,202 +5,150 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Enter EUID</title>
     <link rel="stylesheet" type="text/css" href="/styles/tailwind.css" />
-    <script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
+    <script type="module" src="/components/navigation/navigation.js"></script>
     <script type="module" src="/pages/edit-profile/edit-profile.js"></script>
   </head>
-  <body class="box-border flex h-screen flex-col bg-background font-pretendard text-contentPrimary">
-    <!-- header -->
-    <header class="flex items-center justify-between p-[0.875rem]">
-      <h1 class="text-base font-semibold">프로필 수정</h1>
-      <button class="h-4 w-4">
-        <i class="iconify mb-1 shrink-0" data-icon="iconoir:cancel"></i>
+  <body
+    class="mx-auto box-border flex h-screen max-w-screen-md flex-col bg-background font-pretendard text-contentPrimary"
+  >
+    <!-- if edit profile is activated, change the background color to bg-contentSecondary. -->
+    <h1 class="sr-only">프로필 카드</h1>
+    <!-- 수정하기 클릭 시 나타나는 banner -->
+    <!-- <div class="fixed left-0 top-0 z-50 flex w-full items-center justify-between bg-background p-[0.875rem]">
+      <h2 class="text-base font-semibold leading-[1.5]">프로필 수정</h2>
+      <button aria-label="닫기" type="button" class="h-4 w-4">
+        <img aria-hidden="true" src="/assets/icon/close.svg" alt="닫기" class="h-full w-full" />
       </button>
+    </div> -->
+    <!-- 수정하기 클릭 시 나타나는 banner -->
+
+    <!-- header -->
+    <header class="flex flex-row items-center justify-between px-[0.75rem] pb-[0.8125rem] pt-4">
+      <!-- if edit profile is activated, change padding top to pt-14. -->
+      <div class="flex flex-row items-center space-x-[0.125rem]">
+        <h2 class="text-base font-semibold leading-[1.5]">프로필 카드</h2>
+        <img
+          src="/assets/icon/information.svg"
+          alt="tooltip"
+          class="mb-[0.125rem] h-[0.875rem] w-[0.875rem] shrink-0"
+        />
+      </div>
+      <button aria-label="프로필 수정 활성화 버튼" type="button" class="text-sm text-secondary">수정하기</button>
+      <!-- if edit profile is activated, uncomment the button above. -->
     </header>
     <!-- header -->
 
     <!-- navigation: 홈, 게시판, 내 근처, 채팅, 나의 이듬 -->
-    <nav
-      class="z-50 order-last h-16 w-full shrink-0 grow-0 border-t border-gray-200 bg-white dark:border-gray-600 dark:bg-gray-700"
-    >
-      <div class="mx-auto grid max-w-lg grow grid-cols-4 font-medium">
-        <button
-          type="button"
-          class="group inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800"
-        >
-          <svg
-            class="mb-2 h-5 w-5 text-gray-500 group-hover:text-blue-600 dark:text-gray-400 dark:group-hover:text-blue-500"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-          >
-            <path
-              d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"
-            />
-          </svg>
-          <span
-            class="text-sm text-gray-500 group-hover:text-blue-600 dark:text-gray-400 dark:group-hover:text-blue-500"
-            >Home</span
-          >
-        </button>
-        <button
-          type="button"
-          class="group inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800"
-        >
-          <svg
-            class="mb-2 h-5 w-5 text-gray-500 group-hover:text-blue-600 dark:text-gray-400 dark:group-hover:text-blue-500"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-          >
-            <path
-              d="M11.074 4 8.442.408A.95.95 0 0 0 7.014.254L2.926 4h8.148ZM9 13v-1a4 4 0 0 1 4-4h6V6a1 1 0 0 0-1-1H1a1 1 0 0 0-1 1v13a1 1 0 0 0 1 1h17a1 1 0 0 0 1-1v-2h-6a4 4 0 0 1-4-4Z"
-            />
-            <path
-              d="M19 10h-6a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1Zm-4.5 3.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2ZM12.62 4h2.78L12.539.41a1.086 1.086 0 1 0-1.7 1.352L12.62 4Z"
-            />
-          </svg>
-          <span
-            class="text-sm text-gray-500 group-hover:text-blue-600 dark:text-gray-400 dark:group-hover:text-blue-500"
-            >Wallet</span
-          >
-        </button>
-        <button
-          type="button"
-          class="group inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800"
-        >
-          <svg
-            class="mb-2 h-5 w-5 text-gray-500 group-hover:text-blue-600 dark:text-gray-400 dark:group-hover:text-blue-500"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 20 20"
-          >
-            <path
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 12.25V1m0 11.25a2.25 2.25 0 0 0 0 4.5m0-4.5a2.25 2.25 0 0 1 0 4.5M4 19v-2.25m6-13.5V1m0 2.25a2.25 2.25 0 0 0 0 4.5m0-4.5a2.25 2.25 0 0 1 0 4.5M10 19V7.75m6 4.5V1m0 11.25a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5ZM16 19v-2"
-            />
-          </svg>
-          <span
-            class="text-sm text-gray-500 group-hover:text-blue-600 dark:text-gray-400 dark:group-hover:text-blue-500"
-            >Settings</span
-          >
-        </button>
-        <button
-          type="button"
-          class="group inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800"
-        >
-          <svg
-            class="mb-2 h-5 w-5 text-gray-500 group-hover:text-blue-600 dark:text-gray-400 dark:group-hover:text-blue-500"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-          >
-            <path
-              d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z"
-            />
-          </svg>
-          <span
-            class="text-sm text-gray-500 group-hover:text-blue-600 dark:text-gray-400 dark:group-hover:text-blue-500"
-            >Profile</span
-          >
-        </button>
-      </div>
-    </nav>
-    <!-- navigation: 홈, 게시판, 내 근처, 채팅, 나의 이듬 -->
+    <c-navigation data-page="나의 이듬"></c-navigation
+    ><!-- navigation: 홈, 게시판, 내 근처, 채팅, 나의 이듬 -->
 
-    <main class="h-0 min-h-60 flex-auto overflow-auto bg-contentSecondary p-4">
-      <section class="">
-        <div class="flex flex-row items-center">
-          <h2 class="text-base font-semibold">프로필 카드</h2>
-          <i class="iconify mb-1 shrink-0 text-base" data-icon="mdi:information-variant-circle-outline"></i>
+    <main class="space-y-[0.8125rem] px-[0.75rem] pb-[calc(4.305rem+0.8125rem)] xs:pb-[calc(5.15rem+0.8125rem)]">
+      <!-- if edit profile is activated, remove calc on padding bottom. -->
+      <!-- profile card -->
+      <section
+        class="flex h-[4.625rem] items-center justify-between rounded-[0.5rem] border-[0.01875rem] border-gray-300 bg-background p-3 shadow-md"
+      >
+        <!-- if edit profile is activated, remove the border and box-shadow -->
+        <div class="flex flex-col space-y-1">
+          <h3 class="text-base font-semibold leading-[1.5]"><span class="sr-only">사용자 닉네임</span>EUID***</h3>
+          <span
+            class="h-[1.0625rem] w-6 rounded-rounded-12 border-[0.04375rem] border-secondary px-1 text-center text-sm leading-[1.6] text-secondary"
+            ><span class="sr-only">내 기수</span>4기</span
+          >
         </div>
+        <img
+          src="/assets/avatar-placeholder.png"
+          alt="프로필 이미지"
+          class="h-[3.125rem] w-[3.125rem] rounded-full drop-shadow-[0_4px_4px_rgba(0,0,0,0.1)]"
+        />
       </section>
-      <section class="mt-4 flex items-center justify-between rounded-xl bg-background p-4">
-        <div>
-          <h3 class="text-lg font-semibold">EUID***</h3>
-          <span class="rounded-rounded-12 border border-secondary px-1 text-sm leading-[1.6] text-secondary">4기</span>
-        </div>
-        <img class="mr-4 h-16 w-16 rounded-full" src="/assets/avatar-placeholder.png" alt="avatar placeholder" />
-      </section>
+      <!-- profile card -->
 
-      <section class="mt-4 rounded-t-xl bg-background py-1">
-        <div class="border-b border-gray-300">
-          <div class="m-4 flex items-center justify-between">
-            <h2 class="text-lg font-semibold">기본 정보</h2>
-            <button class="text-sm text-blue-500">수정하기</button>
-          </div>
+      <!-- information -->
+      <section class="rounded-t-[0.5rem] border-[0.01875rem] border-gray-300 bg-background shadow-md">
+        <!-- if edit profile is activated, remove the border and box-shadow. -->
+        <div
+          class="flex flex-row items-center justify-between border-b-[0.01875rem] border-contentSecondary pb-3 pl-3 pr-4 pt-[0.625rem]"
+        >
+          <h3 class="text-base font-semibold leading-[1.5]">기본 정보</h3>
+          <!-- <a href="/pages/profile-detail" class="text-sm text-secondary">수정하기</a> -->
+          <!-- if edit profile is activated, uncomment the code above. -->
         </div>
-        <ul class="m-4">
-          <li class="my-4 flex flex-row items-center justify-between">
-            <span class="text-gray-700">프로필 사진</span>
-            <img src="/assets/avatar-placeholder.png" alt="avatar placeholder" class="h-8 w-8 rounded-full" />
+        <ul aria-label="기본 정보 리스트" class="space-y-[1.0625rem] px-[0.8125rem] py-[0.625rem]">
+          <li class="flex h-6 flex-row items-center justify-between">
+            <h4 class="text-base font-semibold leading-[1.5]">프로필 사진</h4>
+            <img
+              src="/assets/avatar-placeholder.png"
+              alt="프로필 이미지"
+              class="h-6 w-6 rounded-full drop-shadow-[0_1.36px_1.36px_rgba(0,0,0,0.1)]"
+            />
           </li>
-          <li class="my-4 flex flex-row items-center justify-between">
-            <span class="text-gray-700">이름(별명)</span>
-            <span class="text-gray-500">EUID***</span>
+          <li class="flex h-[1.3125rem] flex-row items-center justify-between">
+            <h4 class="text-base font-semibold leading-[1.5]">이름(별명)</h4>
+            <span class="text-sm font-semibold leading-[1.5]">EUID***</span>
           </li>
-          <li class="my-4 flex flex-row items-center justify-between">
-            <span class="text-gray-700">하늘일</span>
-            <span class="text-gray-500">미입력</span>
+          <li class="flex h-[1.3125rem] flex-row items-center justify-between">
+            <h4 class="text-base font-semibold leading-[1.5]">하는일</h4>
+            <span class="text-sm font-semibold leading-[1.5] text-contentSecondary">미입력</span>
           </li>
-          <li class="my-4 flex flex-row items-center justify-between">
-            <span class="text-gray-700">프로필 키워드</span>
-            <span class="text-gray-500">미입력</span>
+          <li class="flex h-[1.3125rem] flex-row items-center justify-between">
+            <h4 class="text-base font-semibold leading-[1.5]">프로필 키워드</h4>
+            <span class="text-sm font-semibold leading-[1.5] text-contentSecondary">미입력</span>
           </li>
-          <li class="my-4 flex flex-row items-center justify-between">
-            <span class="text-gray-700">성별</span>
-            <span class="text-gray-500">미입력</span>
+          <li class="flex h-[1.3125rem] flex-row items-center justify-between">
+            <h4 class="text-base font-semibold leading-[1.5]">성별</h4>
+            <span class="text-sm font-semibold leading-[1.5] text-contentSecondary">미입력</span>
           </li>
-          <li class="my-4 flex flex-row items-center justify-between">
-            <span class="text-gray-700">연령</span>
-            <span class="text-gray-500">미입력</span>
+          <li class="flex h-[1.3125rem] flex-row items-center justify-between">
+            <h4 class="text-base font-semibold leading-[1.5]">연령</h4>
+            <span class="text-sm font-semibold leading-[1.5] text-contentSecondary">미입력</span>
           </li>
-          <li class="my-4 flex flex-row items-center justify-between">
-            <span class="text-gray-700">회사</span>
-            <span class="text-gray-500">미입력</span>
+          <li class="flex h-[1.3125rem] flex-row items-center justify-between">
+            <h4 class="text-base font-semibold leading-[1.5]">회사</h4>
+            <span class="text-sm font-semibold leading-[1.5] text-contentSecondary">미입력</span>
           </li>
-          <li class="my-4 flex flex-row items-center justify-between">
-            <span class="text-gray-700">학교</span>
-            <span class="text-gray-500">미입력</span>
+          <li class="flex h-[1.3125rem] flex-row items-center justify-between">
+            <h4 class="text-base font-semibold leading-[1.5]">학교</h4>
+            <span class="text-sm font-semibold leading-[1.5] text-contentSecondary">미입력</span>
           </li>
-          <li class="my-4 flex flex-row items-center justify-between">
-            <span class="text-gray-700">자격</span>
-            <span class="text-gray-500">미입력</span>
+          <li class="flex h-[1.3125rem] flex-row items-center justify-between">
+            <h4 class="text-base font-semibold leading-[1.5]">자격</h4>
+            <span class="text-sm font-semibold leading-[1.5] text-contentSecondary">미입력</span>
           </li>
         </ul>
       </section>
-      <section class="mt-4 rounded-t-xl bg-background py-1">
-        <div class="border-b border-gray-300">
-          <div class="m-4 flex items-center justify-between">
-            <h2 class="text-lg font-semibold">추가 정보</h2>
-            <button class="text-sm text-blue-500">수정하기</button>
-          </div>
+      <!-- information -->
+
+      <!-- additional information -->
+      <section class="rounded-t-[0.5rem] border-[0.01875rem] border-gray-300 bg-background shadow-md">
+        <!-- if edit profile is activated, remove the border and box-shadow. -->
+        <div
+          class="flex flex-row items-center justify-between border-b-[0.01875rem] border-contentSecondary pb-3 pl-3 pr-4 pt-[0.625rem]"
+        >
+          <h3 class="text-base font-semibold leading-[1.5]">추가 정보</h3>
+          <!-- <a href="/pages/profile-detail" class="text-sm text-secondary">수정하기</a> -->
+          <!-- if edit profile is activated, uncomment the code above. -->
         </div>
-        <ul class="m-4">
-          <li class="my-4 flex flex-row items-center justify-between">
-            <span class="text-gray-700">소개</span>
-            <span class="text-gray-500">미입력</span>
+        <ul aria-label="추가 정보 리스트" class="space-y-[1.0625rem] px-[0.8125rem] pb-8 pt-[0.625rem]">
+          <li class="flex h-[1.3125rem] flex-row items-center justify-between">
+            <h4 class="text-base font-semibold leading-[1.5]">소개</h4>
+            <span class="text-sm font-semibold leading-[1.5] text-contentSecondary">미입력</span>
           </li>
-          <li class="my-4 flex flex-row items-center justify-between">
-            <span class="text-gray-700">연관 링크</span>
-            <span class="text-gray-500">미입력</span>
+          <li class="flex h-[1.3125rem] flex-row items-center justify-between">
+            <h4 class="text-base font-semibold leading-[1.5]">연관 링크</h4>
+            <span class="text-sm font-semibold leading-[1.5] text-contentSecondary">미입력</span>
           </li>
-          <li class="my-4 flex flex-row items-center justify-between">
-            <span class="text-gray-700">활동 분야</span>
-            <span class="text-gray-500">미선택</span>
+          <li class="flex h-[1.3125rem] flex-row items-center justify-between">
+            <h4 class="text-base font-semibold leading-[1.5]">활동 분야</h4>
+            <span class="text-sm font-semibold leading-[1.5] text-contentSecondary">미입력</span>
           </li>
-          <li class="my-4 flex flex-row items-center justify-between">
-            <span class="text-gray-700">업체 정보</span>
-            <span class="text-gray-500">미입력</span>
+          <li class="flex h-[1.3125rem] flex-row items-center justify-between">
+            <h4 class="text-base font-semibold leading-[1.5]">업체 정보</h4>
+            <span class="text-sm font-semibold leading-[1.5] text-contentSecondary">미입력</span>
           </li>
         </ul>
       </section>
+      <!-- additional information -->
     </main>
   </body>
 </html>
