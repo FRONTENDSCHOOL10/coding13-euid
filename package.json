@@ -22,6 +22,7 @@
     "vite": "^5.0.8"
   },
   "dependencies": {
+    "pocketbase": "^0.21.3",
     "swiper": "^11.1.4"
   }
 }
