@@ -13,7 +13,7 @@ export default defineConfig({
         profile: resolve(__dirname, 'src', 'pages', 'profile', 'index.html'),
         editProfile: resolve(__dirname, 'src', 'pages', 'edit-profile', 'index.html'),
         exchange: resolve(__dirname, 'src', 'pages', 'exchange', 'index.html'),
-        exchangeBoard: resolve(__dirname, 'src', 'pages', 'exchange-board', 'index.html'),
+        exchangeDetail: resolve(__dirname, 'src', 'pages', 'exchange-detail', 'index.html'),
         start: resolve(__dirname, 'src', 'pages', 'start', 'index.html'),
         search: resolve(__dirname, 'src', 'pages', 'search', 'index.html'),
         signup: resolve(__dirname, 'src', 'pages', 'signup', 'index.html'),
