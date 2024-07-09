@@ -18,6 +18,7 @@ export default defineConfig({
         search: resolve(__dirname, 'src', 'pages', 'search', 'index.html'),
         signup: resolve(__dirname, 'src', 'pages', 'signup', 'index.html'),
         login: resolve(__dirname, 'src', 'pages', 'login', 'index.html'),
+        chat: resolve(__dirname, 'src', 'pages', 'chat', 'index.html'),
       },
     },
   },

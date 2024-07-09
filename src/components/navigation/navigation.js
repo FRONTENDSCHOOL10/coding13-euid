@@ -35,7 +35,7 @@ navigationTemplate.innerHTML = `
         </a>
       </li>
       <li>
-        <a href="pages/chat/" class="flex flex-col items-center text-sm">
+        <a href="/pages/chat/" class="flex flex-col items-center text-sm">
           <img id="nav-img-chat" src=${chat} alt="홈" aria-hidden="true" class="w-5 xs:w-7" />
           <span class="text-sm leading-[160%] xs:text-base">채팅</span>
         </a>
