@@ -5,13 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Enter EUID</title>
     <link rel="stylesheet" type="text/css" href="/styles/tailwind.css" />
-    <script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
+    <script type="module" src="/components/navigation/navigation.js"></script>
     <script type="module" src="/pages/profile/profile.js"></script>
   </head>
-  <body class="box-border flex h-screen flex-col bg-background font-pretendard text-contentPrimary">
+  <body
+    class="mx-auto box-border flex h-screen max-w-screen-md flex-col bg-background font-pretendard text-contentPrimary"
+  >
+    <h1 class="sr-only">나의 이듬</h1>
     <!-- 별도의 헤더 없음 -->
     <!-- navigation: 홈, 게시판, 내 근처, 채팅, 나의 이듬 -->
-    <nav
+    <c-navigation data-page="나의 이듬"></c-navigation
+    ><!-- navigation: 홈, 게시판, 내 근처, 채팅, 나의 이듬 -->
+    <!-- <nav
       class="z-50 order-last h-16 w-full shrink-0 grow-0 border-t border-gray-200 bg-white dark:border-gray-600 dark:bg-gray-700"
     >
       <div class="mx-auto grid max-w-lg grow grid-cols-4 font-medium">
@@ -103,183 +108,427 @@
           >
         </button>
       </div>
-    </nav>
-    <!-- navigation: 홈, 게시판, 내 근처, 채팅, 나의 이듬 -->
-    <main class="h-0 min-h-60 flex-auto overflow-auto">
+    </nav> -->
+
+    <main class="flex-auto overflow-auto">
       <!-- profile menu -->
       <section class="px-[1.9375rem] pb-[1.125rem] pt-[2.625rem]">
-        <div id="profileSummary" class="mb-[0.9375rem] flex flex-col items-center">
-          <div class="relative mb-2">
+        <div
+          id="profileSummary"
+          class="mb-[0.9375rem] flex flex-col items-center"
+        >
+          <button
+            aria-label="프로필 수정하기"
+            type="button"
+            class="relative mb-2"
+          >
             <img
-              class="h-[4.25rem] w-[4.25rem] rounded-full drop-shadow-[0_4px_4px_rgba(0,0,0,0.1)]"
               src="/assets/avatar-placeholder.png"
-              alt="avatar placeholder"
+              alt="프로필 이미지"
+              class="h-[4.25rem] w-[4.25rem] rounded-full drop-shadow-[0_4px_4px_rgba(0,0,0,0.1)]"
             />
             <div
               class="absolute bottom-0 right-0 flex h-[1.125rem] w-[1.125rem] flex-row items-center justify-center rounded-full bg-white drop-shadow-[4px_4px_4px_rgba(0,0,0,0.15)]"
             >
-              <img src="/assets/icon/pencil.svg" class="h-[0.875rem] w-[0.875rem]" />
+              <img
+                src="/assets/icon/pencil.svg"
+                alt="연필 아이콘"
+                class="h-[0.875rem] w-[0.875rem]"
+              />
             </div>
-          </div>
+          </button>
 
           <div class="flex h-[1.75rem] flex-row items-center">
-            <span class="pt-[0.125rem] text-lg font-bold leading-[1.5]">EUID***</span>
             <span
+              aria-label="내 닉네임"
+              class="pt-[0.125rem] text-lg font-bold leading-[1.5]"
+              >EUID***</span
+            >
+            <span
+              aria-label="내 기수"
               class="ml-[0.375rem] rounded-rounded-12 border border-secondary px-1 text-sm leading-[1.6] text-secondary"
               >4기</span
             >
           </div>
-
-          <span class="text-sm leading-[1.6] text-contentSecondary">답변 35</span>
+          <span
+            aria-label="내가 남긴 답변"
+            class="text-sm leading-[1.6] text-contentSecondary"
+            >답변 35</span
+          >
         </div>
 
-        <div class="mx-auto flex w-full max-w-[260px] items-end justify-between px-2">
-          <button type="button" class="inline-flex h-[3.0265rem] w-[3.125rem] flex-col items-center justify-center">
-            <i class="iconify mb-1 shrink-0 text-[1.625rem]" data-icon="hugeicons:checkmark-circle-04"></i>
+        <div
+          class="mx-auto flex h-[3.25rem] items-end justify-center space-x-[3.875rem]"
+        >
+          <button
+            aria-label="나의 Q&A 바로가기"
+            type="button"
+            class="inline-flex h-full w-fit flex-col items-center justify-between"
+          >
+            <!-- <i class="iconify mb-1 shrink-0 text-[1.625rem]" data-icon="hugeicons:checkmark-circle-04"></i> -->
 
-            <!-- <img
+            <img
               src="/assets/icon/qna.svg"
-              class="mb-2 h-5 w-5 text-gray-500 group-hover:text-blue-600 dark:text-gray-400 dark:group-hover:text-blue-500"
-            /> -->
-            <span class="text-sm font-semibold text-primary">나의 Q&amp;A</span>
+              alt="qna 아이콘"
+              class="mt-1 h-[1.625rem] w-[1.625rem] shrink-0"
+            />
+            <span class="text-sm font-semibold leading-[1.5] text-primary"
+              >나의 Q&amp;A</span
+            >
           </button>
-          <button type="button" class="inline-flex h-[3.25rem] w-[3.125rem] flex-col items-center justify-center">
+          <button
+            aria-label="나의 프로필 바로가기"
+            type="button"
+            class="inline-flex h-[3.0265rem] w-fit flex-col items-center justify-between"
+          >
             <img
               src="/assets/icon/profile.svg"
-              class="mb-2 h-5 w-5 text-gray-500 group-hover:text-blue-600 dark:text-gray-400 dark:group-hover:text-blue-500"
-            /><span class="text-sm font-semibold text-primary">나의 프로필</span></button
-          ><button type="button" class="inline-flex h-[3.25rem] w-[3.125rem] flex-col items-center justify-center">
+              alt="프로필 아이콘"
+              class="h-[1.875rem] w-[1.875rem] shrink-0"
+            /><span class="text-sm font-semibold leading-[1.5] text-primary"
+              >나의 프로필</span
+            ></button
+          ><button
+            aria-label="내 소식 바로가기"
+            type="button"
+            class="inline-flex h-[3.0265rem] w-fit flex-col items-center justify-between"
+          >
             <img
               src="/assets/icon/alarm-bell.svg"
-              class="mb-2 h-5 w-5 text-gray-500 group-hover:text-blue-600 dark:text-gray-400 dark:group-hover:text-blue-500"
-            /><span class="text-sm font-semibold text-primary">내소식</span>
+              alt="알림 아이콘"
+              class="h-[1.875rem] w-[1.875rem] shrink-0"
+            /><span class="text-sm font-semibold leading-[1.5] text-primary"
+              >내소식</span
+            >
           </button>
         </div>
       </section>
       <!-- profile menu -->
 
-      <section id="enthusiasm" class="p-3">
-        <div id="enthusiasmTemperature">
-          <div class="mb-2 flex flex-row items-center">
-            <span class="text-base">열정온도</span
-            ><i class="iconify mb-1 shrink-0 text-base" data-icon="mdi:information-variant-circle-outline"></i>
+      <!-- passion section -->
+      <section id="passion" class="px-3 pt-3">
+        <!-- passion temperature -->
+        <div id="passionTemperature" class="-space-y-[0.3125rem]">
+          <div class="flex flex-row items-center">
+            <span class="text-[0.75rem]">열정온도</span>
+            <img
+              src="/assets/icon/information.svg"
+              alt="tooltip"
+              class="mb-[0.125rem] h-[0.875rem] w-[0.875rem] shrink-0"
+            />
           </div>
 
-          <div class="mb-1 flex justify-end">
-            <span class="text-base font-medium text-secondary dark:text-white">41.2°C 😀</span>
-          </div>
-          <div class="h-2.5 w-full rounded-full bg-contentSecondary dark:bg-gray-700">
-            <div class="h-2.5 rounded-full bg-blue-600" style="width: 41.2%"></div>
+          <div class="flex flex-col items-end">
+            <div
+              class="flex h-[2.1875rem] w-[calc(63.5%+1.9046875rem)] flex-row items-center justify-between"
+            >
+              <div class="flex h-[1.4375rem] flex-col items-center">
+                <span class="text-sm leading-[1.6] text-contentSecondary"
+                  >첫 온도 36.5°C</span
+                >
+                <img
+                  src="/assets/icon/polygon.svg"
+                  alt="아래를 가리키는 삼각형"
+                  class="h-[0.3125rem] w-[0.55rem]"
+                />
+              </div>
+              <span
+                aria-label="현재 나의 열정 온도"
+                class="text-base font-semibold text-secondary dark:text-white"
+                >41.2°C 😀</span
+              >
+            </div>
+
+            <div
+              aria-label="percentage 바"
+              class="mb-3 h-[0.51625rem] w-full rounded-full bg-contentSecondary"
+            >
+              <div
+                aria-label="41.2%"
+                class="h-full w-[41.2%] rounded-full bg-primary"
+              ></div>
+            </div>
           </div>
         </div>
-        <div id="enthusiasmDetails" class="flex flex-row space-x-9 px-5 py-4">
+        <!-- passion temperature -->
+
+        <!-- passion details -->
+        <div id="passionDetails" class="flex h-[4.4375rem] flex-row px-2 py-4">
           <div id="ratings" class="flex flex-1 flex-col">
-            <div class="flex flex-row space-x-2">
-              <i class="iconify shrink-0 text-[1.5rem]" data-icon="mdi:heart-outline"></i>
-              <div class="flex flex-col items-start">
+            <div class="flex flex-row space-x-[0.3125rem]">
+              <img
+                src="/assets/icon/heart.svg"
+                alt="받은 좋아요"
+                class="mt-1 h-4 w-4 shrink-0"
+              />
+              <div class="flex flex-col items-start space-y-[0.3125rem]">
                 <div class="h-6">
-                  <span class="text-base leading-[160%]">받은 좋아요 100%</span>
+                  <span class="text-sm leading-[1.6]">받은 좋아요 </span>
+                  <span
+                    aria-label="내 답변에 대해 만족한 사람의 퍼센티지"
+                    class="text-sm font-semibold leading-[1.5]"
+                    >100%</span
+                  >
                 </div>
-                <span class="text-contentSecondary">11개 중 11명이 만족</span>
+                <span
+                  aria-label="내 답변에 대해 만족한 사람의 수"
+                  class="text-sm leading-[1.6] text-contentSecondary"
+                  >11개 중 11명이 만족</span
+                >
               </div>
             </div>
           </div>
           <div id="responseRate" class="flex flex-1 flex-col">
-            <div class="flex flex-row space-x-2">
-              <i class="iconify shrink-0 text-[1.5rem]" data-icon="system-uicons:speech-bubble"></i>
+            <div class="flex flex-row space-x-[0.3125rem]">
+              <img
+                src="/assets/icon/speech.svg"
+                alt="응답률"
+                class="mt-1 h-4 w-4 shrink-0"
+              />
               <div class="flex flex-col items-start">
                 <div class="h-6">
-                  <span class="text-base leading-[160%]">응답률 -%</span>
+                  <span aria-label="나의 응답률" class="text-sm leading-[1.6]"
+                    >응답률
+                  </span>
+                  <span class="text-sm font-semibold leading-[1.5]">-%</span>
                 </div>
-                <span class="text-contentSecondary">표시된 만큼 충분히 채택되지 않았어요.</span>
+                <span
+                  aria-label="응답률에 대한 설명"
+                  class="text-sm leading-[1.6] text-contentSecondary"
+                  >표시된 만큼 충분히 채팅하지 않았어요.</span
+                >
               </div>
             </div>
           </div>
         </div>
+        <!-- passion details -->
       </section>
-      <section id="badge" class="flex flex-row justify-between border-b-2 px-[18px] py-4">
-        <span>활동배지 10개</span>
-        <img src="/assets/icon/direction-right.svg" />
-      </section>
-      <section id="listings" class="flex flex-row justify-between border-b-2 px-[18px] py-4">
-        <span>판매상품 3개</span>
-        <img src="/assets/icon/direction-right.svg" />
-      </section>
-      <section id="mannerFeedback" class="flex flex-col border-b-2 px-[18px] py-4">
-        <div class="flex flex-row justify-between">
-          <span>받은 매너 평가</span> <img src="/assets/icon/direction-right.svg" />
-        </div>
+      <!-- passion section -->
 
-        <ul class="space-y-2">
+      <!-- badges -->
+      <section id="badge" class="border-b-[0.01875rem] border-contentSecondary">
+        <button
+          aria-label="내 활동배지 자세히 보기"
+          type="button"
+          class="flex w-full flex-row items-center justify-between px-[1.3125rem] py-4"
+        >
+          <span
+            aria-label="내 활동배지 수"
+            class="text-base font-semibold leading-[1.5]"
+            >활동배지 10개</span
+          >
+          <img
+            src="/assets/icon/right.svg"
+            alt="오른쪽 이동 아이콘"
+            class="h-4 w-4"
+          />
+        </button>
+      </section>
+      <!-- badges -->
+
+      <!-- my products -->
+      <section
+        id="listings"
+        class="border-b-[0.01875rem] border-contentSecondary"
+      >
+        <button
+          aria-label="내 판매상품 바로가기"
+          type="button"
+          class="flex w-full flex-row items-center justify-between px-[1.3125rem] py-4"
+        >
+          <span class="text-base font-semibold leading-[1.5]"
+            >판매상품 3개</span
+          >
+          <img
+            src="/assets/icon/right.svg"
+            alt="오른쪽 이동 아이콘"
+            class="h-4 w-4"
+          />
+        </button>
+      </section>
+      <!-- my products -->
+
+      <!-- manner feedback -->
+      <section
+        id="mannerFeedback"
+        class="flex flex-col border-b-[0.01875rem] border-contentSecondary"
+      >
+        <button
+          aria-label="받은 매너 평가 자세히 보기"
+          type="button"
+          class="flex flex-row items-center justify-between px-[1.3125rem] py-4"
+        >
+          <span class="text-base font-semibold leading-[1.5]"
+            >받은 매너 평가</span
+          >
+          <img
+            src="/assets/icon/right.svg"
+            alt="오른쪽 이동 아이콘"
+            class="h-4 w-4"
+          />
+        </button>
+
+        <!-- manner reviews -->
+        <ul class="space-y-2 px-[0.625rem] py-[0.875rem]">
           <li class="flex items-center space-x-2">
-            <span class="flex h-8 w-4 items-center justify-center text-secondary">👥</span>
-            <span class="w-6 text-secondary">10</span>
-            <span class="flex rounded-md bg-secondary p-2 text-white">시간 약속을 잘 지켜요.</span>
+            <img
+              src="/assets/icon/people.svg"
+              alt="평가자 수"
+              class="h-4 w-4"
+            />
+
+            <span
+              class="mt-[0.125rem] w-[1.125rem] text-base font-semibold leading-[1.5]"
+              >10</span
+            >
+            <div
+              class="flex h-[2.375rem] items-center rounded-[0.5rem] rounded-tl-none bg-tertiary p-2"
+            >
+              <span class="text-base leading-[1.5]"
+                >시간 약속을 잘 지켜요.</span
+              >
+            </div>
           </li>
           <li class="flex items-center space-x-2">
-            <span class="flex h-8 w-4 items-center justify-center text-secondary">👥</span>
-            <span class="w-6 text-secondary">9</span>
-            <span class="flex rounded-md bg-secondary p-2 text-white">친절하고 매너가 좋아요.</span>
+            <img
+              src="/assets/icon/people.svg"
+              alt="평가자 수"
+              class="h-4 w-4"
+            />
+
+            <span
+              class="mt-[0.125rem] w-[1.125rem] text-base font-semibold leading-[1.5]"
+              >9</span
+            >
+            <div
+              class="flex h-[2.375rem] items-center rounded-[0.5rem] rounded-tl-none bg-tertiary p-2"
+            >
+              <span class="text-base leading-[1.5]"
+                >친절하고 매너가 좋아요.</span
+              >
+            </div>
           </li>
           <li class="flex items-center space-x-2">
-            <span class="flex h-8 w-4 items-center justify-center text-secondary">👥</span>
-            <span class="w-6 text-secondary">8</span>
-            <span class="flex rounded-md bg-secondary p-2 text-white">제가 있는 곳까지 와서 거래했어요.</span>
+            <img
+              src="/assets/icon/people.svg"
+              alt="평가자 수"
+              class="h-4 w-4"
+            />
+
+            <span
+              class="mt-[0.125rem] w-[1.125rem] text-base font-semibold leading-[1.5]"
+              >8</span
+            >
+            <div
+              class="flex h-[2.375rem] items-center rounded-[0.5rem] rounded-tl-none bg-tertiary p-2"
+            >
+              <span class="text-base leading-[1.5]"
+                >제가 있는 곳까지 와서 거래했어요.</span
+              >
+            </div>
           </li>
         </ul>
+        <!-- manner reviews -->
       </section>
-      <section id="reviews" class="flex flex-col border-b-2 py-4">
-        <div class="flex flex-row items-center justify-between border-b-2 py-4">
-          <span>받은 거래 후기 1</span> <img src="/assets/icon/direction-right.svg" />
-        </div>
-        <ul class="space-y-4">
-          <li class="flex items-start justify-between rounded-md p-4">
-            <div class="flex items-start space-x-4">
-              <img class="h-10 w-10 rounded-full" src="/assets/reviews-avatar-placeholder.png" />
-              <div class="flex flex-col">
-                <span class="text-sm font-semibold">으갸갸갹</span>
-                <span class="text-xs text-contentSecondary">구매자 · 인천광역시 계양구 · 4개월 전</span>
+      <!-- manner feedback -->
 
-                <div>
-                  <span class="mt-2 text-base">감사감사 감사합니다</span>
-                </div>
+      <!-- reviews -->
+      <section
+        id="reviews"
+        class="flex flex-col border-b-[0.01875rem] border-contentSecondary"
+      >
+        <button
+          aria-label="받은 거래 후기 모두 보기"
+          type="button"
+          class="flex flex-row items-center justify-between border-b-[0.01875rem] border-contentSecondary px-[18px] py-4"
+        >
+          <span class="text-base font-semibold leading-[1.5]"
+            >받은 거래 후기 1</span
+          >
+          <img src="/assets/icon/right.svg" />
+        </button>
+        <!-- reviews list -->
+        <ul>
+          <li
+            class="flex items-start justify-between px-[0.625rem] pb-[1.25rem] pt-[0.875rem]"
+          >
+            <div class="flex items-start space-x-[0.5625rem]">
+              <img
+                src="/assets/reviews-avatar-placeholder.png"
+                alt="리뷰 작성자의 프로필 이미지"
+                class="h-7 w-7 rounded-full"
+              />
+              <div class="flex flex-col">
+                <span
+                  aria-label="리뷰 내용"
+                  class="text-sm font-semibold leading-[1.5]"
+                  >으갸갸갹</span
+                >
+                <span
+                  aria-label="리뷰 작성자 정보"
+                  class="text-sm text-contentSecondary"
+                  >구매자 · 인천광역시 계양구 · 4개월 전</span
+                >
+                <span
+                  aria-label="리뷰 작성자가 남긴 리뷰 본문"
+                  class="mt-2 text-base leading-[1.6]"
+                  >감사감사 감사합니다</span
+                >
               </div>
             </div>
             <div class="flex items-center">
-              <button>
-                <!-- <img
-                  class="h-6 w-6 text-contentSecondary"
+              <button aria-label="더보기" type="button">
+                <img
                   src="/assets/icon/more.svg"
-                /> -->
-                <!-- <span
-                  class="iconify"
-                  data-icon="more"
-                  data-inline="false"
-                ></span> -->
-                <i
-                  class="iconify shrink-0 text-[1.5rem] text-contentSecondary"
-                  data-icon="material-symbols:more-vert"
-                ></i>
-
-                <!-- <iconify-icon icon="material-symbols:more-vert"></iconify-icon> -->
-                <!-- <div class="more icon h-6 w-6 fill-contentSecondary"></div> -->
+                  alt="더보기 아이콘"
+                  class="h-5 w-5 text-contentSecondary"
+                />
               </button>
             </div>
           </li>
         </ul>
+        <!-- reviews list -->
       </section>
-      <section id="settings">
-        <ul class="space-y-2">
-          <li><a href="#savedQuestions" class="text-primary">보관 질문</a></li>
-          <li><a href="#settings" class="text-primary">설정</a></li>
+      <!-- reviews -->
+
+      <!-- settings -->
+      <section
+        id="settings"
+        class="mb-[4.305rem] py-4 pl-[1.125rem] pr-[0.75rem] xs:mb-[5.15rem]"
+      >
+        <ul class="space-y-[1.125rem]">
           <li>
-            <a href="#officialBlog" class="text-primary">지식 iN 공식 블로그</a>
+            <a href="#savedQuestions" class="text-base leading-[1.6]"
+              >보관 질문</a
+            >
           </li>
-          <li><a href="#serviceInfo" class="text-primary">서비스 정보</a></li>
-          <li><a href="#announcements" class="text-primary">공지사항</a></li>
-          <li><a href="#logout" class="text-primary">로그아웃</a></li>
+          <li><a href="#settings" class="text-base leading-[1.6]">설정</a></li>
+          <li>
+            <a href="#officialBlog" class="text-base leading-[1.6]"
+              >지식 iN 공식 블로그</a
+            >
+          </li>
+          <li>
+            <a href="#serviceInfo" class="text-base leading-[1.6]"
+              >서비스 정보</a
+            >
+          </li>
+          <li>
+            <a href="#announcements" class="text-base leading-[1.6]"
+              >공지사항</a
+            >
+          </li>
+          <li>
+            <div class="flex flex-row justify-between">
+              <a href="#logout" class="text-base leading-[1.6]">로그아웃</a>
+              <a href="#logout" class="text-base leading-[1.6] text-secondary"
+                >kimchihi</a
+              >
+            </div>
+          </li>
         </ul>
       </section>
+      <!-- settings -->
     </main>
   </body>
 </html>
