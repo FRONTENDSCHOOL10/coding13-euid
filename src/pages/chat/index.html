@@ -13,33 +13,32 @@
       <header
         class="fixed top-0 z-10 flex w-full max-w-screen-md justify-between bg-background px-5 py-[0.38rem] text-lg text-contentPrimary xs:py-2"
       >
-        <span class="text-lg font-semibold xs:text-xl">
-          <span class="sr-only">채팅목록</span>
-          질문채팅
-        </span>
+        <h1 class="text-lg font-semibold xs:text-xl">채팅목록</h1>
         <div class="flex gap-[0.4375rem]">
-          <a href="#">
-            <img src="/assets/icon/sacn.svg" alt="QR코드 촬영" class="w-[1.625rem] xs:w-9" />
+          <a href="#" aria-label="QR코드 촬영">
+            <img src="/assets/icon/sacn.svg" alt="QR코드 촬영" aria-hidden="true" class="w-[1.625rem] xs:w-9" />
           </a>
-          <a href="#">
-            <img src="/assets/icon/alarm-bell.svg" alt="알림" class="w-[1.625rem] xs:w-9" />
+          <a href="#" aria-label="알림">
+            <img src="/assets/icon/alarm-bell.svg" alt="알림" aria-hidden="true" class="w-[1.625rem] xs:w-9" />
           </a>
         </div>
       </header>
 
-      <ul aria-label="채팅목록" class="mt-11">
-        <li class="flex items-center gap-3 p-3 border-b">
-          <figure class="flex-shrink-0 overflow-hidden rounded-md">
-            <img class="h-11 w-11" src="/assets/profileIcon.png" alt="채팅 상대 프로필" />
-          </figure>
+      <div role="group" class="mt-11">
+        <a href="#" class="flex gap-3 p-3 border-b">
+          <img
+            class="flex-shrink-0 overflow-hidden rounded-md h-11 w-11"
+            src="/assets/profileIcon.png"
+            alt="채팅 상대 프로필"
+          />
 
           <section class="relative flex flex-col justify-center w-full overflow-hidden" aria-label="채팅방 정보">
-            <div class="flex">
-              <h4
+            <div class="flex items-center">
+              <h2
                 class="mr-1 overflow-hidden text-ellipsis whitespace-nowrap text-base font-semibold leading-[150%] text-contentPrimary"
               >
                 십삼조
-              </h4>
+              </h2>
               <span class="text-sm leading-[1.6] text-contentTertiary">지역 · 시간</span>
             </div>
             <div class="flex gap-2">
@@ -49,42 +48,22 @@
             </div>
           </section>
           <img src="/assets/storyImage.png" class="h-9 w-9" alt="채팅방 내의 이미지 미리보기" />
-        </li>
+        </a>
 
-        <li class="flex items-center gap-3 p-3 border-b">
-          <figure class="flex-shrink-0 overflow-hidden rounded-md">
-            <img class="h-11 w-11" src="/assets/profileIcon.png" alt="채팅 상대 프로필" />
-          </figure>
+        <a href="#" class="flex gap-3 p-3 border-b">
+          <img
+            class="flex-shrink-0 overflow-hidden rounded-md h-11 w-11"
+            src="/assets/profileIcon.png"
+            alt="채팅 상대 프로필"
+          />
 
           <section class="relative flex flex-col justify-center w-full overflow-hidden" aria-label="채팅방 정보">
-            <div class="flex">
-              <h4
+            <div class="flex items-center">
+              <h2
                 class="mr-1 overflow-hidden text-ellipsis whitespace-nowrap text-base font-semibold leading-[150%] text-contentPrimary"
               >
                 십삼조
-              </h4>
-              <span class="text-sm leading-[1.6] text-contentTertiary">지역 · 시간</span>
-            </div>
-            <div class="flex gap-2">
-              <p class="overflow-hidden text-base text-ellipsis whitespace-nowrap">
-                채팅이 길 때는 어떻게 되는지? 어쩌구 저쩌구 주저리 주저리
-              </p>
-            </div>
-          </section>
-        </li>
-
-        <li class="flex items-center gap-3 p-3 border-b">
-          <figure class="flex-shrink-0 overflow-hidden rounded-md">
-            <img class="h-11 w-11" src="/assets/profileIcon.png" alt="채팅 상대 프로필" />
-          </figure>
-
-          <section class="relative flex flex-col justify-center w-full overflow-hidden" aria-label="채팅방 정보">
-            <div class="flex">
-              <h4
-                class="mr-1 overflow-hidden text-ellipsis whitespace-nowrap text-base font-semibold leading-[150%] text-contentPrimary"
-              >
-                십삼조
-              </h4>
+              </h2>
               <span class="text-sm leading-[1.6] text-contentTertiary">지역 · 시간</span>
             </div>
             <div class="flex gap-2">
@@ -94,20 +73,22 @@
             </div>
           </section>
           <img src="/assets/storyImage.png" class="h-9 w-9" alt="채팅방 내의 이미지 미리보기" />
-        </li>
+        </a>
 
-        <li class="flex items-center gap-3 p-3 border-b">
-          <figure class="flex-shrink-0 overflow-hidden rounded-md">
-            <img class="h-11 w-11" src="/assets/profileIcon.png" alt="채팅 상대 프로필" />
-          </figure>
+        <a href="#" class="flex gap-3 p-3 border-b">
+          <img
+            class="flex-shrink-0 overflow-hidden rounded-md h-11 w-11"
+            src="/assets/profileIcon.png"
+            alt="채팅 상대 프로필"
+          />
 
           <section class="relative flex flex-col justify-center w-full overflow-hidden" aria-label="채팅방 정보">
-            <div class="flex">
-              <h4
+            <div class="flex items-center">
+              <h2
                 class="mr-1 overflow-hidden text-ellipsis whitespace-nowrap text-base font-semibold leading-[150%] text-contentPrimary"
               >
                 십삼조
-              </h4>
+              </h2>
               <span class="text-sm leading-[1.6] text-contentTertiary">지역 · 시간</span>
             </div>
             <div class="flex gap-2">
@@ -117,20 +98,22 @@
             </div>
           </section>
           <img src="/assets/storyImage.png" class="h-9 w-9" alt="채팅방 내의 이미지 미리보기" />
-        </li>
+        </a>
 
-        <li class="flex items-center gap-3 p-3 border-b">
-          <figure class="flex-shrink-0 overflow-hidden rounded-md">
-            <img class="h-11 w-11" src="/assets/profileIcon.png" alt="채팅 상대 프로필" />
-          </figure>
+        <a href="#" class="flex gap-3 p-3 border-b">
+          <img
+            class="flex-shrink-0 overflow-hidden rounded-md h-11 w-11"
+            src="/assets/profileIcon.png"
+            alt="채팅 상대 프로필"
+          />
 
           <section class="relative flex flex-col justify-center w-full overflow-hidden" aria-label="채팅방 정보">
-            <div class="flex">
-              <h4
+            <div class="flex items-center">
+              <h2
                 class="mr-1 overflow-hidden text-ellipsis whitespace-nowrap text-base font-semibold leading-[150%] text-contentPrimary"
               >
                 십삼조
-              </h4>
+              </h2>
               <span class="text-sm leading-[1.6] text-contentTertiary">지역 · 시간</span>
             </div>
             <div class="flex gap-2">
@@ -139,87 +122,22 @@
               </p>
             </div>
           </section>
-        </li>
+        </a>
 
-        <li class="flex items-center gap-3 p-3 border-b">
-          <figure class="flex-shrink-0 overflow-hidden rounded-md">
-            <img class="h-11 w-11" src="/assets/profileIcon.png" alt="채팅 상대 프로필" />
-          </figure>
+        <a href="#" class="flex gap-3 p-3 border-b">
+          <img
+            class="flex-shrink-0 overflow-hidden rounded-md h-11 w-11"
+            src="/assets/profileIcon.png"
+            alt="채팅 상대 프로필"
+          />
 
           <section class="relative flex flex-col justify-center w-full overflow-hidden" aria-label="채팅방 정보">
-            <div class="flex">
-              <h4
+            <div class="flex items-center">
+              <h2
                 class="mr-1 overflow-hidden text-ellipsis whitespace-nowrap text-base font-semibold leading-[150%] text-contentPrimary"
               >
                 십삼조
-              </h4>
-              <span class="text-sm leading-[1.6] text-contentTertiary">지역 · 시간</span>
-            </div>
-            <div class="flex gap-2">
-              <p class="overflow-hidden text-base text-ellipsis whitespace-nowrap">
-                채팅이 길 때는 어떻게 되는지? 어쩌구 저쩌구 주저리 주저리
-              </p>
-            </div>
-          </section>
-          <img src="/assets/storyImage.png" class="h-9 w-9" alt="채팅방 내의 이미지 미리보기" />
-        </li>
-
-        <li class="flex items-center gap-3 p-3 border-b">
-          <figure class="flex-shrink-0 overflow-hidden rounded-md">
-            <img class="h-11 w-11" src="/assets/profileIcon.png" alt="채팅 상대 프로필" />
-          </figure>
-
-          <section class="relative flex flex-col justify-center w-full overflow-hidden" aria-label="채팅방 정보">
-            <div class="flex">
-              <h4
-                class="mr-1 overflow-hidden text-ellipsis whitespace-nowrap text-base font-semibold leading-[150%] text-contentPrimary"
-              >
-                십삼조
-              </h4>
-              <span class="text-sm leading-[1.6] text-contentTertiary">지역 · 시간</span>
-            </div>
-            <div class="flex gap-2">
-              <p class="overflow-hidden text-base text-ellipsis whitespace-nowrap">
-                채팅이 길 때는 어떻게 되는지? 어쩌구 저쩌구 주저리 주저리
-              </p>
-            </div>
-          </section>
-        </li>
-
-        <li class="flex items-center gap-3 p-3 border-b">
-          <figure class="flex-shrink-0 overflow-hidden rounded-md">
-            <img class="h-11 w-11" src="/assets/profileIcon.png" alt="채팅 상대 프로필" />
-          </figure>
-
-          <section class="relative flex flex-col justify-center w-full overflow-hidden" aria-label="채팅방 정보">
-            <div class="flex">
-              <h4
-                class="mr-1 overflow-hidden text-ellipsis whitespace-nowrap text-base font-semibold leading-[150%] text-contentPrimary"
-              >
-                십삼조
-              </h4>
-              <span class="text-sm leading-[1.6] text-contentTertiary">지역 · 시간</span>
-            </div>
-            <div class="flex gap-2">
-              <p class="overflow-hidden text-base text-ellipsis whitespace-nowrap">
-                채팅이 길 때는 어떻게 되는지? 어쩌구 저쩌구 주저리 주저리
-              </p>
-            </div>
-          </section>
-        </li>
-
-        <li class="flex items-center gap-3 p-3 border-b">
-          <figure class="flex-shrink-0 overflow-hidden rounded-md">
-            <img class="h-11 w-11" src="/assets/profileIcon.png" alt="채팅 상대 프로필" />
-          </figure>
-
-          <section class="relative flex flex-col justify-center w-full overflow-hidden" aria-label="채팅방 정보">
-            <div class="flex">
-              <h4
-                class="mr-1 overflow-hidden text-ellipsis whitespace-nowrap text-base font-semibold leading-[150%] text-contentPrimary"
-              >
-                십삼조
-              </h4>
+              </h2>
               <span class="text-sm leading-[1.6] text-contentTertiary">지역 · 시간</span>
             </div>
             <div class="flex gap-2">
@@ -229,20 +147,46 @@
             </div>
           </section>
           <img src="/assets/storyImage.png" class="h-9 w-9" alt="채팅방 내의 이미지 미리보기" />
-        </li>
+        </a>
 
-        <li class="flex items-center gap-3 p-3 border-b">
-          <figure class="flex-shrink-0 overflow-hidden rounded-md">
-            <img class="h-11 w-11" src="/assets/profileIcon.png" alt="채팅 상대 프로필" />
-          </figure>
+        <a href="#" class="flex gap-3 p-3 border-b">
+          <img
+            class="flex-shrink-0 overflow-hidden rounded-md h-11 w-11"
+            src="/assets/profileIcon.png"
+            alt="채팅 상대 프로필"
+          />
 
           <section class="relative flex flex-col justify-center w-full overflow-hidden" aria-label="채팅방 정보">
-            <div class="flex">
-              <h4
+            <div class="flex items-center">
+              <h2
                 class="mr-1 overflow-hidden text-ellipsis whitespace-nowrap text-base font-semibold leading-[150%] text-contentPrimary"
               >
                 십삼조
-              </h4>
+              </h2>
+              <span class="text-sm leading-[1.6] text-contentTertiary">지역 · 시간</span>
+            </div>
+            <div class="flex gap-2">
+              <p class="overflow-hidden text-base text-ellipsis whitespace-nowrap">
+                채팅이 길 때는 어떻게 되는지? 어쩌구 저쩌구 주저리 주저리
+              </p>
+            </div>
+          </section>
+        </a>
+
+        <a href="#" class="flex gap-3 p-3 border-b">
+          <img
+            class="flex-shrink-0 overflow-hidden rounded-md h-11 w-11"
+            src="/assets/profileIcon.png"
+            alt="채팅 상대 프로필"
+          />
+
+          <section class="relative flex flex-col justify-center w-full overflow-hidden" aria-label="채팅방 정보">
+            <div class="flex items-center">
+              <h2
+                class="mr-1 overflow-hidden text-ellipsis whitespace-nowrap text-base font-semibold leading-[150%] text-contentPrimary"
+              >
+                십삼조
+              </h2>
               <span class="text-sm leading-[1.6] text-contentTertiary">지역 · 시간</span>
             </div>
             <div class="flex gap-2">
@@ -252,20 +196,22 @@
             </div>
           </section>
           <img src="/assets/storyImage.png" class="h-9 w-9" alt="채팅방 내의 이미지 미리보기" />
-        </li>
+        </a>
 
-        <li class="flex items-center gap-3 p-3 border-b">
-          <figure class="flex-shrink-0 overflow-hidden rounded-md">
-            <img class="h-11 w-11" src="/assets/profileIcon.png" alt="채팅 상대 프로필" />
-          </figure>
+        <a href="#" class="flex gap-3 p-3 border-b">
+          <img
+            class="flex-shrink-0 overflow-hidden rounded-md h-11 w-11"
+            src="/assets/profileIcon.png"
+            alt="채팅 상대 프로필"
+          />
 
           <section class="relative flex flex-col justify-center w-full overflow-hidden" aria-label="채팅방 정보">
-            <div class="flex">
-              <h4
+            <div class="flex items-center">
+              <h2
                 class="mr-1 overflow-hidden text-ellipsis whitespace-nowrap text-base font-semibold leading-[150%] text-contentPrimary"
               >
                 십삼조
-              </h4>
+              </h2>
               <span class="text-sm leading-[1.6] text-contentTertiary">지역 · 시간</span>
             </div>
             <div class="flex gap-2">
@@ -275,8 +221,57 @@
             </div>
           </section>
           <img src="/assets/storyImage.png" class="h-9 w-9" alt="채팅방 내의 이미지 미리보기" />
-        </li>
-      </ul>
+        </a>
+
+        <a href="#" class="flex gap-3 p-3 border-b">
+          <img
+            class="flex-shrink-0 overflow-hidden rounded-md h-11 w-11"
+            src="/assets/profileIcon.png"
+            alt="채팅 상대 프로필"
+          />
+
+          <section class="relative flex flex-col justify-center w-full overflow-hidden" aria-label="채팅방 정보">
+            <div class="flex items-center">
+              <h2
+                class="mr-1 overflow-hidden text-ellipsis whitespace-nowrap text-base font-semibold leading-[150%] text-contentPrimary"
+              >
+                십삼조
+              </h2>
+              <span class="text-sm leading-[1.6] text-contentTertiary">지역 · 시간</span>
+            </div>
+            <div class="flex gap-2">
+              <p class="overflow-hidden text-base text-ellipsis whitespace-nowrap">
+                채팅이 길 때는 어떻게 되는지? 어쩌구 저쩌구 주저리 주저리
+              </p>
+            </div>
+          </section>
+        </a>
+
+        <a href="#" class="flex gap-3 p-3 border-b">
+          <img
+            class="flex-shrink-0 overflow-hidden rounded-md h-11 w-11"
+            src="/assets/profileIcon.png"
+            alt="채팅 상대 프로필"
+          />
+
+          <section class="relative flex flex-col justify-center w-full overflow-hidden" aria-label="채팅방 정보">
+            <div class="flex items-center">
+              <h2
+                class="mr-1 overflow-hidden text-ellipsis whitespace-nowrap text-base font-semibold leading-[150%] text-contentPrimary"
+              >
+                십삼조
+              </h2>
+              <span class="text-sm leading-[1.6] text-contentTertiary">지역 · 시간</span>
+            </div>
+            <div class="flex gap-2">
+              <p class="overflow-hidden text-base text-ellipsis whitespace-nowrap">
+                채팅이 길 때는 어떻게 되는지? 어쩌구 저쩌구 주저리 주저리
+              </p>
+            </div>
+          </section>
+          <img src="/assets/storyImage.png" class="h-9 w-9" alt="채팅방 내의 이미지 미리보기" />
+        </a>
+      </div>
 
       <c-navigation data-page="채팅"></c-navigation>
     </div>
