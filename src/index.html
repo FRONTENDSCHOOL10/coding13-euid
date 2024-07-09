@@ -6,6 +6,7 @@
     <title>Enter EUID</title>
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <link rel="stylesheet" href="/styles/tailwind.css" />
+    <script type="module" src="/components/header/header.js"></script>
     <script type="module" src="/components/navigation/navigation.js"></script>
     <script type="module" src="/main.js"></script>
   </head>
@@ -14,31 +15,13 @@
       <h1 class="sr-only">홈 페이지</h1>
 
       <!-- 헤더 -->
-      <header
-        class="fixed top-0 z-10 flex w-full max-w-screen-md justify-between bg-background px-5 py-[0.38rem] text-lg text-contentPrimary xs:py-2"
-      >
-        <span class="text-lg font-semibold xs:text-xl">
-          <span class="sr-only">현재 주소</span>
-          남가좌제2동
-        </span>
-        <div class="flex gap-[0.4375rem]">
-          <a href="#">
-            <img src="/assets/icon/search.svg" alt="검색" class="w-[1.625rem] xs:w-9" />
-          </a>
-          <a href="#">
-            <img src="/assets/icon/hamburger.svg" alt="메뉴바" class="w-[1.625rem] xs:w-9" />
-          </a>
-          <a href="#">
-            <img src="/assets/icon/alarm-bell.svg" alt="알림" class="w-[1.625rem] xs:w-9" />
-          </a>
-        </div>
-      </header>
+      <c-header data-page="홈"></c-header>
 
       <!-- 네비게이션 -->
       <c-navigation data-page="홈"></c-navigation>
 
       <!-- 추천 글 슬라이더 -->
-      <div role="region" aria-label="추천 글 슬라이더" class="swiper mt-10 h-[66.875vw] max-h-[32.125rem] xs:mt-14">
+      <div role="region" aria-label="추천 글 슬라이더" class="swiper h-[66.875vw] max-h-[32.125rem]">
         <div class="swiper-wrapper">
           <!-- 슬라이드 1 -->
           <article aria-roledescription="slide" class="swiper-slide relative max-h-[32.125rem] bg-contentTertiary">
