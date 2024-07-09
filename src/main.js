@@ -38,6 +38,7 @@ const swiper = new Swiper('.swiper', {
     enabled: true,
   },
   a11y: {
+    enabled: true,
     prevSlideMessage: '이전 슬라이드',
     nextSlideMessage: '다음 슬라이드',
     firstSlideMessage: '첫 번째 슬라이드',
