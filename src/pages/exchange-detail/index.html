@@ -5,36 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Enter EUID</title>
     <link rel="stylesheet" href="/styles/tailwind.css" />
+    <script type="module" src="/components/header/header.js"></script>
     <script type="module" src="/pages/exchange-detail/exchange-detail.js"></script>
   </head>
   <body>
     <div id="app" role="main" aria-live="polite" class="m-auto max-w-screen-md">
       <h1 class="sr-only">거래글 상세페이지</h1>
       <!-- 헤더 -->
-      <header class="fixed top-0 z-10 flex w-full justify-between bg-background px-[1.125rem] py-2 xs:py-4">
-        <!-- 뒤로 가기, 홈으로 가기 -->
-        <div class="flex gap-2">
-          <a href="#">
-            <img src="/assets/icon/direction-left.svg" alt="뒤로 가기" class="w-5 xs:w-7" />
-          </a>
-          <a href="/index.html">
-            <img src="/assets/icon/home.svg" alt="홈으로 가기" class="w-5 xs:w-7" />
-          </a>
-        </div>
-
-        <!-- 공유하기, 메뉴 더보기 -->
-        <div class="flex gap-2">
-          <a href="#">
-            <img src="/assets/icon/share.svg" alt="공유하기" class="w-5 xs:w-7" />
-          </a>
-          <a href="#">
-            <img src="/assets/icon/more.svg" alt="메뉴 더보기" class="w-5 xs:w-7" />
-          </a>
-        </div>
-      </header>
+      <c-header data-page="거래글"></c-header>
 
       <!-- 이미지 슬라이드 -->
-      <div role="region" aria-label="물품 이미지 슬라이더" class="swiper xs:mt-15 mt-9 max-h-[30rem]">
+      <div role="region" aria-label="물품 이미지 슬라이더" class="swiper max-h-[30rem]">
         <div class="swiper-wrapper">
           <div aria-roledescription="slide" class="swiper-slide">
             <img src="/assets/exchangeItem.png" alt="물품사진1" class="max-h-[30rem] w-full object-cover" />
@@ -56,12 +37,18 @@
         <div class="flex gap-[0.38rem]">
           <img src="/assets/profileIcon.png" alt="프로필 아이콘" class="w-10 rounded-full xs:w-14" />
           <div class="flex flex-col">
-            <span aria-label="판매자 닉네임" class="text-base font-semibold xs:text-lg">맥이뜸</span>
-            <span aria-label="판매자 주소" class="text-sm xs:text-base">응암동</span>
+            <span class="text-base font-semibold xs:text-lg">
+              <span class="sr-only">판매자 닉네임</span>
+              맥이뜸
+            </span>
+            <span class="text-sm xs:text-base">
+              <span class="sr-only">판매자 주소</span>
+              응암동
+            </span>
           </div>
         </div>
         <!-- 매너온도 -->
-        <div aria-label="매너온도: 41.2도" class="flex flex-col items-end justify-center">
+        <div role="group" aria-label="매너온도: 41.2도" class="flex flex-col items-end justify-center">
           <div class="-mb-2 flex items-center gap-[0.3125rem]">
             <span
               aria-labelledby="manner-label"
