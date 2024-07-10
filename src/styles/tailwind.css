@@ -8,10 +8,18 @@
   }
 
   #app {
-    @apply m-auto min-h-screen min-w-80 max-w-screen-md bg-background;
+    @apply m-auto min-h-screen bg-background;
   }
+}
 
-  .fixed {
-    @apply max-w-screen-md;
-  }
+.text-sm-group {
+  @apply text-sm xs:text-base sm:text-lg;
+}
+
+.text-base-group {
+  @apply text-base xs:text-lg sm:text-xl;
+}
+
+.text-lg-group {
+  @apply text-lg xs:text-2xl sm:text-3xl;
 }
