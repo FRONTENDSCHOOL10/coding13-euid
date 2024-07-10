@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-black font-pretendard;
+    @apply bg-black font-pretendard text-contentPrimary;
   }
 
   #app {
