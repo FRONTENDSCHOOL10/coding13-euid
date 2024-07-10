@@ -14,11 +14,11 @@ import fullMy from '/assets/icon/full-my.svg';
 const navigationTemplate = document.createElement('template');
 navigationTemplate.innerHTML = `
   <style> ${tailwindCSS} </style>
-  <nav class="fixed bottom-0 w-full max-w-screen-md bg-background px-3 pb-6 pt-2">
+  <nav class="fixed bottom-0 w-full bg-background px-3 pb-6 pt-2">
     <ul class="flex justify-between">
       <li>
         <a href="/" class="flex flex-col items-center text-sm">
-          <img id="nav-img-home" src=${home} alt="홈" aria-hidden="true" class="w-5 xs:w-7" />
+          <img id="nav-img-home" src=${home} alt="홈" aria-hidden="true" class="w-5 xs:w-[calc(1.25rem*1.4)]" />
           <span class="text-sm leading-[160%] xs:text-base">홈</span>
         </a>
       </li>

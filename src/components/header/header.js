@@ -35,7 +35,7 @@ class Header extends HTMLElement {
     const template = document.createElement('template');
     template.innerHTML = `
       <style>${tailwindCSS}</style>
-      <header class="fixed top-0 z-10 flex w-full max-w-screen-md justify-between bg-background px-5 py-[0.38rem] text-lg text-contentPrimary xs:py-2">
+      <header class="fixed top-0 z-10 flex w-full justify-between bg-background px-5 py-[0.38rem] text-lg text-contentPrimary xs:py-2">
         <span class="text-lg font-semibold xs:text-xl">
           <span class="sr-only">현재 주소</span>
           남가좌제2동
