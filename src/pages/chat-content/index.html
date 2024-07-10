@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enter EUID</title>
+    <link rel="stylesheet" href="/styles/tailwind.css" />
+    <script type="module" src="/pages/chat-content/chat-content.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1 class="sr-only">채팅내용</h1>
+
+      <!-- 헤더 -->
+      <header class="flex items-center justify-between px-3 py-1">
+        <a role="button" href="javascript:history.back()" aria-label="이전 페이지로 이동" class="">
+          <img src="/assets/icon/direction-left.svg" alt="뒤로 가기" aria-hidden="true" class="aspect-square w-5" />
+        </a>
+        <div class="flex flex-col items-center">
+          <span class="text-base font-semibold leading-[150%]">카페인조아</span>
+          <span class="text-sm leading-[160%] text-contentSecondary">보통 3일 내 응답</span>
+        </div>
+        <button><img src="/assets/icon/more.svg" alt="" class="aspect-square w-5" /></button>
+      </header>
+
+      <!-- 연결된 판매글 -->
+      <section
+        aria-label="연결된 판매글"
+        class="mb-2 border-b-[0.01875rem] border-t-[0.01875rem] border-solid border-contentSecondary py-3 pl-3"
+      >
+        <a href="/pages/exchange-detail/" aria-label="연결된 판매글 페이지로 이동" class="flex gap-2">
+          <img src="/assets/storyImage.png" alt="" class="aspect-square w-[2.125rem] rounded" />
+          <div class="flex flex-col">
+            <span class="text-sm leading-[160%]">
+              <strong class="font-semibold leading-[150%]">판매중</strong>
+              <span class="sr-only">판매 물품명</span>
+              intel mac 2017
+            </span>
+            <strong class="text-sm font-semibold leading-[150%]">
+              <span class="sr-only">물품 가격</span>
+              800,000원
+            </strong>
+          </div>
+        </a>
+      </section>
+
+      <!-- 채팅 내용 -->
+      <main class="flex flex-col gap-2 px-3">
+        <!-- 메세지 전송일 -->
+        <span class="py-1 text-center text-sm leading-[160%] text-contentSecondary">
+          <span class="sr-only">메세지 전송일</span>
+          2023년 2월 21일
+        </span>
+
+        <!-- sender's message -->
+        <div role="group" aria-label="보낸 메세지" class="flex items-end justify-end">
+          <span class="text-sm leading-[160%] text-contentSecondary">
+            <span class="sr-only">메세지 전송 시간</span>
+            오후 4:30
+          </span>
+          <div class="w-fit max-w-[80%] rounded-[1.25rem] bg-[#8DB0F9] px-[0.875rem] py-2 text-base text-background">
+            가격 네고 가능한가요?
+          </div>
+        </div>
+        <div role="group" aria-label="보낸 메세지" class="flex items-end justify-end">
+          <span class="text-sm leading-[160%] text-contentSecondary">
+            <span class="sr-only">메세지 전송 시간</span>
+            오후 5:32
+          </span>
+          <div class="w-fit max-w-[80%] rounded-[1.25rem] bg-[#8DB0F9] px-[0.875rem] py-2 text-base text-background">
+            가격 네고 가능한가요?
+          </div>
+        </div>
+
+        <!-- 메세지 전송일 -->
+        <span class="py-1 text-center text-sm leading-[160%] text-contentSecondary">
+          <span class="sr-only">메세지 전송일</span>
+          2023년 2월 22일
+        </span>
+
+        <!-- sender's message -->
+        <div role="group" aria-label="보낸 메세지" class="flex items-end justify-end">
+          <span class="text-sm leading-[160%] text-contentSecondary">
+            <span class="sr-only">메세지 전송 시간</span>
+            오후 9:16
+          </span>
+          <div class="w-fit max-w-[80%] rounded-[1.25rem] bg-[#8DB0F9] px-[0.875rem] py-2 text-base text-background">
+            판매 안하시나요?ㅠㅠ
+          </div>
+        </div>
+
+        <!-- receiver's message -->
+        <div role="group" aria-label="받은 메세지" class="flex items-end justify-start">
+          <div
+            class="w-fit max-w-[80%] rounded-[1.25rem] bg-[#EBECF0] px-[0.875rem] py-2 text-base text-contentPrimary"
+          >
+            죄송해요ㅠㅠ 제가 핸드폰을 바꿔서 지금봤네요ㅠㅠ 팡매는 안됐는데 먼저 연락하신분이 있어서 답장 기다리고 있
+            습니다 ㅠㅠ
+          </div>
+          <span class="text-sm leading-[160%] text-contentSecondary">
+            <span class="sr-only">메세지 전송 시간</span>
+            오후 9:16
+          </span>
+        </div>
+      </main>
+
+      <!-- 메세지 보내기 -->
+      <section
+        aria-label="메세지 보내기"
+        class="fixed bottom-0 flex w-full max-w-screen-md items-center justify-between gap-[0.375rem] bg-background px-2 pb-[1.875rem] pt-3"
+      >
+        <button aria-label="파일 업로드">
+          <img src="/assets/icon/plus.svg" alt="플러스" class="aspect-square w-[1.625rem]" />
+        </button>
+        <div role="group" class="flex-grow">
+          <label for="message-input" class="sr-only">메세지 입력창</label>
+          <input
+            type="text"
+            id="message-input"
+            name="message-input"
+            placeholder="메세지 보내기"
+            class="flex w-full items-center rounded-full bg-[#EBECF0] px-3 py-2 text-base leading-[160%] text-contentTertiary"
+          />
+        </div>
+        <button aria-label="메세지 보내기">
+          <img src="/assets/icon/send.svg" alt="메세지 보내기" class="aspect-square w-[1.125rem]" />
+        </button>
+      </section>
+    </div>
+  </body>
+</html>
