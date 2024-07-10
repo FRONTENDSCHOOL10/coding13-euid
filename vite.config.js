@@ -22,6 +22,7 @@ export default defineConfig(({ command, mode }) => {
           exchangeDetail: resolve(__dirname, 'src', 'pages', 'exchange-detail', 'index.html'),
           start: resolve(__dirname, 'src', 'pages', 'start', 'index.html'),
           search: resolve(__dirname, 'src', 'pages', 'search', 'index.html'),
+          searchResult: resolve(__dirname, 'src', 'pages', 'search-result', 'index.html'),
           signup: resolve(__dirname, 'src', 'pages', 'signup', 'index.html'),
           login: resolve(__dirname, 'src', 'pages', 'login', 'index.html'),
           chat: resolve(__dirname, 'src', 'pages', 'chat', 'index.html'),

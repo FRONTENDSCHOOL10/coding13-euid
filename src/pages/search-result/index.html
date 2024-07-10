@@ -8,304 +8,400 @@
     <script type="module" src="/pages/search-result/search-result.js"></script>
   </head>
   <body>
-    <div id="app" class="h-screen">
+    <div id="app" class="min-w-[20rem] max-w-screen-md">
       <h1 class="sr-only">검색 결과 페이지</h1>
-      <form class="flex w-full items-center justify-center gap-4 bg-background px-4 pb-2 pt-1">
-        <button type="button">
-          <img src="/assets/icon/direction-left.svg" alt="뒤로가기" />
-        </button>
-        <label for="search" class="sr-only">검색</label>
-        <input
-          type="text"
-          id="search"
-          class="w-full rounded-lg bg-[#e9e9e9] px-2.5 py-1 font-pretendard text-base focus:shadow-[0_0_0_1px_#719cf7] focus:outline-none"
-          placeholder="창천동 근처에서 검색"
-        />
-      </form>
-      <ul role="group" class="mx-3 my-3 flex gap-1 overflow-auto" aria-label="검색 필터">
-        <li>
-          <button
-            type="button"
-            class="flex flex-shrink-0 items-center gap-1 rounded-full border border-contentTertiary bg-background px-3 py-1.5 font-pretendard text-sm font-normal leading-[1.6] text-contentPrimary focus:border-primary focus:bg-primary focus:text-background"
-          >
-            카테고리
-            <img class="w-3" src="/assets/icon/direction-down.svg" alt="아래 화살표 아이콘" aria-hidden="true" />
+      <div role="group" class="fixed top-0 z-10 w-full">
+        <form
+          class="flex min-w-[20rem] max-w-screen-md items-center justify-center gap-4 bg-background px-4 pb-2 pt-1 xs:gap-[1.4rem] xs:px-[1.4rem] xs:pb-[0.7rem] xs:pt-[0.35rem] sm:gap-[1.8rem] sm:px-[1.8rem] sm:pb-[0.9rem] sm:pt-[0.45rem]"
+        >
+          <button type="button">
+            <img src="/assets/icon/direction-left.svg" alt="뒤로가기" class="w-[6.25vw]" />
           </button>
-        </li>
-        <li>
-          <button
-            type="button"
-            class="flex flex-shrink-0 items-center gap-1 rounded-full border border-contentTertiary bg-background px-3 py-1.5 font-pretendard text-sm font-normal leading-[1.6] text-contentPrimary focus:border-primary focus:bg-primary focus:text-background"
-          >
-            가격
-            <img class="w-3" src="/assets/icon/direction-down.svg" alt="아래 화살표 아이콘" aria-hidden="true" />
-          </button>
-        </li>
-        <li>
-          <button
-            type="button"
-            class="flex flex-shrink-0 items-center gap-1 rounded-full border border-contentTertiary bg-background px-3 py-1.5 font-pretendard text-sm font-normal leading-[1.6] text-contentPrimary focus:border-primary focus:bg-primary focus:text-background"
-          >
-            최신순
-            <img class="w-3" src="/assets/icon/direction-down.svg" alt="아래 화살표 아이콘" aria-hidden="true" />
-          </button>
-        </li>
-      </ul>
-      <div role="group" class="flex items-center gap-2 px-3 py-1 text-sm">
-        <input type="checkbox" id="possible" />
-        <label for="possible">거래가능만 보기</label>
+          <label for="search" class="sr-only">검색</label>
+          <input
+            type="text"
+            id="search"
+            class="text-base-group w-full rounded-lg bg-[#e9e9e9] px-2.5 py-1 focus:shadow-[0_0_0_1px_#719cf7] focus:outline-none xs:px-[0.875rem] xs:py-[0.35rem] sm:px-[1.125rem] sm:py-[0.45rem]"
+            placeholder="창천동 근처에서 검색"
+          />
+        </form>
+        <ul
+          role="group"
+          class="flex min-w-[20rem] max-w-screen-md gap-1 overflow-auto bg-background px-3 py-3 xs:gap-[0.35rem] xs:px-[1.05rem] xs:py-[1.05rem] sm:gap-[0.45rem] sm:px-[1.35rem] sm:py-[1.35rem]"
+          aria-label="검색 필터"
+        >
+          <li>
+            <button
+              type="button"
+              class="text-sm-group group flex flex-shrink-0 items-center gap-1 rounded-full border border-contentTertiary bg-background px-3 py-1.5 font-normal leading-[1.6] text-contentPrimary focus:border-primary focus:bg-primary focus:text-background xs:gap-[0.35rem] xs:px-[1.05rem] xs:py-[0.525rem] sm:gap-[0.45rem] sm:px-[1.35rem] sm:py-[0.675rem]"
+              data-name="category"
+            >
+              카테고리
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-3 w-3 xs:h-[1.05rem] xs:w-[1.05rem] sm:h-[1.35rem] sm:w-[1.35rem]"
+              >
+                <path
+                  d="M16.6923 7.94229L10.4423 14.1923C10.3842 14.2504 10.3153 14.2965 10.2394 14.328C10.1636 14.3594 10.0822 14.3756 10.0001 14.3756C9.91797 14.3756 9.83664 14.3594 9.76077 14.328C9.68489 14.2965 9.61596 14.2504 9.55792 14.1923L3.30792 7.94229C3.19064 7.82502 3.12476 7.66596 3.12476 7.5001C3.12476 7.33425 3.19064 7.17519 3.30792 7.05792C3.42519 6.94064 3.58425 6.87476 3.7501 6.87476C3.91596 6.87476 4.07502 6.94064 4.19229 7.05792L10.0001 12.8665L15.8079 7.05792C15.866 6.99985 15.9349 6.95378 16.0108 6.92236C16.0867 6.89093 16.168 6.87476 16.2501 6.87476C16.3322 6.87476 16.4135 6.89093 16.4894 6.92236C16.5653 6.95378 16.6342 6.99985 16.6923 7.05792C16.7504 7.11598 16.7964 7.18492 16.8278 7.26079C16.8593 7.33666 16.8755 7.41798 16.8755 7.5001C16.8755 7.58223 16.8593 7.66354 16.8278 7.73941C16.7964 7.81528 16.7504 7.88422 16.6923 7.94229Z"
+                  fill="black"
+                  class="group-focus:fill-white"
+                />
+              </svg>
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              class="text-sm-group group flex flex-shrink-0 items-center gap-1 rounded-full border border-contentTertiary bg-background px-3 py-1.5 font-normal leading-[1.6] text-contentPrimary focus:border-primary focus:bg-primary focus:text-background xs:gap-[0.35rem] xs:px-[1.05rem] xs:py-[0.525rem] sm:gap-[0.45rem] sm:px-[1.35rem] sm:py-[0.675rem]"
+              data-name="price"
+            >
+              가격
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-3 w-3 xs:h-[1.05rem] xs:w-[1.05rem] sm:h-[1.35rem] sm:w-[1.35rem]"
+              >
+                <path
+                  d="M16.6923 7.94229L10.4423 14.1923C10.3842 14.2504 10.3153 14.2965 10.2394 14.328C10.1636 14.3594 10.0822 14.3756 10.0001 14.3756C9.91797 14.3756 9.83664 14.3594 9.76077 14.328C9.68489 14.2965 9.61596 14.2504 9.55792 14.1923L3.30792 7.94229C3.19064 7.82502 3.12476 7.66596 3.12476 7.5001C3.12476 7.33425 3.19064 7.17519 3.30792 7.05792C3.42519 6.94064 3.58425 6.87476 3.7501 6.87476C3.91596 6.87476 4.07502 6.94064 4.19229 7.05792L10.0001 12.8665L15.8079 7.05792C15.866 6.99985 15.9349 6.95378 16.0108 6.92236C16.0867 6.89093 16.168 6.87476 16.2501 6.87476C16.3322 6.87476 16.4135 6.89093 16.4894 6.92236C16.5653 6.95378 16.6342 6.99985 16.6923 7.05792C16.7504 7.11598 16.7964 7.18492 16.8278 7.26079C16.8593 7.33666 16.8755 7.41798 16.8755 7.5001C16.8755 7.58223 16.8593 7.66354 16.8278 7.73941C16.7964 7.81528 16.7504 7.88422 16.6923 7.94229Z"
+                  fill="black"
+                  class="group-focus:fill-white"
+                />
+              </svg>
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              class="text-sm-group group flex flex-shrink-0 items-center gap-1 rounded-full border border-contentTertiary bg-background px-3 py-1.5 font-normal leading-[1.6] text-contentPrimary focus:border-primary focus:bg-primary focus:text-background xs:gap-[0.35rem] xs:px-[1.05rem] xs:py-[0.525rem] sm:gap-[0.45rem] sm:px-[1.35rem] sm:py-[0.675rem]"
+              data-name="order"
+            >
+              최신순
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-3 w-3 xs:h-[1.05rem] xs:w-[1.05rem] sm:h-[1.35rem] sm:w-[1.35rem]"
+              >
+                <path
+                  d="M16.6923 7.94229L10.4423 14.1923C10.3842 14.2504 10.3153 14.2965 10.2394 14.328C10.1636 14.3594 10.0822 14.3756 10.0001 14.3756C9.91797 14.3756 9.83664 14.3594 9.76077 14.328C9.68489 14.2965 9.61596 14.2504 9.55792 14.1923L3.30792 7.94229C3.19064 7.82502 3.12476 7.66596 3.12476 7.5001C3.12476 7.33425 3.19064 7.17519 3.30792 7.05792C3.42519 6.94064 3.58425 6.87476 3.7501 6.87476C3.91596 6.87476 4.07502 6.94064 4.19229 7.05792L10.0001 12.8665L15.8079 7.05792C15.866 6.99985 15.9349 6.95378 16.0108 6.92236C16.0867 6.89093 16.168 6.87476 16.2501 6.87476C16.3322 6.87476 16.4135 6.89093 16.4894 6.92236C16.5653 6.95378 16.6342 6.99985 16.6923 7.05792C16.7504 7.11598 16.7964 7.18492 16.8278 7.26079C16.8593 7.33666 16.8755 7.41798 16.8755 7.5001C16.8755 7.58223 16.8593 7.66354 16.8278 7.73941C16.7964 7.81528 16.7504 7.88422 16.6923 7.94229Z"
+                  fill="black"
+                  class="group-focus:fill-white"
+                />
+              </svg>
+            </button>
+          </li>
+        </ul>
+      </div>
+      <div
+        role="group"
+        class="text-sm-group mt-24 flex items-center gap-2 px-3 py-1 xs:mt-[8.125rem] xs:gap-[0.7rem] xs:px-[1.05rem] xs:py-[0.35rem] sm:mt-[10.625rem] sm:gap-[0.9rem] sm:px-[1.35rem] sm:py-[0.45rem]"
+      >
+        <input type="checkbox" id="possible" class="focus:outline-secondary" />
+        <label for="possible" class="w-full">거래가능만 보기</label>
       </div>
       <ul aria-label="거래 물품">
-        <li class="relative flex gap-3 border-b border-gray-200 bg-background p-3">
-          <figure class="h-[90px] w-[90px] flex-shrink-0 overflow-hidden rounded-md bg-gray-200">
+        <li
+          class="relative flex gap-3 border-b border-gray-200 bg-background p-3 xs:gap-[1.05rem] xs:p-[1.05rem] sm:gap-[1.35rem] sm:p-[1.35rem]"
+        >
+          <figure class="h-[28.125vw] w-[28.125vw] flex-shrink-0 overflow-hidden rounded-md bg-gray-200">
             <img class="object-cover" src="/" alt="거래 물품 대표 사진" />
           </figure>
-          <section
-            class="flex w-full flex-col justify-center overflow-hidden font-pretendard"
-            aria-label="거래 물품 정보"
-          >
-            <h2 class="overflow-hidden text-ellipsis whitespace-nowrap text-base leading-[1.6] text-contentPrimary">
+          <section class="flex w-full flex-col justify-center overflow-hidden" aria-label="거래 물품 정보">
+            <h2 class="text-base-group truncate leading-[1.6] text-contentPrimary">
               거래 물품 이름이 길어질 때 줄바꿈 없이 말줄임표로 나타납니다.
             </h2>
-            <span class="text-sm leading-[1.6] text-contentTertiary">지역 · 시간</span>
-            <div class="flex items-center gap-2" role="group">
+            <span class="text-sm-group leading-[1.6] text-contentTertiary">지역 · 시간</span>
+            <div class="flex items-center gap-2 xs:gap-[0.7rem] sm:gap-[0.9rem]" role="group">
               <!-- 거래 상태 -->
               <span
-                class="rounded bg-tertiary px-1 py-0.5 font-pretendard text-sm font-semibold leading-normal text-background"
+                class="text-sm-group rounded bg-tertiary px-1 py-0.5 font-semibold leading-normal text-background xs:px-[0.35rem] xs:py-[0.175rem] sm:px-[0.45rem] sm:py-[0.225rem]"
               >
                 <span class="sr-only">거래상태</span>예약중
               </span>
               <!-- // 거래 상태 -->
-              <span class="text-base font-semibold leading-normal">
+              <span class="text-base-group font-semibold leading-normal">
                 <span class="sr-only">물품가격</span>150,000원
               </span>
             </div>
           </section>
-          <span class="absolute bottom-2 right-3 flex items-center gap-0.5 font-pretendard text-sm leading-[1.6]">
-            <img src="/assets/icon/heart.svg" alt="좋아요" />
+          <span
+            class="text-sm-group absolute bottom-2 right-3 flex items-center gap-0.5 leading-[1.6] xs:bottom-[0.7rem] xs:right-[1.05rem] xs:gap-[0.175rem] sm:bottom-[0.9rem] sm:right-[1.35rem] sm:gap-[0.225rem]"
+          >
+            <img src="/assets/icon/heart.svg" alt="좋아요" class="w-[4.375vw]" />
             4
           </span>
         </li>
-        <li class="relative flex gap-3 border-b border-gray-200 bg-background p-3">
-          <figure class="h-[90px] w-[90px] flex-shrink-0 overflow-hidden rounded-md bg-gray-200">
+        <li
+          class="relative flex gap-3 border-b border-gray-200 bg-background p-3 xs:gap-[1.05rem] xs:p-[1.05rem] sm:gap-[1.35rem] sm:p-[1.35rem]"
+        >
+          <figure class="h-[28.125vw] w-[28.125vw] flex-shrink-0 overflow-hidden rounded-md bg-gray-200">
             <img class="object-cover" src="/" alt="거래 물품 대표 사진" />
           </figure>
-          <section
-            class="flex w-full flex-col justify-center overflow-hidden font-pretendard"
-            aria-label="거래 물품 정보"
-          >
-            <h2 class="overflow-hidden text-ellipsis whitespace-nowrap text-base leading-[1.6] text-contentPrimary">
-              거래 물품 이름
-            </h2>
-            <span class="text-sm leading-[1.6] text-contentTertiary">지역 · 시간</span>
-            <div class="flex items-center gap-2" role="group">
+          <section class="flex w-full flex-col justify-center overflow-hidden" aria-label="거래 물품 정보">
+            <h2 class="text-base-group truncate leading-[1.6] text-contentPrimary">거래 물품 이름</h2>
+            <span class="text-sm-group leading-[1.6] text-contentTertiary">지역 · 시간</span>
+            <div class="flex items-center gap-2 xs:gap-[0.7rem] sm:gap-[0.9rem]" role="group">
               <!-- 거래 상태 -->
               <span
-                class="rounded bg-contentTertiary px-1 py-0.5 font-pretendard text-sm font-semibold leading-normal text-background"
+                class="text-sm-group rounded bg-contentTertiary px-1 py-0.5 font-semibold leading-normal text-background xs:px-[0.35rem] xs:py-[0.175rem] xs:text-base sm:px-[0.45rem] sm:py-[0.225rem]"
               >
                 <span class="sr-only">거래상태</span>거래 완료
               </span>
               <!-- // 거래 상태 -->
-              <span class="text-base font-semibold leading-normal"
-                ><span class="sr-only">물품가격</span> <span class="sr-only">물품가격</span>150,000원
+              <span class="text-base-group font-semibold leading-normal">
+                <span class="sr-only">물품가격</span>150,000원
               </span>
             </div>
           </section>
-          <span class="absolute bottom-2 right-3 flex items-center gap-0.5 font-pretendard text-sm leading-[1.6]">
-            <img src="/assets/icon/heart.svg" alt="좋아요" />
+          <span
+            class="text-sm-group absolute bottom-2 right-3 flex items-center gap-0.5 leading-[1.6] xs:bottom-[0.7rem] xs:right-[1.05rem] xs:gap-[0.175rem] sm:bottom-[0.9rem] sm:right-[1.35rem] sm:gap-[0.225rem]"
+          >
+            <img src="/assets/icon/heart.svg" alt="좋아요" class="w-[4.375vw]" />
             4
           </span>
         </li>
-        <li class="relative flex gap-3 border-b border-gray-200 bg-background p-3">
-          <figure class="h-[90px] w-[90px] flex-shrink-0 overflow-hidden rounded-md bg-gray-200">
+        <li
+          class="relative flex gap-3 border-b border-gray-200 bg-background p-3 xs:gap-[1.05rem] xs:p-[1.05rem] sm:gap-[1.35rem] sm:p-[1.35rem]"
+        >
+          <figure class="h-[28.125vw] w-[28.125vw] flex-shrink-0 overflow-hidden rounded-md bg-gray-200">
             <img class="object-cover" src="/" alt="거래 물품 대표 사진" />
           </figure>
-          <section
-            class="flex w-full flex-col justify-center overflow-hidden font-pretendard"
-            aria-label="거래 물품 정보"
-          >
-            <h2 class="overflow-hidden text-ellipsis whitespace-nowrap text-base leading-[1.6] text-contentPrimary">
-              거래 물품 이름
-            </h2>
-            <span class="text-sm leading-[1.6] text-contentTertiary">지역 · 시간</span>
-            <div class="flex items-center gap-2" role="group">
-              <span class="text-base font-semibold leading-normal"><span class="sr-only">물품가격</span>150,000원</span>
+          <section class="flex w-full flex-col justify-center overflow-hidden" aria-label="거래 물품 정보">
+            <h2 class="text-base-group truncate leading-[1.6] text-contentPrimary">거래 물품 이름</h2>
+            <span class="text-sm-group leading-[1.6] text-contentTertiary">지역 · 시간</span>
+            <div class="flex items-center gap-2 xs:gap-[0.7rem] sm:gap-[0.9rem]" role="group">
+              <span class="text-base-group font-semibold leading-normal">
+                <span class="sr-only">물품가격</span>150,000원
+              </span>
             </div>
           </section>
-          <span class="absolute bottom-2 right-3 flex items-center gap-0.5 font-pretendard text-sm leading-[1.6]">
-            <img src="/assets/icon/heart.svg" alt="좋아요" />
+          <span
+            class="text-sm-group absolute bottom-2 right-3 flex items-center gap-0.5 leading-[1.6] xs:bottom-[0.7rem] xs:right-[1.05rem] xs:gap-[0.175rem] sm:bottom-[0.9rem] sm:right-[1.35rem] sm:gap-[0.225rem]"
+          >
+            <img src="/assets/icon/heart.svg" alt="좋아요" class="w-[4.375vw]" />
             4
           </span>
         </li>
-        <li class="relative flex gap-3 border-b border-gray-200 bg-background p-3">
-          <figure class="h-[90px] w-[90px] flex-shrink-0 overflow-hidden rounded-md bg-gray-200">
+        <li
+          class="relative flex gap-3 border-b border-gray-200 bg-background p-3 xs:gap-[1.05rem] xs:p-[1.05rem] sm:gap-[1.35rem] sm:p-[1.35rem]"
+        >
+          <figure class="h-[28.125vw] w-[28.125vw] flex-shrink-0 overflow-hidden rounded-md bg-gray-200">
             <img class="object-cover" src="/" alt="거래 물품 대표 사진" />
           </figure>
-          <section
-            class="flex w-full flex-col justify-center overflow-hidden font-pretendard"
-            aria-label="거래 물품 정보"
-          >
-            <h2 class="overflow-hidden text-ellipsis whitespace-nowrap text-base leading-[1.6] text-contentPrimary">
-              거래 물품 이름
-            </h2>
-            <span class="text-sm leading-[1.6] text-contentTertiary">지역 · 시간</span>
-            <div class="flex items-center gap-2" role="group">
-              <span class="text-base font-semibold leading-normal"><span class="sr-only">물품가격</span>150,000원</span>
+          <section class="flex w-full flex-col justify-center overflow-hidden" aria-label="거래 물품 정보">
+            <h2 class="text-base-group truncate leading-[1.6] text-contentPrimary">거래 물품 이름</h2>
+            <span class="text-sm-group leading-[1.6] text-contentTertiary">지역 · 시간</span>
+            <div class="flex items-center gap-2 xs:gap-[0.7rem] sm:gap-[0.9rem]" role="group">
+              <span class="text-base-group font-semibold leading-normal">
+                <span class="sr-only">물품가격</span>150,000원
+              </span>
             </div>
           </section>
-          <span class="absolute bottom-2 right-3 flex items-center gap-0.5 font-pretendard text-sm leading-[1.6]">
-            <img src="/assets/icon/heart.svg" alt="좋아요" />
+          <span
+            class="text-sm-group absolute bottom-2 right-3 flex items-center gap-0.5 leading-[1.6] xs:bottom-[0.7rem] xs:right-[1.05rem] xs:gap-[0.175rem] sm:bottom-[0.9rem] sm:right-[1.35rem] sm:gap-[0.225rem]"
+          >
+            <img src="/assets/icon/heart.svg" alt="좋아요" class="w-[4.375vw]" />
             4
           </span>
         </li>
-        <li class="relative flex gap-3 border-b border-gray-200 bg-background p-3">
-          <figure class="h-[90px] w-[90px] flex-shrink-0 overflow-hidden rounded-md bg-gray-200">
+        <li
+          class="relative flex gap-3 border-b border-gray-200 bg-background p-3 xs:gap-[1.05rem] xs:p-[1.05rem] sm:gap-[1.35rem] sm:p-[1.35rem]"
+        >
+          <figure class="h-[28.125vw] w-[28.125vw] flex-shrink-0 overflow-hidden rounded-md bg-gray-200">
             <img class="object-cover" src="/" alt="거래 물품 대표 사진" />
           </figure>
-          <section
-            class="flex w-full flex-col justify-center overflow-hidden font-pretendard"
-            aria-label="거래 물품 정보"
-          >
-            <h2 class="overflow-hidden text-ellipsis whitespace-nowrap text-base leading-[1.6] text-contentPrimary">
-              거래 물품 이름
-            </h2>
-            <span class="text-sm leading-[1.6] text-contentTertiary">지역 · 시간</span>
-            <div class="flex items-center gap-2" role="group">
-              <span class="text-base font-semibold leading-normal"><span class="sr-only">물품가격</span>150,000원</span>
+          <section class="flex w-full flex-col justify-center overflow-hidden" aria-label="거래 물품 정보">
+            <h2 class="text-base-group truncate leading-[1.6] text-contentPrimary">거래 물품 이름</h2>
+            <span class="text-sm-group leading-[1.6] text-contentTertiary">지역 · 시간</span>
+            <div class="flex items-center gap-2 xs:gap-[0.7rem] sm:gap-[0.9rem]" role="group">
+              <span class="text-base-group font-semibold leading-normal">
+                <span class="sr-only">물품가격</span>150,000원
+              </span>
             </div>
           </section>
-          <span class="absolute bottom-2 right-3 flex items-center gap-0.5 font-pretendard text-sm leading-[1.6]">
-            <img src="/assets/icon/heart.svg" alt="좋아요" />
+          <span
+            class="text-sm-group absolute bottom-2 right-3 flex items-center gap-0.5 leading-[1.6] xs:bottom-[0.7rem] xs:right-[1.05rem] xs:gap-[0.175rem] sm:bottom-[0.9rem] sm:right-[1.35rem] sm:gap-[0.225rem]"
+          >
+            <img src="/assets/icon/heart.svg" alt="좋아요" class="w-[4.375vw]" />
             4
           </span>
         </li>
-        <li class="relative flex gap-3 border-b border-gray-200 bg-background p-3">
-          <figure class="h-[90px] w-[90px] flex-shrink-0 overflow-hidden rounded-md bg-gray-200">
+        <li
+          class="relative flex gap-3 border-b border-gray-200 bg-background p-3 xs:gap-[1.05rem] xs:p-[1.05rem] sm:gap-[1.35rem] sm:p-[1.35rem]"
+        >
+          <figure class="h-[28.125vw] w-[28.125vw] flex-shrink-0 overflow-hidden rounded-md bg-gray-200">
             <img class="object-cover" src="/" alt="거래 물품 대표 사진" />
           </figure>
-          <section
-            class="flex w-full flex-col justify-center overflow-hidden font-pretendard"
-            aria-label="거래 물품 정보"
-          >
-            <h2 class="overflow-hidden text-ellipsis whitespace-nowrap text-base leading-[1.6] text-contentPrimary">
-              거래 물품 이름
-            </h2>
-            <span class="text-sm leading-[1.6] text-contentTertiary">지역 · 시간</span>
-            <div class="flex items-center gap-2" role="group">
-              <span class="text-base font-semibold leading-normal"><span class="sr-only">물품가격</span>150,000원</span>
+          <section class="flex w-full flex-col justify-center overflow-hidden" aria-label="거래 물품 정보">
+            <h2 class="text-base-group truncate leading-[1.6] text-contentPrimary">거래 물품 이름</h2>
+            <span class="text-sm-group leading-[1.6] text-contentTertiary">지역 · 시간</span>
+            <div class="flex items-center gap-2 xs:gap-[0.7rem] sm:gap-[0.9rem]" role="group">
+              <span class="text-base-group font-semibold leading-normal">
+                <span class="sr-only">물품가격</span>150,000원
+              </span>
             </div>
           </section>
-          <span class="absolute bottom-2 right-3 flex items-center gap-0.5 font-pretendard text-sm leading-[1.6]">
-            <img src="/assets/icon/heart.svg" alt="좋아요" />
-            4
-          </span>
-        </li>
-        <li class="relative flex gap-3 border-b border-gray-200 bg-background p-3">
-          <figure class="h-[90px] w-[90px] flex-shrink-0 overflow-hidden rounded-md bg-gray-200">
-            <img class="object-cover" src="/" alt="거래 물품 대표 사진" />
-          </figure>
-          <section
-            class="flex w-full flex-col justify-center overflow-hidden font-pretendard"
-            aria-label="거래 물품 정보"
+          <span
+            class="text-sm-group absolute bottom-2 right-3 flex items-center gap-0.5 leading-[1.6] xs:bottom-[0.7rem] xs:right-[1.05rem] xs:gap-[0.175rem] sm:bottom-[0.9rem] sm:right-[1.35rem] sm:gap-[0.225rem]"
           >
-            <h2 class="overflow-hidden text-ellipsis whitespace-nowrap text-base leading-[1.6] text-contentPrimary">
-              거래 물품 이름
-            </h2>
-            <span class="text-sm leading-[1.6] text-contentTertiary">지역 · 시간</span>
-            <div class="flex items-center gap-2" role="group">
-              <span class="text-base font-semibold leading-normal"><span class="sr-only">물품가격</span>150,000원</span>
-            </div>
-          </section>
-          <span class="absolute bottom-2 right-3 flex items-center gap-0.5 font-pretendard text-sm leading-[1.6]">
-            <img src="/assets/icon/heart.svg" alt="좋아요" />
+            <img src="/assets/icon/heart.svg" alt="좋아요" class="w-[4.375vw]" />
             4
           </span>
         </li>
       </ul>
       <div role="group">
-        <dialog class="mb-0 w-full max-w-full rounded-t-2xl font-pretendard outline-none" id="category">
+        <dialog class="mb-0 w-full max-w-screen-md rounded-t-2xl outline-none" id="category">
           <section class="relative" aria-label="핸들">
-            <div class="absolute left-1/2 top-3 h-[3px] w-7 translate-x-[-50%] rounded bg-gray-200"></div>
-            <h2 class="mx-3 border-b border-gray-200 pb-3 pt-7 text-[1rem] font-semibold">카테고리</h2>
+            <div
+              class="absolute left-1/2 top-3 h-[0.1875rem] w-7 translate-x-[-50%] rounded bg-gray-200 xs:top-[1.05rem] xs:h-[0.2625rem] xs:w-[2.45rem] sm:top-[1.35rem] sm:h-[0.3375rem] sm:w-[3.15rem]"
+            ></div>
+            <h2
+              class="mx-3 border-b border-gray-200 pb-3 pt-7 text-[1rem] font-semibold xs:mx-[1.05rem] xs:pb-[1.05rem] xs:pt-[2.45rem] xs:text-[1.4rem] sm:mx-[1.35rem] sm:pb-[1.35rem] sm:pt-[3.15rem] sm:text-[1.8rem]"
+            >
+              카테고리
+            </h2>
           </section>
-          <section class="p-3 text-base" aria-label="옵션">
-            <ul class="flex flex-col gap-2" aria-label="카테고리 옵션">
-              <li class="flex gap-2">
-                <input type="checkbox" id="headset" />
+          <section class="text-base-group p-3 xs:p-[1.05rem] sm:p-[1.35rem]" aria-label="옵션">
+            <ul class="flex flex-col gap-2 xs:gap-[0.7rem] sm:gap-[0.9rem]" aria-label="카테고리 옵션">
+              <li class="flex gap-2 xs:gap-[0.7rem] sm:gap-[0.9rem]">
+                <input type="checkbox" id="headset" class="focus:outline-secondary" />
                 <label for="headset" class="w-full">헤드셋</label>
               </li>
-              <li class="flex gap-2">
-                <input type="checkbox" id="keyboard" />
+              <li class="flex gap-2 xs:gap-[0.7rem] sm:gap-[0.9rem]">
+                <input type="checkbox" id="keyboard" class="focus:outline-secondary" />
                 <label for="keyboard" class="w-full">키보드</label>
               </li>
-              <li class="flex gap-2">
-                <input type="checkbox" id="mouse" />
+              <li class="flex gap-2 xs:gap-[0.7rem] sm:gap-[0.9rem]">
+                <input type="checkbox" id="mouse" class="focus:outline-secondary" />
                 <label for="mouse" class="w-full">마우스</label>
               </li>
-              <li class="flex gap-2">
-                <input type="checkbox" id="computer" />
+              <li class="flex gap-2 xs:gap-[0.7rem] sm:gap-[0.9rem]">
+                <input type="checkbox" id="computer" class="focus:outline-secondary" />
                 <label for="computer" class="w-full">컴퓨터</label>
               </li>
-              <li class="flex gap-2">
-                <input type="checkbox" id="etc" />
+              <li class="flex gap-2 xs:gap-[0.7rem] sm:gap-[0.9rem]">
+                <input type="checkbox" id="etc" class="focus:outline-secondary" />
                 <label for="etc" class="w-full">기타</label>
               </li>
             </ul>
           </section>
-          <section class="flex w-full gap-2 px-3 pb-4 pt-2 text-base" aria-label="버튼">
-            <button type="button" class="w-1/3 rounded bg-gray-200 p-2.5">초기화</button>
-            <button type="button" class="grow rounded bg-secondary p-2.5 text-background">적용하기</button>
+          <section
+            class="text-base-group flex w-full gap-2 px-3 pb-4 pt-2 xs:gap-[0.7rem] xs:px-[1.05rem] xs:pb-[1.4rem] xs:pt-[0.7rem] sm:gap-[0.9rem] sm:px-[1.35rem] sm:pb-[1.8rem] sm:pt-[0.9rem]"
+            aria-label="버튼"
+          >
+            <button type="button" class="w-1/3 rounded bg-gray-200 p-2.5 xs:p-[0.875rem] sm:p-[1.125rem]">
+              초기화
+            </button>
+            <button
+              type="button"
+              class="grow rounded bg-secondary p-2.5 text-background xs:p-[0.875rem] sm:p-[1.125rem]"
+            >
+              적용하기
+            </button>
           </section>
         </dialog>
-        <dialog class="mb-0 w-full max-w-full rounded-t-2xl font-pretendard outline-none" id="price">
+        <dialog class="mb-0 w-full max-w-screen-md rounded-t-2xl outline-none" id="price">
           <section class="relative" aria-label="핸들">
-            <div class="absolute left-1/2 top-3 h-[3px] w-7 translate-x-[-50%] rounded bg-gray-200"></div>
-            <h2 class="mx-3 pb-2 pt-7 text-[1rem] font-semibold">가격</h2>
+            <div
+              class="absolute left-1/2 top-3 h-[0.1875rem] w-7 translate-x-[-50%] rounded bg-gray-200 xs:top-[1.05rem] xs:h-[0.2625rem] xs:w-[2.45rem] sm:top-[1.35rem] sm:h-[0.3375rem] sm:w-[3.15rem]"
+            ></div>
+            <h2
+              class="mx-3 pb-2 pt-7 text-[1rem] font-semibold xs:mx-[1.05rem] xs:pb-[0.7rem] xs:pt-[2.45rem] xs:text-[1.4rem] sm:mx-[1.35rem] sm:pb-[0.9rem] sm:pt-[3.15rem] sm:text-[1.8rem]"
+            >
+              가격
+            </h2>
           </section>
-          <section class="flex w-full items-center justify-between gap-2 p-3 text-base" aria-label="범위 옵션">
-            <div role="group">
+          <section
+            class="text-base-group flex w-full items-center justify-between gap-2 p-3 xs:gap-[0.7rem] xs:p-[1.05rem] sm:gap-[0.9rem] sm:p-[1.35rem]"
+            aria-label="범위 옵션"
+          >
+            <div role="group" class="w-full">
               <label for="min-price" class="sr-only">최소 금액</label>
               <input
                 type="number"
                 id="min-price"
-                class="w-full rounded border border-gray-200 p-3 outline-none focus:border-contentPrimary"
+                class="w-full rounded border border-gray-200 p-3 outline-none focus:border-contentPrimary xs:p-[1.05rem] sm:p-[1.35rem]"
                 placeholder="최소 금액"
               />
             </div>
             <span aria-hidden="true">~</span>
-            <div role="group">
+            <div role="group" class="w-full">
               <label for="max-price" class="sr-only">최대 금액</label>
               <input
                 type="number"
                 id="max-price"
-                class="w-full rounded border border-gray-200 p-3 outline-none focus:border-contentPrimary"
+                class="w-full rounded border border-gray-200 p-3 outline-none focus:border-contentPrimary xs:p-[1.05rem] sm:p-[1.35rem]"
                 placeholder="최대 금액"
               />
             </div>
           </section>
-          <section class="flex w-full gap-2 px-3 pb-4 pt-3 text-base" aria-label="버튼">
-            <button type="button" class="w-1/3 rounded bg-gray-200 p-2.5">초기화</button>
-            <button type="button" class="grow rounded bg-secondary p-2.5 text-background">적용하기</button>
+          <section
+            class="text-base-group flex w-full gap-2 px-3 pb-4 pt-2 xs:gap-[0.7rem] xs:px-[1.05rem] xs:pb-[1.4rem] xs:pt-[0.7rem] sm:gap-[0.9rem] sm:px-[1.35rem] sm:pb-[1.8rem] sm:pt-[0.9rem]"
+            aria-label="버튼"
+          >
+            <button type="button" class="w-1/3 rounded bg-gray-200 p-2.5 xs:p-[0.875rem] sm:p-[1.125rem]">
+              초기화
+            </button>
+            <button
+              type="button"
+              class="grow rounded bg-secondary p-2.5 text-background xs:p-[0.875rem] sm:p-[1.125rem]"
+            >
+              적용하기
+            </button>
           </section>
         </dialog>
-        <dialog class="mb-0 w-full max-w-full rounded-t-2xl font-pretendard outline-none" id="order">
+        <dialog class="mb-0 w-full max-w-screen-md rounded-t-2xl outline-none" id="order">
           <section class="relative" aria-label="핸들">
-            <div class="absolute left-1/2 top-3 h-[3px] w-7 translate-x-[-50%] rounded bg-gray-200"></div>
-            <h2 class="mx-3 border-b border-gray-200 pb-3 pt-7 text-[1rem] font-semibold">정렬</h2>
+            <div
+              class="absolute left-1/2 top-3 h-[0.1875rem] w-7 translate-x-[-50%] rounded bg-gray-200 xs:top-[1.05rem] xs:h-[0.2625rem] xs:w-[2.45rem] sm:top-[1.35rem] sm:h-[0.3375rem] sm:w-[3.15rem]"
+            ></div>
+            <h2
+              class="mx-3 border-b border-gray-200 pb-3 pt-7 text-[1rem] font-semibold xs:mx-[1.05rem] xs:pb-[1.05rem] xs:pt-[2.45rem] xs:text-[1.4rem] sm:mx-[1.35rem] sm:pb-[1.35rem] sm:pt-[3.15rem] sm:text-[1.8rem]"
+            >
+              정렬
+            </h2>
           </section>
-          <section class="flex flex-col items-start gap-2 p-3 text-base" aria-label="옵션">
+          <section
+            class="text-base-group flex flex-col items-start gap-2 p-3 xs:gap-[0.7rem] xs:p-[1.05rem] sm:gap-[0.9rem] sm:p-[1.35rem]"
+            aria-label="옵션"
+          >
             <ul class="w-full" aria-label="정렬 옵션">
               <li class="flex w-full justify-between">
-                <input type="radio" id="latest" name="option" class="peer hidden" checked />
-                <label for="latest" class="pt-2 peer-checked:font-semibold peer-checked:text-secondary">최신순</label>
-                <img src="/assets/icon/checked.svg" alt="체크" class="hidden peer-checked:block" aria-hidden="true" />
+                <input type="radio" id="new" name="option" class="peer hidden" checked />
+                <label
+                  for="new"
+                  class="pt-2 peer-checked:font-semibold peer-checked:text-secondary xs:pt-[0.7rem] sm:pt-[0.9rem]"
+                  >최신순</label
+                >
+                <img
+                  src="/assets/icon/checked.svg"
+                  alt="체크"
+                  class="hidden w-[6.25vw] peer-checked:block"
+                  aria-hidden="true"
+                />
               </li>
               <li class="flex w-full justify-between">
-                <input type="radio" id="earlist" name="option" class="peer hidden" />
-                <label for="earlist" class="pt-2 peer-checked:font-semibold peer-checked:text-secondary"
+                <input type="radio" id="old" name="option" class="peer hidden" />
+                <label
+                  for="old"
+                  class="pt-2 peer-checked:font-semibold peer-checked:text-secondary xs:pt-[0.7rem] sm:pt-[0.9rem]"
                   >오래된순</label
                 >
-                <img src="/assets/icon/checked.svg" alt="체크" class="hidden peer-checked:block" aria-hidden="true" />
+                <img
+                  src="/assets/icon/checked.svg"
+                  alt="체크"
+                  class="hidden w-[6.25vw] peer-checked:block"
+                  aria-hidden="true"
+                />
               </li>
             </ul>
           </section>
