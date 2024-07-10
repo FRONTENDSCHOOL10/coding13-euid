@@ -11,44 +11,23 @@
   <body
     class="mx-auto box-border flex h-screen max-w-screen-md flex-col bg-background font-pretendard text-contentPrimary"
   >
-    <!-- if edit profile is activated, change the background color to bg-contentSecondary. -->
     <h1 class="sr-only">프로필 카드</h1>
-    <!-- 수정하기 클릭 시 나타나는 banner -->
-    <!-- <div class="fixed left-0 top-0 z-50 flex w-full items-center justify-between bg-background p-[0.875rem]">
-      <h2 class="text-base font-semibold leading-[1.5]">프로필 수정</h2>
-      <button aria-label="닫기" type="button" class="h-4 w-4">
-        <img aria-hidden="true" src="/assets/icon/close.svg" alt="닫기" class="h-full w-full" />
-      </button>
-    </div> -->
-    <!-- 수정하기 클릭 시 나타나는 banner -->
-
-    <!-- header -->
-    <header class="flex flex-row items-center justify-between px-[0.75rem] pb-[0.8125rem] pt-4">
-      <!-- if edit profile is activated, change padding top to pt-14. -->
-      <div class="flex flex-row items-center space-x-[0.125rem]">
-        <h2 class="text-base font-semibold leading-[1.5]">프로필 카드</h2>
-        <img
-          src="/assets/icon/information.svg"
-          alt="tooltip"
-          class="mb-[0.125rem] h-[0.875rem] w-[0.875rem] shrink-0"
-        />
-      </div>
-      <button aria-label="프로필 수정 활성화 버튼" type="button" class="text-sm text-secondary">수정하기</button>
-      <!-- if edit profile is activated, uncomment the button above. -->
-    </header>
-    <!-- header -->
+    <!-- 별도의 헤더 없음 -->
 
     <!-- navigation: 홈, 게시판, 내 근처, 채팅, 나의 이듬 -->
     <c-navigation data-page="나의 이듬"></c-navigation
     ><!-- navigation: 홈, 게시판, 내 근처, 채팅, 나의 이듬 -->
 
-    <main class="space-y-[0.8125rem] px-[0.75rem] pb-[calc(4.305rem+0.8125rem)] xs:pb-[calc(5.15rem+0.8125rem)]">
-      <!-- if edit profile is activated, remove calc on padding bottom. -->
+    <div class="fixed top-0 z-50 flex w-full flex-row items-center bg-background px-[0.75rem] pb-[0.8125rem] pt-4">
+      <a aria-label="나의 이듬으로 돌아가기" href="/pages/profile/" class="h-4 w-4"
+        ><img aria-hidden="true" src="/assets/icon/direction-left.svg" alt="뒤로 가기" class="h-full w-full"
+      /></a>
+    </div>
+    <main class="space-y-[0.8125rem] px-[0.75rem] pb-[5.1175rem] pt-[2.8125rem] xs:pb-[5.9625rem]">
       <!-- profile card -->
       <section
         class="flex h-[4.625rem] items-center justify-between rounded-[0.5rem] border-[0.01875rem] border-gray-300 bg-background p-3 shadow-md"
       >
-        <!-- if edit profile is activated, remove the border and box-shadow -->
         <div class="flex flex-col space-y-1">
           <h3 class="text-base font-semibold leading-[1.5]"><span class="sr-only">사용자 닉네임</span>EUID***</h3>
           <span
@@ -66,13 +45,11 @@
 
       <!-- information -->
       <section class="rounded-t-[0.5rem] border-[0.01875rem] border-gray-300 bg-background shadow-md">
-        <!-- if edit profile is activated, remove the border and box-shadow. -->
         <div
           class="flex flex-row items-center justify-between border-b-[0.01875rem] border-contentSecondary pb-3 pl-3 pr-4 pt-[0.625rem]"
         >
           <h3 class="text-base font-semibold leading-[1.5]">기본 정보</h3>
-          <!-- <a href="/pages/profile-detail" class="text-sm text-secondary">수정하기</a> -->
-          <!-- if edit profile is activated, uncomment the code above. -->
+          <a href="/pages/profile-detail/" class="text-sm text-secondary">수정하기</a>
         </div>
         <ul aria-label="기본 정보 리스트" class="space-y-[1.0625rem] px-[0.8125rem] py-[0.625rem]">
           <li class="flex h-6 flex-row items-center justify-between">
@@ -121,13 +98,11 @@
 
       <!-- additional information -->
       <section class="rounded-t-[0.5rem] border-[0.01875rem] border-gray-300 bg-background shadow-md">
-        <!-- if edit profile is activated, remove the border and box-shadow. -->
         <div
           class="flex flex-row items-center justify-between border-b-[0.01875rem] border-contentSecondary pb-3 pl-3 pr-4 pt-[0.625rem]"
         >
           <h3 class="text-base font-semibold leading-[1.5]">추가 정보</h3>
-          <!-- <a href="/pages/profile-detail" class="text-sm text-secondary">수정하기</a> -->
-          <!-- if edit profile is activated, uncomment the code above. -->
+          <a href="/pages/profile-detail" class="text-sm text-secondary">수정하기</a>
         </div>
         <ul aria-label="추가 정보 리스트" class="space-y-[1.0625rem] px-[0.8125rem] pb-8 pt-[0.625rem]">
           <li class="flex h-[1.3125rem] flex-row items-center justify-between">
