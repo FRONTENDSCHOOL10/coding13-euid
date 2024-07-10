@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enter EUID</title>
+    <link rel="stylesheet" href="/styles/tailwind.css" />
+    <script type="module" src="/pages/search-result/search-result.js"></script>
+  </head>
+  <body>
+    <div id="app" class="h-screen">
+      <h1 class="sr-only">검색 결과 페이지</h1>
+      <form class="flex w-full items-center justify-center gap-4 bg-background px-4 pb-2 pt-1">
+        <button type="button">
+          <img src="/assets/icon/direction-left.svg" alt="뒤로가기" />
+        </button>
+        <label for="search" class="sr-only">검색</label>
+        <input
+          type="text"
+          id="search"
+          class="w-full rounded-lg bg-[#e9e9e9] px-2.5 py-1 font-pretendard text-base focus:shadow-[0_0_0_1px_#719cf7] focus:outline-none"
+          placeholder="창천동 근처에서 검색"
+        />
+      </form>
+      <ul role="group" class="mx-3 my-3 flex gap-1 overflow-auto" aria-label="검색 필터">
+        <li>
+          <button
+            type="button"
+            class="flex flex-shrink-0 items-center gap-1 rounded-full border border-contentTertiary bg-background px-3 py-1.5 font-pretendard text-sm font-normal leading-[1.6] text-contentPrimary focus:border-primary focus:bg-primary focus:text-background"
+          >
+            카테고리
+            <img class="w-3" src="/assets/icon/direction-down.svg" alt="아래 화살표 아이콘" aria-hidden="true" />
+          </button>
+        </li>
+        <li>
+          <button
+            type="button"
+            class="flex flex-shrink-0 items-center gap-1 rounded-full border border-contentTertiary bg-background px-3 py-1.5 font-pretendard text-sm font-normal leading-[1.6] text-contentPrimary focus:border-primary focus:bg-primary focus:text-background"
+          >
+            가격
+            <img class="w-3" src="/assets/icon/direction-down.svg" alt="아래 화살표 아이콘" aria-hidden="true" />
+          </button>
+        </li>
+        <li>
+          <button
+            type="button"
+            class="flex flex-shrink-0 items-center gap-1 rounded-full border border-contentTertiary bg-background px-3 py-1.5 font-pretendard text-sm font-normal leading-[1.6] text-contentPrimary focus:border-primary focus:bg-primary focus:text-background"
+          >
+            최신순
+            <img class="w-3" src="/assets/icon/direction-down.svg" alt="아래 화살표 아이콘" aria-hidden="true" />
+          </button>
+        </li>
+      </ul>
+      <div role="group" class="flex items-center gap-2 px-3 py-1 text-sm">
+        <input type="checkbox" id="possible" />
+        <label for="possible">거래가능만 보기</label>
+      </div>
+      <ul aria-label="거래 물품">
+        <li class="relative flex gap-3 border-b border-gray-200 bg-background p-3">
+          <figure class="h-[90px] w-[90px] flex-shrink-0 overflow-hidden rounded-md bg-gray-200">
+            <img class="object-cover" src="/" alt="거래 물품 대표 사진" />
+          </figure>
+          <section
+            class="flex w-full flex-col justify-center overflow-hidden font-pretendard"
+            aria-label="거래 물품 정보"
+          >
+            <h2 class="overflow-hidden text-ellipsis whitespace-nowrap text-base leading-[1.6] text-contentPrimary">
+              거래 물품 이름이 길어질 때 줄바꿈 없이 말줄임표로 나타납니다.
+            </h2>
+            <span class="text-sm leading-[1.6] text-contentTertiary">지역 · 시간</span>
+            <div class="flex items-center gap-2" role="group">
+              <!-- 거래 상태 -->
+              <span
+                class="rounded bg-tertiary px-1 py-0.5 font-pretendard text-sm font-semibold leading-normal text-background"
+              >
+                <span class="sr-only">거래상태</span>예약중
+              </span>
+              <!-- // 거래 상태 -->
+              <span class="text-base font-semibold leading-normal">
+                <span class="sr-only">물품가격</span>150,000원
+              </span>
+            </div>
+          </section>
+          <span class="absolute bottom-2 right-3 flex items-center gap-0.5 font-pretendard text-sm leading-[1.6]">
+            <img src="/assets/icon/heart.svg" alt="좋아요" />
+            4
+          </span>
+        </li>
+        <li class="relative flex gap-3 border-b border-gray-200 bg-background p-3">
+          <figure class="h-[90px] w-[90px] flex-shrink-0 overflow-hidden rounded-md bg-gray-200">
+            <img class="object-cover" src="/" alt="거래 물품 대표 사진" />
+          </figure>
+          <section
+            class="flex w-full flex-col justify-center overflow-hidden font-pretendard"
+            aria-label="거래 물품 정보"
+          >
+            <h2 class="overflow-hidden text-ellipsis whitespace-nowrap text-base leading-[1.6] text-contentPrimary">
+              거래 물품 이름
+            </h2>
+            <span class="text-sm leading-[1.6] text-contentTertiary">지역 · 시간</span>
+            <div class="flex items-center gap-2" role="group">
+              <!-- 거래 상태 -->
+              <span
+                class="rounded bg-contentTertiary px-1 py-0.5 font-pretendard text-sm font-semibold leading-normal text-background"
+              >
+                <span class="sr-only">거래상태</span>거래 완료
+              </span>
+              <!-- // 거래 상태 -->
+              <span class="text-base font-semibold leading-normal"
+                ><span class="sr-only">물품가격</span> <span class="sr-only">물품가격</span>150,000원
+              </span>
+            </div>
+          </section>
+          <span class="absolute bottom-2 right-3 flex items-center gap-0.5 font-pretendard text-sm leading-[1.6]">
+            <img src="/assets/icon/heart.svg" alt="좋아요" />
+            4
+          </span>
+        </li>
+        <li class="relative flex gap-3 border-b border-gray-200 bg-background p-3">
+          <figure class="h-[90px] w-[90px] flex-shrink-0 overflow-hidden rounded-md bg-gray-200">
+            <img class="object-cover" src="/" alt="거래 물품 대표 사진" />
+          </figure>
+          <section
+            class="flex w-full flex-col justify-center overflow-hidden font-pretendard"
+            aria-label="거래 물품 정보"
+          >
+            <h2 class="overflow-hidden text-ellipsis whitespace-nowrap text-base leading-[1.6] text-contentPrimary">
+              거래 물품 이름
+            </h2>
+            <span class="text-sm leading-[1.6] text-contentTertiary">지역 · 시간</span>
+            <div class="flex items-center gap-2" role="group">
+              <span class="text-base font-semibold leading-normal"><span class="sr-only">물품가격</span>150,000원</span>
+            </div>
+          </section>
+          <span class="absolute bottom-2 right-3 flex items-center gap-0.5 font-pretendard text-sm leading-[1.6]">
+            <img src="/assets/icon/heart.svg" alt="좋아요" />
+            4
+          </span>
+        </li>
+        <li class="relative flex gap-3 border-b border-gray-200 bg-background p-3">
+          <figure class="h-[90px] w-[90px] flex-shrink-0 overflow-hidden rounded-md bg-gray-200">
+            <img class="object-cover" src="/" alt="거래 물품 대표 사진" />
+          </figure>
+          <section
+            class="flex w-full flex-col justify-center overflow-hidden font-pretendard"
+            aria-label="거래 물품 정보"
+          >
+            <h2 class="overflow-hidden text-ellipsis whitespace-nowrap text-base leading-[1.6] text-contentPrimary">
+              거래 물품 이름
+            </h2>
+            <span class="text-sm leading-[1.6] text-contentTertiary">지역 · 시간</span>
+            <div class="flex items-center gap-2" role="group">
+              <span class="text-base font-semibold leading-normal"><span class="sr-only">물품가격</span>150,000원</span>
+            </div>
+          </section>
+          <span class="absolute bottom-2 right-3 flex items-center gap-0.5 font-pretendard text-sm leading-[1.6]">
+            <img src="/assets/icon/heart.svg" alt="좋아요" />
+            4
+          </span>
+        </li>
+        <li class="relative flex gap-3 border-b border-gray-200 bg-background p-3">
+          <figure class="h-[90px] w-[90px] flex-shrink-0 overflow-hidden rounded-md bg-gray-200">
+            <img class="object-cover" src="/" alt="거래 물품 대표 사진" />
+          </figure>
+          <section
+            class="flex w-full flex-col justify-center overflow-hidden font-pretendard"
+            aria-label="거래 물품 정보"
+          >
+            <h2 class="overflow-hidden text-ellipsis whitespace-nowrap text-base leading-[1.6] text-contentPrimary">
+              거래 물품 이름
+            </h2>
+            <span class="text-sm leading-[1.6] text-contentTertiary">지역 · 시간</span>
+            <div class="flex items-center gap-2" role="group">
+              <span class="text-base font-semibold leading-normal"><span class="sr-only">물품가격</span>150,000원</span>
+            </div>
+          </section>
+          <span class="absolute bottom-2 right-3 flex items-center gap-0.5 font-pretendard text-sm leading-[1.6]">
+            <img src="/assets/icon/heart.svg" alt="좋아요" />
+            4
+          </span>
+        </li>
+        <li class="relative flex gap-3 border-b border-gray-200 bg-background p-3">
+          <figure class="h-[90px] w-[90px] flex-shrink-0 overflow-hidden rounded-md bg-gray-200">
+            <img class="object-cover" src="/" alt="거래 물품 대표 사진" />
+          </figure>
+          <section
+            class="flex w-full flex-col justify-center overflow-hidden font-pretendard"
+            aria-label="거래 물품 정보"
+          >
+            <h2 class="overflow-hidden text-ellipsis whitespace-nowrap text-base leading-[1.6] text-contentPrimary">
+              거래 물품 이름
+            </h2>
+            <span class="text-sm leading-[1.6] text-contentTertiary">지역 · 시간</span>
+            <div class="flex items-center gap-2" role="group">
+              <span class="text-base font-semibold leading-normal"><span class="sr-only">물품가격</span>150,000원</span>
+            </div>
+          </section>
+          <span class="absolute bottom-2 right-3 flex items-center gap-0.5 font-pretendard text-sm leading-[1.6]">
+            <img src="/assets/icon/heart.svg" alt="좋아요" />
+            4
+          </span>
+        </li>
+        <li class="relative flex gap-3 border-b border-gray-200 bg-background p-3">
+          <figure class="h-[90px] w-[90px] flex-shrink-0 overflow-hidden rounded-md bg-gray-200">
+            <img class="object-cover" src="/" alt="거래 물품 대표 사진" />
+          </figure>
+          <section
+            class="flex w-full flex-col justify-center overflow-hidden font-pretendard"
+            aria-label="거래 물품 정보"
+          >
+            <h2 class="overflow-hidden text-ellipsis whitespace-nowrap text-base leading-[1.6] text-contentPrimary">
+              거래 물품 이름
+            </h2>
+            <span class="text-sm leading-[1.6] text-contentTertiary">지역 · 시간</span>
+            <div class="flex items-center gap-2" role="group">
+              <span class="text-base font-semibold leading-normal"><span class="sr-only">물품가격</span>150,000원</span>
+            </div>
+          </section>
+          <span class="absolute bottom-2 right-3 flex items-center gap-0.5 font-pretendard text-sm leading-[1.6]">
+            <img src="/assets/icon/heart.svg" alt="좋아요" />
+            4
+          </span>
+        </li>
+      </ul>
+      <div role="group">
+        <dialog class="mb-0 w-full max-w-full rounded-t-2xl font-pretendard outline-none" id="category">
+          <section class="relative" aria-label="핸들">
+            <div class="absolute left-1/2 top-3 h-[3px] w-7 translate-x-[-50%] rounded bg-gray-200"></div>
+            <h2 class="mx-3 border-b border-gray-200 pb-3 pt-7 text-[1rem] font-semibold">카테고리</h2>
+          </section>
+          <section class="p-3 text-base" aria-label="옵션">
+            <ul class="flex flex-col gap-2" aria-label="카테고리 옵션">
+              <li class="flex gap-2">
+                <input type="checkbox" id="headset" />
+                <label for="headset" class="w-full">헤드셋</label>
+              </li>
+              <li class="flex gap-2">
+                <input type="checkbox" id="keyboard" />
+                <label for="keyboard" class="w-full">키보드</label>
+              </li>
+              <li class="flex gap-2">
+                <input type="checkbox" id="mouse" />
+                <label for="mouse" class="w-full">마우스</label>
+              </li>
+              <li class="flex gap-2">
+                <input type="checkbox" id="computer" />
+                <label for="computer" class="w-full">컴퓨터</label>
+              </li>
+              <li class="flex gap-2">
+                <input type="checkbox" id="etc" />
+                <label for="etc" class="w-full">기타</label>
+              </li>
+            </ul>
+          </section>
+          <section class="flex w-full gap-2 px-3 pb-4 pt-2 text-base" aria-label="버튼">
+            <button type="button" class="w-1/3 rounded bg-gray-200 p-2.5">초기화</button>
+            <button type="button" class="grow rounded bg-secondary p-2.5 text-background">적용하기</button>
+          </section>
+        </dialog>
+        <dialog class="mb-0 w-full max-w-full rounded-t-2xl font-pretendard outline-none" id="price">
+          <section class="relative" aria-label="핸들">
+            <div class="absolute left-1/2 top-3 h-[3px] w-7 translate-x-[-50%] rounded bg-gray-200"></div>
+            <h2 class="mx-3 pb-2 pt-7 text-[1rem] font-semibold">가격</h2>
+          </section>
+          <section class="flex w-full items-center justify-between gap-2 p-3 text-base" aria-label="범위 옵션">
+            <div role="group">
+              <label for="min-price" class="sr-only">최소 금액</label>
+              <input
+                type="number"
+                id="min-price"
+                class="w-full rounded border border-gray-200 p-3 outline-none focus:border-contentPrimary"
+                placeholder="최소 금액"
+              />
+            </div>
+            <span aria-hidden="true">~</span>
+            <div role="group">
+              <label for="max-price" class="sr-only">최대 금액</label>
+              <input
+                type="number"
+                id="max-price"
+                class="w-full rounded border border-gray-200 p-3 outline-none focus:border-contentPrimary"
+                placeholder="최대 금액"
+              />
+            </div>
+          </section>
+          <section class="flex w-full gap-2 px-3 pb-4 pt-3 text-base" aria-label="버튼">
+            <button type="button" class="w-1/3 rounded bg-gray-200 p-2.5">초기화</button>
+            <button type="button" class="grow rounded bg-secondary p-2.5 text-background">적용하기</button>
+          </section>
+        </dialog>
+        <dialog class="mb-0 w-full max-w-full rounded-t-2xl font-pretendard outline-none" id="order">
+          <section class="relative" aria-label="핸들">
+            <div class="absolute left-1/2 top-3 h-[3px] w-7 translate-x-[-50%] rounded bg-gray-200"></div>
+            <h2 class="mx-3 border-b border-gray-200 pb-3 pt-7 text-[1rem] font-semibold">정렬</h2>
+          </section>
+          <section class="flex flex-col items-start gap-2 p-3 text-base" aria-label="옵션">
+            <ul class="w-full" aria-label="정렬 옵션">
+              <li class="flex w-full justify-between">
+                <input type="radio" id="latest" name="option" class="peer hidden" checked />
+                <label for="latest" class="pt-2 peer-checked:font-semibold peer-checked:text-secondary">최신순</label>
+                <img src="/assets/icon/checked.svg" alt="체크" class="hidden peer-checked:block" aria-hidden="true" />
+              </li>
+              <li class="flex w-full justify-between">
+                <input type="radio" id="earlist" name="option" class="peer hidden" />
+                <label for="earlist" class="pt-2 peer-checked:font-semibold peer-checked:text-secondary"
+                  >오래된순</label
+                >
+                <img src="/assets/icon/checked.svg" alt="체크" class="hidden peer-checked:block" aria-hidden="true" />
+              </li>
+            </ul>
+          </section>
+        </dialog>
+      </div>
+    </div>
+  </body>
+</html>
