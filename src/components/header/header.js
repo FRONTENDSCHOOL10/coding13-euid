@@ -22,7 +22,6 @@ class Header extends HTMLElement {
 
   renderHeader() {
     const dataPage = this.dataset.page;
-    console.log(dataPage);
 
     if (dataPage === '홈' || dataPage === '내 근처') {
       this.renderHomeHeader();

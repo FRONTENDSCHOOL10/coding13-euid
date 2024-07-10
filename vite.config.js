@@ -11,6 +11,7 @@ export default defineConfig({
         main: resolve(__dirname, 'src', 'index.html'),
         category: resolve(__dirname, 'src', 'pages', 'category', 'index.html'),
         profile: resolve(__dirname, 'src', 'pages', 'profile', 'index.html'),
+        profileDetail: resolve(__dirname, 'src', 'pages', 'profile-detail', 'index.html'),
         editProfile: resolve(__dirname, 'src', 'pages', 'edit-profile', 'index.html'),
         exchange: resolve(__dirname, 'src', 'pages', 'exchange', 'index.html'),
         exchangeDetail: resolve(__dirname, 'src', 'pages', 'exchange-detail', 'index.html'),
