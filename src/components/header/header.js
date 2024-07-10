@@ -35,7 +35,7 @@ class Header extends HTMLElement {
     const template = document.createElement('template');
     template.innerHTML = `
       <style>${tailwindCSS}</style>
-      <header class="fixed top-0 z-10 flex w-full justify-between bg-background px-5 py-[0.38rem] text-lg text-contentPrimary xs:py-2">
+      <header class="fixed top-0 z-10 flex w-full justify-between bg-background px-5 py-[0.38rem] text-lg">
         <span class="text-lg font-semibold xs:text-xl">
           <span class="sr-only">현재 주소</span>
           남가좌제2동
@@ -53,7 +53,8 @@ class Header extends HTMLElement {
         </div>
       </header>
 
-      <div class="xs:pt-14 pt-10">
+      <!-- 헤더가 fixed라 아래가 가려지므로 공간 차지하게 설정 -->
+      <div class="xs:pt-[3.125rem] pt-10">
       </div>
     `;
 
@@ -92,6 +93,7 @@ class Header extends HTMLElement {
         </div>
       </header>
 
+      <!-- 헤더가 fixed라 아래가 가려지므로 공간 차지하게 설정 -->
       <div class="xs:pt-15 pt-9">
       </div>
     `;

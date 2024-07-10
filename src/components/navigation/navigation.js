@@ -24,25 +24,25 @@ navigationTemplate.innerHTML = `
       </li>
       <li>
         <a href="/pages/board/" class="flex flex-col items-center text-sm">
-          <img id="nav-img-board" src=${board} alt="홈" aria-hidden="true" class="w-5 xs:w-7" />
+          <img id="nav-img-board" src=${board} alt="홈" aria-hidden="true" class="w-5 xs:w-[calc(1.25rem*1.4)]" />
           <span class="text-sm leading-[160%] xs:text-base">게시판</span>
         </a>
       </li>
       <li>
         <a href="/pages/exchange/" class="flex flex-col items-center text-sm">
-          <img id="nav-img-map" src=${map} alt="홈" aria-hidden="true" class="w-5 xs:w-7" />
+          <img id="nav-img-map" src=${map} alt="홈" aria-hidden="true" class="w-5 xs:w-[calc(1.25rem*1.4)]" />
           <span class="text-sm leading-[160%] xs:text-base">내 근처</span>
         </a>
       </li>
       <li>
         <a href="/pages/chat/" class="flex flex-col items-center text-sm">
-          <img id="nav-img-chat" src=${chat} alt="홈" aria-hidden="true" class="w-5 xs:w-7" />
+          <img id="nav-img-chat" src=${chat} alt="홈" aria-hidden="true" class="w-5 xs:w-[calc(1.25rem*1.4)]" />
           <span class="text-sm leading-[160%] xs:text-base">채팅</span>
         </a>
       </li>
       <li>
         <a href="/pages/profile/" class="flex flex-col items-center text-sm">
-          <img id="nav-img-my" src=${my} alt="홈" aria-hidden="true" class="w-5 xs:w-7" />
+          <img id="nav-img-my" src=${my} alt="홈" aria-hidden="true" class="w-5 xs:w-[calc(1.25rem*1.4)]" />
           <span class="text-sm leading-[160%] xs:text-base">나의 이듬</span>
         </a>
       </li>
