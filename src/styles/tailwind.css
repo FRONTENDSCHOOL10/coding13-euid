@@ -8,7 +8,7 @@
   }
 
   #app {
-    @apply m-auto min-h-screen bg-background;
+    @apply min-h-screen m-auto bg-background;
   }
 }
 

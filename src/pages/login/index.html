@@ -8,34 +8,37 @@
     <script type="module" src="/pages/login/login.js"></script>
   </head>
   <body>
-    <div id="app" class="max-w-screen-md mx-auto">
-      <nav class="flex h-9">
+    <div id="app" class="mx-auto">
+      <nav class="flex h-9 xs:h-[3.15rem] sm:h-[4.05rem]">
         <a href="/pages/start/index.html"
-          ><img class="w-5 h-5 my-2 ml-3" src="/assets/icon/direction-left.svg" alt="이전 페이지로 돌아가기"
+          ><img
+            class="my-2 ml-3 h-5 w-5 xs:my-[0.7rem] xs:ml-[1.05rem] xs:h-[1.75rem] xs:w-[1.75rem] sm:my-[0.9rem] sm:ml-[1.35rem] sm:h-[2.25rem] sm:w-[2.25rem]"
+            src="/assets/icon/direction-left.svg"
+            alt="이전 페이지로 돌아가기"
         /></a>
       </nav>
-      <section class="mt-3 ml-3">
-        <p class="font-pretendard text-[1.16638rem] font-semibold">안녕하세요!</p>
-        <h1 class="font-pretendard text-[1.16638rem] font-semibold">휴대폰 번호로 로그인해주세요.</h1>
-        <p class="mb-[1.44rem] inline-block text-[0.65644rem]">
+      <section class="ml-3 mt-3 xs:ml-[1.05rem] xs:mt-[1.05rem] sm:ml-[1.35rem] sm:mt-[1.35rem]">
+        <p class="font-semibold text-lg-group">안녕하세요!</p>
+        <h1 class="font-semibold text-lg-group">휴대폰 번호로 로그인해주세요.</h1>
+        <p class="text-sm-group mb-[1.44rem] inline-block xs:mb-[2.016rem] sm:mb-[2.592rem]">
           휴대폰 번호는 안전하게 보관되며 서로에게 공개되지 않아요.
         </p>
       </section>
-      <form class="flex flex-col items-center mx-3">
+      <form class="mx-3 flex flex-col items-center xs:mx-[1.05rem] sm:mx-[1.35rem]">
         <label for="phone-number" class="sr-only">휴대폰 번호로 로그인 하기</label>
         <input
           type="number"
           placeholder="휴대폰 번호(-없이 숫자만 입력)"
           id="phone-number"
-          class="mb-3 w-full rounded border border-black py-2 pl-3 text-base font-normal focus:border-[0.03125rem] focus:border-solid focus:border-black focus:outline-none focus:placeholder:text-black"
+          class="text-base-group mb-3 w-full rounded border border-black py-2 pl-3 font-normal focus:border-[0.03125rem] focus:border-solid focus:border-black focus:placeholder:text-black xs:mb-[1.05rem] xs:py-[0.7rem] xs:pl-[1.05rem] sm:mb-[1.35rem] sm:py-[0.9rem] sm:pl-[1.35rem]"
         />
         <button
           type="button"
-          class="mb-3 w-full rounded border-[0.03125rem] border-solid border-contentSecondary bg-white py-2 text-base font-semibold text-contentSecondary"
+          class="text-base-group mb-3 w-full rounded border-[0.03125rem] border-solid border-contentSecondary bg-white py-2 font-semibold text-contentSecondary xs:mb-[1.05rem] xs:py-[0.5rem] sm:mb-[1.35rem] sm:py-[0.9rem]"
         >
           인증문자 받기
         </button>
-        <span class="text-[0.65644rem]"
+        <span class="text-sm-group"
           >휴대폰 번호가 변경되었나요? <a href="#" class="underline underline-offset-2">이메일로 계정찾기</a></span
         >
       </form>
