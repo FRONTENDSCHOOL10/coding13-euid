@@ -8,11 +8,11 @@
     <script type="module" src="/pages/search-result/search-result.js"></script>
   </head>
   <body>
-    <div id="app" class="min-w-[20rem] max-w-screen-md">
+    <div id="app" class="min-w-[20rem]">
       <h1 class="sr-only">검색 결과 페이지</h1>
       <div role="group" class="fixed top-0 z-10 w-full">
         <form
-          class="flex min-w-[20rem] max-w-screen-md items-center justify-center gap-4 bg-background px-4 pb-2 pt-1 xs:gap-[1.4rem] xs:px-[1.4rem] xs:pb-[0.7rem] xs:pt-[0.35rem] sm:gap-[1.8rem] sm:px-[1.8rem] sm:pb-[0.9rem] sm:pt-[0.45rem]"
+          class="flex min-w-[20rem] items-center justify-center gap-4 bg-background px-4 pb-2 pt-1 xs:gap-[1.4rem] xs:px-[1.4rem] xs:pb-[0.7rem] xs:pt-[0.35rem] sm:gap-[1.8rem] sm:px-[1.8rem] sm:pb-[0.9rem] sm:pt-[0.45rem]"
         >
           <button type="button">
             <img src="/assets/icon/direction-left.svg" alt="뒤로가기" class="w-5 xs:w-[1.75rem] sm:w-[2.25rem]" />
@@ -27,7 +27,7 @@
         </form>
         <ul
           role="group"
-          class="flex min-w-[20rem] max-w-screen-md gap-1 overflow-auto bg-background px-3 py-3 xs:gap-[0.35rem] xs:px-[1.05rem] xs:py-[1.05rem] sm:gap-[0.45rem] sm:px-[1.35rem] sm:py-[1.35rem]"
+          class="flex min-w-[20rem] gap-1 overflow-auto bg-background px-3 py-3 xs:gap-[0.35rem] xs:px-[1.05rem] xs:py-[1.05rem] sm:gap-[0.45rem] sm:px-[1.35rem] sm:py-[1.35rem]"
           aria-label="검색 필터"
         >
           <li>
@@ -271,7 +271,7 @@
         </li>
       </ul>
       <div role="group">
-        <dialog class="mb-0 w-full max-w-screen-md rounded-t-2xl outline-none" id="category">
+        <dialog class="mb-0 w-full max-w-full rounded-t-2xl outline-none" id="category">
           <section class="relative" aria-label="핸들">
             <div
               class="absolute left-1/2 top-3 h-[0.1875rem] w-7 translate-x-[-50%] rounded bg-gray-200 xs:top-[1.05rem] xs:h-[0.2625rem] xs:w-[2.45rem] sm:top-[1.35rem] sm:h-[0.3375rem] sm:w-[3.15rem]"
@@ -321,7 +321,7 @@
             </button>
           </section>
         </dialog>
-        <dialog class="mb-0 w-full max-w-screen-md rounded-t-2xl outline-none" id="price">
+        <dialog class="mb-0 w-full max-w-full rounded-t-2xl outline-none" id="price">
           <section class="relative" aria-label="핸들">
             <div
               class="absolute left-1/2 top-3 h-[0.1875rem] w-7 translate-x-[-50%] rounded bg-gray-200 xs:top-[1.05rem] xs:h-[0.2625rem] xs:w-[2.45rem] sm:top-[1.35rem] sm:h-[0.3375rem] sm:w-[3.15rem]"
@@ -371,7 +371,7 @@
             </button>
           </section>
         </dialog>
-        <dialog class="mb-0 w-full max-w-screen-md rounded-t-2xl outline-none" id="order">
+        <dialog class="mb-0 w-full max-w-full rounded-t-2xl outline-none" id="order">
           <section class="relative" aria-label="핸들">
             <div
               class="absolute left-1/2 top-3 h-[0.1875rem] w-7 translate-x-[-50%] rounded bg-gray-200 xs:top-[1.05rem] xs:h-[0.2625rem] xs:w-[2.45rem] sm:top-[1.35rem] sm:h-[0.3375rem] sm:w-[3.15rem]"
@@ -391,7 +391,7 @@
                 <input type="radio" id="new" name="option" class="peer hidden" checked />
                 <label
                   for="new"
-                  class="pt-2 peer-checked:font-semibold peer-checked:text-secondary xs:pt-[0.7rem] sm:pt-[0.9rem]"
+                  class="grow pt-2 peer-checked:font-semibold peer-checked:text-secondary xs:pt-[0.7rem] sm:pt-[0.9rem]"
                   >최신순</label
                 >
                 <img
@@ -405,7 +405,7 @@
                 <input type="radio" id="old" name="option" class="peer hidden" />
                 <label
                   for="old"
-                  class="pt-2 peer-checked:font-semibold peer-checked:text-secondary xs:pt-[0.7rem] sm:pt-[0.9rem]"
+                  class="grow pt-2 peer-checked:font-semibold peer-checked:text-secondary xs:pt-[0.7rem] sm:pt-[0.9rem]"
                   >오래된순</label
                 >
                 <img
