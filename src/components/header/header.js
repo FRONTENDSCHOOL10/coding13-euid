@@ -72,20 +72,20 @@ class Header extends HTMLElement {
         <!-- 뒤로 가기, 홈으로 가기 -->
         <div class="flex gap-2 xs:gap-[0.7rem] sm:gap-[0.9rem]">
           <a role="button" href="javascript:history.back()" aria-label="이전 페이지로 이동">
-            <img src=${directionLeft} alt="이전 페이지로 이동" aria-hidden="true" class="w-5 xs:w-7 sm:w-9" />
+            <img src=${directionLeft} alt="이전 페이지로 이동" aria-hidden="true" class="w-5 xs:w-[1.75rem] sm:w-[2.25rem]" />
           </a>
           <a role="button" href="/" aria-label="홈 페이지로 이동">
-            <img src=${home} alt="홈 페이지로 이동" aria-hidden="true" class="w-5 xs:w-7 sm:w-9" />
+            <img src=${home} alt="홈 페이지로 이동" aria-hidden="true" class="w-5 xs:w-[1.75rem] sm:w-[2.25rem]" />
           </a>
         </div>
 
         <!-- 공유하기, 메뉴 더보기 -->
         <div class="flex gap-2 xs:gap-4">
           <button type="button" aria-label="공유하기" class="cursor-pointer">
-            <img src=${share} alt="공유하기" aria-hidden="true" class="w-5 xs:w-7 sm:w-9" />
+            <img src=${share} alt="공유하기" aria-hidden="true" class="w-5 xs:w-[1.75rem] sm:w-[2.25rem]" />
           </button>
           <button type="button" aria-label="메뉴 더보기" class="cursor-pointer">
-            <img src=${more} alt="메뉴 더보기" aria-hidden="true" class="w-5 xs:w-7 sm:w-9" />
+            <img src=${more} alt="메뉴 더보기" aria-hidden="true" class="w-5 xs:w-[1.75rem] sm:w-[2.25rem]" />
           </button>
         </div>
       </header>
