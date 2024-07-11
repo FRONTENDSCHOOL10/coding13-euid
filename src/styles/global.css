@@ -20,3 +20,10 @@
     font-size: 0.875rem;
   }
 }
+
+@media (min-width: 640px) {
+  .swiper-pagination-current,
+  .swiper-pagination-total {
+    font-size: 1.1663750410079956rem;
+  }
+}

@@ -11,7 +11,7 @@
     <script type="module" src="/main.js"></script>
   </head>
   <body>
-    <div id="app" role="main" aria-live="polite">
+    <div id="app" role="main" aria-live="polite" class="pb-[4.3rem] xs:pb-[5.949375rem] sm:pb-[7.249375rem]">
       <h1 class="sr-only">홈 페이지</h1>
 
       <!-- 헤더 -->
@@ -21,34 +21,34 @@
       <c-navigation data-page="홈"></c-navigation>
 
       <!-- 추천 글 슬라이더 -->
-      <div role="region" aria-label="추천 글 슬라이더" class="swiper h-[66.875vw] max-h-[32.125rem]">
+      <div role="region" aria-label="추천 글 슬라이더" class="swiper h-[66.875vw]">
         <div class="swiper-wrapper">
           <!-- 슬라이드 1 -->
-          <article aria-roledescription="slide" class="swiper-slide relative max-h-[32.125rem] bg-contentTertiary">
+          <article aria-roledescription="slide" class="swiper-slide relative bg-contentTertiary">
             <div class="p-5">
-              <h2 id="slide1-title" class="text-lg font-semibold text-background xs:text-xl">
+              <h2 id="slide1-title" class="text-lg-group font-semibold text-background">
                 풀리지 않는 버그 속<br />개발자로 살아남기
               </h2>
-              <a href="#" aria-describedby="slide1-title" class="text-sm text-background xs:text-base">자세히 보기</a>
+              <a href="#" aria-describedby="slide1-title" class="text-sm-group text-background">자세히 보기</a>
             </div>
             <img
               src="/assets/slideImage.png"
               alt="슬라이드1"
-              class="absolute bottom-0 right-0 w-[63.125%] [aspect-ratio:1.086021505376344]"
+              class="absolute bottom-0 right-0 w-[63.125vw] [aspect-ratio:1.086021505376344]"
             />
           </article>
           <!-- 슬라이드 2 -->
-          <article aria-roledescription="slide" class="swiper-slide relative max-h-[32.125rem] bg-contentTertiary">
+          <article aria-roledescription="slide" class="swiper-slide relative bg-contentTertiary">
             <div class="p-5">
-              <h2 id="slide2-title" class="text-lg font-semibold text-background xs:text-xl">
+              <h2 id="slide1-title" class="text-lg-group font-semibold text-background">
                 풀리지 않는 버그 속<br />개발자로 살아남기
               </h2>
-              <a href="#" aria-describedby="slide2-title" class="text-sm text-background xs:text-base">자세히 보기</a>
+              <a href="#" aria-describedby="slide1-title" class="text-sm-group text-background">자세히 보기</a>
             </div>
             <img
               src="/assets/slideImage.png"
-              alt="슬라이드2"
-              class="absolute bottom-0 right-0 w-[63.125%] [aspect-ratio:1.086021505376344]"
+              alt="슬라이드1"
+              class="absolute bottom-0 right-0 w-[63.125vw] [aspect-ratio:12.625/11.625]"
             />
           </article>
         </div>
@@ -56,35 +56,72 @@
       </div>
 
       <!-- 글 목록 -->
-      <ul aria-label="전체 글 목록" class="mb-[1.8125rem] flex flex-wrap gap-x-3 px-4 py-3 xs:mb-20">
-        <li class="mb-7 w-[calc((100%-0.75rem)/2)]">
+      <ul
+        aria-label="전체 글 목록"
+        class="flex flex-wrap justify-between px-4 py-3 xs:px-[1.4rem] xs:py-[1.05rem] sm:px-[1.8rem] sm:py-[1.35rem]"
+      >
+        <li class="mb-7 w-[43.125vw] xs:mb-[2.45rem] sm:mb-[3.15rem]">
           <article>
             <img
               src="/assets/storyImage.png"
-              alt="대기업에 취업한 이유"
-              class="mb-3 w-full rounded-lg [aspect-ratio:8.625/6.5]"
+              alt="메인 글1"
+              class="mb-3 w-[43.125vw] rounded-lg [aspect-ratio:8.625/6.5] xs:mb-[1.05rem] sm:mb-[1.35rem]"
             />
-            <h2 class="mb-1 text-sm leading-[160%] xs:text-base">
+            <h2 class="text-sm-group mb-1 leading-[160%] xs:mb-[0.35rem] sm:mb-[0.45rem]">
               디자인에 대해 하나도 알지 못했던 내가 취업할 수 있었던 이유
             </h2>
-            <p class="text-sm leading-[160%] text-contentSecondary xs:text-base">
+            <p class="text-sm-group leading-[160%] text-contentSecondary">
               UIUX
               <span aria-hidden="true">&#124;</span>
               1기 수강생 박치열
             </p>
           </article>
         </li>
-        <li class="mb-7 w-[calc((100%-0.75rem)/2)]">
+        <li class="mb-7 w-[43.125vw] xs:mb-[2.45rem] sm:mb-[3.15rem]">
           <article>
             <img
               src="/assets/storyImage.png"
-              alt="대기업에 취업한 이유2"
-              class="mb-3 w-full rounded-lg [aspect-ratio:8.63/6.5]"
+              alt="메인 글2"
+              class="mb-3 w-[43.125vw] rounded-lg [aspect-ratio:8.625/6.5] xs:mb-[1.05rem] sm:mb-[1.35rem]"
             />
-            <h2 class="mb-1 text-sm leading-[160%] xs:text-base">
-              디자인에 대해 하나도 알지 못했던 내가 취업할 수 있었던 이유2
+            <h2 class="text-sm-group mb-1 leading-[160%] xs:mb-[0.35rem] sm:mb-[0.45rem]">
+              영문과 전공생에서 UIUX 디자이너로 취업하기까지
             </h2>
-            <p class="text-sm leading-[160%] text-contentSecondary xs:text-base">
+            <p class="text-sm-group leading-[160%] text-contentSecondary">
+              UIUX
+              <span aria-hidden="true">&#124;</span>
+              3기 수강생 김진우
+            </p>
+          </article>
+        </li>
+        <li class="mb-7 w-[43.125vw] xs:mb-[2.45rem] sm:mb-[3.15rem]">
+          <article>
+            <img
+              src="/assets/storyImage.png"
+              alt="메인 글3"
+              class="mb-3 w-[43.125vw] rounded-lg [aspect-ratio:8.625/6.5] xs:mb-[1.05rem] sm:mb-[1.35rem]"
+            />
+            <h2 class="text-sm-group mb-1 leading-[160%] xs:mb-[0.35rem] sm:mb-[0.45rem]">
+              7기 수강생의 삼성으로 가는 피그마 노하우
+            </h2>
+            <p class="text-sm-group leading-[160%] text-contentSecondary">
+              UIUX
+              <span aria-hidden="true">&#124;</span>
+              7기 수강생 박치열
+            </p>
+          </article>
+        </li>
+        <li class="mb-7 w-[43.125vw] xs:mb-[2.45rem] sm:mb-[3.15rem]">
+          <article>
+            <img
+              src="/assets/storyImage.png"
+              alt="메인 글4"
+              class="mb-3 w-[43.125vw] rounded-lg [aspect-ratio:8.625/6.5] xs:mb-[1.05rem] sm:mb-[1.35rem]"
+            />
+            <h2 class="text-sm-group mb-1 leading-[160%] xs:mb-[0.35rem] sm:mb-[0.45rem]">
+              배울 때 내가 가장 힘들었던 A-Z 야, 너도 할 수 있어!
+            </h2>
+            <p class="text-sm-group leading-[160%] text-contentSecondary">
               UIUX
               <span aria-hidden="true">&#124;</span>
               1기 수강생 박치열

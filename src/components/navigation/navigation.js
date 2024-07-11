@@ -14,36 +14,38 @@ import fullMy from '/assets/icon/full-my.svg';
 const navigationTemplate = document.createElement('template');
 navigationTemplate.innerHTML = `
   <style> ${tailwindCSS} </style>
-  <nav class="fixed bottom-0 w-full bg-background px-3 pb-6 pt-2">
+  <nav
+    class="fixed bottom-0 w-full bg-background px-3 pb-6 pt-2 xs:px-[1.05rem] xs:pb-[2.1rem] xs:pt-[0.7rem] sm:px-[1.35rem] sm:pb-[2.7rem] sm:pt-[0.9rem]"
+  >
     <ul class="flex justify-between">
       <li>
         <a href="/" class="flex flex-col items-center text-sm">
-          <img id="nav-img-home" src=${home} alt="홈" aria-hidden="true" class="w-5 xs:w-[calc(1.25rem*1.4)]" />
-          <span class="text-sm leading-[160%] xs:text-base">홈</span>
+          <img id="nav-img-home" src=${home} alt="홈" aria-hidden="true" class="aspect-square w-5 xs:w-[1.75rem] sm:w-[2.25rem]" />
+          <span class="text-sm-group leading-[160%]">홈</span>
         </a>
       </li>
       <li>
         <a href="/pages/board/" class="flex flex-col items-center text-sm">
-          <img id="nav-img-board" src=${board} alt="홈" aria-hidden="true" class="w-5 xs:w-7" />
-          <span class="text-sm leading-[160%] xs:text-base">게시판</span>
+          <img id="nav-img-board" src=${board} alt="게시판" aria-hidden="true" class="aspect-square w-5 xs:w-[1.75rem] sm:w-[2.25rem]" />
+          <span class="text-sm-group leading-[160%]">게시판</span>
         </a>
       </li>
       <li>
         <a href="/pages/exchange/" class="flex flex-col items-center text-sm">
-          <img id="nav-img-map" src=${map} alt="홈" aria-hidden="true" class="w-5 xs:w-7" />
-          <span class="text-sm leading-[160%] xs:text-base">내 근처</span>
+          <img id="nav-img-map" src=${map} alt="내 근처" aria-hidden="true" class="aspect-square w-5 xs:w-[1.75rem] sm:w-[2.25rem]" />
+          <span class="text-sm-group leading-[160%]">내 근처</span>
         </a>
       </li>
       <li>
         <a href="/pages/chat/" class="flex flex-col items-center text-sm">
-          <img id="nav-img-chat" src=${chat} alt="홈" aria-hidden="true" class="w-5 xs:w-7" />
-          <span class="text-sm leading-[160%] xs:text-base">채팅</span>
+          <img id="nav-img-chat" src=${chat} alt="채팅" aria-hidden="true" class="aspect-square w-5 xs:w-[1.75rem] sm:w-[2.25rem]" />
+          <span class="text-sm-group leading-[160%]">채팅</span>
         </a>
       </li>
       <li>
         <a href="/pages/profile/" class="flex flex-col items-center text-sm">
-          <img id="nav-img-my" src=${my} alt="홈" aria-hidden="true" class="w-5 xs:w-7" />
-          <span class="text-sm leading-[160%] xs:text-base">나의 이듬</span>
+          <img id="nav-img-my" src=${my} alt="나의 이듬" aria-hidden="true" class="aspect-square w-5 xs:w-[1.75rem] sm:w-[2.25rem]" />
+          <span class="text-sm-group leading-[160%]">나의 이듬</span>
         </a>
       </li>
     </ul>
