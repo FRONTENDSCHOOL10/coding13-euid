@@ -11,63 +11,80 @@
     <!-- plus button -->
     <button
       type="button"
-      class="fixed flex h-12 w-12 items-center justify-center rounded-full bg-primary shadow-xl before:h-4 before:w-0.5 before:bg-background after:absolute after:h-0.5 after:w-4 after:bg-background focus:bg-background focus:before:bg-contentPrimary focus:after:bg-contentPrimary"
+      class="peer fixed bottom-[5.175rem] right-3.5 flex aspect-square w-12 items-center justify-center rounded-full bg-primary shadow-[0_0.25rem_0.25rem_0_rgba(0,0,0,0.25)] before:h-4 before:w-0.5 before:bg-background after:absolute after:h-0.5 after:w-4 after:bg-background focus:bg-background focus:before:bg-contentPrimary focus:after:bg-contentPrimary xs:bottom-[7.175rem] xs:right-[1.225rem] xs:w-[4.2rem] xs:shadow-[0_0.35rem_0.35rem_0_rgba(0,0,0,0.25)] xs:before:h-[1.4rem] xs:before:w-[0.175rem] xs:after:h-[0.175rem] xs:after:w-[1.4rem] sm:bottom-[8.825rem] sm:right-[1.575rem] sm:w-[5.4rem] sm:shadow-[0_0.45rem_0.45rem_0_rgba(0,0,0,0.25)] sm:before:h-[1.8rem] sm:before:w-[0.225rem] sm:after:h-[0.225rem] sm:after:w-[1.8rem]"
       aria-label="게시글 추가"
     ></button>
     <!-- // plus button -->
 
     <!-- exchange item button -->
-    <button
-      type="button"
-      class="w-full rounded-xl bg-primary px-5 py-2.5 text-start font-pretendard text-base font-semibold leading-[1.6] text-background focus:bg-background focus:text-contentPrimary"
+    <ul
+      class="fixed bottom-[8.625rem] right-3.5 hidden w-1/3 min-w-32 flex-col gap-1 peer-focus:flex xs:bottom-[12.005rem] xs:right-[1.225rem] xs:min-w-[11.2rem] xs:gap-[0.35rem] sm:bottom-[15.035rem] sm:right-[1.575rem] sm:min-w-[15rem] sm:gap-[0.45rem]"
     >
-      <span class="sr-only">거래 품목</span>
-      🎈 기타 등등
-    </button>
+      <li class="w-full">
+        <button
+          type="button"
+          class="text-base-group w-full rounded-xl bg-primary px-5 py-2.5 text-start font-pretendard font-semibold leading-[1.6] text-background focus:bg-background focus:text-contentPrimary xs:px-[1.75rem] xs:py-[0.875rem] sm:px-[2.25rem] sm:py-[1.125rem]"
+        >
+          <span class="sr-only">거래 품목</span>
+          🎧 헤드셋
+        </button>
+      </li>
+    </ul>
     <!-- // exchange item button -->
 
-    <!-- exchange state -->
-    <span class="rounded bg-tertiary px-1 py-0.5 font-pretendard text-sm font-semibold leading-normal text-background">
+    <!-- exchange state - reservation -->
+    <span
+      class="text-sm-group rounded bg-tertiary px-1 py-0.5 font-semibold leading-normal text-background xs:px-[0.35rem] xs:py-[0.175rem] sm:px-[0.45rem] sm:py-[0.225rem]"
+    >
       <span class="sr-only">거래상태</span>예약중
     </span>
+    <!-- // exchange state - reservation -->
+    <!-- exchange state - complete -->
     <span
-      class="rounded bg-contentTertiary px-1 py-0.5 font-pretendard text-sm font-semibold leading-normal text-background"
+      class="text-sm-group rounded bg-contentTertiary px-1 py-0.5 font-semibold leading-normal text-background xs:px-[0.35rem] xs:py-[0.175rem] xs:text-base sm:px-[0.45rem] sm:py-[0.225rem]"
     >
       <span class="sr-only">거래상태</span>거래 완료
     </span>
-    <!-- // exchange state -->
+    <!-- // exchange state - complete -->
 
     <!-- exchange list item -->
     <ul aria-label="거래 물품">
-      <li class="relative flex gap-3 border-b border-gray-200 bg-background p-3">
-        <figure class="h-[90px] w-[90px] flex-shrink-0 overflow-hidden rounded-md bg-gray-200">
-          <img class="object-cover" src="/" alt="거래 물품 사진 설명" />
-        </figure>
-        <section
-          class="flex w-full flex-col justify-center overflow-hidden font-pretendard"
-          aria-label="거래 물품 정보"
+      <li>
+        <a
+          href="/pages/exchange-detail/"
+          class="relative flex gap-3 border-b border-gray-200 bg-background p-3 xs:gap-[1.05rem] xs:p-[1.05rem] sm:gap-[1.35rem] sm:p-[1.35rem]"
         >
-          <!-- 거래 물품 이름을 임의로 h4로 지정했습니다. 추후 논의하고 수정해야 할 것 같습니다. -->
-          <!-- 거래 물품 이름이 길어질 때 줄바꿈 없이 말줄임표로 나타납니다. -->
-          <h4 class="overflow-hidden text-ellipsis whitespace-nowrap text-base leading-[1.6] text-contentPrimary">
-            거래 물품 이름
-          </h4>
-          <span class="text-sm leading-[1.6] text-contentTertiary">지역 · 시간</span>
-          <div class="flex items-center gap-2" role="group">
-            <!-- 거래 상태 -->
-            <span
-              class="rounded bg-tertiary px-1 py-0.5 font-pretendard text-sm font-semibold leading-normal text-background"
-            >
-              <span class="sr-only">거래상태</span>예약중
-            </span>
-            <!-- // 거래 상태 -->
-            <span class="text-base font-semibold leading-normal"> <span class="sr-only">물품가격</span>150,000원 </span>
-          </div>
-        </section>
-        <span class="absolute bottom-2 right-3 flex items-center gap-0.5 font-pretendard text-sm leading-[1.6]">
-          <img src="/assets/icon/heart.svg" alt="좋아요" />
-          4
-        </span>
+          <figure
+            class="aspect-square w-[5.625rem] flex-shrink-0 overflow-hidden rounded-md bg-gray-200 xs:w-[7.875rem] sm:w-[10.125rem]"
+          >
+            <img class="object-cover" src="/" alt="거래 물품 대표 사진" />
+          </figure>
+          <section class="flex w-full flex-col justify-center overflow-hidden" aria-label="거래 물품 정보">
+            <h2 class="text-base-group truncate leading-[1.6] text-contentPrimary">
+              <!-- 거래 물품 이름이 길어질 때 줄바꿈 없이 말줄임표로 나타납니다. -->
+              거래 물품 이름
+            </h2>
+            <span class="text-sm-group leading-[1.6] text-contentTertiary">지역 · 시간</span>
+            <div class="flex items-center gap-2 xs:gap-[0.7rem] sm:gap-[0.9rem]" role="group">
+              <!-- 거래 상태 -->
+              <span
+                class="text-sm-group rounded bg-tertiary px-1 py-0.5 font-semibold leading-normal text-background xs:px-[0.35rem] xs:py-[0.175rem] sm:px-[0.45rem] sm:py-[0.225rem]"
+              >
+                <span class="sr-only">거래상태</span>예약중
+              </span>
+              <!-- // 거래 상태 -->
+              <span class="text-base-group font-semibold leading-normal">
+                <span class="sr-only">물품가격</span>150,000원
+              </span>
+            </div>
+          </section>
+          <span
+            class="text-sm-group absolute bottom-2 right-3 flex items-center gap-0.5 leading-[1.6] xs:bottom-[0.7rem] xs:right-[1.05rem] xs:gap-[0.175rem] sm:bottom-[0.9rem] sm:right-[1.35rem] sm:gap-[0.225rem]"
+          >
+            <img src="/assets/icon/heart.svg" alt="좋아요" class="w-[0.875rem] xs:w-[1.225rem] sm:w-[1.575rem]" />
+            4
+          </span>
+        </a>
       </li>
     </ul>
     <!-- // exchange list item -->

@@ -8,16 +8,16 @@
     <script type="module" src="/pages/search-result/search-result.js"></script>
   </head>
   <body>
-    <div id="app" class="min-w-[20rem]">
+    <div id="app">
       <h1 class="sr-only">검색 결과 페이지</h1>
       <header class="fixed top-0 z-10 w-full bg-background">
         <div
           role="group"
-          class="flex min-w-[20rem] items-center justify-center gap-4 px-4 pb-2 pt-1 xs:gap-[1.4rem] xs:px-[1.4rem] xs:pb-[0.7rem] xs:pt-[0.35rem] sm:gap-[1.8rem] sm:px-[1.8rem] sm:pb-[0.9rem] sm:pt-[0.45rem]"
+          class="flex items-center justify-center gap-4 px-4 pb-2 pt-1 xs:gap-[1.4rem] xs:px-[1.4rem] xs:pb-[0.7rem] xs:pt-[0.35rem] sm:gap-[1.8rem] sm:px-[1.8rem] sm:pb-[0.9rem] sm:pt-[0.45rem]"
         >
-          <button type="button">
+          <a role="button" href="javascript:history.back()">
             <img src="/assets/icon/direction-left.svg" alt="뒤로가기" class="w-5 xs:w-[1.75rem] sm:w-[2.25rem]" />
-          </button>
+          </a>
           <form class="w-full">
             <label for="search" class="sr-only">검색</label>
             <input
@@ -30,7 +30,7 @@
         </div>
         <ul
           role="group"
-          class="flex min-w-[20rem] gap-1 overflow-auto bg-background px-3 py-3 xs:gap-[0.35rem] xs:px-[1.05rem] xs:py-[1.05rem] sm:gap-[0.45rem] sm:px-[1.35rem] sm:py-[1.35rem]"
+          class="flex gap-1 overflow-auto bg-background px-3 py-3 xs:gap-[0.35rem] xs:px-[1.05rem] xs:py-[1.05rem] sm:gap-[0.45rem] sm:px-[1.35rem] sm:py-[1.35rem]"
           aria-label="검색 필터"
         >
           <li>

@@ -11,7 +11,7 @@
     <!-- keyword button -->
     <button
       type="button"
-      class="rounded-full border border-contentTertiary bg-background px-3 py-1.5 font-pretendard text-sm font-normal leading-[1.6] text-contentPrimary focus:border-primary focus:bg-primary focus:text-background"
+      class="text-sm-group flex-shrink-0 rounded-full border border-contentTertiary bg-background px-3 py-1.5 leading-[1.6] text-contentPrimary focus:border-primary focus:bg-primary focus:text-background xs:px-[1.05rem] xs:py-[0.525rem] sm:px-[1.35rem] sm:py-[0.675rem]"
     >
       노트북 거치대
     </button>
@@ -20,9 +20,9 @@
     <!-- keyword button with hamburger -->
     <button
       type="button"
-      class="group flex items-center rounded-full border border-contentTertiary bg-background px-3 py-1.5 font-pretendard text-sm font-normal leading-[1.6] text-contentPrimary focus:border-primary focus:bg-primary focus:text-background"
+      class="group flex items-center rounded-full border border-contentTertiary bg-background px-3 py-1.5 text-sm-group leading-[1.6] text-contentPrimary focus:border-primary focus:bg-primary focus:text-background xs:px-[1.05rem] xs:py-[0.525rem] sm:px-[1.35rem] sm:py-[0.675rem]"
     >
-      <svg width="20" height="17" viewBox="0 0 20 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="20" height="17" viewBox="0 0 20 17" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 xs:w-[1.75rem] sm:w-[2.25rem]">
         <g id="Icon/hamburger">
           <path
             class="group-focus:stroke-white"
@@ -40,36 +40,41 @@
     <!-- // keyword button with hamburger -->
 
     <!-- back & search -->
-    <form class="flex w-full items-center justify-center gap-4 bg-background px-4 pb-2 pt-1">
-      <button type="button">
-        <img src="/assets/icon/direction-left.svg" alt="뒤로가기" />
-      </button>
-      <label for="search" class="sr-only">검색</label>
-      <input
-        type="text"
-        id="search"
-        class="w-full rounded-lg bg-[#e9e9e9] px-2.5 py-1 font-pretendard text-base focus:shadow-[0_0_0_1px_#719cf7] focus:outline-none"
-        placeholder="창천동 근처에서 검색"
-      />
-    </form>
+    <header class="fixed top-0 z-10 w-full bg-background">
+      <div
+        role="group"
+        class="flex items-center justify-center gap-4 px-4 pb-2 pt-1 xs:gap-[1.4rem] xs:px-[1.4rem] xs:pb-[0.7rem] xs:pt-[0.35rem] sm:gap-[1.8rem] sm:px-[1.8rem] sm:pb-[0.9rem] sm:pt-[0.45rem]"
+      >
+        <a role="button" href="javascript:history.back()">
+          <img src="/assets/icon/direction-left.svg" alt="뒤로가기" class="w-5 xs:w-[1.75rem] sm:w-[2.25rem]" />
+        </a>
+        <form class="w-full">
+          <label for="search" class="sr-only">검색</label>
+          <input
+            type="text"
+            id="search"
+            class="text-base-group w-full rounded-lg bg-[#e9e9e9] px-2.5 py-1 focus:shadow-[0_0_0_1px_#719cf7] focus:outline-none xs:px-[0.875rem] xs:py-[0.35rem] sm:px-[1.125rem] sm:py-[0.45rem]"
+            placeholder="창천동 근처에서 검색"
+          />
+        </form>
+      </div>
+    </header>
     <!-- // back & search -->
 
     <!-- recent search -->
-    <ul class="mt-3" aria-label="최근 검색어">
-      <li class="flex justify-between px-3 py-1.5 hover:bg-gray-200">
-        <a href="/pages/search/" class="flex w-full items-center gap-2 text-[0.75rem]">
-          <img src="/assets/icon/time.svg" alt="시간 아이콘" aria-hidden="true" />
+    <ul class="mt-3 xs:mt-[1.05rem] sm:mt-[1.35rem]" aria-label="최근 검색어">
+      <li
+        class="flex justify-between px-3 py-1.5 hover:bg-gray-200 xs:px-[1.05rem] xs:py-[0.525rem] sm:px-[1.35rem] sm:py-[0.675rem]"
+      >
+        <a
+          href="/pages/search/"
+          class="flex w-full items-center gap-2 text-[0.75rem] xs:gap-[0.7rem] xs:text-[1.05rem] sm:gap-[0.9rem] sm:text-[1.35rem]"
+        >
+          <img src="/assets/icon/time.svg" alt="시간 아이콘" aria-hidden="true" class="aspect-square w-6 xs:w-[2.1rem] sm:w-[2.7rem]" />
           무접점 키보드
         </a>
-        <button type="button"><img src="/assets/icon/delete.svg" alt="삭제" /></button>
+        <button type="button"><img src="/assets/icon/delete.svg" alt="삭제" class="aspect-square w-[1.125rem] xs:w-[1.575rem] sm:w-[2.025rem]" /></button>
       </li>
     </ul>
     <!-- // recent search -->
-
-    <!-- finished -->
-    <div class="absolute bottom-0 w-full bg-background px-5 py-2 text-end">
-      <button type="button" class="font-pretendard text-base leading-[1.6] text-secondary">완료</button>
-    </div>
-    <!-- // finished -->
-  </body>
 </html>
