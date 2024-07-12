@@ -6,30 +6,39 @@
     <title>Enter EUID</title>
     <link rel="stylesheet" href="/styles/tailwind.css" />
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script type="module" src="/components/navigation/navigation.js"></script>
     <script type="module" src="/pages/profile-detail/profile-detail.js"></script>
   </head>
   <body>
-    <div id="app" class="mx-auto max-w-screen-md">
-      <header class="flex items-center justify-between border-b-[0.01875rem] border-contentSecondary p-[0.875rem]">
-        <h1 class="text-base font-semibold leading-[150%]">기본정보</h1>
+    <div id="app" class="relative pb-[4.3rem] xs:pb-[5.949375rem] sm:pb-[7.249375rem]">
+      <!-- 헤더 -->
+      <header
+        class="flex items-center justify-between border-b-[0.01875rem] border-contentSecondary p-[0.875rem] xs:p-[1.225rem] sm:p-[1.575rem]"
+      >
+        <h1 class="text-base-group font-semibold leading-[150%]">기본정보</h1>
         <a role="button" href="/pages/profile/">
-          <img src="/assets/icon/close.svg" alt="닫기" class="w-4" />
+          <img src="/assets/icon/close.svg" alt="닫기" class="w-4 xs:w-[1.4rem] sm:w-[1.8rem]" />
         </a>
       </header>
 
-      <form class="flex flex-col gap-[1.875rem] py-2 pb-[4.3125rem]">
-        <section class="flex flex-col gap-[1.875rem]">
+      <!-- 네비게이션 -->
+      <c-navigation data-page="나의 이듬"></c-navigation>
+
+      <form class="flex flex-col">
+        <section
+          class="flex flex-col gap-[1.875rem] px-3 py-8 xs:gap-[2.625rem] xs:px-[1.05rem] xs:py-[2.8rem] sm:gap-[3.375rem] sm:px-[1.35rem] sm:py-[3.6rem]"
+        >
           <h2 class="sr-only">개인 정보</h2>
 
           <!-- 프로필 사진 -->
-          <div role="group" class="flex flex-col items-center px-3">
+          <div role="group" class="flex flex-col items-center">
             <h2 class="sr-only">프로필 사진</h2>
             <div class="relative w-1/4">
               <img src="/assets/avatar-placeholder.png" alt="프로필 사진" class="aspect-square w-full" />
 
               <label
                 for="avatar"
-                class="absolute bottom-[0.06rem] right-[0.06rem] block w-1/4 rounded-full bg-background p-[0.125rem] [box-shadow:0.25rem_0.25rem_0.25rem_0px_rgba(0,_0,_0,_0.15)]"
+                class="absolute bottom-[0.06rem] right-[0.06rem] flex w-1/4 rounded-full bg-background p-[0.125rem] [box-shadow:0.25rem_0.25rem_0.25rem_0px_rgba(0,_0,_0,_0.15)] xs:bottom-[0.084rem] xs:right-[0.084rem] xs:p-[0.175rem] sm:bottom-[0.108rem] sm:right-[0.108rem] sm:p-[0.225rem]"
               >
                 <img src="/assets/icon/pencil.svg" alt="연필" aria-hidden="true" class="aspect-square w-full" />
                 <input
@@ -45,35 +54,42 @@
           </div>
 
           <!-- 이름(별명) -->
-          <div role="group" class="flex w-full flex-col gap-2 px-3">
-            <label for="nickname" class="text-base font-semibold leading-[150%]">이름(별명)</label>
+          <div role="group" class="flex w-full flex-col gap-2 xs:gap-[0.7rem] sm:gap-[0.9rem]">
+            <label for="nickname" class="text-base-group font-semibold leading-[150%]">이름(별명)</label>
             <input
               type="text"
               name="nickname"
               id="nickname"
               placeholder="이름(별명)을 입력해주세요."
-              class="rounded border-[0.03125rem] border-solid border-contentPrimary px-4 py-2 leading-[160%]"
+              class="text-base-group rounded-lg border-[0.03125rem] border-solid border-contentPrimary px-4 py-2 leading-[160%] xs:rounded-[0.7rem] xs:px-[1.4rem] xs:py-[0.7rem] sm:rounded-[0.9rem] sm:px-[1.8rem] sm:py-[0.9rem]"
             />
           </div>
 
           <!-- 성별 -->
-          <fieldset class="flex w-full flex-col gap-2 px-3">
-            <legend class="text-base font-semibold leading-[150%]">성별</legend>
+          <fieldset class="flex w-full flex-col">
+            <legend class="text-base-group mb-2 font-semibold leading-[150%] xs:mb-[0.7rem] sm:mb-[0.9rem]">
+              성별
+            </legend>
 
-            <div role="group" aria-label="성별 선택" class="flex rounded-md bg-[#C4C7D2]">
+            <div
+              role="group"
+              aria-label="성별 선택"
+              class="flex cursor-pointer rounded-lg bg-[#C4C7D2] xs:rounded-[0.7rem] sm:rounded-[0.9rem]"
+            >
               <button
                 type="button"
                 name="gender"
                 aria-pressed="false"
-                class="flex-grow rounded-md py-[0.375rem] font-semibold text-background"
+                class="text-base-group rounded-ls flex-grow py-[0.375rem] font-semibold text-background xs:rounded-[0.7rem] xs:py-[0.525rem] sm:rounded-[0.9rem] sm:py-[0.675rem]"
               >
                 남자
               </button>
+              <!-- js에서 버튼을 클릭하면 z-10, border-tertiary, border, bg-background, text-secondary를 클릭한 쪽으로 옮겨야함 -->
               <button
                 type="button"
                 name="gender"
                 aria-pressed="true"
-                class="-mx-[0.3125rem] flex-grow rounded-md border border-solid border-tertiary bg-background py-[0.375rem] font-semibold text-secondary"
+                class="text-base-group z-10 -ml-[0.3125rem] flex-grow rounded-md border border-solid border-tertiary bg-background py-[0.375rem] font-semibold text-secondary xs:-ml-[0.4375rem] xs:rounded-[0.7rem] xs:py-[0.525rem] sm:-ml-[0.5625rem] sm:rounded-[0.9rem] sm:py-[0.675rem]"
               >
                 여자
               </button>
@@ -81,23 +97,28 @@
           </fieldset>
 
           <!-- 주소 -->
-          <div role="group" class="flex flex-col gap-2 px-3">
-            <label for="address" class="text-base font-semibold leading-[150%]">주소</label>
+          <div role="group" class="flex flex-col gap-2 xs:gap-[0.7rem] sm:gap-[0.9rem]">
+            <label for="address" class="text-base-group font-semibold leading-[150%]">주소</label>
             <input
               id="address"
               type="text"
               placeholder="검색하기 버튼을 통해 주소를 검색해주세요."
               name="address"
               readonly
-              class="rounded border-[0.03125rem] border-solid border-contentSecondary px-3 py-[0.5625rem] text-base leading-[160%]"
+              class="text-base-group rounded-lg border-[0.03125rem] border-solid border-contentSecondary px-3 py-[0.5625rem] leading-[160%] xs:rounded-[0.7rem] xs:py-[0.7875rem] sm:rounded-[0.9rem] sm:py-[1.0125rem]"
             />
             <button
               id="search-btn"
               type="button"
-              class="flex items-center justify-center gap-1 rounded-lg border border-solid border-[#D3D3D3] px-[2.0625rem] py-2"
+              class="flex items-center justify-center gap-1 rounded-lg border border-solid border-[#D3D3D3] px-[2.0625rem] py-2 xs:gap-[0.35rem] xs:rounded-[0.7rem] sm:gap-[0.45rem] sm:rounded-[0.9rem]"
             >
-              <img src="/assets/icon/search.svg" alt="돋보기 아이콘" aria-hidden="true" class="w-6" />
-              <span class="text-base font-semibold leading-[150%]">검색하기</span>
+              <img
+                src="/assets/icon/search.svg"
+                alt="돋보기 아이콘"
+                aria-hidden="true"
+                class="w-6 xs:w-[2.1rem] sm:w-[2.7rem]"
+              />
+              <span class="text-base-group font-semibold leading-[150%]">검색하기</span>
             </button>
           </div>
         </section>
@@ -109,79 +130,126 @@
           <!-- 전체 동의 -->
           <div
             role="group"
-            class="flex items-center justify-between border-t border-solid border-contentSecondary px-3 py-[0.875rem]"
+            class="flex items-center justify-between border-t border-solid border-contentSecondary px-3 py-[0.875rem] xs:px-[1.05rem] xs:py-[1.225rem] sm:px-[1.35rem] sm:py-[1.575rem]"
           >
-            <div>
-              <input type="checkbox" id="agree-all" name="agree-all" class="mr-[0.8125rem] h-4 w-4" />
-              <label for="agree-all" class="text-base font-semibold leading-[150%]">아래 내용에 전체 동의합니다.</label>
+            <div class="flex items-center">
+              <input
+                type="checkbox"
+                id="agree-all"
+                name="agree-all"
+                class="mr-3 h-4 w-4 xs:mr-[1.05rem] xs:h-[1.4rem] xs:w-[1.4rem] sm:mr-[1.35rem] sm:h-[1.8rem] sm:w-[1.8rem]"
+              />
+              <label for="agree-all" class="text-base-group font-semibold leading-[150%]"
+                >아래 내용에 전체 동의합니다.</label
+              >
             </div>
-            <span class="end text-sm leading-[160%] text-negative">필수동의</span>
+            <span class="text-sm-group leading-[160%] text-negative">필수동의</span>
           </div>
 
           <div
-            class="flex flex-col gap-[1.125rem] border-t-[0.03rem] border-solid border-contentSecondary pb-2 pl-3 pt-4"
+            class="flex flex-col gap-[1.125rem] border-t-[0.03rem] border-solid border-contentSecondary px-3 pb-2 pt-4 xs:gap-[1.575rem] xs:px-[1.05rem] xs:pb-[0.7rem] xs:pt-[1.4rem] sm:gap-[2.025rem] sm:px-[1.35rem] sm:pb-[0.9rem] sm:pt-[1.8rem]"
           >
             <!-- 항목 1 -->
             <div role="group">
-              <div class="mb-[0.5625rem] flex items-center">
-                <input type="checkbox" id="agree-collection" name="agree-collection" required class="mr-3 h-4 w-4" />
-                <label for="agree-collection" class="text-sm font-semibold leading-[150%]">
+              <div class="mb-[0.5625rem] flex items-center xs:mb-[0.7875rem] sm:mb-[1.0125rem]">
+                <input
+                  type="checkbox"
+                  id="agree-collection"
+                  name="agree-collection"
+                  required
+                  class="mr-3 h-4 w-4 xs:mr-[1.05rem] xs:h-[1.4rem] xs:w-[1.4rem] sm:mr-[1.35rem] sm:h-[1.8rem] sm:w-[1.8rem]"
+                />
+                <label for="agree-collection" class="text-sm-group font-semibold leading-[150%]">
                   [ 필수 ] 개인 정보 수집 및 이용 동의
                 </label>
               </div>
-              <p class="ml-7 mr-[1.1875rem] text-sm leading-[160%] text-contentSecondary">
+              <p class="text-sm-group ml-7 leading-[160%] text-contentSecondary xs:ml-[2.45rem] sm:ml-[3.15rem]">
                 입력한 별명, 프로필 사진, 하는 일, 프로필 키워드, 성별, 연령, 회사, 학교, 자격은 엔터이듬 서비스 내
                 프로필 페이지, 답변자 정보 영역, 엔터이듬 홈 및 서비스 내 프로필 공개를 목적으로 합니다.
-                <span class="font-semibold text-secondary">
-                  수집된 정보는 언제든지 직접 삭제할 수 있고, 탈퇴 시에는 바로 파기됩니다.
-                </span>
+              </p>
+              <p class="text-sm-group ml-7 font-semibold leading-[160%] text-secondary xs:ml-[2.45rem] sm:ml-[3.15rem]">
+                수집된 정보는 언제든지 직접 삭제할 수 있고, 탈퇴 시에는 바로 파기됩니다.
               </p>
             </div>
 
             <!-- 항목 2 -->
             <div role="group" class="flex items-center justify-between">
               <div class="flex items-center">
-                <input type="checkbox" id="agree-promotion" name="agree-promotion" class="mr-3 h-4 w-4" />
-                <label for="agree-promotion" class="text-sm font-semibold leading-[150%]">
+                <input
+                  type="checkbox"
+                  id="agree-promotion"
+                  name="agree-promotion"
+                  class="mr-3 h-4 w-4 xs:mr-[1.05rem] xs:h-[1.4rem] xs:w-[1.4rem] sm:mr-[1.35rem] sm:h-[1.8rem] sm:w-[1.8rem]"
+                />
+                <label for="agree-promotion" class="text-sm-group font-semibold leading-[150%]">
                   [ 필수 ] 프로필 정보 노출 영역 확인
                 </label>
               </div>
               <a
                 href="#"
                 aria-label="프로필 정보 노출 영역 확인 자세히 보기"
-                class="mr-[0.5625rem] text-sm font-semibold leading-[150%] text-contentSecondary"
+                class="text-sm-group font-semibold leading-[150%] text-contentSecondary"
               >
                 자세히&gt;
               </a>
             </div>
 
             <div role="group" class="flex">
-              <input type="checkbox" id="agree-marketing" name="agree-marketing" class="mr-3 h-4 w-4" />
-              <label for="agree-marketing" class="mr-[1.8125rem] text-sm font-semibold leading-[150%]">
-                [ 필수 ] 사실과 다른 정보를 기재하여 발생한 문제에 대해서는 <br />본인이 일체의 책임을 부담하겠습니다.
+              <input
+                type="checkbox"
+                id="agree-marketing"
+                name="agree-marketing"
+                class="mr-3 h-4 w-4 xs:mr-[1.05rem] xs:h-[1.4rem] xs:w-[1.4rem] sm:mr-[1.35rem] sm:h-[1.8rem] sm:w-[1.8rem]"
+              />
+              <label for="agree-marketing" class="text-sm-group font-semibold leading-[150%]">
+                [ 필수 ] 사실과 다른 정보를 기재하여 발생한 문제에 대해서는 본인이 일체의 책임을 부담하겠습니다.
               </label>
             </div>
           </div>
         </fieldset>
 
-        <div class="flex flex-col items-center gap-[1.125rem] px-4 py-3">
-          <div class="flex w-full gap-[0.5625rem]">
+        <div class="flex flex-col items-center gap-[1.125rem] p-3 xs:p-[1.05rem] sm:p-[1.35rem]">
+          <div class="flex w-full gap-[0.5625rem] xs:gap-[0.7875rem] sm:gap-[1.0125rem]">
             <button
               type="button"
-              class="flex-grow rounded-lg border border-solid border-[#D3D3D3] bg-[#E9E9E9] py-2 text-base font-semibold leading-[150%]"
+              class="text-base-group flex-grow rounded-lg border border-solid border-[#D3D3D3] bg-[#E9E9E9] py-2 font-semibold leading-[150%] xs:rounded-[0.7rem] xs:py-[0.7rem] sm:rounded-[0.9rem] sm:py-[0.9rem]"
             >
               취소
             </button>
             <button
               type="submit"
-              class="flex-grow rounded-lg border border-solid border-[#D3D3D3] bg-[#D8D9E1] py-2 text-base font-semibold leading-[150%]"
+              class="text-base-group flex-grow rounded-lg border border-solid border-[#D3D3D3] bg-[#D8D9E1] py-2 font-semibold leading-[150%] xs:rounded-[0.7rem] xs:py-[0.7rem] sm:rounded-[0.9rem] sm:py-[0.9rem]"
             >
               저장
             </button>
           </div>
-          <a href="#" class="text-sm leading-[160%] text-contentSecondary">정보 초기화 및 이용 동의 철회</a>
+          <a href="#" class="text-sm-group leading-[160%] text-contentSecondary">정보 초기화 및 이용 동의 철회</a>
         </div>
       </form>
+
+      <!-- 모달창 배경 -->
+      <div hidden class="absolute left-0 top-0 z-50 h-screen w-full bg-contentTertiary bg-opacity-20">
+        <!-- 모달창 -->
+        <dialog
+          aria-modal="true"
+          aria-labelledby="modal-title"
+          aria-describedby="modal-description"
+          class="absolute left-1/2 top-1/2 flex w-[70%] -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center gap-5 rounded-[1.25rem] bg-background px-[1.125rem] pb-[1.125rem] pt-5 [box-shadow:0_0.25rem_0.25rem_0_rgba(0,_0,_0,_0.25)]"
+        >
+          <h2 id="modal-title" class="text-base-group leading-[160%]">저장 완료!</h2>
+          <p id="modal-description" class="text-sm-group leading-[160%] text-contentSecondary">
+            내 질문&답변의 프로필 카드, 프로필 홈에서 변경된 프로필 정보를 확인 할 수 있어요.
+          </p>
+          <button
+            aria-label="확인 및 모달 닫기"
+            class="text-base-group w-full cursor-pointer rounded-lg bg-primary py-2 text-background"
+          >
+            확인
+          </button>
+        </dialog>
+      </div>
+
+      <!-- end app -->
     </div>
   </body>
 </html>
