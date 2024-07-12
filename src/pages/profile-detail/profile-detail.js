@@ -16,8 +16,21 @@ function handleSearch() {
   }).open();
 }
 
+function activeButton(btnNode, activeClass, disabledClass) {
+  btnNode.removeAttribute('disabled');
+  btnNode.classList.remove(disabledClass, 'cursor-pointer');
+  btnNode.classList.add(activeClass, 'cursor-not-allowed');
+}
+function disableButton(btnNode, activeClass, disabledClass) {
+  btnNode.setAttribute('disabled', true);
+  btnNode.classList.remove(activeClass, 'cursor-pointer');
+  btnNode.classList.add(disabledClass, 'cursor-not-allowed');
+}
+
 function handleAgreeCheck(e) {
-  const target = e.target;
+  const target = e.target.closest('input[type="checkbox"]');
+  if (!target) return;
+
   if (target.id === 'agree-all') {
     if (target.checked) {
       agreeCheckboxes.forEach((box) => {
@@ -30,17 +43,13 @@ function handleAgreeCheck(e) {
     }
   }
 
-  for (let i = 1; i < agreeCheckboxes.length; i++) {
-    if (!agreeCheckboxes[i].checked) {
-      saveBtn.classList.remove('bg-secondary', 'cursor-pointer');
-      saveBtn.classList.add('bg-[#D8D9E1]', 'cursor-not-allowed');
-      saveBtn.setAttribute('disabled', true);
-      return;
-    }
+  if (agreeCheckboxes[1].checked && agreeCheckboxes[2].checked && agreeCheckboxes[3].checked) {
+    agreeCheckboxes[0].checked = true;
+    activeButton(saveBtn, 'bg-secondary', 'bg-[#D8D9E1]');
+  } else {
+    agreeCheckboxes[0].checked = false;
+    disableButton(saveBtn, 'bg-secondary', 'bg-[#D8D9E1]');
   }
-  saveBtn.removeAttribute('disabled');
-  saveBtn.classList.remove('bg-[#D8D9E1]', 'cursor-not-allowed');
-  saveBtn.classList.add('bg-secondary', 'cursor-pointer');
 }
 
 searchBtn.addEventListener('click', handleSearch);
