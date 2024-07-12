@@ -15,7 +15,7 @@ const navigationTemplate = document.createElement('template');
 navigationTemplate.innerHTML = `
   <style> ${tailwindCSS} </style>
   <nav
-    class="fixed bottom-0 w-full bg-background px-3 pb-6 pt-2 xs:px-[1.05rem] xs:pb-[2.1rem] xs:pt-[0.7rem] sm:px-[1.35rem] sm:pb-[2.7rem] sm:pt-[0.9rem]"
+    class="fixed z-40 bottom-0 w-full bg-background px-3 pb-6 pt-2 xs:px-[1.05rem] xs:pb-[2.1rem] xs:pt-[0.7rem] sm:px-[1.35rem] sm:pb-[2.7rem] sm:pt-[0.9rem]"
   >
     <ul class="flex justify-between">
       <li>
