@@ -9,7 +9,8 @@
     <script type="module" src="/pages/profile-detail/profile-detail.js"></script>
   </head>
   <body>
-    <div id="app" class="mx-auto max-w-screen-md">
+    <div id="app" class="relative">
+      <!-- 헤더 -->
       <header class="flex items-center justify-between border-b-[0.01875rem] border-contentSecondary p-[0.875rem]">
         <h1 class="text-base font-semibold leading-[150%]">기본정보</h1>
         <a role="button" href="/pages/profile/">
@@ -60,7 +61,7 @@
           <fieldset class="flex w-full flex-col gap-2 px-3">
             <legend class="text-base font-semibold leading-[150%]">성별</legend>
 
-            <div role="group" aria-label="성별 선택" class="flex rounded-md bg-[#C4C7D2]">
+            <div role="group" aria-label="성별 선택" class="flex cursor-pointer rounded-md bg-[#C4C7D2]">
               <button
                 type="button"
                 name="gender"
@@ -111,7 +112,7 @@
             role="group"
             class="flex items-center justify-between border-t border-solid border-contentSecondary px-3 py-[0.875rem]"
           >
-            <div>
+            <div class="flex items-center">
               <input type="checkbox" id="agree-all" name="agree-all" class="mr-[0.8125rem] h-4 w-4" />
               <label for="agree-all" class="text-base font-semibold leading-[150%]">아래 내용에 전체 동의합니다.</label>
             </div>
@@ -182,6 +183,31 @@
           <a href="#" class="text-sm leading-[160%] text-contentSecondary">정보 초기화 및 이용 동의 철회</a>
         </div>
       </form>
+
+      <!-- 모달창 배경 -->
+      <div hidden class="absolute left-0 top-0 z-50 h-screen w-full bg-contentTertiary bg-opacity-20">
+        <!-- 모달창 -->
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="modal-title"
+          aria-describedby="modal-description"
+          class="absolute left-1/2 top-1/2 flex w-[70%] -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center gap-5 rounded-[1.25rem] bg-background px-[1.125rem] pb-[1.125rem] pt-5 [box-shadow:0_0.25rem_0.25rem_0_rgba(0,_0,_0,_0.25)]"
+        >
+          <h2 id="modal-title" class="text-base-group leading-[160%]">저장 완료!</h2>
+          <p id="modal-description" class="text-sm-group leading-[160%] text-contentSecondary">
+            내 질문&답변의 프로필 카드, 프로필 홈에서 변경된 프로필 정보를 확인 할 수 있어요.
+          </p>
+          <button
+            aria-label="확인 및 모달 닫기"
+            class="text-base-group w-full cursor-pointer rounded-lg bg-primary py-2 text-background"
+          >
+            확인
+          </button>
+        </div>
+      </div>
+
+      <!-- end app -->
     </div>
   </body>
 </html>
