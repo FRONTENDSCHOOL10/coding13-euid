@@ -1,15 +1,15 @@
 import tailwindCSS from '/styles/tailwind.css?inline'; // css 파일 inline 가져오기
 
-import home from '/assets/icon/home.svg';
-import fullHome from '/assets/icon/full-home.svg';
-import board from '/assets/icon/board.svg';
-import fullBoard from '/assets/icon/full-board.svg';
-import map from '/assets/icon/map.svg';
-import fullMap from '/assets/icon/full-map.svg';
-import chat from '/assets/icon/chat.svg';
-import fullChat from '/assets/icon/full-chat.svg';
-import my from '/assets/icon/my.svg';
-import fullMy from '/assets/icon/full-my.svg';
+import home from '/icon/home.svg';
+import fullHome from '/icon/full-home.svg';
+import board from '/icon/board.svg';
+import fullBoard from '/icon/full-board.svg';
+import map from '/icon/map.svg';
+import fullMap from '/icon/full-map.svg';
+import chat from '/icon/chat.svg';
+import fullChat from '/icon/full-chat.svg';
+import my from '/icon/my.svg';
+import fullMy from '/icon/full-my.svg';
 
 const navigationTemplate = document.createElement('template');
 navigationTemplate.innerHTML = `

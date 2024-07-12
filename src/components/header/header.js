@@ -1,13 +1,13 @@
 import tailwindCSS from '/styles/tailwind.css?inline'; // css 파일 inline 가져오기
 
-import search from '/assets/icon/search.svg';
-import hamburger from '/assets/icon/hamburger.svg';
-import alarmBell from '/assets/icon/alarm-bell.svg';
+import search from '/icon/search.svg';
+import hamburger from '/icon/hamburger.svg';
+import alarmBell from '/icon/alarm-bell.svg';
 
-import directionLeft from '/assets/icon/direction-left.svg';
-import home from '/assets/icon/home.svg';
-import share from '/assets/icon/share.svg';
-import more from '/assets/icon/more.svg';
+import directionLeft from '/icon/direction-left.svg';
+import home from '/icon/home.svg';
+import share from '/icon/share.svg';
+import more from '/icon/more.svg';
 
 class Header extends HTMLElement {
   constructor() {
