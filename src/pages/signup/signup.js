@@ -21,21 +21,27 @@ function signup() {
     }
   });
 
-  verifyButton.addEventListener('click', () => {
+  verifyButton.addEventListener('click', async () => {
     const phoneNumber = phoneInput.value;
 
     if (!verifyButton.disabled) {
       // 6자리 랜덤 코드
       const verificationCode = Math.floor(100000 + Math.random() * 900000);
 
-      localStorage.setItem('phoneNumber', phoneInput.value);
-      localStorage.setItem('verificationCode', verificationCode);
+      try {
+        const newUser = await pb.collection('users').create({
+          phone_number: phoneNumber,
+        });
 
-      // 임시
-      alert(`인증 코드: ${verificationCode}`);
+        localStorage.setItem('phoneNumber', phoneInput.value);
+        localStorage.setItem('verificationCode', verificationCode);
 
-      // signup2.html로 이동 (인증번호 입력하는 페이지로 이동)
-      window.location.href = '/pages/signup/signup2.html';
+        alert(`인증 코드: ${verificationCode}`);
+        // signup2.html로 이동 (인증번호 입력하는 페이지로 이동)
+        window.location.href = '/pages/signup/signup2.html';
+      } catch (error) {
+        console.error('새 사용자 생성 중 오류 발생:', error);
+      }
     }
   });
 }
