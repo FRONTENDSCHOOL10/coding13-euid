@@ -14,7 +14,7 @@ function signup2() {
         await UserService.registerUser(phoneNumber);
         await UserService.login(phoneNumber);
       } catch (error) {
-        if (error?.originalError?.data?.data?.phone_number?.code === 'validation_not_unique') {
+        if (error?.response?.data?.phone_number?.code === 'validation_not_unique') {
           alert(`이미 이 번호로 가입된 사용자가 있습니다. 로그인해주세요.`);
           window.location.href = '/pages/login/';
         } else {
