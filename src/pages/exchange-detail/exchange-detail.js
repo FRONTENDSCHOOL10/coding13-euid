@@ -100,31 +100,30 @@ async function renderRelatedList({ id, category }) {
   });
 }
 
-renderPostDetail()
-  .then((res) => {
-    renderRelatedList(res);
-  })
+renderPostDetail().then((res) => {
   // 스와이퍼 정의
-  .then(() => {
-    const slides = document.querySelectorAll('.swiper-slide');
+  const slides = document.querySelectorAll('.swiper-slide');
 
-    const swiper = new Swiper('.swiper', {
-      modules: [Pagination],
-      loop: slides.length > 1,
-      pagination: {
-        el: '.swiper-pagination',
-        type: 'bullets',
-      },
-      keyboard: {
-        enabled: true,
-      },
-      a11y: {
-        enabled: true,
-        prevSlideMessage: '이전 슬라이드',
-        nextSlideMessage: '다음 슬라이드',
-        firstSlideMessage: '첫 번째 슬라이드',
-        lastSlideMessage: '마지막 슬라이드',
-        paginationBulletMessage: '{{index}}번째 슬라이드로 이동',
-      },
-    });
+  const swiper = new Swiper('.swiper', {
+    modules: [Pagination],
+    loop: slides.length > 1,
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'bullets',
+    },
+    keyboard: {
+      enabled: true,
+    },
+    a11y: {
+      enabled: true,
+      prevSlideMessage: '이전 슬라이드',
+      nextSlideMessage: '다음 슬라이드',
+      firstSlideMessage: '첫 번째 슬라이드',
+      lastSlideMessage: '마지막 슬라이드',
+      paginationBulletMessage: '{{index}}번째 슬라이드로 이동',
+    },
   });
+
+  // 연관 글 목록 렌더링
+  renderRelatedList(res);
+});
