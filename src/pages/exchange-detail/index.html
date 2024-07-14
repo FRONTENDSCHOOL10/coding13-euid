@@ -10,21 +10,14 @@
     <script type="module" src="/pages/exchange-detail/exchange-detail.js"></script>
   </head>
   <body>
-    <div id="app" role="main" aria-live="polite" class="min-w-[20rem]">
+    <div id="app" aria-live="polite" class="min-w-[20rem]">
       <h1 class="sr-only">거래글 상세페이지</h1>
       <!-- 헤더 -->
       <c-header data-page="거래글"></c-header>
 
       <!-- 이미지 슬라이드 -->
       <div role="region" aria-label="물품 이미지 슬라이더" class="swiper">
-        <div class="swiper-wrapper">
-          <div aria-roledescription="slide" class="swiper-slide">
-            <img src="/assets/exchangeItem.png" alt="물품사진1" class="w-screen object-cover" />
-          </div>
-          <div aria-roledescription="slide" class="swiper-slide">
-            <img src="/assets/exchangeItem.png" alt="물품사진2" class="w-screen object-cover" />
-          </div>
-        </div>
+        <div class="swiper-wrapper"></div>
         <div role="group" aria-label="슬라이드 페이지네이션" class="swiper-pagination"></div>
       </div>
 
@@ -35,21 +28,18 @@
         class="flex items-center justify-between px-[0.8125rem] py-[0.625rem] xs:px-[1.1375rem] xs:py-[0.875rem] sm:px-[1.4625rem] sm:py-[1.125rem]"
       >
         <!-- 아이콘, 닉네임, 주소 -->
-        <div class="flex gap-[0.38rem] xs:gap-[0.532rem] sm:gap-[0.684rem]">
+        <div class="flex items-center gap-[0.38rem] xs:gap-[0.532rem] sm:gap-[0.684rem]">
           <img
             src="/assets/profileIcon.png"
             alt="프로필 아이콘"
             class="w-10 rounded-full xs:w-[3.5rem] sm:w-[4.5rem]"
           />
           <div class="flex flex-col">
-            <span class="text-base-group font-semibold">
-              <span class="sr-only">판매자 닉네임</span>
-              맥이뜸
-            </span>
-            <span class="text-sm-group">
-              <span class="sr-only">판매자 주소</span>
-              응암동
-            </span>
+            <span class="sr-only">판매자 닉네임</span>
+            <span id="user-name" class="text-base-group font-semibold">닉네임</span>
+
+            <span class="sr-only">판매자 주소</span>
+            <span id="user-address" class="text-sm-group">주소</span>
           </div>
         </div>
         <!-- 매너온도 -->
@@ -70,18 +60,17 @@
 
       <!-- 글 내용 -->
       <div class="p-3 xs:p-[1.05rem] sm:p-[1.35rem]">
-        <h2 class="text-lg-group mb-1 font-semibold leading-[150%] xs:mb-[0.35rem] sm:mb-[0.45rem]">
-          2020 MacBook Air M1
+        <h2 id="post-title" class="text-lg-group mb-1 font-semibold leading-[150%] xs:mb-[0.35rem] sm:mb-[0.45rem]">
+          제목
         </h2>
         <p
           class="text-sm-group mb-[0.8125rem] leading-[160%] text-contentSecondary xs:mb-[1.1375rem] sm:mb-[1.4625rem]"
         >
-          컴퓨터 <span aria-hidden="true">&middot;</span> 17분전
+          <span id="post-category">카테고리</span>
+          <span aria-hidden="true">&middot;</span>
+          <span id="post-created">작성시간</span>
         </p>
-        <p class="text-base-group mb-3 leading-[160%] xs:mb-[1.05rem] sm:mb-[1.35rem]">
-          상태 깨끗하고 좋아요<br />
-          왜냐하면 맥을 사용할 줄 몰라서 넷플릭스용으로만 봤어요. 집근처에서 거래 희망합니다.
-        </p>
+        <p id="post-description" class="text-base-group mb-3 leading-[160%] xs:mb-[1.05rem] sm:mb-[1.35rem]">설명</p>
       </div>
 
       <!-- 가격 및 채팅 메뉴 -->
@@ -90,7 +79,7 @@
       >
         <div class="flex items-center gap-[0.8125rem] xs:gap-[1.1375rem] sm:gap-[1.4625rem]">
           <!-- 하트 이미지 -->
-          <button type="button" aria-label="찜하기">
+          <button type="button" aria-label="관심글 추가">
             <img src="/icon/heart.svg" alt="하트" class="w-5 xs:w-[1.75rem] sm:w-[2.25rem]" />
           </button>
 
@@ -99,7 +88,7 @@
 
           <!-- 가격 -->
           <div class="flex flex-col">
-            <strong class="text-base-group font-semibold leading-[150%]">820,000원</strong>
+            <strong id="post-price" class="text-base-group font-semibold leading-[150%]">가격</strong>
             <a href="#" class="text-sm-group font-semibold leading-[150%] text-secondary">가격 제안하기</a>
           </div>
         </div>
@@ -121,52 +110,11 @@
           이 글과 함께 봤어요
         </h3>
         <!-- 목록 -->
-        <ul aria-label="연관 글 목록" class="flex flex-wrap gap-4 xs:gap-[1.4rem] sm:gap-[1.8rem]">
-          <li class="mb-5 w-[43.125vw] xs:mb-[1.75rem] sm:mb-[2.25rem]">
-            <article>
-              <img
-                src="/assets/storyImage.png"
-                alt="스토리 이미지"
-                class="mb-3 w-[43.125vw] rounded-[5.797101449275362%] [aspect-ratio:8.625/6.5] xs:mb-[1.05rem] sm:mb-[1.35rem]"
-              />
-              <h4 class="text-sm-group leading-[160%]">스타벅스 아메리카노</h4>
-              <strong class="text-sm-group font-semibold">10,000원</strong>
-            </article>
-          </li>
-          <li class="mb-5 w-[43.125vw] xs:mb-[1.75rem] sm:mb-[2.25rem]">
-            <article>
-              <img
-                src="/assets/storyImage.png"
-                alt="스토리 이미지"
-                class="mb-3 w-[43.125vw] rounded-[5.797101449275362%] [aspect-ratio:8.625/6.5] xs:mb-[1.05rem] sm:mb-[1.35rem]"
-              />
-              <h4 class="text-sm-group leading-[160%]">스타벅스 아메리카노</h4>
-              <strong class="text-sm-group font-semibold">10,000원</strong>
-            </article>
-          </li>
-          <li class="mb-5 w-[43.125vw] xs:mb-[1.75rem] sm:mb-[2.25rem]">
-            <article>
-              <img
-                src="/assets/storyImage.png"
-                alt="스토리 이미지"
-                class="mb-3 w-[43.125vw] rounded-[5.797101449275362%] [aspect-ratio:8.63/6.5] xs:mb-[1.05rem] sm:mb-[1.35rem]"
-              />
-              <h4 class="text-sm-group leading-[160%]">스타벅스 아메리카노</h4>
-              <strong class="text-sm-group font-semibold">10,000원</strong>
-            </article>
-          </li>
-          <li class="mb-5 w-[43.125vw] xs:mb-[1.75rem] sm:mb-[2.25rem]">
-            <article>
-              <img
-                src="/assets/storyImage.png"
-                alt="스토리 이미지"
-                class="mb-3 w-[43.125vw] rounded-[5.797101449275362%] [aspect-ratio:8.63/6.5] xs:mb-[1.05rem] sm:mb-[1.35rem]"
-              />
-              <h4 class="text-sm-group leading-[160%]">스타벅스 아메리카노</h4>
-              <strong class="text-sm-group font-semibold">10,000원</strong>
-            </article>
-          </li>
-        </ul>
+        <ul
+          id="related-list"
+          aria-label="연관 글 목록"
+          class="flex flex-wrap gap-4 xs:gap-[1.4rem] sm:gap-[1.8rem]"
+        ></ul>
       </div>
     </div>
   </body>
