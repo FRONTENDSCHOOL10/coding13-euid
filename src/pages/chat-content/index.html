@@ -9,7 +9,7 @@
     <script type="module" src="/pages/chat-content/chat-content.js"></script>
   </head>
   <body>
-    <div id="app">
+    <div id="app" class="pb-[5.025rem] xs:pb-[6.94rem] sm:pb-[9.011875rem]">
       <h1 class="sr-only">채팅내용</h1>
 
       <!-- 헤더 -->
@@ -19,13 +19,13 @@
         <a role="button" href="javascript:history.back()" aria-label="이전 페이지로 이동">
           <img
             src="/icon/direction-left.svg"
-            alt="뒤로 가기"
+            alt=""
             aria-hidden="true"
             class="aspect-square w-5 xs:w-[1.75rem] sm:w-[2.25rem]"
           />
         </a>
         <div class="flex flex-col items-center">
-          <span class="text-base-group font-semibold leading-[150%]">카페인조아</span>
+          <span id="opponent-name" class="text-base-group font-semibold leading-[150%]">상대방 이름</span>
           <span class="text-sm-group leading-[160%] text-contentSecondary">보통 3일 내 응답</span>
         </div>
         <button>
@@ -44,111 +44,31 @@
           class="flex gap-2 xs:gap-[0.7rem] sm:gap-[0.9rem]"
         >
           <img
+            id="exchange-photo"
             src="/assets/storyImage.png"
             alt="판매 물품 이미지"
             aria-hidden="true"
-            class="aspect-square w-[10.625vw] rounded-[11.737089201877934%]"
+            class="h-[10.625vw] w-[10.625vw] rounded-[11.737089201877934%]"
           />
           <div class="flex flex-col">
             <span class="text-sm-group leading-[160%]">
-              <strong class="font-semibold leading-[150%]">판매중</strong>
+              <strong id="exchange-state" class="font-semibold leading-[150%]">상태</strong>
               <span class="sr-only">판매 물품명</span>
-              intel mac 2017
+              <span id="exchange-title">물품명</span>
             </span>
-            <strong class="text-sm-group font-semibold leading-[150%]">
+            <span class="text-sm-group font-semibold leading-[150%]">
               <span class="sr-only">물품 가격</span>
-              800,000원
-            </strong>
+              <strong id="exchange-price">가격</strong>
+            </span>
           </div>
         </a>
       </section>
 
       <!-- 채팅 내용 -->
-      <main class="flex flex-col gap-2 px-3 xs:gap-[0.7rem] xs:px-[1.05rem] sm:gap-[0.9rem] sm:px-[1.35rem]">
-        <!-- 메세지 전송일 -->
-        <span
-          class="text-sm-group py-1 text-center leading-[160%] text-contentSecondary xs:py-[0.35rem] sm:py-[0.45rem]"
-        >
-          <span class="sr-only">메세지 전송일</span>
-          2023년 2월 21일
-        </span>
-
-        <!-- sender's message -->
-        <div
-          role="group"
-          aria-label="보낸 메세지"
-          class="flex items-end justify-end gap-[0.125rem] xs:gap-[0.175rem] sm:gap-[0.225rem]"
-        >
-          <span class="text-sm-group leading-[160%] text-contentSecondary">
-            <span class="sr-only">메세지 전송 시간</span>
-            오후 4:30
-          </span>
-          <div
-            class="text-base-group w-fit max-w-[80%] rounded-[1.25rem] bg-[#8DB0F9] px-[0.875rem] py-2 text-background xs:rounded-[1.75rem] xs:px-[1.225rem] xs:py-[0.7rem] sm:rounded-[2.25rem] sm:px-[1.575rem] sm:py-[0.9rem]"
-          >
-            가격 네고 가능한가요?
-          </div>
-        </div>
-
-        <div
-          role="group"
-          aria-label="보낸 메세지"
-          class="flex items-end justify-end gap-[0.125rem] xs:gap-[0.175rem] sm:gap-[0.225rem]"
-        >
-          <span class="text-sm-group leading-[160%] text-contentSecondary">
-            <span class="sr-only">메세지 전송 시간</span>
-            오후 5:32
-          </span>
-          <div
-            class="text-base-group w-fit max-w-[80%] rounded-[1.25rem] bg-[#8DB0F9] px-[0.875rem] py-2 text-background xs:rounded-[1.75rem] xs:px-[1.225rem] xs:py-[0.7rem] sm:rounded-[2.25rem] sm:px-[1.575rem] sm:py-[0.9rem]"
-          >
-            목요일 거래 가능할까요?
-          </div>
-        </div>
-
-        <!-- 메세지 전송일 -->
-        <span
-          class="text-sm-group py-1 text-center leading-[160%] text-contentSecondary xs:py-[0.35rem] sm:py-[0.45rem]"
-        >
-          <span class="sr-only">메세지 전송일</span>
-          2023년 2월 22일
-        </span>
-
-        <!-- sender's message -->
-        <div
-          role="group"
-          aria-label="보낸 메세지"
-          class="flex items-end justify-end gap-[0.125rem] xs:gap-[0.175rem] sm:gap-[0.225rem]"
-        >
-          <span class="text-sm-group leading-[160%] text-contentSecondary">
-            <span class="sr-only">메세지 전송 시간</span>
-            오후 9:16
-          </span>
-          <div
-            class="text-base-group w-fit max-w-[80%] rounded-[1.25rem] bg-[#8DB0F9] px-[0.875rem] py-2 text-background xs:rounded-[1.75rem] xs:px-[1.225rem] xs:py-[0.7rem] sm:rounded-[2.25rem] sm:px-[1.575rem] sm:py-[0.9rem]"
-          >
-            판매 안하시나요?ㅠㅠ
-          </div>
-        </div>
-
-        <!-- receiver's message -->
-        <div
-          role="group"
-          aria-label="받은 메세지"
-          class="flex items-end justify-start gap-[0.125rem] xs:gap-[0.175rem] sm:gap-[0.225rem]"
-        >
-          <div
-            class="text-base-group w-fit max-w-[80%] rounded-[1.25rem] bg-[#EBECF0] px-[0.875rem] py-2 text-contentPrimary xs:rounded-[1.75rem] xs:px-[1.225rem] xs:py-[0.7rem] sm:rounded-[2.25rem] sm:px-[1.575rem] sm:py-[0.9rem]"
-          >
-            죄송해요ㅠㅠ 제가 핸드폰을 바꿔서 지금봤네요ㅠㅠ 팡매는 안됐는데 먼저 연락하신분이 있어서 답장 기다리고
-            있습니다 ㅠㅠ
-          </div>
-          <span class="text-sm-group leading-[160%] text-contentSecondary">
-            <span class="sr-only">메세지 전송 시간</span>
-            오후 9:16
-          </span>
-        </div>
-      </main>
+      <main
+        id="content-area"
+        class="flex flex-col gap-2 px-3 xs:gap-[0.7rem] xs:px-[1.05rem] sm:gap-[0.9rem] sm:px-[1.35rem]"
+      ></main>
 
       <!-- 메세지 보내기 -->
       <form
@@ -175,11 +95,11 @@
             id="message-input"
             name="message-input"
             placeholder="메세지 보내기"
-            class="text-base-group flex w-full items-center rounded-full bg-[#EBECF0] px-3 py-2 leading-[160%] text-contentTertiary xs:px-[1.05rem] xs:py-[0.7rem] sm:px-[1.35rem] sm:py-[0.9rem]"
+            class="text-base-group flex w-full items-center rounded-full bg-[#EBECF0] px-3 py-2 leading-[160%] xs:px-[1.05rem] xs:py-[0.7rem] sm:px-[1.35rem] sm:py-[0.9rem]"
           />
         </div>
         <!-- 메세지 보내기 버튼 -->
-        <button type="submit" aria-label="메세지 보내기">
+        <button id="send-btn" type="submit" aria-label="메세지 보내기">
           <img
             src="/icon/send.svg"
             alt="메세지 보내기"
