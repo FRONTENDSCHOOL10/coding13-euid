@@ -3,6 +3,7 @@ import pb from '@/api/pocketbase';
 export class UserService {
   static initializeState(state) {}
 
+  /** 페이지별로 한 번씩만 불러와서 재사용하기 */
   static async currentUser(shouldRedirect = true) {
     // https://github.com/pocketbase/pocketbase/discussions/1390#discussioncomment-4498324
     if (pb.authStore.isValid) {
@@ -21,6 +22,11 @@ export class UserService {
     } else {
       return null;
     }
+  }
+
+  static logout() {
+    pb.authStore.clear();
+    window.location.href = '/pages/start/';
   }
 
   static async login(phoneNumber) {

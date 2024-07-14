@@ -32,8 +32,8 @@
             />
             <div class="flex h-[1.75rem] flex-row items-center xs:h-[2.45rem] sm:h-[3.15rem]">
               <span class="text-lg-group pt-[0.125rem] font-bold leading-[1.5]"
-                ><span class="sr-only">내 닉네임</span>EUID***</span
-              >
+                ><span class="sr-only">내 닉네임</span><span id="username"></span
+              ></span>
               <span
                 class="text-sm-group ml-[0.375rem] h-[1.0625rem] rounded-full border-[0.04375rem] border-secondary px-1 leading-[1.6] text-secondary xs:ml-[0.525rem] xs:h-[1.4875rem] xs:px-2 xs:pt-[0.0625rem] xs:text-base sm:ml-[0.675rem]"
                 ><span class="sr-only">내 기수</span>4기</span
@@ -399,12 +399,16 @@
               >
             </li>
             <li class="flex flex-row">
-              <a
-                href="#"
+              <button
+                id="logout"
+                type="button"
                 class="text-base-group flex w-full flex-row justify-between py-[0.5625rem] pl-[1.125rem] pr-[0.75rem] leading-[1.6] xs:py-[0.7875rem] xs:pl-[1.575rem] xs:pr-[1.05rem] sm:py-[1.0125rem] sm:pl-[2.025rem] sm:pr-[1.35rem]"
-                ><span>로그아웃</span
-                ><span class="text-secondary"><span class="sr-only">현재 사용자</span>kimchihi</span></a
               >
+                <span>로그아웃</span
+                ><span class="text-secondary"
+                  ><span class="sr-only">현재 사용자</span><span id="logout-button__username"></span
+                ></span>
+              </button>
             </li>
           </ul>
         </section>
