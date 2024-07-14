@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enter EUID</title>
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="/styles/tailwind.css" />
+    <script type="module" src="/pages/signup/signup2.js"></script>
+  </head>
+  <body>
+    <div id="app" class="mx-auto">
+      <nav class="flex h-9 xs:h-[3.15rem] sm:h-[4.05rem]">
+        <a href="/pages/category/index.html"
+          ><img
+            class="my-2 ml-3 h-5 w-5 xs:my-[0.7rem] xs:ml-[1.05rem] xs:h-[1.75rem] xs:w-[1.75rem] sm:my-[0.9rem] sm:ml-[1.35rem] sm:h-[2.25rem] sm:w-[2.25rem]"
+            src="/icon/direction-left.svg"
+            alt="이전 페이지로 돌아가기"
+        /></a>
+      </nav>
+
+      <form class="mx-3 flex flex-col items-center xs:mx-[1.05rem] sm:mx-[1.35rem]">
+        <label for="input-phone-number" class="sr-only">입력한 전화번호</label>
+        <input
+          type="number"
+          id="input-phone-number"
+          class="text-base-group mb-3 w-full rounded border border-black py-2 pl-3 font-normal focus:border-[0.03125rem] focus:border-solid focus:border-black focus:placeholder:text-black xs:mb-[1.05rem] xs:py-[0.7rem] xs:pl-[1.05rem] sm:mb-[1.35rem] sm:py-[0.9rem] sm:pl-[1.35rem]"
+          disabled
+        />
+        <button
+          type="button"
+          class="text-base-group mb-3 w-full rounded border-[0.03125rem] border-solid border-contentSecondary bg-white py-2 font-semibold xs:mb-[1.05rem] xs:py-[0.7rem] sm:mb-[1.35rem] sm:py-[0.9rem]"
+        >
+          인증문자 다시 받기
+        </button>
+        <label for="verification-number" class="sr-only">인증번호 입력하기</label>
+        <input
+          type="number"
+          placeholder="인증번호 입력"
+          id="verification-number"
+          class="text-base-group w-full rounded border border-black py-2 pl-3 font-normal focus:border-[0.03125rem] focus:border-solid focus:border-black focus:placeholder:text-black xs:py-[0.7rem] xs:pl-[1.05rem] sm:py-[0.9rem] sm:pl-[1.35rem]"
+        />
+        <span class="text-sm-group mb-3 self-start text-contentSecondary xs:mb-[1.05rem] sm:mb-[1.35rem]"
+          >어떤 경우에도 타인에게 공유하지 마세요!</span
+        >
+
+        <button
+          id="agree"
+          type="button"
+          class="text-base-group mb-3 w-full rounded-lg border-[0.03125rem] border-solid border-contentSecondary bg-contentSecondary py-3 font-semibold text-white xs:mb-[1.05rem] xs:py-[1.05rem] sm:mb-[1.35rem] sm:py-[0.9rem]"
+        >
+          동의하고 시작하기
+        </button>
+        <!-- <a href="/pages/" class="underline text-contentSecondary underline-offset-2">인증번호가 오지 않아요?</a> -->
+      </form>
+    </div>
+  </body>
+</html>

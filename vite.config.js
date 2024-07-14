@@ -27,6 +27,8 @@ export default defineConfig(({ command, mode }) => {
           login: resolve(__dirname, 'src', 'pages', 'login', 'index.html'),
           chat: resolve(__dirname, 'src', 'pages', 'chat', 'index.html'),
           chatContent: resolve(__dirname, 'src', 'pages', 'chat-content', 'index.html'),
+          signup2: resolve(__dirname, 'src', 'pages', 'signup', 'signup2.html'),
+          login2: resolve(__dirname, 'src', 'pages', 'login', 'login2.html'),
         },
       },
     },
