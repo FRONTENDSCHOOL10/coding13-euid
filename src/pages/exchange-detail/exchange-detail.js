@@ -17,14 +17,16 @@ const postDescription = document.getElementById('post-description');
 const postPrice = document.getElementById('post-price');
 const relatedList = document.getElementById('related-list');
 
+// query string으로 판매글 식별
+const params = new URLSearchParams(location.search);
+const post_id = params.get('post');
+
 // post 내용 렌더링 함수
 async function renderPostDetail() {
-  // query string으로 판매글 식별
-  const params = new URLSearchParams(location.search);
-  const post_id = params.get('post');
-
   // post 정보 불러오기
-  const data = await pb.collection('posts').getOne(post_id);
+  const data = await pb.collection('posts').getOne(post_id, {
+    expand: 'user_id',
+  });
   const { id, user_id, category, photo, title, description, price, state, created } = data;
 
   // 물품 사진 슬라이드 생성
@@ -39,10 +41,8 @@ async function renderPostDetail() {
     swiperWrapper.insertAdjacentHTML('beforeend', slideTemplate);
   });
 
-  // 판매자 정보 불러오기
-  const userData = await pb.collection('users').getOne(user_id);
-  const { username, address } = userData;
   // 판매자 정보 삽입
+  const { username, address } = data.expand.user_id;
   userName.innerText = username;
   userAddress.innerText = address;
 
