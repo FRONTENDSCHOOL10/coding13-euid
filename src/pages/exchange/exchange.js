@@ -1,6 +1,55 @@
 import pb from '/api/pocketbase/';
 import { getPbImagesURL } from '/api/getPbImageURL/';
 
+const ul = document.querySelector('#exchange-list');
+const plusButton = document.querySelector('#plus-button');
+
+function renderState(item) {
+  const state = ul.querySelector('li > a > section > div > span');
+
+  if (item.state === '거래완료') {
+    state.classList.add('bg-contentTertiary');
+    state.innerText = '거래 완료';
+  }
+
+  if (item.state === '예약중') {
+    state.classList.add('bg-tertiary');
+    state.innerText = '예약중';
+  }
+
+  if (item.state === '') {
+    state.classList.add('hidden');
+  }
+}
+
+function renderTime(item) {
+  // 31일, 28일 등 달마다 날짜가 다른 것, 윤달 등은 반영되지 않는 코드입니다.
+  const time = ul.querySelector('li > a > section > span');
+
+  const elapsedTime = () => {
+    const createTimestamp = Date.parse(item.created.slice(0, 19));
+    const now = new Date();
+    const nowTimestamp = now.getTime();
+
+    const seconds = Math.floor((nowTimestamp - createTimestamp) / 1000);
+    if (seconds < 60) return '방금 전';
+
+    const minutes = seconds / 60;
+    if (minutes < 60) return `${Math.floor(minutes)}분 전`;
+
+    const hours = minutes / 60;
+    if (hours < 24) return `${Math.floor(hours)}시간 전`;
+
+    const days = hours / 24;
+    if (days < 7) return `${Math.floor(days)}일 전`;
+    else if (days < 30) return `${Math.floor(days / 7)}주 전`;
+    else if (days < 365) return `${Math.floor(days / 30)}달 전`;
+    else return '오래 전';
+  };
+
+  time.insertAdjacentHTML('beforeend', elapsedTime());
+}
+
 async function renderPostList() {
   const postList = await pb.collection('posts').getFullList({
     sort: 'created',
@@ -8,7 +57,6 @@ async function renderPostList() {
 
   for (let item of postList) {
     const postCreator = await pb.collection('users').getOne(item.user_id);
-    const ul = document.querySelector('#exchange-list');
 
     // 좋아요 수에 각 게시글에 저장된 좋아요 개수를 불러오도록 수정해야 합니다. (pocketbase 항목 추가 필요)
     const template = `
@@ -52,60 +100,11 @@ async function renderPostList() {
 
     ul.insertAdjacentHTML('afterbegin', template);
 
-    function renderState() {
-      const state = ul.querySelector('li > a > section > div > span');
+    renderState(item);
 
-      if (item.state === '거래완료') {
-        state.classList.add('bg-contentTertiary');
-        state.innerText = '거래 완료';
-      }
-
-      if (item.state === '예약중') {
-        state.classList.add('bg-tertiary');
-        state.innerText = '예약중';
-      }
-
-      if (item.state === '') {
-        state.classList.add('hidden');
-      }
-    }
-
-    renderState();
-
-    function renderTime() {
-      const time = ul.querySelector('li > a > section > span');
-
-      const elapsedTime = () => {
-        const createTimestamp = Date.parse(item.created.slice(0, 19));
-        const now = new Date();
-        const nowTimestamp = now.getTime();
-
-        const seconds = Math.floor((nowTimestamp - createTimestamp) / 1000);
-        if (seconds < 60) return '방금 전';
-
-        const minutes = seconds / 60;
-        if (minutes < 60) return `${Math.floor(minutes)}분 전`;
-
-        const hours = minutes / 60;
-        if (hours < 24) return `${Math.floor(hours)}시간 전`;
-
-        const days = hours / 24;
-        if (days < 7) return `${Math.floor(days)}일 전`;
-        else if (days < 30) return `${Math.floor(days / 7)}주 전`;
-        else if (days < 365) return `${Math.floor(days / 30)}달 전`;
-        else return '오래 전';
-      };
-
-      time.insertAdjacentHTML('beforeend', elapsedTime());
-    }
-
-    renderTime();
+    renderTime(item);
   }
 }
-
-renderPostList();
-
-const plusButton = document.querySelector('#plus-button');
 
 function handleClick() {
   const writeButtonList = document.querySelector('#write-button-list');
@@ -119,5 +118,7 @@ function handleClick() {
   plusButton.classList.toggle('after:rotate-45');
   plusButton.classList.toggle('after:bg-contentPrimary');
 }
+
+renderPostList();
 
 plusButton.addEventListener('click', handleClick);
