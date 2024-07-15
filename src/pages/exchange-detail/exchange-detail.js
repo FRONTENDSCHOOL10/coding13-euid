@@ -4,14 +4,17 @@ import { getPbImageURL, getPbImagesURL } from '/api/getPbImageURL';
 import pb from '/api/pocketbase.js';
 import { UserService } from '/service/UserService.js';
 import calcTimeDifference from '/utils/calcTimeDifference.js';
+import debounce from '/utils/debounce';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
 
+// currentUser를 사용하기 위해 async함수로 감쌌음
 async function exchangeDetail() {
+  /* --------------------------- 로그인된 유저 정보 + 토큰 검증 --------------------------- */
   const currentUser = await UserService.currentUser();
 
-  // DOM 요소 선택
+  /* -------------------------------- DOM 요소 선택 ------------------------------- */
   const swiperWrapper = document.querySelector('.swiper-wrapper');
   const userAvatar = document.getElementById('user-avatar');
   const userName = document.getElementById('user-name');
@@ -24,11 +27,13 @@ async function exchangeDetail() {
   const relatedList = document.getElementById('related-list');
   const chatBtn = document.getElementById('chat-btn');
   const interestBtn = document.getElementById('interest-btn');
+  const interestIcon = interestBtn.querySelector('img');
 
-  // query string으로 판매글 식별
+  /* -------------------------- query string으로 판매글 식별 ------------------------- */
   const params = new URLSearchParams(location.search);
   const post_id = params.get('post');
 
+  /* --------------------------------- 렌더링 함수 --------------------------------- */
   // post 내용 렌더링 함수
   async function renderPostDetail() {
     try {
@@ -42,8 +47,8 @@ async function exchangeDetail() {
       photo.forEach((item, index) => {
         // 슬라이드 템플릿
         const slideTemplate = `
-      <div aria-roledescription="slide" class="swiper-slide w-screen">
-        <img src=${getPbImagesURL(data, index)} alt="물품사진${index + 1}" class="w-screen aspect-square object-cover" />
+      <div aria-roledescription="slide" class="swiper-slide w-screen h-[100vw]">
+        <img src=${getPbImagesURL(data, index)} alt="물품사진${index + 1}" class="w-screen h-[100vw] object-cover" />
       </div>
     `;
         // 슬라이드 삽입
@@ -62,6 +67,15 @@ async function exchangeDetail() {
       postDescription.textContent = description;
       postPrice.textContent = `${price.toLocaleString()}원`;
       postCreated.textContent = calcTimeDifference(created);
+
+      // '관심글 등록' 버튼 아이콘 및 pressed 상태 렌더링
+      if (currentUser.interesting.includes(post_id)) {
+        interestIcon.src = '/icon/heart-solid.svg';
+        interestBtn.ariaPressed = 'true';
+      } else {
+        interestIcon.src = '/icon/heart.svg';
+        interestBtn.ariaPressed = 'false';
+      }
 
       return data;
     } catch (err) {
@@ -100,6 +114,8 @@ async function exchangeDetail() {
     }
   }
 
+  /* -------------------------------- 이벤트 핸들링 함수 ------------------------------- */
+  // '채팅하기 버튼' 클릭 핸들링함수
   function handleClickChat({ id: post_id, user_id }) {
     pb.collection('chats')
       .getFirstListItem(`post_id = "${post_id}" && sender_id = "${currentUser.id}"`)
@@ -131,6 +147,54 @@ async function exchangeDetail() {
       });
   }
 
+  // '관심글' 서버 업데이트 함수
+  async function updateInterest(postId, userId, isPressed) {
+    try {
+      const user = await pb.collection('users').getOne(userId);
+      const post = await pb.collection('posts').getOne(postId);
+
+      // const interestedCount = post.interested.length;
+      // 사용자의 interesting 목록에 포스트 ID가 있는지 확인
+      const isInterested = user.interesting.includes(postId);
+
+      // 원래 interested였는지 && 버튼이 눌렸는지 상태에 따라 배열수정
+      if (isPressed && !isInterested) {
+        user.interesting.push(postId);
+        post.interested.push(userId);
+      } else if (!isPressed && isInterested) {
+        user.interesting = user.interesting.filter((id) => id !== postId);
+        post.interested = post.interested.filter((id) => id !== userId);
+      }
+
+      // 사용자, 포스트 정보 업데이트
+      await pb.collection('users').update(userId, { interesting: user.interesting });
+      await pb.collection('posts').update(postId, { interested: post.interested });
+    } catch (error) {
+      console.error('Error toggling interest:', error);
+    }
+  }
+  // '관심글' 서버 업데이트 함수를 1초 디바운스
+  const debounceInterest = debounce(updateInterest, 1000);
+
+  // '관심글 등록 버튼' 클릭 핸들링 함수
+  function handleClickInterest({ id: post_id }) {
+    // 버튼의 토글 상태
+    let isPressed;
+
+    if (interestBtn.ariaPressed === 'true') {
+      interestBtn.ariaPressed = 'false';
+      interestIcon.src = '/icon/heart.svg';
+      isPressed = false;
+    } else {
+      interestBtn.ariaPressed = 'true';
+      interestIcon.src = '/icon/heart-solid.svg';
+      isPressed = true;
+    }
+
+    debounceInterest(post_id, currentUser.id, isPressed);
+  }
+
+  /* --------------------------------- 함수 실행부 --------------------------------- */
   renderPostDetail().then((res) => {
     // 스와이퍼 정의
     const slides = document.querySelectorAll('.swiper-slide');
@@ -157,13 +221,17 @@ async function exchangeDetail() {
 
     // 연관 글 목록 렌더링
     renderRelatedList(res);
-    // 채팅하기 버튼 핸들링
+    // '채팅하기 버튼' 핸들링
     chatBtn.addEventListener('click', (e) => {
       e.preventDefault();
       handleClickChat(res);
     });
-    interestBtn.addEventListener('click', () => {});
+    // '관심글 등록 버튼' 핸들링
+    interestBtn.addEventListener('click', () => {
+      handleClickInterest(res);
+    });
   });
 }
 
+// 전체 실행
 exchangeDetail();
