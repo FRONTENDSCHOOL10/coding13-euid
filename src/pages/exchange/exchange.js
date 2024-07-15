@@ -1,9 +1,5 @@
 import pb from '/api/pocketbase/';
-
-// 주원님이 작성하신 함수 임시로 가져왔습니다. 추후 import로 가져와서 사용하겠습니다.
-function getPbImagesURL(item, index, fileName = 'photo') {
-  return `https://enter-euid.pockethost.io/api/files/${item.collectionId}/${item.id}/${item[fileName][index]}`;
-}
+import { getPbImagesURL } from '/api/getPbImageURL/';
 
 async function renderPostList() {
   const postList = await pb.collection('posts').getFullList({
@@ -12,9 +8,8 @@ async function renderPostList() {
 
   for (let item of postList) {
     const postCreator = await pb.collection('users').getOne(item.user_id);
-    const ul = document.querySelector('ul[aria-label="거래 물품"]');
+    const ul = document.querySelector('#exchange-list');
 
-    // a 태그의 링크는 추후 각 게시글의 링크로 이동할 수 있도록 수정해야 합니다.
     // 좋아요 수에 각 게시글에 저장된 좋아요 개수를 불러오도록 수정해야 합니다. (pocketbase 항목 추가 필요)
     const template = `
       <li>
@@ -41,7 +36,7 @@ async function renderPostList() {
               </span>
               <!-- // 거래 상태 -->
               <span class="text-base-group font-semibold leading-normal">
-                <span class="sr-only">물품가격</span>${item.price}원
+                <span class="sr-only">물품가격</span>${item.price.toLocaleString()}원
               </span>
             </div>
           </section>
@@ -110,10 +105,10 @@ async function renderPostList() {
 
 renderPostList();
 
-const plusButton = document.querySelector('button[aria-label="게시글 추가"]');
+const plusButton = document.querySelector('#plus-button');
 
 function handleClick() {
-  const writeButtonList = document.querySelector('ul[aria-label="게시글 작성 카테고리"]');
+  const writeButtonList = document.querySelector('#write-button-list');
 
   writeButtonList.classList.toggle('hidden');
   writeButtonList.classList.toggle('flex');

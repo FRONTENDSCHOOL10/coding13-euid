@@ -14,14 +14,16 @@
     <div id="app" class="pb-[4.3rem] xs:pb-[5.949375rem] sm:pb-[7.249375rem]">
       <h1 class="sr-only">거래 목록 페이지</h1>
       <c-header data-page="내 근처"></c-header>
-      <ul aria-label="거래 물품"></ul>
+      <ul id="exchange-list" aria-label="거래 물품"></ul>
       <button
         type="button"
+        id="plus-button"
         class="fixed bottom-[5.175rem] right-3.5 flex aspect-square w-12 items-center justify-center rounded-full bg-primary shadow-[0_0.25rem_0.25rem_0_rgba(0,0,0,0.25)] transition-all before:h-4 before:w-0.5 before:bg-background before:transition-all after:absolute after:h-0.5 after:w-4 after:bg-background after:transition-all xs:bottom-[7.175rem] xs:right-[1.225rem] xs:w-[4.2rem] xs:shadow-[0_0.35rem_0.35rem_0_rgba(0,0,0,0.25)] xs:before:h-[1.4rem] xs:before:w-[0.175rem] xs:after:h-[0.175rem] xs:after:w-[1.4rem] sm:bottom-[8.825rem] sm:right-[1.575rem] sm:w-[5.4rem] sm:shadow-[0_0.45rem_0.45rem_0_rgba(0,0,0,0.25)] sm:before:h-[1.8rem] sm:before:w-[0.225rem] sm:after:h-[0.225rem] sm:after:w-[1.8rem]"
         aria-label="게시글 추가"
       ></button>
       <!-- 추후 게시글 작성 페이지로 연결 필요 -->
       <ul
+        id="write-button-list"
         class="fixed bottom-[8.625rem] right-3.5 hidden w-32 flex-col gap-1 xs:bottom-[12.005rem] xs:right-[1.225rem] xs:w-[11.2rem] xs:gap-[0.35rem] sm:bottom-[15.035rem] sm:right-[1.575rem] sm:w-[14.4rem] sm:gap-[0.45rem]"
         aria-label="게시글 작성 카테고리"
       >
