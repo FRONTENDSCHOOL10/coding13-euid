@@ -1,12 +1,15 @@
 import calcTimeDifference from '/utils/calcTimeDifference';
 import pb from '/api/pocketbase';
 
+const chatContainer = document.querySelector('.chatContainer');
+
 /* pocketbase에서 채팅 목록 가져오기 */
 async function fetchChatList() {
   try {
     return await pb.collection('chats').getFullList({
       sort: 'created',
-      expand: 'sender_id, post_id',
+      expand: 'sender_id, post_id, receiver_id',
+      // filter: `sender_id = "${sender_id}" && receiver_id = "${receiver_id}"`,
     });
   } catch (error) {
     console.error('Failed to fetch chat list:', error);
@@ -70,35 +73,38 @@ function createChatTemplate({ username, avatarURL, address, timeAgo, photoURL, l
 /* 채팅 목록 가져와서 처리, 생성된 HTML을 컨테이너에 삽입 */
 async function renderChatList() {
   const chatList = await fetchChatList();
-  const chatContainer = document.querySelector('.chatContainer');
 
   for (const chat of chatList) {
-    // forEach를 for...of로 변경
     const sender = chat.expand.sender_id;
     const post = chat.expand.post_id;
 
     // 각 채팅에 대한 최신 메시지 가져오기
-    const latestMessageResult = await pb.collection('messages').getList(1, 1, {
-      sort: '-created',
-      filter: `chat_id = "${chat.id}"`,
-    });
+    try {
+      const record = await pb.collection('messages').getFirstListItem(`chat_id = "${chat.id}"`, {
+        sort: '-created',
+      });
 
-    let latestMessageContent = '';
-    if (latestMessageResult.items.length > 0) {
-      latestMessageContent = latestMessageResult.items[0].content;
+      let latestMessageContent = record.content;
+
+      const chatData = {
+        username: sender.username,
+        avatarURL: getAvatarURL(sender),
+        address: sender.address,
+        timeAgo: calcTimeDifference(chat.updated),
+        photoURL: getPhotoURL(post),
+        latestMessage: latestMessageContent,
+      };
+
+      const template = createChatTemplate(chatData);
+      chatContainer.insertAdjacentHTML('afterbegin', template);
+    } catch (err) {
+      if (err.status === 404) {
+        // 메시지 없는 채팅방 skip
+        continue;
+      } else {
+        console.error('Error fetching message:', err);
+      }
     }
-
-    const chatData = {
-      username: sender.username,
-      avatarURL: getAvatarURL(sender),
-      address: sender.address,
-      timeAgo: calcTimeDifference(chat.updated),
-      photoURL: getPhotoURL(post),
-      latestMessage: latestMessageContent,
-    };
-
-    const template = createChatTemplate(chatData);
-    chatContainer.insertAdjacentHTML('afterbegin', template);
   }
 }
 
