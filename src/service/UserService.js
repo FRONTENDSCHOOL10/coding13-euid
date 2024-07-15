@@ -52,4 +52,9 @@ export class UserService {
     });
     return user;
   }
+
+  static async updateUser(id, values) {
+    const user = await pb.collection('users').update(id, values);
+    return user;
+  }
 }
