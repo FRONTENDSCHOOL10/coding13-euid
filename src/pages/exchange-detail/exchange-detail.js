@@ -1,6 +1,6 @@
 import Swiper from 'swiper';
 import { Pagination } from 'swiper/modules';
-import { getPbImagesURL } from '/api/getPbImageURL';
+import { getPbImageURL, getPbImagesURL } from '/api/getPbImageURL';
 import pb from '/api/pocketbase.js';
 import { UserService } from '/service/UserService.js';
 import calcTimeDifference from '/utils/calcTimeDifference.js';
@@ -13,6 +13,7 @@ async function exchangeDetail() {
 
   // DOM 요소 선택
   const swiperWrapper = document.querySelector('.swiper-wrapper');
+  const userAvatar = document.getElementById('user-avatar');
   const userName = document.getElementById('user-name');
   const userAddress = document.getElementById('user-address');
   const postTitle = document.getElementById('post-title');
@@ -22,6 +23,7 @@ async function exchangeDetail() {
   const postPrice = document.getElementById('post-price');
   const relatedList = document.getElementById('related-list');
   const chatBtn = document.getElementById('chat-btn');
+  const interestBtn = document.getElementById('interest-btn');
 
   // query string으로 판매글 식별
   const params = new URLSearchParams(location.search);
@@ -50,19 +52,16 @@ async function exchangeDetail() {
 
       // 판매자 정보 삽입
       const { username, address } = data.expand.user_id;
-      userName.innerText = username;
-      userAddress.innerText = address;
+      userAvatar.src = getPbImageURL(data.expand.user_id, 'avatar');
+      userName.textContent = username;
+      userAddress.textContent = address;
 
-      // 제목 삽입
-      postTitle.innerText = title;
-      // 카테고리 삽입
-      postCategory.innerText = category;
-      // 본문 삽입
-      postDescription.innerText = description;
-      // 가격 삽입
-      postPrice.innerText = `${price.toLocaleString()}원`;
-      // 판매글 작성시간 삽입
-      postCreated.innerText = calcTimeDifference(created);
+      // 제목, 카테고리, 본문, 가격, 작성시간 삽입
+      postTitle.textContent = title;
+      postCategory.textContent = category;
+      postDescription.textContent = description;
+      postPrice.textContent = `${price.toLocaleString()}원`;
+      postCreated.textContent = calcTimeDifference(created);
 
       return data;
     } catch (err) {
@@ -163,6 +162,7 @@ async function exchangeDetail() {
       e.preventDefault();
       handleClickChat(res);
     });
+    interestBtn.addEventListener('click', () => {});
   });
 }
 
