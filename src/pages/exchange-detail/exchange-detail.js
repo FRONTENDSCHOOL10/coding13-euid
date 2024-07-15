@@ -2,6 +2,7 @@ import Swiper from 'swiper';
 import { Pagination } from 'swiper/modules';
 import { getPbImagesURL } from '/api/getPbImageURL';
 import pb from '/api/pocketbase.js';
+import calcTimeDifference from '/utils/calcTimeDifference.js';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -17,14 +18,16 @@ const postDescription = document.getElementById('post-description');
 const postPrice = document.getElementById('post-price');
 const relatedList = document.getElementById('related-list');
 
+// query string으로 판매글 식별
+const params = new URLSearchParams(location.search);
+const post_id = params.get('post');
+
 // post 내용 렌더링 함수
 async function renderPostDetail() {
-  // query string으로 판매글 식별
-  const params = new URLSearchParams(location.search);
-  const post_id = params.get('post');
-
   // post 정보 불러오기
-  const data = await pb.collection('posts').getOne(post_id);
+  const data = await pb.collection('posts').getOne(post_id, {
+    expand: 'user_id',
+  });
   const { id, user_id, category, photo, title, description, price, state, created } = data;
 
   // 물품 사진 슬라이드 생성
@@ -39,10 +42,8 @@ async function renderPostDetail() {
     swiperWrapper.insertAdjacentHTML('beforeend', slideTemplate);
   });
 
-  // 판매자 정보 불러오기
-  const userData = await pb.collection('users').getOne(user_id);
-  const { username, address } = userData;
   // 판매자 정보 삽입
+  const { username, address } = data.expand.user_id;
   userName.innerText = username;
   userAddress.innerText = address;
 
@@ -54,21 +55,8 @@ async function renderPostDetail() {
   postDescription.innerText = description;
   // 가격 삽입
   postPrice.innerText = `${price.toLocaleString()}원`;
-
-  // 현재시각과 시간차 계산
-  const givenTime = new Date(created);
-  const currentTime = new Date();
-  const timeDifference = currentTime - givenTime;
-  // 초, 분, 시, 일 단위 계산
-  const seconds = Math.floor(timeDifference / 1000);
-  const minutes = Math.floor(seconds / 60);
-  const hours = Math.floor(minutes / 60);
-  const days = Math.floor(hours / 24);
   // 판매글 작성시간 삽입
-  if (seconds < 60) postCreated.innerText = `${seconds}초전`;
-  else if (minutes < 60) postCreated.innerText = `${minutes}분전`;
-  else if (hours < 24) postCreated.innerText = `${hours}시간전`;
-  else postCreated.innerText = `${days}일전`;
+  postCreated.innerText = calcTimeDifference(created);
 
   return { id, category };
 }
