@@ -1,32 +1,5 @@
 import pb from '/api/pocketbase';
 
-/* 경과 시간 계산 함수 */
-function getTimeAgo(dateString) {
-  const now = new Date();
-  const past = new Date(dateString);
-  const diffInSeconds = Math.floor((now - past) / 1000);
-
-  if (diffInSeconds < 60) return `${diffInSeconds}초 전`;
-
-  const diffInMinutes = Math.floor(diffInSeconds / 60);
-  if (diffInMinutes < 60) return `${diffInMinutes}분 전`;
-
-  const diffInHours = Math.floor(diffInMinutes / 60);
-  if (diffInHours < 24) return `${diffInHours}시간 전`;
-
-  const diffInDays = Math.floor(diffInHours / 24);
-  if (diffInDays < 7) return `${diffInDays}일 전`;
-
-  const diffInWeeks = Math.floor(diffInDays / 7);
-  if (diffInWeeks < 4) return `${diffInWeeks}주 전`;
-
-  const diffInMonths = Math.floor(diffInDays / 30);
-  if (diffInMonths < 12) return `${diffInMonths}개월 전`;
-
-  const diffInYears = Math.floor(diffInDays / 365);
-  return `${diffInYears}년 전`;
-}
-
 /* pocketbase에서 채팅 목록 가져오기 */
 async function fetchChatList() {
   try {
@@ -47,7 +20,7 @@ function getAvatarURL(user) {
 
 /* 채팅 내의 사진 불러오기 */
 function getPhotoURL(post) {
-  if (!post.photo) return '/assets/storyImage.png';
+  if (!post || !post.photo) return null;
 
   if (Array.isArray(post.photo)) {
     return pb.getFileUrl(post, post.photo[0]);
@@ -57,11 +30,11 @@ function getPhotoURL(post) {
 }
 
 /* 채팅 항목에 대한 HTML 템플릿 생성 */
-function createChatTemplate({ username, avatarURL, address, timeAgo, photoURL, description }) {
+function createChatTemplate({ username, avatarURL, address, timeAgo, photoURL, latestMessage }) {
   return `
     <a href="#" class="flex gap-3 border-b p-3">
       <img
-        class="h-11 w-11 flex-shrink-0 overflow-hidden rounded-md xs:h-[3.85rem] xs:w-[3.85rem] sm:h-[4.95rem] sm:w-[4.95rem]"
+        class="h-11 w-11 flex-shrink-0 overflow-hidden rounded-full xs:h-[3.85rem] xs:w-[3.85rem] sm:h-[4.95rem] sm:w-[4.95rem]"
         src="${avatarURL}"
         alt="채팅 상대 프로필"
       />
@@ -74,15 +47,21 @@ function createChatTemplate({ username, avatarURL, address, timeAgo, photoURL, d
         </div>
         <div class="flex gap-2 xs:gap-[0.7rem] sm:gap-[0.9rem]">
           <p class="text-base-group overflow-hidden text-ellipsis whitespace-nowrap">
-            ${description}
+            ${latestMessage}
           </p>
         </div>
       </section>
-      <img
-        src="${photoURL}"
-        class="h-9 w-9 xs:h-[3.15rem] xs:w-[3.15rem] sm:h-[4.05rem] sm:w-[4.05rem]"
-        alt="채팅방 내의 이미지 미리보기"
-      />
+      ${
+        photoURL
+          ? `
+        <img
+          src="${photoURL}"
+          class="h-9 w-9 xs:h-[3.15rem] xs:w-[3.15rem] sm:h-[4.05rem] sm:w-[4.05rem]"
+          alt="채팅방 내의 이미지 미리보기"
+        />
+      `
+          : ''
+      }
     </a>
   `;
 }
@@ -92,9 +71,21 @@ async function renderChatList() {
   const chatList = await fetchChatList();
   const chatContainer = document.querySelector('.chatContainer');
 
-  chatList.forEach((chat) => {
+  for (const chat of chatList) {
+    // forEach를 for...of로 변경
     const sender = chat.expand.sender_id;
     const post = chat.expand.post_id;
+
+    // 각 채팅에 대한 최신 메시지 가져오기
+    const latestMessageResult = await pb.collection('messages').getList(1, 1, {
+      sort: '-created',
+      filter: `chat_id = "${chat.id}"`,
+    });
+
+    let latestMessageContent = '';
+    if (latestMessageResult.items.length > 0) {
+      latestMessageContent = latestMessageResult.items[0].content;
+    }
 
     const chatData = {
       username: sender.username,
@@ -102,12 +93,12 @@ async function renderChatList() {
       address: sender.address,
       timeAgo: getTimeAgo(chat.updated),
       photoURL: getPhotoURL(post),
-      description: post.description,
+      latestMessage: latestMessageContent,
     };
 
     const template = createChatTemplate(chatData);
     chatContainer.insertAdjacentHTML('afterbegin', template);
-  });
+  }
 }
 
 renderChatList();
