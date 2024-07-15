@@ -92,7 +92,7 @@ async function renderChatList() {
       username: sender.username,
       avatarURL: getAvatarURL(sender),
       address: sender.address,
-      timeAgo: getTimeAgo(chat.updated),
+      timeAgo: calcTimeDifference(chat.updated),
       photoURL: getPhotoURL(post),
       latestMessage: latestMessageContent,
     };
