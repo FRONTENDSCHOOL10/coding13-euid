@@ -16,7 +16,6 @@ async function chatContent() {
 
   const buttonsContainer = document.getElementById('buttons-container');
   const reserveBtn = buttonsContainer.querySelector('#reserve-btn');
-  const completeBtn = buttonsContainer.querySelector('#complete-btn');
   // 판매글 정보
   const exchangeLink = document.getElementById('exchange-link');
   const exchangePhoto = document.getElementById('exchange-photo');
@@ -216,6 +215,9 @@ async function chatContent() {
   }
   // '예약하기 / 예약취소', '거래완료' 버튼 클릭 핸들링함수
   function handleStateClick(e, data) {
+    const btn = e.target.closest('button');
+    if (!btn) return;
+
     modalBg.hidden = false;
     const { id: postId, state } = data.expand.post_id;
     // 예약 버튼
@@ -253,8 +255,7 @@ async function chatContent() {
         sendMessage(chat_id, currentUser.id, opponent, messageInput.value);
       });
       // '예약하기','거래완료' 버튼 이벤트
-      reserveBtn.addEventListener('click', (e) => handleStateClick(e, data));
-      completeBtn.addEventListener('click', (e) => handleStateClick(e, data));
+      buttonsContainer.addEventListener('click', (e) => handleStateClick(e, data));
     });
 }
 
