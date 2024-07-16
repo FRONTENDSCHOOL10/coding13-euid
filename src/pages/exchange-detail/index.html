@@ -30,9 +30,10 @@
         <!-- 아이콘, 닉네임, 주소 -->
         <div class="flex items-center gap-[0.38rem] xs:gap-[0.532rem] sm:gap-[0.684rem]">
           <img
+            id="user-avatar"
             src="/assets/profileIcon.png"
             alt="프로필 아이콘"
-            class="w-10 rounded-full xs:w-[3.5rem] sm:w-[4.5rem]"
+            class="h-10 w-10 rounded-full xs:h-[3.5rem] xs:w-[3.5rem] sm:h-[4.5rem] sm:w-[4.5rem]"
           />
           <div class="flex flex-col">
             <span class="sr-only">판매자 닉네임</span>
@@ -78,9 +79,13 @@
         class="mb-1 flex justify-between p-3 pb-[2.38rem] xs:mb-[0.35rem] xs:p-[1.05rem] xs:pb-[3.332rem] sm:mb-[0.45rem] sm:p-[1.35rem] sm:pb-[4.284rem]"
       >
         <div class="flex items-center gap-[0.8125rem] xs:gap-[1.1375rem] sm:gap-[1.4625rem]">
-          <!-- 하트 이미지 -->
-          <button type="button" aria-label="관심글 추가">
-            <img src="/icon/heart.svg" alt="하트" class="w-5 xs:w-[1.75rem] sm:w-[2.25rem]" />
+          <!-- 관심글 등록 버튼 -->
+          <button id="interest-btn" type="button" aria-pressed="false" aria-label="관심글 등록">
+            <img
+              src="/icon/heart.svg"
+              alt=""
+              class="h-5 w-5 xs:h-[1.75rem] xs:w-[1.75rem] sm:h-[2.25rem] sm:w-[2.25rem]"
+            />
           </button>
 
           <!-- 구분선 -->
@@ -95,7 +100,9 @@
 
         <!-- 채팅하기 버튼 -->
         <a
-          href="#"
+          id="chat-btn"
+          role="button"
+          href="/pages/chat-content/"
           class="text-base-group flex items-center justify-center rounded-lg bg-secondary px-[0.875rem] py-2 font-semibold leading-[150%] text-background xs:rounded-[0.7rem] xs:py-[0.7rem] sm:rounded-[0.9rem] sm:py-[0.9rem]"
         >
           채팅하기

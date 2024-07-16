@@ -47,7 +47,7 @@ async function chatContent() {
       }
     });
   }
-
+  
   // 메세지 발송 함수 (sendBtn 핸들링 함수)
   async function sendMessage(chatId, senderId, receiverId, content) {
     try {
