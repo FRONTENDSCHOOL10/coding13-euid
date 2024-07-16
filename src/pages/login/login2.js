@@ -1,11 +1,34 @@
 import { UserService } from '@/service/UserService';
 
+const verificationNumberInput = document.querySelector('#verification-number');
+const loginButton = document.querySelector('#login');
+const inputNumber = document.querySelector('#input-phone-number');
+
 function login2() {
-  const verificationNumberInput = document.querySelector('#verification-number');
-  const loginButton = document.querySelector('#login');
   const phoneNumber = localStorage.getItem('phoneNumber');
 
-  loginButton.addEventListener('click', async () => {
+  inputNumber.value = phoneNumber.replace(/(\d{3})(\d{4})(\d{4})/, '$1 $2 $3');
+  inputNumber.classList.add('text-contentTertiary');
+
+  const updateButtonStyle = () => {
+    if (verificationNumberInput.value.length === 6) {
+      loginButton.classList.add('bg-primary');
+      loginButton.classList.remove('bg-contentSecondary');
+    } else {
+      loginButton.classList.remove('bg-primary');
+      loginButton.classList.add('bg-contentSecondary');
+    }
+  };
+
+  verificationNumberInput.addEventListener('input', () => {
+    if (verificationNumberInput.value.length > 6) {
+      verificationNumberInput.value = verificationNumberInput.value.slice(0, 6);
+    }
+    updateButtonStyle();
+  });
+
+  loginButton.addEventListener('click', async (e) => {
+    e.preventDefault();
     const localStorageVerificationCode = localStorage.getItem('verificationCode');
     const verificationCode = verificationNumberInput.value;
 

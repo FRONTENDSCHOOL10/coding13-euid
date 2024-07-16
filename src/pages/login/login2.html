@@ -11,7 +11,7 @@
   <body>
     <div id="app" class="mx-auto">
       <nav class="flex h-9 xs:h-[3.15rem] sm:h-[4.05rem]">
-        <a href="/pages/start/index.html"
+        <a href="javascript:history.back()"
           ><img
             class="my-2 ml-3 h-5 w-5 xs:my-[0.7rem] xs:ml-[1.05rem] xs:h-[1.75rem] xs:w-[1.75rem] sm:my-[0.9rem] sm:ml-[1.35rem] sm:h-[2.25rem] sm:w-[2.25rem]"
             src="/icon/direction-left.svg"
@@ -22,7 +22,7 @@
       <form class="mx-3 flex flex-col items-center xs:mx-[1.05rem] sm:mx-[1.35rem]">
         <label for="input-phone-number" class="sr-only">입력한 전화번호</label>
         <input
-          type="number"
+          type="tel"
           id="input-phone-number"
           class="text-base-group mb-3 w-full rounded border border-black py-2 pl-3 font-normal focus:border-[0.03125rem] focus:border-solid focus:border-black focus:placeholder:text-black xs:mb-[1.05rem] xs:py-[0.7rem] xs:pl-[1.05rem] sm:mb-[1.35rem] sm:py-[0.9rem] sm:pl-[1.35rem]"
           disabled
@@ -35,6 +35,7 @@
         </button>
         <label for="verification-number" class="sr-only">인증번호 입력하기</label>
         <input
+          autofocus
           type="number"
           placeholder="인증번호 입력"
           id="verification-number"
@@ -46,10 +47,10 @@
 
         <button
           id="login"
-          type="button"
+          type="submit"
           class="text-base-group mb-3 w-full rounded-lg border-[0.03125rem] border-solid border-contentSecondary bg-contentSecondary py-3 font-semibold text-white xs:mb-[1.05rem] xs:py-[1.05rem] sm:mb-[1.35rem] sm:py-[0.9rem]"
         >
-          동의하고 시작하기
+          로그인하기
         </button>
         <!-- <a href="/pages/" class="underline text-contentSecondary underline-offset-2">인증번호가 오지 않아요?</a> -->
       </form>

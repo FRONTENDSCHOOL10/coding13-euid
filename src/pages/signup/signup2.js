@@ -3,7 +3,6 @@ import { UserService } from '@/service/UserService';
 const verificationNumberInput = document.querySelector('#verification-number');
 const agreeButton = document.querySelector('#agree');
 const inputNumber = document.querySelector('#input-phone-number');
-const verificationInput = document.querySelector('#verification-number');
 
 function signup2() {
   const phoneNumber = localStorage.getItem('phoneNumber');
@@ -12,7 +11,7 @@ function signup2() {
   inputNumber.classList.add('text-contentTertiary');
 
   const updateButtonStyle = () => {
-    if (verificationInput.value.length === 6) {
+    if (verificationNumberInput.value.length === 6) {
       agreeButton.classList.add('bg-primary');
       agreeButton.classList.remove('bg-contentSecondary');
     } else {
@@ -21,14 +20,15 @@ function signup2() {
     }
   };
 
-  verificationInput.addEventListener('input', () => {
-    if (verificationInput.value.length > 6) {
-      verificationInput.value = verificationInput.value.slice(0, 6);
+  verificationNumberInput.addEventListener('input', () => {
+    if (verificationNumberInput.value.length > 6) {
+      verificationNumberInput.value = verificationNumberInput.value.slice(0, 6);
     }
     updateButtonStyle();
   });
 
-  agreeButton.addEventListener('click', async () => {
+  agreeButton.addEventListener('click', async (e) => {
+    e.preventDefault();
     const localStorageVerificationCode = localStorage.getItem('verificationCode');
     const verificationCode = verificationNumberInput.value;
 
@@ -51,7 +51,7 @@ function signup2() {
       window.location.href = '/';
     } else {
       alert(`인증 코드: 잘못된 코드입니다.`);
-      verificationInput.value = '';
+      verificationNumberInput.value = '';
     }
   });
 }
