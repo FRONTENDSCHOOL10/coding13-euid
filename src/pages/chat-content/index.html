@@ -13,56 +13,60 @@
       <h1 class="sr-only">채팅내용</h1>
 
       <!-- 헤더 -->
-      <header
-        class="flex items-center justify-between px-3 py-1 xs:px-[1.05rem] xs:py-[0.35rem] sm:px-[1.35rem] sm:py-[0.45rem]"
-      >
-        <a role="button" href="javascript:history.back()" aria-label="이전 페이지로 이동">
-          <img
-            src="/icon/direction-left.svg"
-            alt=""
-            aria-hidden="true"
-            class="aspect-square w-5 xs:w-[1.75rem] sm:w-[2.25rem]"
-          />
-        </a>
-        <div class="flex flex-col items-center">
-          <span id="opponent-name" class="text-base-group font-semibold leading-[150%]">상대방 이름</span>
-          <span class="text-sm-group leading-[160%] text-contentSecondary">보통 3일 내 응답</span>
-        </div>
-        <button>
-          <img src="/icon/more.svg" alt="" class="aspect-square w-5 xs:w-[1.75rem] sm:w-[2.25rem]" />
-        </button>
-      </header>
-
-      <!-- 연결된 판매글 -->
-      <section
-        aria-label="연결된 판매글"
-        class="mb-2 border-b-[0.01875rem] border-t-[0.01875rem] border-solid border-contentSecondary py-3 pl-3 xs:mb-[0.7rem] xs:py-[1.05rem] xs:pl-[1.05rem] sm:mb-[0.9rem] sm:px-[1.35rem] sm:py-[1.35rem] sm:pl-[1.35rem]"
-      >
-        <a
-          href="/pages/exchange-detail/"
-          aria-label="연결된 판매글 페이지로 이동"
-          class="flex gap-2 xs:gap-[0.7rem] sm:gap-[0.9rem]"
+      <header class="fixed top-0 w-screen border-b-[0.06rem] border-solid border-contentSecondary bg-background">
+        <div
+          class="flex items-center justify-between border-b-[0.01875rem] border-solid border-contentSecondary px-3 py-1 xs:px-[1.05rem] xs:py-[0.35rem] sm:px-[1.35rem] sm:py-[0.45rem]"
         >
-          <img
-            id="exchange-photo"
-            src="/assets/storyImage.png"
-            alt="판매 물품 이미지"
-            aria-hidden="true"
-            class="h-[10.625vw] w-[10.625vw] rounded-[11.737089201877934%]"
-          />
-          <div class="flex flex-col">
-            <span class="text-sm-group leading-[160%]">
-              <strong id="exchange-state" class="font-semibold leading-[150%]">상태</strong>
-              <span class="sr-only">판매 물품명</span>
-              <span id="exchange-title">물품명</span>
-            </span>
-            <span class="text-sm-group font-semibold leading-[150%]">
-              <span class="sr-only">물품 가격</span>
-              <strong id="exchange-price">가격</strong>
-            </span>
+          <a role="button" href="javascript:history.back()" aria-label="이전 페이지로 이동">
+            <img
+              src="/icon/direction-left.svg"
+              alt=""
+              aria-hidden="true"
+              class="aspect-square w-5 xs:w-[1.75rem] sm:w-[2.25rem]"
+            />
+          </a>
+          <div class="flex flex-col items-center">
+            <span id="opponent-name" class="text-base-group font-semibold leading-[150%]">상대방 이름</span>
+            <span class="text-sm-group leading-[160%] text-contentSecondary">보통 3일 내 응답</span>
           </div>
-        </a>
-      </section>
+          <button aria-label="메뉴 더보기">
+            <img src="/icon/more.svg" alt="" class="aspect-square w-5 xs:w-[1.75rem] sm:w-[2.25rem]" />
+          </button>
+        </div>
+
+        <!-- 연결된 판매글 -->
+        <section
+          aria-label="연결된 판매글"
+          class="pb-[0.375rem] pl-3 pt-3 xs:pb-[0.525rem] xs:pl-[1.05rem] xs:pt-[1.05rem] sm:px-[1.35rem] sm:pb-[0.675rem] sm:pl-[1.35rem] sm:pt-[1.35rem]"
+        >
+          <a
+            id="exchange-link"
+            href=""
+            aria-label="연결된 판매글 페이지로 이동"
+            class="flex gap-2 xs:gap-[0.7rem] sm:gap-[0.9rem]"
+          >
+            <img
+              id="exchange-photo"
+              src="/assets/storyImage.png"
+              alt="판매 물품 이미지"
+              aria-hidden="true"
+              class="h-[10.625vw] w-[10.625vw] rounded-[11.737089201877934%]"
+            />
+            <div class="flex flex-col">
+              <span class="text-sm-group leading-[160%]">
+                <strong id="exchange-state" class="font-semibold leading-[150%]">상태</strong>
+                <span class="sr-only">판매 물품명</span>
+                <span id="exchange-title">물품명</span>
+              </span>
+              <span class="text-sm-group font-semibold leading-[150%]">
+                <span class="sr-only">물품 가격</span>
+                <strong id="exchange-price">가격</strong>
+              </span>
+            </div>
+          </a>
+        </section>
+      </header>
+      <div class="pt-[2.8625rem] xs:pt-[3.84875rem] sm:pt-[5.096875rem]"></div>
 
       <!-- 채팅 내용 -->
       <main
