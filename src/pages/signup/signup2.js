@@ -3,6 +3,7 @@ import { UserService } from '@/service/UserService';
 const verificationNumberInput = document.querySelector('#verification-number');
 const agreeButton = document.querySelector('#agree');
 const inputNumber = document.querySelector('#input-phone-number');
+const resendButton = document.querySelector('#resend');
 
 function signup2() {
   const phoneNumber = localStorage.getItem('phoneNumber');
@@ -19,6 +20,13 @@ function signup2() {
       agreeButton.classList.add('bg-contentSecondary');
     }
   };
+
+  resendButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    const newVerificationCode = Math.floor(100000 + Math.random() * 900000);
+    localStorage.setItem('verificationCode', newVerificationCode);
+    alert(`인증 코드: ${newVerificationCode}`);
+  });
 
   verificationNumberInput.addEventListener('input', () => {
     if (verificationNumberInput.value.length > 6) {
