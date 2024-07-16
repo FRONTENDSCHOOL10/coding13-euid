@@ -7,6 +7,7 @@ function signup() {
   // 한국 전화번호 형식인지 검사
   const phoneRegex = /^01[016789]\d{7,8}$/;
   let verificationCode;
+  verifyButton.disabled = true;
 
   // 전화번호 검증
   phoneInput.addEventListener('input', (e) => {
