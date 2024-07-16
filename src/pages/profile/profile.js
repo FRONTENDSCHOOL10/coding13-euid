@@ -1,6 +1,7 @@
 import { UserService } from '@/service/UserService';
 import tailwindCSS from '/styles/tailwind.css?inline'; // css 파일 inline 가져오기
 import { getPbImageURL } from '@/api/getPbImageURL';
+import '@/components/navigation/navigation';
 
 const ProfileTemplate = document.createElement('template');
 ProfileTemplate.innerHTML = `
