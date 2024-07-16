@@ -1,6 +1,7 @@
 import { UserService } from '@/service/UserService';
 import tailwindCSS from '/styles/tailwind.css?inline'; // css 파일 inline 가져오기
 import { getPbImageURL } from '@/api/getPbImageURL';
+import { convertImageToWebP } from '@/utils/convertImageToWebP';
 import '@/components/navigation/navigation';
 
 function activeButton(btnNode, activeClass, disabledClass) {
@@ -339,6 +340,12 @@ class ProfileDetail extends HTMLElement {
 
     const $avatarInput = this.shadowRoot.getElementById('avatar');
 
+    if ($avatarInput.value === '') {
+      formData.delete('avatar');
+    } else {
+      const avatarWebP = await convertImageToWebP(formData.get('avatar'));
+      formData.set('avatar', avatarWebP);
+    }
     await UserService.updateUser(this.currentUser.id, formData);
 
     window.location.href = '/pages/edit-profile/';
