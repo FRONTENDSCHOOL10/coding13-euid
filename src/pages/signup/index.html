@@ -11,7 +11,7 @@
   <body>
     <div id="app" class="mx-auto">
       <nav class="flex h-9 xs:h-[3.15rem] sm:h-[4.05rem]">
-        <a href="/pages/start/index.html"
+        <a href="javascript:history.back()"
           ><img
             class="my-2 ml-3 h-5 w-5 xs:my-[0.7rem] xs:ml-[1.05rem] xs:h-[1.75rem] xs:w-[1.75rem] sm:my-[0.9rem] sm:ml-[1.35rem] sm:h-[2.25rem] sm:w-[2.25rem]"
             src="/icon/direction-left.svg"
@@ -28,14 +28,14 @@
       <form class="mx-3 flex flex-col items-center xs:mx-[1.05rem] sm:mx-[1.35rem]">
         <label for="phone-number" class="sr-only">휴대폰 번호로 가입하기</label>
         <input
-          type="number"
+          type="tel"
           placeholder="휴대폰 번호(-없이 숫자만 입력)"
           id="phone-number"
           class="text-base-group mb-3 w-full rounded border border-black py-2 pl-3 font-normal focus:border-[0.03125rem] focus:border-solid focus:border-black focus:placeholder:text-black xs:mb-[1.05rem] xs:py-[0.7rem] xs:pl-[1.05rem] sm:mb-[1.35rem] sm:py-[0.9rem] sm:pl-[1.35rem]"
         />
         <button
-          type="button"
-          class="text-base-group mb-3 w-full rounded border-[0.03125rem] border-solid border-contentSecondary bg-white py-2 font-semibold text-contentSecondary xs:mb-[1.05rem] xs:py-[0.5rem] sm:mb-[1.35rem] sm:py-[0.9rem]"
+          type="submit"
+          class="text-base-group mb-3 w-full rounded border-[0.03125rem] border-solid border-contentSecondary bg-white py-2 font-semibold text-contentSecondary xs:mb-[1.05rem] xs:py-[0.7rem] sm:mb-[1.35rem] sm:py-[0.9rem]"
         >
           인증문자 받기
         </button>
