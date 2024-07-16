@@ -1,7 +1,7 @@
 import pb from '/api/pocketbase';
 
 const phoneInput = document.querySelector('#phone-number');
-const verifyButton = document.querySelector('button');
+const verifyButton = document.querySelector('#verify');
 
 function signup() {
   // 한국 전화번호 형식인지 검사

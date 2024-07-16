@@ -1,11 +1,12 @@
 import { UserService } from '@/service/UserService';
 
+const verificationNumberInput = document.querySelector('#verification-number');
+const agreeButton = document.querySelector('#agree');
+const inputNumber = document.querySelector('#input-phone-number');
+const verificationInput = document.querySelector('#verification-number');
+
 function signup2() {
-  const verificationNumberInput = document.querySelector('#verification-number');
-  const agreeButton = document.querySelector('#agree');
   const phoneNumber = localStorage.getItem('phoneNumber');
-  const inputNumber = document.querySelector('#input-phone-number');
-  const verificationInput = document.querySelector('#verification-number');
 
   inputNumber.value = phoneNumber.replace(/(\d{3})(\d{4})(\d{4})/, '$1 $2 $3');
   inputNumber.classList.add('text-contentTertiary');

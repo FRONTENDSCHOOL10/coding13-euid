@@ -1,14 +1,26 @@
 import pb from '/api/pocketbase';
 
+const phoneInput = document.querySelector('#phone-number');
+const verifyButton = document.querySelector('#verify');
+
 function login() {
-  const phoneInput = document.querySelector('#phone-number');
-  const verifyButton = document.querySelector('button');
-  const phoneRegex = /^\d{10,11}$/;
+  const phoneRegex = /^01[016789]\d{7,8}$/;
   let verificationCode;
 
-  /* --------------------------------- 전화번호 검증 -------------------------------- */
-  phoneInput.addEventListener('input', () => {
-    const isValid = phoneRegex.test(phoneInput.value);
+  // 전화번호 검증
+  phoneInput.addEventListener('input', (e) => {
+    // 사용자가 입력한 값에서 숫자가 아닌 모든 문자 제거
+    let value = e.target.value.replace(/[^\d]/g, '');
+
+    // 숫자 길이가 10 이상일 때 전화번호 포맷
+    if (value.length >= 10) {
+      value = value.replace(/(\d{3})(\d{4})(\d{4})/, '$1 $2 $3');
+    }
+
+    e.target.value = value;
+
+    // 공백 제거 후 전화번호 유효성 검사
+    const isValid = phoneRegex.test(value.replace(/\s/g, ''));
     // 유효하지 않으면 버튼 비활성화
     verifyButton.disabled = !isValid;
 
@@ -21,14 +33,15 @@ function login() {
     }
   });
 
-  verifyButton.addEventListener('click', () => {
-    const phoneNumber = phoneInput.value;
+  verifyButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    const phoneNumber = phoneInput.value.replace(/\s/g, '');
 
     if (!verifyButton.disabled) {
       // 6자리 랜덤 코드
       const verificationCode = Math.floor(100000 + Math.random() * 900000);
 
-      localStorage.setItem('phoneNumber', phoneInput.value);
+      localStorage.setItem('phoneNumber', phoneNumber);
       localStorage.setItem('verificationCode', verificationCode);
 
       // 임시
