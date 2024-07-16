@@ -4,17 +4,20 @@ import { getPbImagesURL } from '/api/getPbImageURL';
 
 async function chatContent() {
   /* -------------------------------- 로그인상태 식별 -------------------------------- */
-  const currentUser = UserService.currentUser();
+  const currentUser = await UserService.currentUser();
 
   /* --------------------------------- 페이지 및 유저정보 --------------------------------- */
   const params = new URLSearchParams(location.search);
   const chat_id = params.get('chat');
 
   /* -------------------------------- DOM요소 선택 -------------------------------- */
-
   // 헤더
   const opponentName = document.getElementById('opponent-name');
+
+  const buttonsContainer = document.getElementById('buttons-container');
+  const reserveBtn = buttonsContainer.querySelector('#reserve-btn');
   // 판매글 정보
+  const exchangeLink = document.getElementById('exchange-link');
   const exchangePhoto = document.getElementById('exchange-photo');
   const exchangeState = document.getElementById('exchange-state');
   const exchangeTitle = document.getElementById('exchange-title');
@@ -24,6 +27,12 @@ async function chatContent() {
   // 메세지 입력 폼
   const messageInput = document.getElementById('message-input');
   const sendBtn = document.getElementById('send-btn');
+  // 모달
+  const myModal = document.getElementById('my-modal');
+  const modalBg = myModal.shadowRoot.getElementById('modal-bg');
+  const modalOkay = myModal.shadowRoot.getElementById('modal-okay');
+  const modalTitle = myModal.shadowRoot.getElementById('modal-title');
+  const modalDescription = myModal.shadowRoot.getElementById('modal-description');
 
   /* ------------------------------ pocketbase 작업 ----------------------------- */
   // 실시간 메세지 구독 함수
@@ -38,7 +47,7 @@ async function chatContent() {
       }
     });
   }
-
+  
   // 메세지 발송 함수 (sendBtn 핸들링 함수)
   async function sendMessage(chatId, senderId, receiverId, content) {
     try {
@@ -123,9 +132,7 @@ async function chatContent() {
       contentArea.insertAdjacentHTML('beforeend', template);
       // 읽음처리
       if (!read) {
-        new Promise(() => {
-          pb.collection('messages').update(id, { read: true });
-        });
+        pb.collection('messages').update(id, { read: true });
       }
     }
   }
@@ -138,15 +145,26 @@ async function chatContent() {
     });
     // 채팅상대 식별
     const opponent = data.sender_id === currentUser.id ? data.receiver_id : data.sender_id;
+    const { id: postId, state: postState, title: postTitle, price: postPrice } = data.expand.post_id;
 
+    // 판매자만 버튼 렌더링
+    if (data.receiver_id === currentUser.id) {
+      if (postState !== '거래완료') {
+        reserveBtn.textContent = postState === '예약중' ? '예약취소' : '예약하기';
+
+        buttonsContainer.classList.remove('hidden');
+        buttonsContainer.classList.add('flex');
+      }
+    }
     // 헤더 정보 렌더링
     opponentName.innerText =
       data.sender_id === currentUser.id ? data.expand.receiver_id.username : data.expand.sender_id.username;
     // 판매글 정보 렌더링
-    exchangePhoto.setAttribute('src', getPbImagesURL(data.expand.post_id, 0));
-    exchangeState.innerText = data.expand.post_id.state;
-    exchangeTitle.innerText = data.expand.post_id.title;
-    exchantePrice.innerText = `${data.expand.post_id.price.toLocaleString()}원`;
+    exchangeLink.href = `/pages/exchange-detail/index.html?post=${postId}`;
+    exchangePhoto.src = getPbImagesURL(data.expand.post_id, 0);
+    exchangeState.innerText = postState;
+    exchangeTitle.innerText = postTitle;
+    exchantePrice.innerText = `${postPrice.toLocaleString()}원`;
 
     // 해당 채팅방의 메세지내역 전부 가져오기 (오래된순)
     const messageList = await pb.collection('messages').getFullList({
@@ -186,6 +204,45 @@ async function chatContent() {
     return { data, opponent };
   }
 
+  /* ------------------------------- 이벤트 핸들링 함수 ------------------------------- */
+  // post의 state 변경 함수
+  function updatePostState(postId, newState) {
+    pb.collection('posts')
+      .update(postId, { state: newState })
+      .then(() => {
+        location.reload();
+      });
+  }
+  // '예약하기 / 예약취소', '거래완료' 버튼 클릭 핸들링함수
+  function handleStateClick(e, data) {
+    const btn = e.target.closest('button');
+    if (!btn) return;
+
+    modalBg.hidden = false;
+    const { id: postId, state } = data.expand.post_id;
+    // 예약 버튼
+    if (e.target.id === 'reserve-btn') {
+      // 예약취소 버튼
+      if (state === '예약중') {
+        modalTitle.textContent = '예약취소';
+        modalDescription.textContent = '해당 글을 "거래가능" 상태로 변경하시겠습니까?';
+        modalOkay.addEventListener('click', () => updatePostState(postId, ''));
+      }
+      // 예약하기 버튼
+      else {
+        modalTitle.textContent = '예약하기';
+        modalDescription.textContent = '해당 글을 "예약중" 상태로 변경하시겠습니까?';
+        modalOkay.addEventListener('click', () => updatePostState(postId, '예약중'));
+      }
+    }
+    // 거래완료 버튼
+    else if (e.target.id === 'complete-btn') {
+      modalTitle.textContent = '거래완료';
+      modalDescription.textContent = '해당 글을 "거래완료" 상태로 변경하시겠습니까?';
+      modalOkay.addEventListener('click', () => updatePostState(postId, '거래완료'));
+    }
+  }
+
   /* --------------------------------- 함수 실행부 --------------------------------- */
   renderChatContents()
     // 채팅 내역 렌더링 후에 구독
@@ -197,7 +254,10 @@ async function chatContent() {
         e.preventDefault();
         sendMessage(chat_id, currentUser.id, opponent, messageInput.value);
       });
+      // '예약하기','거래완료' 버튼 이벤트
+      buttonsContainer.addEventListener('click', (e) => handleStateClick(e, data));
     });
 }
 
+// 전체 실행
 chatContent();
