@@ -1,11 +1,42 @@
 import { UserService } from '@/service/UserService';
 
+const verificationNumberInput = document.querySelector('#verification-number');
+const agreeButton = document.querySelector('#agree');
+const inputNumber = document.querySelector('#input-phone-number');
+const resendButton = document.querySelector('#resend');
+
 function signup2() {
-  const verificationNumberInput = document.querySelector('#verification-number');
-  const agreeButton = document.querySelector('#agree');
   const phoneNumber = localStorage.getItem('phoneNumber');
 
-  agreeButton.addEventListener('click', async () => {
+  inputNumber.value = phoneNumber.replace(/(\d{3})(\d{4})(\d{4})/, '$1 $2 $3');
+  inputNumber.classList.add('text-contentTertiary');
+
+  const updateButtonStyle = () => {
+    if (verificationNumberInput.value.length === 6) {
+      agreeButton.classList.add('bg-primary');
+      agreeButton.classList.remove('bg-contentSecondary');
+    } else {
+      agreeButton.classList.remove('bg-primary');
+      agreeButton.classList.add('bg-contentSecondary');
+    }
+  };
+
+  resendButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    const newVerificationCode = Math.floor(100000 + Math.random() * 900000);
+    localStorage.setItem('verificationCode', newVerificationCode);
+    alert(`인증 코드: ${newVerificationCode}`);
+  });
+
+  verificationNumberInput.addEventListener('input', () => {
+    if (verificationNumberInput.value.length > 6) {
+      verificationNumberInput.value = verificationNumberInput.value.slice(0, 6);
+    }
+    updateButtonStyle();
+  });
+
+  agreeButton.addEventListener('click', async (e) => {
+    e.preventDefault();
     const localStorageVerificationCode = localStorage.getItem('verificationCode');
     const verificationCode = verificationNumberInput.value;
 
@@ -14,7 +45,7 @@ function signup2() {
         await UserService.registerUser(phoneNumber);
         await UserService.login(phoneNumber);
       } catch (error) {
-        if (error?.response?.data?.phone_number?.code === 'validation_not_unique') {
+        if (error?.originalError?.data?.data?.phone_number?.code === 'validation_not_unique') {
           alert(`이미 이 번호로 가입된 사용자가 있습니다. 로그인해주세요.`);
           window.location.href = '/pages/login/';
         } else {
@@ -28,6 +59,7 @@ function signup2() {
       window.location.href = '/';
     } else {
       alert(`인증 코드: 잘못된 코드입니다.`);
+      verificationNumberInput.value = '';
     }
   });
 }

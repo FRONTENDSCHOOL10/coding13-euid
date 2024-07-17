@@ -1,14 +1,29 @@
 import pb from '/api/pocketbase';
 
-function login() {
-  const phoneInput = document.querySelector('#phone-number');
-  const verifyButton = document.querySelector('button');
-  const phoneRegex = /^\d{10,11}$/;
-  let verificationCode;
+const phoneInput = document.querySelector('#phone-number');
+const verifyButton = document.querySelector('#verify');
 
-  /* --------------------------------- 전화번호 검증 -------------------------------- */
-  phoneInput.addEventListener('input', () => {
-    const isValid = phoneRegex.test(phoneInput.value);
+function login() {
+  // 한국 전화번호 형식인지 검사
+  const phoneRegex = /^01[016789]\d{7,8}$/;
+  let verificationCode;
+  verifyButton.disabled = true;
+
+  // 전화번호 검증
+  phoneInput.addEventListener('input', (e) => {
+    // 사용자가 입력한 값에서 숫자가 아닌 모든 문자 제거
+    let value = e.target.value.replace(/[^\d]/g, '');
+
+    // 숫자 길이가 10 이상일 때 전화번호 포맷
+    if (value.length >= 10) {
+      value = value.replace(/(\d{3})(\d{4})(\d{4})/, '$1 $2 $3');
+    }
+
+    // 포맷된 값을 입력 필드에 다시 설정
+    e.target.value = value;
+
+    // 공백 제거 후 전화번호 유효성 검사
+    const isValid = phoneRegex.test(value.replace(/\s/g, ''));
     // 유효하지 않으면 버튼 비활성화
     verifyButton.disabled = !isValid;
 
@@ -20,21 +35,21 @@ function login() {
       verifyButton.classList.add('border-contentSecondary', 'text-contentSecondary');
     }
   });
-
-  verifyButton.addEventListener('click', () => {
-    const phoneNumber = phoneInput.value;
+  verifyButton.addEventListener('click', (e) => {
+    e.preventDefault();
 
     if (!verifyButton.disabled) {
+      const phoneNumber = phoneInput.value.replace(/\s/g, '');
       // 6자리 랜덤 코드
       const verificationCode = Math.floor(100000 + Math.random() * 900000);
 
-      localStorage.setItem('phoneNumber', phoneInput.value);
+      localStorage.setItem('phoneNumber', phoneNumber);
       localStorage.setItem('verificationCode', verificationCode);
 
       // 임시
       alert(`인증 코드: ${verificationCode}`);
 
-      // signup2.html로 이동 (인증번호 입력하는 페이지로 이동)
+      // login2.html로 이동 (인증번호 입력하는 페이지로 이동)
       window.location.href = '/pages/login/login2.html';
     }
   });
