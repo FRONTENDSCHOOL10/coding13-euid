@@ -41,6 +41,12 @@ async function exchangeDetail() {
       const data = await pb.collection('posts').getOne(post_id, {
         expand: 'user_id',
       });
+
+      // loading 완료
+      const spinnerContainer = document.querySelector('.spinner-container');
+      spinnerContainer.remove();
+      document.body.classList.remove('overflow-hidden');
+
       const { category, photo, title, description, price, state, created } = data;
 
       // 물품 사진 슬라이드 생성

@@ -1,3 +1,5 @@
+import '/components/loading-button/loading-button';
+
 import { UserService } from '@/service/UserService';
 
 const selectedCategoriesStorageKey = "selected_categories";
@@ -38,6 +40,11 @@ function signup2() {
 
   agreeButton.addEventListener('click', async (e) => {
     e.preventDefault();
+
+    agreeButton.toggleAttribute('disabled', true);
+    agreeButton.classList.add('cursor-not-allowed');
+    agreeButton.toggleAttribute('loading', true);
+
     const localStorageVerificationCode = localStorage.getItem('verificationCode');
     const savedSelectedCategoriesItem = localStorage.getItem(selectedCategoriesStorageKey);
     const selectedCategories = savedSelectedCategoriesItem ? JSON.parse(savedSelectedCategoriesItem) : [];
@@ -57,6 +64,10 @@ function signup2() {
           window.location.href = '/pages/signup/';
         }
         return;
+      } finally {
+        agreeButton.toggleAttribute('loading', false);
+        agreeButton.toggleAttribute('disabled', false);
+        agreeButton.classList.remove('cursor-not-allowed');
       }
 
       // 로그인 성공 시 자동으로 메인화면으로 이동.

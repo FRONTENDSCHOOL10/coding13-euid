@@ -9,8 +9,10 @@
     <script type="module" src="/components/header/header.js"></script>
     <script type="module" src="/pages/exchange-detail/exchange-detail.js"></script>
   </head>
-  <body>
+  <body class="overflow-hidden">
     <div id="app" aria-live="polite" class="min-w-[20rem]">
+      <div class="spinner-container h-screen w-screen"><c-spinner></c-spinner></div>
+
       <h1 class="sr-only">거래글 상세페이지</h1>
       <!-- 헤더 -->
       <c-header data-page="거래글"></c-header>

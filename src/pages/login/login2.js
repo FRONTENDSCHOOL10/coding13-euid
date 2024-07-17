@@ -1,3 +1,5 @@
+import '/components/loading-button/loading-button';
+
 import { UserService } from '@/service/UserService';
 
 const verificationNumberInput = document.querySelector('#verification-number');
@@ -37,6 +39,11 @@ function login2() {
 
   loginButton.addEventListener('click', async (e) => {
     e.preventDefault();
+
+    loginButton.toggleAttribute('disabled', true);
+    loginButton.classList.add('cursor-not-allowed');
+    loginButton.toggleAttribute('loading', true);
+
     const localStorageVerificationCode = localStorage.getItem('verificationCode');
     const verificationCode = verificationNumberInput.value;
 
@@ -47,6 +54,10 @@ function login2() {
         alert(`오류가 발생했습니다, 다시 시도해주세요: ${error.message}`);
         window.location.href = '/pages/login/';
         return;
+      } finally {
+        loginButton.toggleAttribute('loading', false);
+        loginButton.toggleAttribute('disabled', false);
+        loginButton.classList.remove('cursor-not-allowed');
       }
 
       // 로그인 성공 시 자동으로 메인화면으로 이동.
