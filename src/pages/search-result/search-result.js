@@ -13,15 +13,24 @@ async function searchResultPage() {
   const recentSearchArray = recentSearch.split(',');
 
   /* ---------------------- DOM 요소 선택 --------------------- */
+  // 검색 결과 관련 요소
   const searchInput = document.querySelector('#search');
   const exchangeList = document.querySelector('#exchange-list');
+  const possibleCheck = document.querySelector('#possible');
+  // 모달창 관련 요소
   const filterList = document.querySelector('#filter-list');
   const orderButton = document.querySelector('#order-button');
   const modalCategory = document.querySelector('#category');
   const modalPrice = document.querySelector('#price');
   const modalOrder = document.querySelector('#order');
-  const applyCategory = document.querySelector('#apply-category');
-  const applyRange = document.querySelector('#apply-range');
+  const resetCategoryButton = document.querySelector('#reset-category');
+  const resetRangeButton = document.querySelector('#reset-range');
+  const applyCategoryButton = document.querySelector('#apply-category');
+  const applyRangeButton = document.querySelector('#apply-range');
+  const categoryOption = document.querySelector('#category-option');
+  const categoryCheckList = categoryOption.querySelectorAll('li input');
+  const minPrice = document.querySelector('#min-price');
+  const maxPrice = document.querySelector('#max-price');
   const orderOption = document.querySelector('#order-option');
 
   /* -------------------- query string -------------------- */
@@ -98,14 +107,16 @@ async function searchResultPage() {
   }
 
   // 렌더링 함수
-  async function renderSearchResult() {
+  async function renderSearchResult(option, sort = 'created') {
     const searchTextArray = recentSearchText.split(' ');
-    const filteringText = searchTextArray.map((item) => `title ~ '${item}'`).join(' && ');
+    const searchText = searchTextArray.map((item) => `title ~ '${item}'`).join(' && ');
 
     const postList = await pb.collection('posts').getFullList({
-      sort: 'created',
-      filter: `${filteringText}`,
+      sort,
+      filter: `(${searchText})${option}`,
     });
+
+    exchangeList.textContent = '';
 
     for (let item of postList) {
       const postCreator = await pb.collection('users').getOne(item.user_id);
@@ -158,7 +169,8 @@ async function searchResultPage() {
     }
   }
 
-  renderSearchResult().then(() => {
+  // 검색 결과 없을 시 렌더링 함수
+  function noSearchResult() {
     if (!exchangeList.textContent) {
       exchangeList.innerHTML = `
         <li class="text-base-group pt-40 text-center text-contentPrimary">
@@ -166,6 +178,17 @@ async function searchResultPage() {
           '<span class="font-semibold">${recentSearchText}</span>' 검색 결과가 없어요.
         </li>
       `;
+    }
+  }
+
+  renderSearchResult('').then(noSearchResult);
+
+  // '거래가능만 보기' 체크 시
+  possibleCheck.addEventListener('click', () => {
+    if (possibleCheck.checked) {
+      renderSearchResult(" && state = ''").then(noSearchResult);
+    } else {
+      renderSearchResult('').then(noSearchResult);
     }
   });
 
@@ -186,37 +209,83 @@ async function searchResultPage() {
     await pb.collection('users').update(currentUser.id, data);
   }
 
-  /* ----------------------- 모달창 열기 ----------------------- */
+  /* ------------------------- 모달창 ------------------------ */
+  // 모달창 열기
   function handleModal(e) {
     const modalOpenButton = e.target.closest('button');
 
     if (!modalOpenButton) return;
     if (modalOpenButton.dataset.name === 'category') {
       modalCategory.showModal();
-
-      applyCategory.addEventListener('click', () => {
-        modalCategory.close();
-      });
     }
 
     if (modalOpenButton.dataset.name === 'price') {
       modalPrice.showModal();
-
-      applyRange.addEventListener('click', () => {
-        modalPrice.close();
-      });
     }
     if (modalOpenButton.dataset.name === 'order') {
       modalOrder.showModal();
+    }
+  }
 
-      orderOption.addEventListener('click', (e) => {
-        const radioSelect = e.target.closest('label');
+  // 카테고리 필터링 함수
+  function haddleApplyCategory() {
+    modalCategory.close();
 
-        if (!radioSelect) return;
+    // 어떤 카테고리도 선택되지 않았을 때
+    if (!categoryOption.querySelector('li input').checked) return;
 
-        const selectText = radioSelect.textContent;
+    const filteringTextArray = [];
+    for (let item of categoryCheckList) {
+      if (item.checked) filteringTextArray.push(item.nextElementSibling.textContent);
+    }
 
-        orderButton.innerHTML = `${selectText} 
+    const filteringText = filteringTextArray.map((item) => `category = '${item}'`).join(' || ');
+
+    renderSearchResult(` && (${filteringText})`).then(noSearchResult);
+  }
+
+  // 카테고리 선택 초기화 함수
+  function handleResetCategory() {
+    const categoryCheckBox = categoryOption.querySelectorAll('li input');
+
+    categoryCheckBox.forEach((checkbox) => {
+      checkbox.checked = false;
+    });
+  }
+
+  // 가격 범위 필터링 함수
+  function handleApplyRange() {
+    if (!minPrice.value && !maxPrice.value) {
+      alert('가격 범위를 입력해주세요.');
+    } else if (!minPrice.value) {
+      alert('최소 금액을 입력해주세요.');
+    } else if (!maxPrice.value) {
+      alert('최대 금액을 입력해주세요.');
+    } else if (minPrice.value >= maxPrice.value) {
+      alert('올바른 가격 범위를 입력해주세요.');
+    } else {
+      modalPrice.close();
+
+      const priceOption = ` && (price >= '${minPrice.value}' && price <= '${maxPrice.value}')`;
+      renderSearchResult(priceOption).then(noSearchResult);
+    }
+  }
+
+  // 가격 범위 입력 초기화 함수
+  function handleResetRange() {
+    minPrice.value = '';
+    maxPrice.value = '';
+  }
+
+  // 순서 정렬 함수
+  function handleOrderOption(e) {
+    const radioSelect = e.target.closest('label');
+
+    if (!radioSelect) return;
+
+    const selectText = radioSelect.textContent;
+
+    orderButton.innerHTML = `${selectText} 
           <svg
             width="20"
             height="20"
@@ -233,12 +302,20 @@ async function searchResultPage() {
           </svg>
         `;
 
-        modalOrder.close();
-      });
+    modalOrder.close();
+    if (selectText === '오래된순') {
+      renderSearchResult('', '-created').then(noSearchResult);
+    } else {
+      renderSearchResult('').then(noSearchResult);
     }
   }
 
   filterList.addEventListener('click', handleModal);
+  applyCategoryButton.addEventListener('click', haddleApplyCategory);
+  resetCategoryButton.addEventListener('click', handleResetCategory);
+  applyRangeButton.addEventListener('click', handleApplyRange);
+  resetRangeButton.addEventListener('click', handleResetRange);
+  orderOption.addEventListener('click', handleOrderOption);
 }
 
 searchResultPage();
