@@ -247,18 +247,21 @@ async function searchResultPage() {
   function haddleApplyCategory() {
     modalCategory.close();
 
+    const checkedCategories = [...categoryCheckList].filter((input) => input.checked);
+
     // 어떤 카테고리도 선택되지 않았을 때
-    if (!categoryOption.querySelector('li input').checked) {
+    if (checkedCategories.length === 0) {
       renderSearchResult('').then(noSearchResult);
       return;
     }
 
     const filteringTextArray = [];
-    for (let item of categoryCheckList) {
-      if (item.checked) filteringTextArray.push(item.nextElementSibling.textContent);
+    for (let item of checkedCategories) {
+      filteringTextArray.push(item.nextElementSibling.textContent);
     }
 
     const filteringText = filteringTextArray.map((item) => `category = '${item}'`).join(' || ');
+    console.log(filteringText);
 
     renderSearchResult(` && (${filteringText})`).then(noSearchResult);
   }
@@ -283,7 +286,7 @@ async function searchResultPage() {
       priceOption = ` && (price >= '0' && price <= '${maxPrice.value}')`;
     } else if (!maxPrice.value) {
       priceOption = ` && (price >= '${minPrice.value}')`;
-    } else if (minPrice.value > maxPrice.value) {
+    } else if (minPrice.value * 1 > maxPrice.value * 1) {
       alert('최대 금액이 최소 금액보다 커야 합니다.');
       return;
     } else {
