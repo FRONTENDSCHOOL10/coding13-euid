@@ -19,7 +19,7 @@ MainTemplate.innerHTML = `
 <h1 class="sr-only">홈 페이지</h1>
 
 <!-- 헤더 -->
-<c-header data-page="홈"></c-header>
+<c-header data-page="홈" has-local></c-header>
 
 <!-- 네비게이션 -->
 <c-navigation data-page="홈"></c-navigation>
