@@ -229,7 +229,7 @@ ProfileDetailTemplate.innerHTML = `
   </form>
 
   <!-- 모달창 배경 -->
-  <div id="confirm-modal" hidden aria-hidden="true" class="fixed left-0 top-0 z-50 h-screen w-full bg-contentTertiary bg-opacity-20">
+  <div id="confirm-modal" aria-hidden="true" class="hidden fixed left-0 top-0 z-50 h-screen w-full bg-contentTertiary bg-opacity-20">
     <!-- 모달창 -->
     <dialog
       aria-modal="true"
@@ -351,7 +351,7 @@ class ProfileDetail extends HTMLElement {
     await UserService.updateUser(this.currentUser.id, formData);
 
     const $confirmModal = this.shadowRoot.getElementById('confirm-modal');
-    $confirmModal.removeAttribute('hidden');
+    $confirmModal.classList.remove('hidden');
     document.documentElement.style.overflow = 'hidden';
   };
 

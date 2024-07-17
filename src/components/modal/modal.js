@@ -4,7 +4,7 @@ const modalTemplate = document.createElement('template');
 modalTemplate.innerHTML = `
   <style>${tailwindCSS}</style>
   <!-- 모달창 배경 -->
-  <div id="modal-bg" hidden class="fixed left-0 top-0 z-50 h-screen w-full bg-contentTertiary bg-opacity-20">
+  <div id="modal-bg" class="hidden fixed left-0 top-0 z-50 h-screen w-full bg-contentTertiary bg-opacity-20">
   <!-- 모달창 -->
     <dialog
       aria-modal="true"
