@@ -193,20 +193,23 @@ async function searchResultPage() {
   });
 
   /* ------------------ 검색어 최근 검색어 목록에 추가 ----------------- */
-  if (recentSearchArray.includes(recentSearchText)) {
-    // 이미 최근 검색어 목록에 있을 때
-    // 삭제하고 맨 뒤에 다시 추가
-    const filteredArray = recentSearchArray.filter((value) => value !== recentSearchText);
-    filteredArray.push(recentSearchText);
-    const data = { recent_search: filteredArray.toString() };
+  // 최근 검색어가 빈문자가 아닐 때만 추가하도록
+  if (recentSearchText) {
+    if (recentSearchArray.includes(recentSearchText)) {
+      // 이미 최근 검색어 목록에 있을 때
+      // 삭제하고 맨 뒤에 다시 추가
+      const filteredArray = recentSearchArray.filter((value) => value !== recentSearchText);
+      filteredArray.push(recentSearchText);
+      const data = { recent_search: filteredArray.toString() };
 
-    await pb.collection('users').update(currentUser.id, data);
-  } else {
-    // 최근 검색어 목록에 없을 때
-    recentSearchArray.push(recentSearchText);
-    const data = { recent_search: recentSearchArray.toString() };
+      await pb.collection('users').update(currentUser.id, data);
+    } else {
+      // 최근 검색어 목록에 없을 때
+      recentSearchArray.push(recentSearchText);
+      const data = { recent_search: recentSearchArray.toString() };
 
-    await pb.collection('users').update(currentUser.id, data);
+      await pb.collection('users').update(currentUser.id, data);
+    }
   }
 
   /* ------------------------- 모달창 ------------------------ */
@@ -227,12 +230,28 @@ async function searchResultPage() {
     }
   }
 
+  // 모달창 닫기
+  function closeModalOutside(modal) {
+    window.addEventListener('click', function (e) {
+      if (e.target === modal) {
+        modal.close();
+      }
+    });
+  }
+
+  closeModalOutside(modalCategory);
+  closeModalOutside(modalPrice);
+  closeModalOutside(modalOrder);
+
   // 카테고리 필터링 함수
   function haddleApplyCategory() {
     modalCategory.close();
 
     // 어떤 카테고리도 선택되지 않았을 때
-    if (!categoryOption.querySelector('li input').checked) return;
+    if (!categoryOption.querySelector('li input').checked) {
+      renderSearchResult('').then(noSearchResult);
+      return;
+    }
 
     const filteringTextArray = [];
     for (let item of categoryCheckList) {
@@ -255,20 +274,24 @@ async function searchResultPage() {
 
   // 가격 범위 필터링 함수
   function handleApplyRange() {
+    let priceOption;
+
     if (!minPrice.value && !maxPrice.value) {
       alert('가격 범위를 입력해주세요.');
+      return;
     } else if (!minPrice.value) {
-      alert('최소 금액을 입력해주세요.');
+      priceOption = ` && (price >= '0' && price <= '${maxPrice.value}')`;
     } else if (!maxPrice.value) {
-      alert('최대 금액을 입력해주세요.');
-    } else if (minPrice.value >= maxPrice.value) {
-      alert('올바른 가격 범위를 입력해주세요.');
+      priceOption = ` && (price >= '${minPrice.value}')`;
+    } else if (minPrice.value > maxPrice.value) {
+      alert('최대 금액이 최소 금액보다 커야 합니다.');
+      return;
     } else {
-      modalPrice.close();
-
-      const priceOption = ` && (price >= '${minPrice.value}' && price <= '${maxPrice.value}')`;
-      renderSearchResult(priceOption).then(noSearchResult);
+      priceOption = ` && (price >= '${minPrice.value}' && price <= '${maxPrice.value}')`;
     }
+
+    modalPrice.close();
+    renderSearchResult(priceOption).then(noSearchResult);
   }
 
   // 가격 범위 입력 초기화 함수
