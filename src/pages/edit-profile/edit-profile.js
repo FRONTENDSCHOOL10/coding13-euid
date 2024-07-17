@@ -125,7 +125,7 @@ EditProfileTemplate.innerHTML = `
 `;
 
 class EditProfile extends HTMLElement {
-  static observedAttributes = ['loading'];
+  static observedAttributes = ['loading', 'error'];
 
   constructor() {
     super();
@@ -155,12 +155,23 @@ class EditProfile extends HTMLElement {
     this.setAttribute('loading', JSON.stringify(value));
   }
 
+  get error() {
+    return JSON.parse(this.getAttribute('error'));
+  }
+
+  set error(value) {
+    this.setAttribute('error', JSON.stringify(value));
+  }
+
   async fetchData() {
     try {
+      this.loading = true;
+      this.error = null;
       await this.fetchCurrentUser();
     } catch (error) {
-      // TODO: 유저에게 에러 메시지 보여주기
-      console.error(error);
+      this.error = error?.message
+        ? `에러가 발생했습니다: ${error.message}. 잠시 후 새로고침 해주세요.`
+        : `에러가 발생했습니다, 잠시 후 새로고침 해주세요.`;
     } finally {
       this.loading = false;
     }
@@ -177,6 +188,9 @@ class EditProfile extends HTMLElement {
     if (this.loading) {
       // this.shadowRoot.innerHTML = '<p>loading...</p>';
       this.shadowRoot.innerHTML = '';
+      return;
+    } else if (this.error) {
+      this.shadowRoot.innerHTML = `<p>${this.error}</p>`;
       return;
     }
 
