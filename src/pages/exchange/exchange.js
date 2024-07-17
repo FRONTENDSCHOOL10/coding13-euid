@@ -53,10 +53,11 @@ function renderTime(item) {
 async function renderPostList() {
   const postList = await pb.collection('posts').getFullList({
     sort: 'created',
+    expand: 'user_id',
   });
 
   for (let item of postList) {
-    const postCreator = await pb.collection('users').getOne(item.user_id);
+    const postCreator = item.expand.user_id;
 
     // 좋아요 수에 각 게시글에 저장된 좋아요 개수를 불러오도록 수정해야 합니다. (pocketbase 항목 추가 필요)
     const template = `
