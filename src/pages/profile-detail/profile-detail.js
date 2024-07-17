@@ -18,7 +18,7 @@ function disableButton(btnNode, activeClass, disabledClass) {
 const ProfileDetailTemplate = document.createElement('template');
 ProfileDetailTemplate.innerHTML = `
   <style>${tailwindCSS}</style>
-  <form id="profile-form" name="profile-form" class="flex flex-col">
+  <form id="profile-form" name="profile-form" class="flex flex-col pt-[2.8125rem] xs:pt-[3.9375rem] sm:pt-[5.0625rem]">
     <section
       class="flex flex-col gap-[1.875rem] px-3 py-8 xs:gap-[2.625rem] xs:px-[1.05rem] xs:py-[2.8rem] sm:gap-[3.375rem] sm:px-[1.35rem] sm:py-[3.6rem]"
     >
@@ -229,24 +229,26 @@ ProfileDetailTemplate.innerHTML = `
   </form>
 
   <!-- 모달창 배경 -->
-  <div hidden class="absolute left-0 top-0 z-50 h-screen w-full bg-contentTertiary bg-opacity-20">
+  <div id="confirm-modal" hidden aria-hidden="true" class="fixed left-0 top-0 z-50 h-screen w-full bg-contentTertiary bg-opacity-20">
     <!-- 모달창 -->
     <dialog
       aria-modal="true"
       aria-labelledby="modal-title"
       aria-describedby="modal-description"
-      class="absolute left-1/2 top-1/2 flex w-[70%] -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center gap-5 rounded-[1.25rem] bg-background px-[1.125rem] pb-[1.125rem] pt-5 [box-shadow:0_0.25rem_0.25rem_0_rgba(0,_0,_0,_0.25)]"
+      class="fixed left-1/2 top-1/2 flex w-[70%] -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center gap-5 rounded-[1.25rem] bg-background px-[1.125rem] pb-[1.125rem] pt-5 [box-shadow:0_0.25rem_0.25rem_0_rgba(0,_0,_0,_0.25)]"
     >
       <h2 id="modal-title" class="text-base-group leading-[160%]">저장 완료!</h2>
       <p id="modal-description" class="text-sm-group leading-[160%] text-contentSecondary">
         내 질문&답변의 프로필 카드, 프로필 홈에서 변경된 프로필 정보를 확인 할 수 있어요.
       </p>
-      <button
+      <a
+        role="button"
+        href="/pages/edit-profile/"
         aria-label="확인 및 모달 닫기"
-        class="text-base-group w-full cursor-pointer rounded-lg bg-primary py-2 text-background"
+        class="text-base-group w-full text-center cursor-pointer rounded-lg bg-primary py-2 text-background"
       >
         확인
-      </button>
+      </a>
     </dialog>
   </div>
 `;
@@ -348,7 +350,9 @@ class ProfileDetail extends HTMLElement {
     }
     await UserService.updateUser(this.currentUser.id, formData);
 
-    window.location.href = '/pages/edit-profile/';
+    const $confirmModal = this.shadowRoot.getElementById('confirm-modal');
+    $confirmModal.removeAttribute('hidden');
+    document.documentElement.style.overflow = 'hidden';
   };
 
   attributeChangedCallback(_attrName, _oldVal, _newVal) {
