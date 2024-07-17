@@ -485,7 +485,128 @@ class Profile extends HTMLElement {
 
     if (this.loading) {
       // this.shadowRoot.innerHTML = '<p>loading...</p>';
-      this.shadowRoot.innerHTML = '';
+      this.shadowRoot.innerHTML = `
+        <style>${tailwindCSS}</style>
+        <main>
+          <!-- profile menu -->
+          <section
+            class="px-[1.9375rem] pb-[1.125rem] pt-[2.625rem] xs:px-[2.7125rem] xs:pb-[1.575rem] xs:pt-[3.675rem] sm:px-[3.4875rem] sm:pb-[2.025rem] sm:pt-[4.725rem]"
+          >
+            <div class="mb-[0.9375rem] flex flex-col items-center xs:mb-[1.3125rem] sm:mb-[1.6875rem]">
+              <div
+                class="bg-gray-300 mb-[0.5625rem] animate-pulse aspect-square w-[21.25vw] rounded-full xs:mb-[0.7875rem] sm:mb-[1.0125rem]"
+              ></div>
+              <div class="flex h-[1.75rem] flex-row items-center xs:h-[2.45rem] sm:h-[3.15rem]">
+                <div class="pt-[0.125rem] h-2.5 xs:h-3 sm:h-4 w-[30vw] bg-gray-200 rounded-full animate-pulse"
+                ></div>
+              </div>
+              <div class="h-2.5 xs:h-3 sm:h-4 w-[20vw] bg-gray-200 rounded-full animate-pulse"></div>
+            </div>
+            <div class="mx-auto">
+              <div
+                class="flex h-[3.25rem] justify-center w-full bg-gray-300 animate-pulse xs:h-[4.55rem] xs:space-x-[5.425rem] sm:h-[5.85rem] sm:space-x-[6.975rem] rounded-md xs:rounded-lg sm:rounded-xl"
+              >
+              </div>
+            </div>
+          </section>
+          <!-- profile menu -->
+
+          <!-- passion section -->
+          <section class="p-3 xs:p-[1.05rem] sm:p-[1.35rem]">
+            <!-- passion temperature -->
+            <div>
+              <div class="bg-gray-200 animate-pulse h-2.5 xs:h-3 sm:h-4 w-[30vw] rounded-full"></div>
+              <div
+                class="my-6 h-2.5 xs:h-3 sm:h-4 w-full rounded-full bg-gray-300 animate-pulse xs:my-[2.1rem] sm:my-[2.7rem]"
+              >
+              </div>
+            </div>
+            <!-- passion temperature -->
+
+            <!-- passion details -->
+            <div
+              class="flex h-[4.4375rem] flex-row px-2 py-4 xs:h-[6.2125rem] xs:px-[0.7rem] xs:py-[1.4rem] sm:h-[7.9875rem] sm:px-[0.9rem] sm:py-[1.8rem] space-x-5"
+            >
+              <div class="flex flex-col w-1/2">
+                <div class="flex flex-row space-x-[0.3125rem] xs:space-x-[0.4375rem] sm:space-x-[0.5625rem]">
+                  <div class="flex flex-col items-start space-y-2 xs:space-y-4 sm:space-y-6">
+                    <div class="h-2.5 xs:h-3 sm:h-4 w-[25vw] bg-gray-300 animate-pulse rounded-full"></div>
+                    <div class="h-2.5 xs:h-3 sm:h-4 w-[40vw] bg-gray-200 animate-pulse rounded-full"></div>
+                    <div class="h-2.5 xs:h-3 sm:h-4 w-[40vw] bg-gray-200 animate-pulse rounded-full"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-col w-1/2">
+                <div class="flex flex-row space-x-[0.3125rem] xs:space-x-[0.4375rem] sm:space-x-[0.5625rem]">
+                  <div class="flex flex-col items-start space-y-2 xs:space-y-4 sm:space-y-6">
+                    <div class="h-2.5 xs:h-3 sm:h-4 w-[25vw] bg-gray-300 animate-pulse rounded-full"></div>
+                    <div class="h-2.5 xs:h-3 sm:h-4 w-[40vw] bg-gray-200 animate-pulse rounded-full"></div>
+                    <div class="h-2.5 xs:h-3 sm:h-4 w-[40vw] bg-gray-200 animate-pulse rounded-full"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- passion details -->
+          </section>
+          <!-- passion section -->
+
+          <!-- badges -->
+          <section class="border-b-[0.01875rem] border-gray-300">
+            <div class="flex w-full flex-row items-center px-[1.3125rem] py-4 xs:px-[1.8375rem] xs:py-[1.4rem] sm:px-[2.3625rem] sm:py-[1.8rem]">
+              <div class="h-2.5 xs:h-3 sm:h-4 w-[30vw] bg-gray-300 animate-pulse rounded-full"></div>
+            </div>
+          </section>
+          <!-- badges -->
+          <!-- my products -->
+          <section class="border-b-[0.01875rem] border-gray-300">
+            <div class="flex w-full flex-row items-center px-[1.3125rem] py-4 xs:px-[1.8375rem] xs:py-[1.4rem] sm:px-[2.3625rem] sm:py-[1.8rem]">
+              <div class="h-2.5 xs:h-3 sm:h-4 w-[30vw] bg-gray-300 animate-pulse rounded-full"></div>
+            </div>
+          </section>
+          <!-- my products -->
+          <!-- manner feedback -->
+          <section class="flex flex-col border-b-[0.01875rem] border-gray-300">
+            <div class="flex w-full flex-row items-center px-[1.3125rem] py-4 xs:px-[1.8375rem] xs:py-[1.4rem] sm:px-[2.3625rem] sm:py-[1.8rem]">
+              <div class="h-2.5 xs:h-3 sm:h-4 w-[30vw] bg-gray-300 animate-pulse rounded-full"></div>
+            </div>
+            <!-- manner reviews -->
+            <div
+              class="space-y-4 px-[0.625rem] py-[0.875rem] xs:px-[0.875rem] xs:py-[1.225rem] sm:px-[1.125rem] sm:py-[1.575rem]"
+            >
+              <div class="flex items-center space-x-2 xs:space-x-[0.7rem] sm:space-x-[0.9rem]">
+                <div class="aspect-square w-5 xs:w-[1.75rem] sm:w-[2.25rem] animate-pulse rounded-full bg-gray-200"></div>
+                <div class="h-2.5 xs:h-3 sm:h-4 rounded-full bg-gray-300 animate-pulse w-[40vw]"></div>
+              </div>
+              <div class="flex items-center space-x-2 xs:space-x-[0.7rem] sm:space-x-[0.9rem]">
+                <div class="aspect-square w-5 xs:w-[1.75rem] sm:w-[2.25rem] animate-pulse rounded-full bg-gray-300"></div>
+                <div class="h-2.5 xs:h-3 sm:h-4 rounded-full bg-gray-200 animate-pulse w-[45vw]"></div>
+              </div>
+              <div class="flex items-center space-x-2 xs:space-x-[0.7rem] sm:space-x-[0.9rem]">
+                <div class="aspect-square w-5 xs:w-[1.75rem] sm:w-[2.25rem] animate-pulse rounded-full bg-gray-200"></div>
+                <div class="h-2.5 xs:h-3 sm:h-4 rounded-full bg-gray-300 animate-pulse w-[50vw]"></div>
+              </div>
+            </div>
+            <!-- manner reviews -->
+          </section>
+          <!-- manner feedback -->
+          <!-- reviews -->
+          <section class="border-b-[0.01875rem] border-gray-300">
+            <div class="flex w-full flex-row items-center px-[1.3125rem] py-4 xs:px-[1.8375rem] xs:py-[1.4rem] sm:px-[2.3625rem] sm:py-[1.8rem]">
+              <div class="h-2.5 xs:h-3 sm:h-4 w-[30vw] bg-gray-300 animate-pulse rounded-full"></div>
+            </div>
+          </section>
+          <!-- reviews -->
+          <!-- reviews list -->
+          <section class="border-b-[0.01875rem] border-gray-300">
+            <div class="flex w-full flex-col space-y-3 xs:space-y-5 sm:space-y-7 px-[1.3125rem] py-4 xs:px-[1.8375rem] xs:py-[1.4rem] sm:px-[2.3625rem] sm:py-[1.8rem]">
+              <div class="h-2.5 xs:h-3 sm:h-4 w-[30vw] bg-gray-300 animate-pulse rounded-full"></div>
+              <div class="h-2.5 xs:h-3 sm:h-4 w-full bg-gray-200 animate-pulse rounded-full"></div>
+              <div class="h-2.5 xs:h-3 sm:h-4 w-full bg-gray-200 animate-pulse rounded-full"></div>
+            </div>
+          </section>
+          <!-- reviews list -->
+        </main>
+      `;
       return;
     } else if (this.error) {
       this.shadowRoot.innerHTML = `<p>${this.error}</p>`;

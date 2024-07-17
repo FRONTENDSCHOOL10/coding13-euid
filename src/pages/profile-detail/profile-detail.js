@@ -1,13 +1,13 @@
-import { UserService } from '@/service/UserService';
+import { UserService } from '/service/UserService';
 import tailwindCSS from '/styles/tailwind.css?inline'; // css 파일 inline 가져오기
-import { getPbImageURL } from '@/api/getPbImageURL';
-import { convertImageToWebP } from '@/utils/convertImageToWebP';
-import '@/components/navigation/navigation';
+import { getPbImageURL } from '/api/getPbImageURL';
+import { convertImageToWebP } from '/utils/convertImageToWebP';
+import '/components/navigation/navigation';
 
 function activeButton(btnNode, activeClass, disabledClass) {
   btnNode.removeAttribute('disabled');
-  btnNode.classList.remove(disabledClass, 'cursor-pointer');
-  btnNode.classList.add(activeClass, 'cursor-not-allowed');
+  btnNode.classList.remove(disabledClass, 'cursor-not-allowed');
+  btnNode.classList.add(activeClass, 'cursor-pointer');
 }
 function disableButton(btnNode, activeClass, disabledClass) {
   btnNode.setAttribute('disabled', true);
@@ -32,7 +32,7 @@ ProfileDetailTemplate.innerHTML = `
 
           <label
             for="avatar"
-            class="absolute bottom-[0.06rem] right-[0.06rem] flex w-1/4 rounded-full bg-background p-[0.125rem] [box-shadow:0.25rem_0.25rem_0.25rem_0px_rgba(0,_0,_0,_0.15)] xs:bottom-[0.084rem] xs:right-[0.084rem] xs:p-[0.175rem] sm:bottom-[0.108rem] sm:right-[0.108rem] sm:p-[0.225rem]"
+            class="absolute bottom-[0.06rem] right-[0.06rem] flex w-1/4 rounded-full bg-background p-[0.125rem] [box-shadow:0.25rem_0.25rem_0.25rem_0px_rgba(0,_0,_0,_0.15)] cursor-pointer xs:bottom-[0.084rem] xs:right-[0.084rem] xs:p-[0.175rem] sm:bottom-[0.108rem] sm:right-[0.108rem] sm:p-[0.225rem]"
           >
             <img src="/icon/pencil.svg" alt="연필" aria-hidden="true" class="aspect-square w-full" />
             <input
@@ -405,7 +405,7 @@ class ProfileDetail extends HTMLElement {
       return;
     }
 
-    // currentUser가 없으면 초기 시작 화면으로 redirect해둠, 따라서 로딩 이후 currentUser를 가져오지 못한 경우는 신경쓰지 않음.
+    // currnetUser가 없으면 초기 시작 화면으로 redirect해둠, 따라서 로딩 이후 currentUser를 가져오지 못한 경우는 신경쓰지 않음.
 
     this.shadowRoot.appendChild(ProfileDetailTemplate.content.cloneNode(true));
 

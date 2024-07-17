@@ -96,7 +96,7 @@ EditProfileTemplate.innerHTML = `
         class="flex flex-row items-center justify-between border-b-[0.01875rem] border-contentSecondary p-3 pr-4 xs:p-[1.05rem] xs:pr-[1.4rem] sm:p-[1.35rem] sm:pr-[1.8rem]"
       >
         <h3 class="text-base-group font-semibold leading-[1.5]">추가 정보</h3>
-        <a href="/pages/profile-detail" class="text-sm-group text-secondary">수정하기</a>
+        <a href="/pages/profile-detail/" class="text-sm-group text-secondary">수정하기</a>
       </div>
       <ul
         aria-label="추가 정보 리스트"
