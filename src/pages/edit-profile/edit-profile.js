@@ -1,7 +1,8 @@
-import { UserService } from '@/service/UserService';
+import { UserService } from '/service/UserService';
 import tailwindCSS from '/styles/tailwind.css?inline'; // css 파일 inline 가져오기
-import { getPbImageURL } from '@/api/getPbImageURL';
-import '@/components/navigation/navigation';
+import { getPbImageURL } from '/api/getPbImageURL';
+import '/components/navigation/navigation';
+import '/components/spinner/spinner';
 
 const EditProfileTemplate = document.createElement('template');
 EditProfileTemplate.innerHTML = `
@@ -186,8 +187,7 @@ class EditProfile extends HTMLElement {
     this.shadowRoot.innerHTML = '';
 
     if (this.loading) {
-      // this.shadowRoot.innerHTML = '<p>loading...</p>';
-      this.shadowRoot.innerHTML = '';
+      this.shadowRoot.innerHTML = '<c-spinner></c-spinner>';
       return;
     } else if (this.error) {
       this.shadowRoot.innerHTML = `<p>${this.error}</p>`;
