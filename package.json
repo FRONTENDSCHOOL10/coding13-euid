@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "pocketbase": "^0.21.3",
-    "swiper": "^11.1.4"
+    "swiper": "^11.1.4",
+    "upload-images-converter": "^2.0.2"
   }
 }
