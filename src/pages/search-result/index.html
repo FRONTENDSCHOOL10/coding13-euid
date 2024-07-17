@@ -11,6 +11,8 @@
   <body>
     <div id="app">
       <h1 class="sr-only">검색 결과 페이지</h1>
+
+      <!-- 검색어 입력 및 필터링 버튼 -->
       <header class="fixed top-0 z-10 w-full bg-background">
         <div
           role="group"
@@ -107,6 +109,8 @@
           </li>
         </ul>
       </header>
+
+      <!-- 거래 상태 필터링 -->
       <div
         role="group"
         class="text-sm-group mt-24 flex items-center gap-2 px-3 py-1 xs:mt-[8.125rem] xs:gap-[0.7rem] xs:px-[1.05rem] xs:py-[0.35rem] sm:mt-[10.625rem] sm:gap-[0.9rem] sm:px-[1.35rem] sm:py-[0.45rem]"
@@ -114,8 +118,11 @@
         <input type="checkbox" id="possible" class="focus:outline-secondary" />
         <label for="possible" class="w-full">거래가능만 보기</label>
       </div>
+
+      <!-- 검색 결과 리스트 -->
       <ul id="exchange-list" aria-label="거래 물품"></ul>
 
+      <!-- 검색 결과 필터링 모달창 -->
       <div role="group">
         <dialog class="mb-0 w-full max-w-full rounded-t-2xl outline-none" id="category">
           <section class="relative" aria-label="핸들">
