@@ -29,6 +29,7 @@ export default defineConfig(({ command, mode }) => {
           chatContent: resolve(__dirname, 'src', 'pages', 'chat-content', 'index.html'),
           signup2: resolve(__dirname, 'src', 'pages', 'signup', 'signup2.html'),
           login2: resolve(__dirname, 'src', 'pages', 'login', 'login2.html'),
+          writePost: resolve(__dirname, 'src', 'pages', 'write-post', 'index.html'),
         },
       },
     },
