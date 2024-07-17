@@ -1,5 +1,6 @@
 import { UserService } from '@/service/UserService';
 
+const selectedCategoriesStorageKey = "selected_categories";
 const verificationNumberInput = document.querySelector('#verification-number');
 const agreeButton = document.querySelector('#agree');
 const inputNumber = document.querySelector('#input-phone-number');
@@ -38,12 +39,15 @@ function signup2() {
   agreeButton.addEventListener('click', async (e) => {
     e.preventDefault();
     const localStorageVerificationCode = localStorage.getItem('verificationCode');
+    const savedSelectedCategoriesItem = localStorage.getItem(selectedCategoriesStorageKey);
+    const selectedCategories = savedSelectedCategoriesItem ? JSON.parse(savedSelectedCategoriesItem) : [];
     const verificationCode = verificationNumberInput.value;
 
     if (verificationCode && verificationCode === localStorageVerificationCode) {
       try {
-        await UserService.registerUser(phoneNumber);
+        await UserService.registerUser(phoneNumber, selectedCategories);
         await UserService.login(phoneNumber);
+        localStorage.removeItem(selectedCategoriesStorageKey);
       } catch (error) {
         if (error?.originalError?.data?.data?.phone_number?.code === 'validation_not_unique') {
           alert(`이미 이 번호로 가입된 사용자가 있습니다. 로그인해주세요.`);

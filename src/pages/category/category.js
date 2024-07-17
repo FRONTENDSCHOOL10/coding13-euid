@@ -1,7 +1,10 @@
+const selectedCategoriesStorageKey = "selected_categories";
+
+const savedSelectedCategoriesItem = localStorage.getItem(selectedCategoriesStorageKey);
+let selectedCategories = savedSelectedCategoriesItem ? JSON.parse(savedSelectedCategoriesItem) : []; // 선택된 카테고리 저장
 const categoryButton = document.querySelectorAll('.category-button');
 const searchInput = document.querySelector('#search');
 const saveButton = document.querySelector('.save-button');
-let selectedCategories = []; // 선택된 카테고리 저장
 
 // 한글 검색을 위한 한글 분해 함수
 function decomposeHangul(str) {
@@ -79,14 +82,11 @@ function handleSearch(e) {
 
 // 카테고리 localStorage에 저장하기
 categoryButton.forEach((button) => {
-  const buttonText = button.querySelector('.category').textContent;
-  const storageKey = `category_${buttonText}`; // locatStorage 키 생성
+  const category = button.dataset.category;
 
-  const saveState = localStorage.getItem(storageKey);
-  if (saveState === 'active') {
+  if (selectedCategories.includes(category)) {
     // 저장된 상태가 활성화
     activateButton(button);
-    selectedCategories.push(buttonText);
   }
 
   button.addEventListener('click', () => {
@@ -94,20 +94,20 @@ categoryButton.forEach((button) => {
 
     if (isActive) {
       deactivateButton(button);
-      localStorage.setItem(storageKey, 'inactive');
 
       // 현재 선택된 카테고리 버튼만 포함되도록
-      selectedCategories = selectedCategories.filter((category) => category !== buttonText);
+      selectedCategories = selectedCategories.filter((c) => category !== c);
     } else {
       if (selectedCategories.length < 5) {
         activateButton(button);
-        localStorage.setItem(storageKey, 'active');
-        selectedCategories.push(buttonText);
+        selectedCategories.push(category);
       } else {
         alert('최대 다섯 개만 선택하실 수 있습니다.');
       }
     }
     updateSaveButton(); // 저장 버튼 상태 업데이트
+
+    localStorage.setItem(selectedCategoriesStorageKey, JSON.stringify(selectedCategories));
   });
 });
 
