@@ -13,7 +13,12 @@ export class UserService {
 
         return pb.authStore.model;
       } catch (error) {
-        pb.authStore.clear();
+        if (error?.response?.code === 401) {
+          window.location.href = '/pages/start/';
+          pb.authStore.clear();
+        } else {
+          throw error;
+        }
       }
     }
 

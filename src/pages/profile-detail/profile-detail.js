@@ -1,13 +1,15 @@
-import { UserService } from '@/service/UserService';
+import { UserService } from '/service/UserService';
 import tailwindCSS from '/styles/tailwind.css?inline'; // css 파일 inline 가져오기
-import { getPbImageURL } from '@/api/getPbImageURL';
-import { convertImageToWebP } from '@/utils/convertImageToWebP';
-import '@/components/navigation/navigation';
+import { getPbImageURL } from '/api/getPbImageURL';
+import { convertImageToWebP } from '/utils/convertImageToWebP';
+import '/components/navigation/navigation';
+import '/components/loading-button/loading-button';
+import '/components/spinner/spinner';
 
 function activeButton(btnNode, activeClass, disabledClass) {
   btnNode.removeAttribute('disabled');
-  btnNode.classList.remove(disabledClass, 'cursor-pointer');
-  btnNode.classList.add(activeClass, 'cursor-not-allowed');
+  btnNode.classList.remove(disabledClass, 'cursor-not-allowed');
+  btnNode.classList.add(activeClass, 'cursor-pointer');
 }
 function disableButton(btnNode, activeClass, disabledClass) {
   btnNode.setAttribute('disabled', true);
@@ -32,7 +34,7 @@ ProfileDetailTemplate.innerHTML = `
 
           <label
             for="avatar"
-            class="absolute bottom-[0.06rem] right-[0.06rem] flex w-1/4 rounded-full bg-background p-[0.125rem] [box-shadow:0.25rem_0.25rem_0.25rem_0px_rgba(0,_0,_0,_0.15)] xs:bottom-[0.084rem] xs:right-[0.084rem] xs:p-[0.175rem] sm:bottom-[0.108rem] sm:right-[0.108rem] sm:p-[0.225rem]"
+            class="absolute bottom-[0.06rem] right-[0.06rem] flex w-1/4 rounded-full bg-background p-[0.125rem] [box-shadow:0.25rem_0.25rem_0.25rem_0px_rgba(0,_0,_0,_0.15)] cursor-pointer xs:bottom-[0.084rem] xs:right-[0.084rem] xs:p-[0.175rem] sm:bottom-[0.108rem] sm:right-[0.108rem] sm:p-[0.225rem]"
           >
             <img src="/icon/pencil.svg" alt="연필" aria-hidden="true" class="aspect-square w-full" />
             <input
@@ -210,16 +212,18 @@ ProfileDetailTemplate.innerHTML = `
         <a
           role="button"
           href="/pages/edit-profile/"
-          class="text-base-group text-center flex-grow rounded-lg border border-solid border-[#D3D3D3] bg-[#E9E9E9] py-2 font-semibold leading-[150%] xs:rounded-[0.7rem] xs:py-[0.7rem] sm:rounded-[0.9rem] sm:py-[0.9rem]"
+          class="text-base-group flex flex-1 justify-center items-center rounded-lg border border-solid border-[#D3D3D3] bg-[#E9E9E9] py-2 font-semibold leading-[150%] xs:rounded-[0.7rem] xs:py-[0.7rem] sm:rounded-[0.9rem] sm:py-[0.9rem]"
         >
           취소
         </a>
 
         <button
           id="save-btn"
+          is="c-loading-button"
+          data-spinner-classes="w-3 h-3"
           type="submit"
           disabled
-          class="text-base-group flex-grow cursor-not-allowed rounded-lg border border-solid border-[#D3D3D3] bg-[#D8D9E1] py-2 font-semibold leading-[150%] xs:rounded-[0.7rem] xs:py-[0.7rem] sm:rounded-[0.9rem] sm:py-[0.9rem]"
+          class="flex flex-1 justify-center items-center text-base-group cursor-not-allowed rounded-lg border border-solid border-[#D3D3D3] bg-[#D8D9E1] py-2 font-semibold leading-[150%] xs:rounded-[0.7rem] xs:py-[0.7rem] sm:rounded-[0.9rem] sm:py-[0.9rem]"
         >
           저장
         </button>
@@ -338,17 +342,27 @@ class ProfileDetail extends HTMLElement {
 
   handleProfileFormSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
 
-    const $avatarInput = this.shadowRoot.getElementById('avatar');
+    const saveBtn = this.shadowRoot.getElementById('save-btn');
+    saveBtn.toggleAttribute('disabled', true);
+    saveBtn.toggleAttribute('loading', true);
 
-    if ($avatarInput.value === '') {
-      formData.delete('avatar');
-    } else {
-      const avatarWebP = await convertImageToWebP(formData.get('avatar'));
-      formData.set('avatar', avatarWebP);
+    try {
+      const formData = new FormData(e.target);
+
+      const $avatarInput = this.shadowRoot.getElementById('avatar');
+
+      if ($avatarInput.value === '') {
+        formData.delete('avatar');
+      } else {
+        const avatarWebP = await convertImageToWebP(formData.get('avatar'));
+        formData.set('avatar', avatarWebP);
+      }
+      await UserService.updateUser(this.currentUser.id, formData);
+    } finally {
+      saveBtn.toggleAttribute('loading', false);
+      saveBtn.toggleAttribute('disabled', false);
     }
-    await UserService.updateUser(this.currentUser.id, formData);
 
     const $confirmModal = this.shadowRoot.getElementById('confirm-modal');
     $confirmModal.classList.remove('hidden');
@@ -397,15 +411,14 @@ class ProfileDetail extends HTMLElement {
     this.shadowRoot.innerHTML = '';
 
     if (this.loading) {
-      // this.shadowRoot.innerHTML = '<p>loading...</p>';
-      this.shadowRoot.innerHTML = '';
+      this.shadowRoot.innerHTML = '<c-spinner></c-spinner>';
       return;
     } else if (this.error) {
       this.shadowRoot.innerHTML = `<p>${this.error}</p>`;
       return;
     }
 
-    // currentUser가 없으면 초기 시작 화면으로 redirect해둠, 따라서 로딩 이후 currentUser를 가져오지 못한 경우는 신경쓰지 않음.
+    // currnetUser가 없으면 초기 시작 화면으로 redirect해둠, 따라서 로딩 이후 currentUser를 가져오지 못한 경우는 신경쓰지 않음.
 
     this.shadowRoot.appendChild(ProfileDetailTemplate.content.cloneNode(true));
 
