@@ -36,7 +36,7 @@ MainTemplate.innerHTML = `
         <a href="#" aria-describedby="slide1-title" class="text-sm-group text-background">자세히 보기</a>
       </div>
       <img
-        src="/assets/slideImage.png"
+        src="/slideImage.webp"
         alt="슬라이드1"
         class="absolute bottom-0 right-0 w-[63.125vw] [aspect-ratio:1.086021505376344]"
       />
@@ -50,7 +50,7 @@ MainTemplate.innerHTML = `
         <a href="#" aria-describedby="slide1-title" class="text-sm-group text-background">자세히 보기</a>
       </div>
       <img
-        src="/assets/slideImage.png"
+        src="/slideImage.webp"
         alt="슬라이드1"
         class="absolute bottom-0 right-0 w-[63.125vw] [aspect-ratio:12.625/11.625]"
       />
@@ -67,73 +67,131 @@ MainTemplate.innerHTML = `
   <li class="mb-7 w-[43.125vw] xs:mb-[2.45rem] sm:mb-[3.15rem]">
     <article>
       <img
-        src="/assets/storyImage.png"
+        src="/storyImage.webp"
         alt="메인 글1"
         class="mb-3 w-[43.125vw] rounded-[5.797101449275362%] [aspect-ratio:8.625/6.5] xs:mb-[1.05rem] sm:mb-[1.35rem]"
       />
-      <h2 class="text-sm-group mb-1 leading-[160%] xs:mb-[0.35rem] sm:mb-[0.45rem]">
-        디자인에 대해 하나도 알지 못했던 내가 취업할 수 있었던 이유
-      </h2>
-      <p class="text-sm-group leading-[160%] text-contentSecondary">
-        UIUX
-        <span aria-hidden="true">&#124;</span>
-        1기 수강생 박치열
-      </p>
+      <a href="#">
+        <h2 class="text-sm-group mb-1 leading-[160%] xs:mb-[0.35rem] sm:mb-[0.45rem]">
+          디자인에 대해 하나도 알지 못했던 내가 취업할 수 있었던 이유
+        </h2>
+        <p class="text-sm-group leading-[160%] text-contentSecondary">
+          <span class="sr-only">카테고리: </span>
+          UIUX
+          <span aria-hidden="true">&#124;</span>
+          <span class="sr-only">작성자: </span>
+          1기 수강생 박치열
+        </p>
+      </a>
     </article>
   </li>
   <li class="mb-7 w-[43.125vw] xs:mb-[2.45rem] sm:mb-[3.15rem]">
     <article>
       <img
-        src="/assets/storyImage.png"
+        src="/storyImage.webp"
         alt="메인 글2"
         class="mb-3 w-[43.125vw] rounded-[5.797101449275362%] [aspect-ratio:8.625/6.5] xs:mb-[1.05rem] sm:mb-[1.35rem]"
       />
-      <h2 class="text-sm-group mb-1 leading-[160%] xs:mb-[0.35rem] sm:mb-[0.45rem]">
-        영문과 전공생에서 UIUX 디자이너로 취업하기까지
-      </h2>
-      <p class="text-sm-group leading-[160%] text-contentSecondary">
-        UIUX
-        <span aria-hidden="true">&#124;</span>
-        3기 수강생 김진우
-      </p>
+      <a href="#">
+        <h2 class="text-sm-group mb-1 leading-[160%] xs:mb-[0.35rem] sm:mb-[0.45rem]">
+          디자인에 대해 하나도 알지 못했던 내가 취업할 수 있었던 이유
+        </h2>
+        <p class="text-sm-group leading-[160%] text-contentSecondary">
+          <span class="sr-only">카테고리: </span>
+          UIUX
+          <span aria-hidden="true">&#124;</span>
+          <span class="sr-only">작성자: </span>
+          1기 수강생 박치열
+        </p>
+      </a>
     </article>
   </li>
   <li class="mb-7 w-[43.125vw] xs:mb-[2.45rem] sm:mb-[3.15rem]">
     <article>
       <img
-        src="/assets/storyImage.png"
+        src="/storyImage.webp"
         alt="메인 글3"
         class="mb-3 w-[43.125vw] rounded-[5.797101449275362%] [aspect-ratio:8.625/6.5] xs:mb-[1.05rem] sm:mb-[1.35rem]"
       />
-      <h2 class="text-sm-group mb-1 leading-[160%] xs:mb-[0.35rem] sm:mb-[0.45rem]">
-        7기 수강생의 삼성으로 가는 피그마 노하우
-      </h2>
-      <p class="text-sm-group leading-[160%] text-contentSecondary">
-        UIUX
-        <span aria-hidden="true">&#124;</span>
-        7기 수강생 박치열
-      </p>
+      <a href="#">
+        <h2 class="text-sm-group mb-1 leading-[160%] xs:mb-[0.35rem] sm:mb-[0.45rem]">
+          디자인에 대해 하나도 알지 못했던 내가 취업할 수 있었던 이유
+        </h2>
+        <p class="text-sm-group leading-[160%] text-contentSecondary">
+          <span class="sr-only">카테고리: </span>
+          UIUX
+          <span aria-hidden="true">&#124;</span>
+          <span class="sr-only">작성자: </span>
+          1기 수강생 박치열
+        </p>
+      </a>
     </article>
   </li>
   <li class="mb-7 w-[43.125vw] xs:mb-[2.45rem] sm:mb-[3.15rem]">
     <article>
       <img
-        src="/assets/storyImage.png"
+        src="/storyImage.webp"
         alt="메인 글4"
         class="mb-3 w-[43.125vw] rounded-[5.797101449275362%] [aspect-ratio:8.625/6.5] xs:mb-[1.05rem] sm:mb-[1.35rem]"
       />
-      <h2 class="text-sm-group mb-1 leading-[160%] xs:mb-[0.35rem] sm:mb-[0.45rem]">
-        배울 때 내가 가장 힘들었던 A-Z 야, 너도 할 수 있어!
-      </h2>
-      <p class="text-sm-group leading-[160%] text-contentSecondary">
-        UIUX
-        <span aria-hidden="true">&#124;</span>
-        1기 수강생 박치열
-      </p>
+      <a href="#">
+        <h2 class="text-sm-group mb-1 leading-[160%] xs:mb-[0.35rem] sm:mb-[0.45rem]">
+          디자인에 대해 하나도 알지 못했던 내가 취업할 수 있었던 이유
+        </h2>
+        <p class="text-sm-group leading-[160%] text-contentSecondary">
+          <span class="sr-only">카테고리: </span>
+          UIUX
+          <span aria-hidden="true">&#124;</span>
+          <span class="sr-only">작성자: </span>
+          1기 수강생 박치열
+        </p>
+      </a>
+    </article>
+  </li>
+  <li class="mb-7 w-[43.125vw] xs:mb-[2.45rem] sm:mb-[3.15rem]">
+    <article>
+      <img
+        src="/storyImage.webp"
+        alt="메인 글5"
+        class="mb-3 w-[43.125vw] rounded-[5.797101449275362%] [aspect-ratio:8.625/6.5] xs:mb-[1.05rem] sm:mb-[1.35rem]"
+      />
+      <a href="#">
+        <h2 class="text-sm-group mb-1 leading-[160%] xs:mb-[0.35rem] sm:mb-[0.45rem]">
+          디자인에 대해 하나도 알지 못했던 내가 취업할 수 있었던 이유
+        </h2>
+        <p class="text-sm-group leading-[160%] text-contentSecondary">
+          <span class="sr-only">카테고리: </span>
+          UIUX
+          <span aria-hidden="true">&#124;</span>
+          <span class="sr-only">작성자: </span>
+          1기 수강생 박치열
+        </p>
+      </a>
+    </article>
+  </li>
+  <li class="mb-7 w-[43.125vw] xs:mb-[2.45rem] sm:mb-[3.15rem]">
+    <article>
+      <img
+        src="/storyImage.webp"
+        alt="메인 글6"
+        class="mb-3 w-[43.125vw] rounded-[5.797101449275362%] [aspect-ratio:8.625/6.5] xs:mb-[1.05rem] sm:mb-[1.35rem]"
+      />
+      <a href="#">
+        <h2 class="text-sm-group mb-1 leading-[160%] xs:mb-[0.35rem] sm:mb-[0.45rem]">
+          디자인에 대해 하나도 알지 못했던 내가 취업할 수 있었던 이유
+        </h2>
+        <p class="text-sm-group leading-[160%] text-contentSecondary">
+          <span class="sr-only">카테고리: </span>
+          UIUX
+          <span aria-hidden="true">&#124;</span>
+          <span class="sr-only">작성자: </span>
+          1기 수강생 박치열
+        </p>
+      </a>
     </article>
   </li>
 </ul>
-`
+`;
 
 class Main extends HTMLElement {
   static observedAttributes = ['loading', 'error'];
