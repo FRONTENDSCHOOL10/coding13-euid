@@ -119,8 +119,10 @@ async function searchResultPage() {
 
   // 렌더링 함수
   async function renderSearchResult(option, sort = 'created') {
+    console.log(option);
     const searchTextArray = recentSearchText.split(' ');
     const searchText = searchTextArray.map((item) => `title ~ "${item}"`).join(' && ');
+    console.log(searchText);
     const postList = await pb.collection('posts').getFullList({
       sort,
       expand: 'user_id',
@@ -276,7 +278,8 @@ async function searchResultPage() {
     }
 
     const filteringText = filteringTextArray.map((item) => `category = "${item}"`).join(' || ');
-    optionString.categoryOption = ` && ${filteringText}`;
+    console.log(filteringText);
+    optionString.categoryOption = ` && (${filteringText})`;
     renderSearchResult(optionString).then(noSearchResult);
   }
 
