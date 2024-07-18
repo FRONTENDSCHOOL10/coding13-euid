@@ -144,6 +144,14 @@ async function chatContent() {
     const data = await pb.collection('chats').getOne(chat_id, {
       expand: 'post_id, sender_id, receiver_id',
     });
+
+    // loading 완료
+    const spinnerContainer = document.querySelector('.spinner-container');
+    spinnerContainer.remove();
+    document.querySelector('header').classList.remove('hidden');
+    document.querySelector('#chat-form').classList.remove('hidden');
+    document.body.classList.remove('overflow-hidden');
+
     // 채팅상대 식별
     const opponent = data.sender_id === currentUser.id ? data.receiver_id : data.sender_id;
     const { id: postId, state: postState, title: postTitle, price: postPrice } = data.expand.post_id;

@@ -1,3 +1,5 @@
+import '/components/loading-button/loading-button';
+
 import pb from '/api/pocketbase.js';
 import { UserService } from '/service/UserService.js';
 import { convertImageToWebP } from '/utils/convertImageToWebP.js';
@@ -21,8 +23,8 @@ async function writePost() {
 
   /* ------------------------------ pocketbase 동작 ----------------------------- */
   // pocketbase에 post생성
-  function createPost({ user_id, category, photo, title, price, description }) {
-    pb.collection('posts')
+  async function createPost({ user_id, category, photo, title, price, description }) {
+    await pb.collection('posts')
       .create({
         user_id,
         category,
@@ -63,14 +65,14 @@ async function writePost() {
   }
 
   // 완료 버튼 클릭 -> post 등록
-  function handleCompleteClick() {
+  async function handleCompleteClick() {
     // form이 모두 입력되어야 함
     if (!category || !photoList.length || !formTitle.value || !formPrice || !formDescription) {
       alert('모든 내용을 입력해주세요.');
       return;
     }
 
-    createPost({
+    await createPost({
       user_id: currentUser.id,
       category: category,
       photo: photoList,
@@ -85,9 +87,18 @@ async function writePost() {
   // 사진 업로드 이벤트
   uploadPhoto.addEventListener('change', handleUploadPhoto);
   // 완료 버튼 클릭 이벤트
-  completeBtn.addEventListener('click', (e) => {
+  completeBtn.addEventListener('click', async (e) => {
     e.preventDefault();
-    handleCompleteClick();
+
+    completeBtn.toggleAttribute('disabled', true);
+    completeBtn.classList.add('cursor-not-allowed');
+    completeBtn.toggleAttribute('loading', true);
+
+    await handleCompleteClick();
+
+    completeBtn.toggleAttribute('loading', false);
+    completeBtn.toggleAttribute('disabled', false);
+    completeBtn.classList.remove('cursor-not-allowed');
   });
   console.log(!photoList);
 }

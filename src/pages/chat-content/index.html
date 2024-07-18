@@ -6,14 +6,17 @@
     <title>Enter EUID</title>
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <link rel="stylesheet" href="/styles/tailwind.css" />
+    <script type="module" src="/components/spinner/spinner.js"></script>
     <script type="module" src="/pages/chat-content/chat-content.js"></script>
   </head>
-  <body>
+  <body class="overflow-hidden">
     <div id="app" class="pb-[5.025rem] xs:pb-[6.94rem] sm:pb-[9.011875rem]">
+      <div class="spinner-container h-screen w-screen"><c-spinner></c-spinner></div>
+
       <h1 class="sr-only">채팅내용</h1>
 
       <!-- 헤더 -->
-      <header class="fixed top-0 w-full border-b-[0.06rem] border-solid border-contentSecondary bg-background">
+      <header class="hidden fixed top-0 w-full border-b-[0.06rem] border-solid border-contentSecondary bg-background">
         <div
           class="flex items-center justify-between border-b-[0.01875rem] border-solid border-contentSecondary px-3 py-1 xs:px-[1.05rem] xs:py-[0.35rem] sm:px-[1.35rem] sm:py-[0.45rem]"
         >
@@ -96,8 +99,9 @@
 
       <!-- 메세지 보내기 -->
       <form
+        id="chat-form"
         aria-label="메세지 보내기"
-        class="fixed bottom-0 flex w-screen items-center justify-between gap-[0.375rem] bg-background px-2 pb-[1.875rem] pt-3 xs:gap-[0.525rem] xs:px-[0.7rem] xs:pb-[2.625rem] xs:pt-[1.05rem] sm:gap-[0.675rem] sm:px-[0.9rem] sm:pb-[3.375rem] sm:pt-[1.35rem]"
+        class="hidden fixed bottom-0 flex w-screen items-center justify-between gap-[0.375rem] bg-background px-2 pb-[1.875rem] pt-3 xs:gap-[0.525rem] xs:px-[0.7rem] xs:pb-[2.625rem] xs:pt-[1.05rem] sm:gap-[0.675rem] sm:px-[0.9rem] sm:pb-[3.375rem] sm:pt-[1.35rem]"
       >
         <label for="upload-file" class="cursor-pointer">
           <!-- + 버튼 -->

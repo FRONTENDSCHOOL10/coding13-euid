@@ -6,11 +6,14 @@
     <title>Enter EUID</title>
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <link rel="stylesheet" href="/styles/tailwind.css" />
+    <script type="module" src="/components/spinner/spinner.js"></script>
     <script type="module" src="/components/navigation/navigation.js"></script>
     <script type="module" src="/pages/chat/chat.js"></script>
   </head>
   <body>
     <div id="app" class="m-auto w-full pb-[4.3rem] xs:pb-[5.949375rem] sm:pb-[7.249375rem]">
+      <div class="spinner-container h-screen w-screen"><c-spinner></c-spinner></div>
+
       <header
         class="fixed top-0 z-10 flex w-full justify-between bg-background px-5 py-[0.38rem] text-contentPrimary xs:py-2"
       >

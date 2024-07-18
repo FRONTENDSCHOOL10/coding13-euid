@@ -81,15 +81,40 @@ async function renderChatList() {
   const chatList = await fetchChatList();
   const currentUser = await UserService.currentUser();
 
-  for (const chat of chatList) {
+  const chatDetails = (await Promise.all(chatList.map(async (chat) => {
+    try {
+      // 각 채팅에 대한 최신 메시지 가져오기
+      const message = await pb.collection('messages').getFirstListItem(`chat_id = "${chat.id}"`, {
+        sort: '-created',
+      });
+
+      return {
+        chat,
+        message,
+      };
+    } catch (err) {
+      if (err.status === 404) {
+        // 메시지 없는 채팅방은 건너뛰기
+        return;
+      } else {
+        console.error('Error fetching message:', err);
+      }
+    }
+  }))).filter(chat => !!chat);
+
+  // loading 완료
+  const spinnerContainer = document.querySelector('.spinner-container');
+  spinnerContainer.remove();
+
+  for (const {chat, message} of chatDetails) {
     const user = chat.sender_id === currentUser.id ? chat.expand.receiver_id : chat.expand.sender_id;
     const post = chat.expand.post_id;
 
     // 각 채팅에 대한 최신 메시지 가져오기
-    try {
-      const message = await pb.collection('messages').getFirstListItem(`chat_id = "${chat.id}"`, {
-        sort: '-created',
-      });
+    // try {
+      // const message = await pb.collection('messages').getFirstListItem(`chat_id = "${chat.id}"`, {
+      //   sort: '-created',
+      // });
 
       let latestMessageContent = message.content;
 
@@ -105,14 +130,14 @@ async function renderChatList() {
 
       const template = createChatTemplate(chatData);
       chatContainer.insertAdjacentHTML('afterbegin', template);
-    } catch (err) {
-      if (err.status === 404) {
-        // 메시지 없는 채팅방은 건너뛰기
-        continue;
-      } else {
-        console.error('Error fetching message:', err);
-      }
-    }
+    // } catch (err) {
+    //   if (err.status === 404) {
+    //     // 메시지 없는 채팅방은 건너뛰기
+    //     continue;
+    //   } else {
+    //     console.error('Error fetching message:', err);
+    //   }
+    // }
   }
 }
 
