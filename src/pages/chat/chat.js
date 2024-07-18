@@ -26,7 +26,7 @@ async function fetchChatList() {
 
 // 상대방 프로필 사진 불러오기
 function getAvatarURL(user) {
-  return user.avatar ? pb.getFileUrl(user, user.avatar) : '/assets/profileIcon.png';
+  return user.avatar ? pb.getFileUrl(user, user.avatar) : '/profile-placeholder.webp';
 }
 
 // 채팅 내의 사진 불러오기

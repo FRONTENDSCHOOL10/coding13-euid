@@ -25,7 +25,7 @@ EditProfileTemplate.innerHTML = `
         >
       </div>
       <img
-        src="/assets/avatar-placeholder.png"
+        src="/avatar-placeholder.webp"
         alt="유저 프로필 이미지"
         class="avatar-image aspect-square w-[15.625vw] rounded-full [box-shadow:0.25rem_0.25rem_0.25rem_0px_rgba(0,_0,_0,_0.10)]"
       />
@@ -50,7 +50,7 @@ EditProfileTemplate.innerHTML = `
           <h3 class="text-base-group font-semibold leading-[1.5]">프로필 사진</h3>
           <img
             aria-hidden="true"
-            src="/assets/avatar-placeholder.png"
+            src="/avatar-placeholder.webp"
             alt="프로필 이미지"
             class="avatar-image aspect-square w-6 rounded-full [box-shadow:0.125rem_0.125rem_0.125rem_0px_rgba(0,_0,_0,_0.10)] xs:w-[2.1rem] sm:w-[2.7rem]"
           />

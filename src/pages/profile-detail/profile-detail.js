@@ -30,7 +30,7 @@ ProfileDetailTemplate.innerHTML = `
       <div role="group" class="flex flex-col items-center">
         <h3 class="sr-only">프로필 사진</h3>
         <div class="relative w-1/4">
-          <img aria-hidden="true" src="/assets/avatar-placeholder.png" alt="프로필 사진" id="avatar-image" class="aspect-square w-full rounded-full object-cover" />
+          <img aria-hidden="true" src="/avatar-placeholder.webp" alt="프로필 사진" id="avatar-image" class="aspect-square w-full rounded-full object-cover" />
 
           <label
             for="avatar"
@@ -42,7 +42,7 @@ ProfileDetailTemplate.innerHTML = `
               type="file"
               id="avatar"
               name="avatar"
-              accept=".jpg, .png, .svg, .gif, .webp"
+              accept=".jpg, .webp, .svg, .gif, .webp"
               class="sr-only"
               aria-label="프로필사진 업로드"
             />
