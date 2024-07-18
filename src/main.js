@@ -128,6 +128,7 @@ class Main extends HTMLElement {
             <article>
               <a href="#">
                 <img
+                  loading="lazy"
                   src=${getPbImagesURL(item, 0)}
                   alt="메인 글${index - 1}"
                   class="mb-3 w-[43.125vw] rounded-[5.797101449275362%] [aspect-ratio:8.625/6.5] xs:mb-[1.05rem] sm:mb-[1.35rem] border object-cover"
@@ -158,6 +159,7 @@ class Main extends HTMLElement {
               <a href="/pages/exchange-detail/index.html?post=${item.id}" aria-describedby="slide1-title" class="text-sm-group">자세히 보기</a>
             </div>
             <img
+              lodading="lazy"
               src=${getPbImagesURL(item, 0)}
               alt="슬라이드${index + 1}"
               class="absolute bottom-0 right-0 w-[50vw] aspect-square"
