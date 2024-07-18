@@ -2,6 +2,7 @@ import '/components/spinner/spinner';
 
 import tailwindCSS from '/styles/tailwind.css?inline'; // css 파일 inline 가져오기
 import { UserService } from '/service/UserService.js';
+import '/components/spinner/spinner.js';
 
 import location from '/icon/location.svg';
 import search from '/icon/search.svg';
