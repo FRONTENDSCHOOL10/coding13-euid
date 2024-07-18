@@ -1,8 +1,7 @@
 import '/components/loading-button/loading-button';
+import { UserService } from '/service/UserService';
 
-import { UserService } from '@/service/UserService';
-
-const selectedCategoriesStorageKey = "selected_categories";
+const selectedCategoriesStorageKey = 'selected_categories';
 const verificationNumberInput = document.querySelector('#verification-number');
 const agreeButton = document.querySelector('#agree');
 const inputNumber = document.querySelector('#input-phone-number');
