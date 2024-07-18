@@ -1,7 +1,8 @@
 import pb from '/api/pocketbase.js';
-import { UserService } from '/service/UserService';
-import { getPbImagesURL } from '/api/getPbImageURL';
+import { UserService } from '/service/UserService.js';
+import { getPbImagesURL } from '/api/getPbImageURL.js';
 import '/components/modal/modal.js';
+import '/components/spinner/spinner.js';
 
 async function chatContent() {
   /* -------------------------------- 로그인상태 식별 -------------------------------- */
@@ -150,6 +151,7 @@ async function chatContent() {
     spinnerContainer.remove();
     document.querySelector('header').classList.remove('hidden');
     document.querySelector('#chat-form').classList.remove('hidden');
+    document.querySelector('#chat-form').classList.add('flex');
     document.body.classList.remove('overflow-hidden');
 
     // 채팅상대 식별
@@ -165,6 +167,12 @@ async function chatContent() {
         buttonsContainer.classList.add('flex');
       }
     }
+
+    // 페이지 제목 설정
+    document.title =
+      data.sender_id === currentUser.id
+        ? `Enter EUID | ${data.expand.sender_id.username}님 과의 채팅`
+        : `Enter EUID | ${data.expand.receiver_id.username}님 과의 채팅`;
     // 헤더 정보 렌더링
     opponentName.innerText =
       data.sender_id === currentUser.id ? data.expand.receiver_id.username : data.expand.sender_id.username;

@@ -3,35 +3,32 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Enter EUID</title>
+    <title>Enter EUID | 채팅방</title>
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <link rel="stylesheet" href="/styles/tailwind.css" />
-    <script type="module" src="/components/spinner/spinner.js"></script>
     <script type="module" src="/pages/chat-content/chat-content.js"></script>
   </head>
   <body class="overflow-hidden">
     <div id="app" class="pb-[5.025rem] xs:pb-[6.94rem] sm:pb-[9.011875rem]">
       <div class="spinner-container h-screen w-screen"><c-spinner></c-spinner></div>
 
-      <h1 class="sr-only">채팅내용</h1>
+      <h1 class="sr-only">채팅방</h1>
 
       <!-- 헤더 -->
-      <header class="hidden fixed top-0 w-full border-b-[0.06rem] border-solid border-contentSecondary bg-background">
+      <header class="fixed top-0 hidden w-full border-b-[0.06rem] border-solid border-contentSecondary bg-background">
         <div
           class="flex items-center justify-between border-b-[0.01875rem] border-solid border-contentSecondary px-3 py-1 xs:px-[1.05rem] xs:py-[0.35rem] sm:px-[1.35rem] sm:py-[0.45rem]"
         >
           <a role="button" href="javascript:history.back()" aria-label="이전 페이지로 이동">
-            <img
-              src="/icon/direction-left.svg"
-              alt=""
-              aria-hidden="true"
-              class="aspect-square w-5 xs:w-[1.75rem] sm:w-[2.25rem]"
-            />
+            <img src="/icon/direction-left.svg" alt="" class="aspect-square w-5 xs:w-[1.75rem] sm:w-[2.25rem]" />
           </a>
-          <div class="flex flex-col items-center">
-            <span id="opponent-name" class="text-base-group font-semibold leading-[150%]">상대방 이름</span>
+          <section class="flex flex-col items-center" aria-label="사용자 프로필 정보">
+            <span class="sr-only">상대방 이름: </span>
+            <span id="opponent-name" class="text-base-group font-semibold leading-[150%]">이름</span>
+
+            <span class="sr-only">평균 응답 시간: </span>
             <span class="text-sm-group leading-[160%] text-contentSecondary">보통 3일 내 응답</span>
-          </div>
+          </section>
           <button aria-label="메뉴 더보기">
             <img src="/icon/more.svg" alt="" class="aspect-square w-5 xs:w-[1.75rem] sm:w-[2.25rem]" />
           </button>
@@ -42,9 +39,10 @@
           aria-label="연결된 판매글"
           class="pb-[0.375rem] pl-3 pt-3 xs:pb-[0.525rem] xs:pl-[1.05rem] xs:pt-[1.05rem] sm:px-[1.35rem] sm:pb-[0.675rem] sm:pl-[1.35rem] sm:pt-[1.35rem]"
         >
+          <!-- href는 js에서 변경 -->
           <a
             id="exchange-link"
-            href=""
+            href="#"
             aria-label="연결된 판매글 페이지로 이동"
             class="flex gap-2 xs:gap-[0.7rem] sm:gap-[0.9rem]"
           >
@@ -52,19 +50,18 @@
               id="exchange-photo"
               src="/assets/storyImage.png"
               alt="판매 물품 이미지"
-              aria-hidden="true"
               class="h-[2.125rem] w-[2.125rem] rounded xs:h-[2.975rem] xs:w-[2.975rem] xs:rounded-[0.35rem] sm:h-[3.825rem] sm:w-[3.825rem] sm:rounded-[0.45rem]"
             />
             <div class="flex flex-col justify-between">
-              <span class="text-sm-group leading-[160%]">
+              <div class="text-sm-group leading-[160%]">
                 <strong id="exchange-state" class="font-semibold leading-[150%]">상태</strong>
-                <span class="sr-only">판매 물품명</span>
+                <span class="sr-only">판매 물품명: </span>
                 <span id="exchange-title">물품명</span>
-              </span>
-              <span class="text-sm-group font-semibold leading-[150%]">
-                <span class="sr-only">물품 가격</span>
+              </div>
+              <div class="text-sm-group font-semibold leading-[150%]">
+                <span class="sr-only">물품 가격: </span>
                 <strong id="exchange-price">가격</strong>
-              </span>
+              </div>
             </div>
           </a>
         </section>
@@ -95,22 +92,24 @@
       <main
         id="content-area"
         class="flex flex-col gap-2 px-3 xs:gap-[0.7rem] xs:px-[1.05rem] sm:gap-[0.9rem] sm:px-[1.35rem]"
-      ></main>
+      >
+        <h2 class="sr-only">채팅내역</h2>
+      </main>
 
       <!-- 메세지 보내기 -->
       <form
         id="chat-form"
         aria-label="메세지 보내기"
-        class="hidden fixed bottom-0 flex w-screen items-center justify-between gap-[0.375rem] bg-background px-2 pb-[1.875rem] pt-3 xs:gap-[0.525rem] xs:px-[0.7rem] xs:pb-[2.625rem] xs:pt-[1.05rem] sm:gap-[0.675rem] sm:px-[0.9rem] sm:pb-[3.375rem] sm:pt-[1.35rem]"
+        class="fixed bottom-0 hidden w-screen items-center justify-between gap-[0.375rem] bg-background px-2 pb-[1.875rem] pt-3 xs:gap-[0.525rem] xs:px-[0.7rem] xs:pb-[2.625rem] xs:pt-[1.05rem] sm:gap-[0.675rem] sm:px-[0.9rem] sm:pb-[3.375rem] sm:pt-[1.35rem]"
       >
-        <label for="upload-file" class="cursor-pointer">
+        <label for="upload-file" class="cursor-pointer rounded outline-2 outline-blue-700 focus-within:outline">
           <!-- + 버튼 -->
           <img src="/icon/plus.svg" alt="" class="aspect-square w-[1.625rem] xs:w-[2.275rem] sm:w-[2.925rem]" />
           <input
             type="file"
             id="upload-file"
             name="upload-file"
-            accept=".jpg, .png, .webp"
+            accept="image/*"
             class="sr-only"
             aria-label="파일 업로드"
           />
