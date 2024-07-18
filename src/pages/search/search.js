@@ -1,5 +1,6 @@
 import pb from '/api/pocketbase/';
 import { UserService } from '/service/UserService';
+import '/components/spinner/spinner';
 
 // 변수 사용 편의를 위해 코드 전제를 함수로 감싸기
 async function searchPage() {
@@ -16,6 +17,7 @@ async function searchPage() {
   const suggestionSearchList = document.querySelector('#suggestion-search-list');
   const recentSearchList = document.querySelector('#recent-search-list');
   const deleteAllButton = document.querySelector('#delete-all');
+  const spinnerContainer = document.querySelector('.spinner-container');
 
   /* ---------------------- 검색 기능 구현 ---------------------- */
   // 검색어 입력하고 엔터 입력 시 해당 검색어 검색 결과 페이지로 이동
@@ -55,33 +57,37 @@ async function searchPage() {
     // 최근 검색어 목록이 없을 시 렌더링 되지 않도록
     if (!recentSearch) return;
 
+    // 최근 검색어 목록의 빈 문자 무시
     for (let item of recentSearchArray) {
-      const template = `
-        <li
-          class="flex gap-5 justify-between px-3 py-1.5 hover:bg-gray-200 xs:px-[1.05rem] xs:py-[0.525rem] sm:px-[1.35rem] sm:py-[0.675rem]"
-        >
-          <a
-            href="/pages/search/"
-            class="flex w-full items-center gap-2 text-[0.75rem] xs:gap-[0.7rem] xs:text-[1.05rem] sm:gap-[0.9rem] sm:text-[1.35rem]"
+      if (item.trim() !== '') {
+        const template = `
+          <li
+            class="flex gap-5 justify-between px-3 py-1.5 hover:bg-gray-200 xs:px-[1.05rem] xs:py-[0.525rem] sm:px-[1.35rem] sm:py-[0.675rem]"
           >
-            <img src="/icon/time.svg" alt="" class="aspect-square w-6 xs:w-[2.1rem] sm:w-[2.7rem]" />
-            ${item}
-          </a>
-          <button type="button" aria-label="삭제">
-            <img
-              src="/icon/delete.svg"
-              alt=""
-              class="aspect-square w-[1.125rem] xs:w-[1.575rem] sm:w-[2.025rem]"
-            />
-          </button>
-        </li>
-      `;
+            <a
+              href="/pages/search/"
+              class="flex w-full items-center gap-2 text-[0.75rem] xs:gap-[0.7rem] xs:text-[1.05rem] sm:gap-[0.9rem] sm:text-[1.35rem]"
+            >
+              <img src="/icon/time.svg" alt="" class="aspect-square w-6 xs:w-[2.1rem] sm:w-[2.7rem]" />
+              ${item}
+            </a>
+            <button type="button" aria-label="삭제">
+              <img
+                src="/icon/delete.svg"
+                alt=""
+                class="aspect-square w-[1.125rem] xs:w-[1.575rem] sm:w-[2.025rem]"
+              />
+            </button>
+          </li>
+        `;
 
-      recentSearchList.insertAdjacentHTML('afterbegin', template);
+        recentSearchList.insertAdjacentHTML('afterbegin', template);
+      }
     }
   }
 
   renderRecentSearch();
+  spinnerContainer.remove();
 
   /* -------------------- 최근 검색어 전체 삭제 -------------------- */
   async function handleDeleteAll() {

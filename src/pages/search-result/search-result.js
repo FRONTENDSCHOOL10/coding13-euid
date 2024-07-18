@@ -1,6 +1,7 @@
 import pb from '/api/pocketbase/';
 import { UserService } from '/service/UserService';
 import { getPbImagesURL } from '/api/getPbImageURL/';
+import '/components/spinner/spinner';
 
 // 변수 사용 편의를 위해 코드 전제를 함수로 감싸기
 async function searchResultPage() {
@@ -13,6 +14,8 @@ async function searchResultPage() {
   const recentSearchArray = recentSearch?.split(',');
 
   /* ---------------------- DOM 요소 선택 --------------------- */
+  // 스피너
+  const spinnerContainer = document.querySelector('.spinner-container');
   // 검색 결과 관련 요소
   const searchInput = document.querySelector('#search');
   const exchangeList = document.querySelector('#exchange-list');
@@ -39,6 +42,9 @@ async function searchResultPage() {
 
   // 검색어를 검색창에 입력
   searchInput.value = recentSearchText;
+
+  // html title 설정
+  document.title = `Enter EUID | ${recentSearchText} 검색 결과`;
 
   /* ---------------------- 검색 기능 구현 ---------------------- */
   // 검색어 입력하고 엔터 입력 시 해당 검색어 검색 결과 페이지로 이동
@@ -83,9 +89,8 @@ async function searchResultPage() {
     const time = exchangeList.querySelector('li > a > section > span');
 
     const elapsedTime = () => {
-      const createTimestamp = Date.parse(item.created.slice(0, 19));
-      const now = new Date();
-      const nowTimestamp = now.getTime();
+      const createTimestamp = new Date(item.created);
+      const nowTimestamp = new Date();
 
       const seconds = Math.floor((nowTimestamp - createTimestamp) / 1000);
       const minutes = seconds / 60;
@@ -112,7 +117,7 @@ async function searchResultPage() {
     const postList = await pb.collection('posts').getFullList({
       sort,
       expand: 'user_id',
-      filter: `(${searchText})${option}`,
+      filter: `address = "${currentUser.address}" && (${searchText})${option}`,
     });
 
     exchangeList.textContent = '';
@@ -120,46 +125,45 @@ async function searchResultPage() {
     for (let item of postList) {
       const postCreator = item.expand.user_id;
 
-      // 좋아요 수에 각 게시글에 저장된 좋아요 개수를 불러오도록 수정해야 합니다. (pocketbase 항목 추가 필요)
       const template = `
-        <li>
-          <a
-            href="/pages/exchange-detail/index.html?post=${item.id}"
-            class="relative flex gap-3 border-b border-gray-200 bg-background p-3 outline-0 focus:shadow-[inset_0_0_0_2px_#719cf7] xs:gap-[1.05rem] xs:p-[1.05rem] sm:gap-[1.35rem] sm:p-[1.35rem]"
+      <li>
+        <a
+          href="/pages/exchange-detail/index.html?post=${item.id}"
+          class="relative flex gap-3 border-b border-gray-200 bg-background p-3 outline-0 focus:shadow-[inset_0_0_0_2px_#719cf7] xs:gap-[1.05rem] xs:p-[1.05rem] sm:gap-[1.35rem] sm:p-[1.35rem]"
+        >
+          <img 
+            class="aspect-square w-[5.625rem] flex-shrink-0 rounded-md xs:w-[7.875rem] sm:w-[10.125rem] object-cover" 
+            src="${getPbImagesURL(item, 0)}" 
+            alt="${item.title} 대표"
+          />
+          <section class="flex w-full flex-col justify-center overflow-hidden">
+            <h2 class="text-base-group truncate leading-[1.6] text-contentPrimary">
+              ${item.title}
+            </h2>
+            <span class="text-sm-group leading-[1.6] text-contentTertiary">${postCreator.address}<span aria-hidden="true"> · </span></span>
+            <div class="flex items-center gap-2 xs:gap-[0.7rem] sm:gap-[0.9rem]" role="group">
+              <!-- 거래 상태 -->
+              <span
+                class="text-sm-group rounded px-1 py-0.5 font-semibold leading-normal text-background xs:px-[0.35rem] xs:py-[0.175rem] sm:px-[0.45rem] sm:py-[0.225rem]"
+              >
+                <span class="sr-only">거래상태</span>
+              </span>
+              <!-- // 거래 상태 -->
+              <span class="text-base-group font-semibold leading-normal">
+                <span class="sr-only">물품가격</span>${item.price.toLocaleString()}원
+              </span>
+            </div>
+          </section>
+          <span
+            class="text-sm-group absolute bottom-2 right-3 flex items-center gap-0.5 leading-[1.6] xs:bottom-[0.7rem] xs:right-[1.05rem] xs:gap-[0.175rem] sm:bottom-[0.9rem] sm:right-[1.35rem] sm:gap-[0.225rem]"
+            aria-label="좋아요 개수"
           >
-            <figure
-              class="aspect-square w-[5.625rem] flex-shrink-0 overflow-hidden rounded-md bg-gray-200 xs:w-[7.875rem] sm:w-[10.125rem]"
-            >
-              <img class="object-cover" src="${getPbImagesURL(item, 0)}" alt="${item.title} 대표 사진" />
-            </figure>
-            <section class="flex w-full flex-col justify-center overflow-hidden">
-              <h2 class="text-base-group truncate leading-[1.6] text-contentPrimary">
-                ${item.title}
-              </h2>
-              <span class="text-sm-group leading-[1.6] text-contentTertiary">${postCreator.address} · </span>
-              <div class="flex items-center gap-2 xs:gap-[0.7rem] sm:gap-[0.9rem]" role="group">
-                <!-- 거래 상태 -->
-                <span
-                  class="text-sm-group rounded px-1 py-0.5 font-semibold leading-normal text-background xs:px-[0.35rem] xs:py-[0.175rem] sm:px-[0.45rem] sm:py-[0.225rem]"
-                >
-                  <span class="sr-only">거래상태</span>
-                </span>
-                <!-- // 거래 상태 -->
-                <span class="text-base-group font-semibold leading-normal">
-                  <span class="sr-only">물품가격</span>${item.price.toLocaleString()}원
-                </span>
-              </div>
-            </section>
-            <span
-              class="text-sm-group absolute bottom-2 right-3 flex items-center gap-0.5 leading-[1.6] xs:bottom-[0.7rem] xs:right-[1.05rem] xs:gap-[0.175rem] sm:bottom-[0.9rem] sm:right-[1.35rem] sm:gap-[0.225rem]"
-              aria-label="좋아요 개수"
-            >
-              <img src="/icon/heart.svg" alt="" class="w-[0.875rem] xs:w-[1.225rem] sm:w-[1.575rem]" />
-              4
-            </span>
-          </a>
-        </li>
-      `;
+            <img src="/icon/heart.svg" alt="" class="w-[0.875rem] xs:w-[1.225rem] sm:w-[1.575rem]" />
+            ${item.interested.length}
+          </span>
+        </a>
+      </li>
+    `;
 
       exchangeList.insertAdjacentHTML('afterbegin', template);
 
@@ -167,6 +171,7 @@ async function searchResultPage() {
 
       renderTime(item);
     }
+    spinnerContainer.remove();
   }
 
   // 검색 결과 없을 시 렌더링 함수
@@ -327,6 +332,7 @@ async function searchResultPage() {
         `;
 
     modalOrder.close();
+
     if (selectText === '오래된순') {
       renderSearchResult('', '-created').then(noSearchResult);
     } else {
