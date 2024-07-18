@@ -5,6 +5,7 @@ import pb from '/api/pocketbase.js';
 import { UserService } from '/service/UserService.js';
 import calcTimeDifference from '/utils/calcTimeDifference.js';
 import debounce from '/utils/debounce';
+import '/components/header/header.js';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -122,9 +123,13 @@ async function exchangeDetail() {
 
   /* -------------------------------- 이벤트 핸들링 함수 ------------------------------- */
   // '채팅하기 버튼' 클릭 핸들링함수
-  function handleClickChat({ id: post_id, user_id }) {
+  function handleClickChat({ id: postId, user_id: userId }) {
+    if (userId === currentUser.id) {
+      alert('본인과 채팅은 불가능합니다.');
+      return;
+    }
     pb.collection('chats')
-      .getFirstListItem(`post_id = "${post_id}" && sender_id = "${currentUser.id}"`)
+      .getFirstListItem(`post_id = "${postId}" && sender_id = "${currentUser.id}"`)
       // 진행 중인 채팅이 있을 때
       .then((res) => {
         location.href = `/pages/chat-content/index.html?chat=${res.id}`;
@@ -134,8 +139,8 @@ async function exchangeDetail() {
           // 진행 중인 채팅이 없을 때
           const data = {
             sender_id: currentUser.id,
-            receiver_id: user_id,
-            post_id: post_id,
+            receiver_id: userId,
+            post_id: postId,
           };
           pb.collection('chats')
             .create(data)
@@ -179,8 +184,8 @@ async function exchangeDetail() {
       console.error('Error toggling interest:', error);
     }
   }
-  // '관심글' 서버 업데이트 함수를 1초 디바운스
-  const debounceInterest = debounce(updateInterest, 1000);
+  // '관심글' 서버 업데이트 함수를 0.5초 디바운스
+  const debounceInterest = debounce(updateInterest, 500);
 
   // '관심글 등록 버튼' 클릭 핸들링 함수
   function handleClickInterest({ id: post_id }) {
