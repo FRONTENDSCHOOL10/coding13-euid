@@ -1,6 +1,7 @@
 import pb from '/api/pocketbase.js';
 import { UserService } from '/service/UserService';
 import { getPbImagesURL } from '/api/getPbImageURL';
+import '/components/modal/modal.js';
 
 async function chatContent() {
   /* -------------------------------- 로그인상태 식별 -------------------------------- */
@@ -29,7 +30,7 @@ async function chatContent() {
   const sendBtn = document.getElementById('send-btn');
   // 모달
   const myModal = document.getElementById('my-modal');
-  const modalBg = myModal.shadowRoot.getElementById('modal-bg');
+  const modalDialog = myModal.shadowRoot.getElementById('dialog');
   const modalOkay = myModal.shadowRoot.getElementById('modal-okay');
   const modalTitle = myModal.shadowRoot.getElementById('modal-title');
   const modalDescription = myModal.shadowRoot.getElementById('modal-description');
@@ -47,7 +48,7 @@ async function chatContent() {
       }
     });
   }
-  
+
   // 메세지 발송 함수 (sendBtn 핸들링 함수)
   async function sendMessage(chatId, senderId, receiverId, content) {
     try {
@@ -218,7 +219,6 @@ async function chatContent() {
     const btn = e.target.closest('button');
     if (!btn) return;
 
-    modalBg.hidden = false;
     const { id: postId, state } = data.expand.post_id;
     // 예약 버튼
     if (e.target.id === 'reserve-btn') {
@@ -241,6 +241,8 @@ async function chatContent() {
       modalDescription.textContent = '해당 글을 "거래완료" 상태로 변경하시겠습니까?';
       modalOkay.addEventListener('click', () => updatePostState(postId, '거래완료'));
     }
+
+    modalDialog.showModal();
   }
 
   /* --------------------------------- 함수 실행부 --------------------------------- */

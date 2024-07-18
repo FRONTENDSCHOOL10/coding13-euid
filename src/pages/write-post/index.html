@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enter EUID</title>
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="/styles/tailwind.css" />
+    <script type="module" src="/pages/write-post/write-post.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <header class="fixed top-0 w-full bg-background">
+        <div
+          class="relative mx-[0.875rem] flex flex-grow items-center justify-center py-3 xs:mx-[1.225rem] xs:py-[1.05rem] sm:mx-[1.575rem] sm:py-[1.35rem]"
+        >
+          <a role="button" href="/pages/exchange/" aria-label="이전 페이지로 이동" class="absolute left-0">
+            <img
+              src="/icon/close.svg"
+              alt=""
+              class="h-[1.375rem] w-[1.375rem] xs:h-[1.925rem] xs:w-[1.925rem] sm:h-[2.475rem] sm:w-[2.475rem]"
+            />
+          </a>
+          <h1 class="text-base-group font-semibold leading-[150%]">내 물건 팔기</h1>
+        </div>
+        <div
+          class="flex flex-grow items-center justify-between border-b-[0.03rem] border-contentSecondary px-[0.875rem] py-3 xs:px-[1.225rem] xs:py-[1.05rem] sm:px-[1.575rem] sm:py-[1.35rem]"
+        >
+          <span id="category-text" class="text-base-group font-semibold leading-[150%]"> 카테고리 </span>
+          <button type="button" href="#" aria-label="카테고리 선택">
+            <img
+              src="/icon/direction-right.svg"
+              alt=""
+              class="h-4 w-4 xs:h-[1.4rem] xs:w-[1.4rem] sm:h-[1.8rem] sm:w-[1.8rem]"
+            />
+          </button>
+        </div>
+      </header>
+      <div class="pt-[5.71875rem] xs:pt-[7.905rem] sm:pt-[10.23625rem]"></div>
+
+      <form
+        id="post-form"
+        class="flex flex-col gap-5 px-[0.875rem] py-4 xs:gap-[1.75rem] xs:px-[1.225rem] xs:py-[1.4rem] sm:gap-[2.25rem] sm:px-[1.575rem] sm:py-[1.8rem]"
+      >
+        <section id="photo-section" class="flex flex-wrap gap-[0.625rem] xs:gap-[0.875rem] sm:gap-[1.125rem]">
+          <h2 class="sr-only">사진 업로드 및 미리보기</h2>
+          <label
+            for="upload-photo"
+            aria-label="사진 업로드"
+            class="flex h-12 min-w-12 items-center justify-center rounded border border-contentSecondary xs:h-[4.2rem] xs:min-w-[4.2rem] xs:rounded-[0.35rem] sm:h-[5.4rem] sm:min-w-[5.4rem] sm:rounded-[0.45rem]"
+          >
+            <img
+              src="/icon/camera.svg"
+              alt=""
+              class="h-8 w-8 xs:h-[2.8rem] xs:w-[2.8rem] sm:h-[3.6rem] sm:w-[3.6rem]"
+            />
+            <input
+              id="upload-photo"
+              type="file"
+              name="upload-photo"
+              accept=".jpg, .png, .webp"
+              required
+              multiple
+              class="sr-only"
+            />
+          </label>
+        </section>
+
+        <div role="group" class="flex flex-col gap-1 xs:gap-[0.35rem] sm:gap-[0.45rem]">
+          <label for="form-title" class="text-base-group font-semibold">제목</label>
+          <input
+            type="text"
+            name="form-title"
+            id="form-title"
+            placeholder="제목"
+            required
+            class="text-base-group flex-grow rounded border border-contentSecondary px-3 py-2 leading-[150%] xs:rounded-[0.35rem] xs:px-[1.05rem] xs:py-[0.7rem] sm:rounded-[0.45rem] sm:px-[1.35rem] sm:py-[0.9rem]"
+          />
+        </div>
+
+        <div role="group" class="flex flex-col gap-1 xs:gap-[0.35rem] sm:gap-[0.45rem]">
+          <label for="form-price" class="text-base-group font-semibold">가격</label>
+          <input
+            type="number"
+            name="form-price"
+            id="form-price"
+            placeholder="가격"
+            required
+            class="text-base-group flex-grow rounded border border-contentSecondary px-3 py-2 leading-[150%] xs:rounded-[0.35rem] xs:px-[1.05rem] xs:py-[0.7rem] sm:rounded-[0.45rem] sm:px-[1.35rem] sm:py-[0.9rem]"
+          />
+        </div>
+
+        <div role="group" class="flex flex-col gap-1 xs:gap-[0.35rem] sm:gap-[0.45rem]">
+          <label for="form-description" class="text-base-group font-semibold">설명</label>
+          <textarea
+            name="form-description"
+            id="form-description"
+            rows="10"
+            placeholder="판매 물품에 대한 정보를 적어주세요.&#10;(판매 금지 물품은 게시가 제한될 수 있어요.)"
+            required
+            class="text-base-group flex-grow resize-y rounded border border-contentSecondary px-3 py-2 xs:rounded-[0.35rem] xs:px-[1.05rem] xs:py-[0.7rem] sm:rounded-[0.45rem] sm:px-[1.35rem] sm:py-[0.9rem]"
+          ></textarea>
+        </div>
+
+        <!-- 완료 버튼 (제출) -->
+        <button
+          id="complete-btn"
+          type="submit"
+          class="text-base-group cursor-pointer rounded bg-primary px-3 py-2 font-semibold leading-[150%] text-background xs:rounded-[0.35rem] xs:px-[1.05rem] xs:py-[0.7rem] sm:rounded-[0.45rem] sm:px-[1.35rem] sm:py-[0.9rem]"
+        >
+          완료
+        </button>
+      </form>
+    </div>
+  </body>
+</html>
