@@ -119,7 +119,7 @@ async function exchangeDetail() {
         relatedList.insertAdjacentHTML('beforeend', liTemplate);
       });
     } catch (err) {
-      console.error(err);
+      alert('알 수 없는 오류로 연관 글 목록을 불러오는데 실패했습니다.');
     }
   }
 
@@ -152,7 +152,7 @@ async function exchangeDetail() {
             })
             // 채팅방 생성 실패
             .catch((err) => {
-              console.error(err);
+              alert('알 수 없는 오류로 채팅방 생성에 실패했습니다.');
             });
         } else {
           console.error(err);
@@ -183,7 +183,7 @@ async function exchangeDetail() {
       await pb.collection('users').update(userId, { interesting: user.interesting });
       await pb.collection('posts').update(postId, { interested: post.interested });
     } catch (error) {
-      console.error('Error toggling interest:', error);
+      alert('알 수 없는 오류로 관심글 등록 또는 해제에 실패했습니다.');
     }
   }
   // '관심글' 서버 업데이트 함수를 0.5초 디바운스

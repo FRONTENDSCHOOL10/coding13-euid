@@ -9,7 +9,13 @@ const chatContainer = document.querySelector('.chatContainer');
 // pocketbase에서 채팅 목록 가져오기
 async function fetchChatList() {
   // 현재 로그인 된 사용자 정보 가져오기
-  const currentUser = await UserService.currentUser();
+  let currentUser;
+  try {
+    currentUser = await UserService.currentUser();
+  } catch {
+    alert('알 수 없는 오류로 로그인 정보를 불러오는데 실패했습니다.');
+    location.href = '/pages/start/';
+  }
 
   try {
     // 현재 사용자와 관련된 채팅 목록을 필터링하여 가져오기
@@ -19,7 +25,7 @@ async function fetchChatList() {
       expand: 'sender_id, receiver_id, post_id, id',
     });
   } catch (error) {
-    console.error('Failed to fetch chat list:', error);
+    alert('알 수 없는 오류로 채팅 목록을 불러오는데 실패했습니다.');
     return [];
   }
 }
@@ -103,7 +109,7 @@ async function renderChatList() {
             // 메시지 없는 채팅방은 건너뛰기
             return;
           } else {
-            console.error('Error fetching message:', err);
+            alert('알 수 없는 오류로 메세지를 불러오는데 실패했습니다.');
           }
         }
       })

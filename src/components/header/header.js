@@ -42,7 +42,12 @@ class Header extends HTMLElement {
       currentUser = UserService.localCurrentUser();
     } else {
       this.shadowRoot.innerHTML = '<c-spinner></c-spinner>';
-      currentUser = await UserService.currentUser();
+      try {
+        currentUser = await UserService.currentUser();
+      } catch {
+        alert('알 수 없는 오류로 로그인 정보를 불러오는데 실패했습니다.');
+        location.href = '/pages/start/';
+      }
     }
 
     this.shadowRoot.innerHTML = '';

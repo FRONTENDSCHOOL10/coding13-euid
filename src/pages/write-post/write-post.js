@@ -23,9 +23,8 @@ async function writePost() {
 
   /* ------------------------------ pocketbase 동작 ----------------------------- */
   // pocketbase에 post생성
-  async function createPost({ user_id, category, photo, title, price, description, address }) {
-    await pb
-      .collection('posts')
+  function createPost({ user_id, category, photo, title, price, description, address }) {
+    pb.collection('posts')
       .create({
         user_id,
         category,
@@ -67,14 +66,14 @@ async function writePost() {
   }
 
   // 완료 버튼 클릭 -> post 등록
-  async function handleCompleteClick() {
+  function handleCompleteClick() {
     // form이 모두 입력되어야 함
     if (!category || !photoList.length || !formTitle.value || !formPrice || !formDescription) {
       alert('모든 내용을 입력해주세요.');
       return;
     }
 
-    await createPost({
+    createPost({
       user_id: currentUser.id,
       category: category,
       photo: photoList,

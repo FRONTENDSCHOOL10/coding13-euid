@@ -9,7 +9,7 @@ async function exchange() {
 
   if (!currentUser.address) {
     alert('주소 정보를 등록해주세요.');
-    location.href('/pages/edit-profile');
+    location.href = '/pages/edit-profile/';
   }
 
   /* ---------------------- DOM 요소 선택 --------------------- */
