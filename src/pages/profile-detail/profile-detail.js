@@ -35,7 +35,7 @@ ProfileDetailTemplate.innerHTML = `
           <label
             for="avatar"
             role="button"
-            class="absolute bottom-[0.06rem] right-[0.06rem] flex w-1/4 rounded-full bg-background p-[0.125rem] [box-shadow:0.25rem_0.25rem_0.25rem_0px_rgba(0,_0,_0,_0.15)] cursor-pointer xs:bottom-[0.084rem] xs:right-[0.084rem] xs:p-[0.175rem] sm:bottom-[0.108rem] sm:right-[0.108rem] sm:p-[0.225rem] focus-within:ring-2 focus-within:ring-blue-500 focus:ring-blue-500"
+            class="absolute bottom-[0.06rem] right-[0.06rem] flex w-1/4 rounded-full bg-background p-[0.125rem] [box-shadow:0.25rem_0.25rem_0.25rem_0px_rgba(0,_0,_0,_0.15)] cursor-pointer xs:bottom-[0.084rem] xs:right-[0.084rem] xs:p-[0.175rem] sm:bottom-[0.108rem] sm:right-[0.108rem] sm:p-[0.225rem] focus-within:ring-1 focus-within:ring-blue-500 focus:ring-blue-500"
           >
             <img src="/icon/pencil.svg" alt="연필" aria-hidden="true" class="aspect-square w-full" />
             <input
@@ -75,21 +75,19 @@ ProfileDetailTemplate.innerHTML = `
           class="flex cursor-pointer rounded-lg bg-[#C4C7D2] xs:rounded-[0.7rem] sm:rounded-[0.9rem]"
         >
           <div class="flex-grow">
-            <input tabindex="0" type="radio" name="gender" id="male" value="M" class="peer sr-only" />
+            <input type="radio" name="gender" id="male" value="M" class="peer sr-only" />
             <label
               for="male"
-              class="text-base-group flex cursor-pointer items-center justify-center rounded-lg py-[0.375rem] font-semibold text-background peer-checked:z-10 peer-checked:border peer-checked:border-tertiary peer-checked:bg-background peer-checked:text-secondary xs:rounded-[0.7rem] xs:py-[0.525rem] sm:rounded-[0.9rem] sm:py-[0.675rem]"
+              class="text-base-group flex cursor-pointer items-center justify-center rounded-lg py-[0.375rem] font-semibold text-background peer-checked:z-10 peer-checked:border peer-checked:border-tertiary peer-checked:bg-background peer-checked:text-secondary xs:rounded-[0.7rem] xs:py-[0.525rem] sm:rounded-[0.9rem] sm:py-[0.675rem] peer-focus-within:ring-1 peer-focus:ring-1 peer-focus-within:ring-blue-500 peer-focus:ring-blue-500"
             >
               남자
             </label>
           </div>
-          <!-- js에서 버튼을 클릭하면 z-10, border-tertiary, border, bg-background, text-secondary를 클릭한 쪽으로 옮겨야함 -->
           <div class="flex-grow">
-            <input tabindex="0" type="radio" name="gender" id="female" value="F" class="peer sr-only" />
+            <input type="radio" name="gender" id="female" value="F" class="peer sr-only" />
             <label
               for="female"
-              aria-pressed="true"
-              class="text-base-group -ml-[0.3125rem] flex cursor-pointer items-center justify-center rounded-lg py-[0.375rem] font-semibold text-background peer-checked:z-10 peer-checked:border peer-checked:border-tertiary peer-checked:bg-background peer-checked:text-secondary xs:-ml-[0.4375rem] xs:rounded-[0.7rem] xs:py-[0.525rem] sm:-ml-[0.5625rem] sm:rounded-[0.9rem] sm:py-[0.675rem]"
+              class="text-base-group -ml-[0.3125rem] flex cursor-pointer items-center justify-center rounded-lg py-[0.375rem] font-semibold text-background peer-checked:z-10 peer-checked:border peer-checked:border-tertiary peer-checked:bg-background peer-checked:text-secondary xs:-ml-[0.4375rem] xs:rounded-[0.7rem] xs:py-[0.525rem] sm:-ml-[0.5625rem] sm:rounded-[0.9rem] sm:py-[0.675rem] peer-focus-within:ring-1 peer-focus:ring-1 peer-focus-within:ring-blue-500 peer-focus:ring-blue-500"
             >
               여자
             </label>

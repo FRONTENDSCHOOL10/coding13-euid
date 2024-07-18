@@ -16,15 +16,14 @@
         class="fixed z-10 flex w-full items-center justify-between border-b-[0.01875rem] border-contentSecondary bg-white p-[0.875rem] xs:p-[1.225rem] sm:p-[1.575rem]"
       >
         <h1 class="text-base-group font-semibold leading-[150%]">기본정보</h1>
-        <a role="button" href="/pages/edit-profile/" tabindex="1">
+        <a role="button" href="/pages/edit-profile/">
           <img src="/icon/close.svg" alt="닫기" class="w-4 xs:w-[1.4rem] sm:w-[1.8rem]" />
         </a>
       </header>
 
+      <c-profile-detail class="focus:outline-none focus:ring-0"></c-profile-detail>
       <!-- 네비게이션 -->
-      <c-navigation data-page="나의 이듬" tabindex="0"></c-navigation>
-
-      <c-profile-detail tabindex="1" class="focus:outline-none focus:ring-0"></c-profile-detail>
+      <c-navigation data-page="나의 이듬"></c-navigation>
 
       <!-- end app -->
     </div>
