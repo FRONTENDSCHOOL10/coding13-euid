@@ -23,9 +23,9 @@ async function writePost() {
 
   /* ------------------------------ pocketbase 동작 ----------------------------- */
   // pocketbase에 post생성
-  function createPost({ user_id, category, photo, title, price, description, address }) {
-    pb.collection('posts')
-      .create({
+  async function createPost({ user_id, category, photo, title, price, description, address }) {
+    try {
+      await pb.collection('posts').create({
         user_id,
         category,
         photo,
@@ -33,14 +33,12 @@ async function writePost() {
         description,
         price,
         address,
-      })
-      .then((res) => {
-        alert('거래글이 등록되었습니다.');
-        location.href = '/pages/exchange/';
-      })
-      .catch((err) => {
-        console.error(err);
       });
+      alert('거래글이 등록되었습니다.');
+      location.href = '/pages/exchange/';
+    } catch {
+      alert('알 수 없는 오류로 거래글 등록에 실패했습니다.');
+    }
   }
 
   /* ------------------------------- 이벤트 핸들링 함수 ------------------------------- */
@@ -66,14 +64,14 @@ async function writePost() {
   }
 
   // 완료 버튼 클릭 -> post 등록
-  function handleCompleteClick() {
+  async function handleCompleteClick() {
     // form이 모두 입력되어야 함
     if (!category || !photoList.length || !formTitle.value || !formPrice || !formDescription) {
       alert('모든 내용을 입력해주세요.');
       return;
     }
 
-    createPost({
+    await createPost({
       user_id: currentUser.id,
       category: category,
       photo: photoList,
