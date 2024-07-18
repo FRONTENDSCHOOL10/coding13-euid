@@ -17,7 +17,7 @@ ProfileTemplate.innerHTML = `
         class="mb-[0.9375rem] flex flex-col items-center xs:mb-[1.3125rem] sm:mb-[1.6875rem]"
       >
         <img
-          src="/assets/avatar-placeholder.png"
+          src="/avatar-placeholder.webp"
           alt="프로필 이미지"
           class="avatar-image mb-[0.5625rem] aspect-square w-[21.25vw] rounded-full [box-shadow:0.25rem_0.25rem_0.25rem_0px_rgba(0,_0,_0,_0.10)] xs:mb-[0.7875rem] sm:mb-[1.0125rem]"
         />
@@ -316,7 +316,7 @@ ProfileTemplate.innerHTML = `
           <div class="flex items-start space-x-[0.5625rem] xs:space-x-[0.7875rem] sm:space-x-[1.0125rem]">
             <img
               aria-hidden="true"
-              src="/assets/reviews-avatar-placeholder.png"
+              src="/reviews-avatar-placeholder.webp"
               alt="리뷰 작성자의 프로필 이미지"
               class="aspect-square w-7 rounded-full xs:w-[2.45rem] sm:w-[3.15rem]"
             />
