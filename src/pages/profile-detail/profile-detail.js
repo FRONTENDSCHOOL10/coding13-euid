@@ -24,17 +24,18 @@ ProfileDetailTemplate.innerHTML = `
     <section
       class="flex flex-col gap-[1.875rem] px-3 py-8 xs:gap-[2.625rem] xs:px-[1.05rem] xs:py-[2.8rem] sm:gap-[3.375rem] sm:px-[1.35rem] sm:py-[3.6rem]"
     >
-      <h2 class="sr-only">개인 정보</h2>
+      <h2 class="sr-only">기본 정보 수정하기</h2>
 
       <!-- 프로필 사진 -->
       <div role="group" class="flex flex-col items-center">
-        <h2 class="sr-only">프로필 사진</h2>
+        <h3 class="sr-only">프로필 사진</h3>
         <div class="relative w-1/4">
-          <img src="/assets/avatar-placeholder.png" alt="프로필 사진" id="avatar-image" class="aspect-square w-full rounded-full object-cover" />
+          <img aria-hidden="true" src="/assets/avatar-placeholder.png" alt="프로필 사진" id="avatar-image" class="aspect-square w-full rounded-full object-cover" />
 
           <label
             for="avatar"
-            class="absolute bottom-[0.06rem] right-[0.06rem] flex w-1/4 rounded-full bg-background p-[0.125rem] [box-shadow:0.25rem_0.25rem_0.25rem_0px_rgba(0,_0,_0,_0.15)] cursor-pointer xs:bottom-[0.084rem] xs:right-[0.084rem] xs:p-[0.175rem] sm:bottom-[0.108rem] sm:right-[0.108rem] sm:p-[0.225rem]"
+            role="button"
+            class="absolute bottom-[0.06rem] right-[0.06rem] flex w-1/4 rounded-full bg-background p-[0.125rem] [box-shadow:0.25rem_0.25rem_0.25rem_0px_rgba(0,_0,_0,_0.15)] cursor-pointer xs:bottom-[0.084rem] xs:right-[0.084rem] xs:p-[0.175rem] sm:bottom-[0.108rem] sm:right-[0.108rem] sm:p-[0.225rem] focus-within:ring-2 focus-within:ring-blue-500 focus:ring-blue-500"
           >
             <img src="/icon/pencil.svg" alt="연필" aria-hidden="true" class="aspect-square w-full" />
             <input
@@ -51,7 +52,8 @@ ProfileDetailTemplate.innerHTML = `
 
       <!-- 이름(별명) -->
       <div role="group" class="flex w-full flex-col gap-2 xs:gap-[0.7rem] sm:gap-[0.9rem]">
-        <label for="username" class="text-base-group font-semibold leading-[150%]">이름(별명)</label>
+        <h3 class="sr-only">이름(별명)</h3>
+        <label aria-hidden="true" for="username" class="text-base-group font-semibold leading-[150%]">이름(별명)</label>
         <input
           type="text"
           name="username"
@@ -64,7 +66,7 @@ ProfileDetailTemplate.innerHTML = `
       <!-- 성별 -->
       <fieldset class="flex w-full flex-col">
         <legend class="text-base-group mb-2 font-semibold leading-[150%] xs:mb-[0.7rem] sm:mb-[0.9rem]">
-          성별
+          <h3>성별</h3>
         </legend>
 
         <div
@@ -97,7 +99,7 @@ ProfileDetailTemplate.innerHTML = `
 
       <!-- 주소 -->
       <div role="group" class="flex flex-col gap-2 xs:gap-[0.7rem] sm:gap-[0.9rem]">
-        <label for="address" class="text-base-group font-semibold leading-[150%]">주소</label>
+        <label for="address" class="text-base-group font-semibold leading-[150%]"><h3>주소</h3></label>
         <input
           id="address"
           type="text"
@@ -124,13 +126,14 @@ ProfileDetailTemplate.innerHTML = `
 
     <!-- 동의 사항 -->
     <fieldset id="agree-matters">
-      <legend class="sr-only">동의 사항</legend>
+      <legend class="sr-only"><h2>동의 사항</h2></legend>
 
       <!-- 전체 동의 -->
       <div
         role="group"
         class="flex items-center justify-between border-t border-solid border-contentSecondary px-3 py-[0.875rem] xs:px-[1.05rem] xs:py-[1.225rem] sm:px-[1.35rem] sm:py-[1.575rem]"
       >
+      <h3 class="sr-only">전체 동의</h3>
         <div class="flex items-center">
           <input
             type="checkbox"
@@ -148,6 +151,7 @@ ProfileDetailTemplate.innerHTML = `
       <div
         class="flex flex-col gap-[1.125rem] border-t-[0.03rem] border-solid border-contentSecondary px-3 pb-2 pt-4 xs:gap-[1.575rem] xs:px-[1.05rem] xs:pb-[0.7rem] xs:pt-[1.4rem] sm:gap-[2.025rem] sm:px-[1.35rem] sm:pb-[0.9rem] sm:pt-[1.8rem]"
       >
+        <h3 class="sr-only">동의 항목</h3>
         <!-- 항목 1 -->
         <div role="group">
           <div class="mb-[0.5625rem] flex items-center xs:mb-[0.7875rem] sm:mb-[1.0125rem]">
@@ -159,7 +163,7 @@ ProfileDetailTemplate.innerHTML = `
               class="mr-3 min-h-4 min-w-4 cursor-pointer xs:mr-[1.05rem] xs:min-h-[1.4rem] xs:min-w-[1.4rem] sm:mr-[1.35rem] sm:min-h-[1.8rem] sm:min-w-[1.8rem]"
             />
             <label for="agree-collection" class="text-sm-group font-semibold leading-[150%]">
-              [ 필수 ] 개인 정보 수집 및 이용 동의
+              <h4>[ 필수 ] 개인 정보 수집 및 이용 동의</h4>
             </label>
           </div>
           <p class="text-sm-group ml-7 leading-[160%] text-contentSecondary xs:ml-[2.45rem] sm:ml-[3.15rem]">
@@ -181,7 +185,7 @@ ProfileDetailTemplate.innerHTML = `
               class="mr-3 min-h-4 min-w-4 cursor-pointer xs:mr-[1.05rem] xs:min-h-[1.4rem] xs:min-w-[1.4rem] sm:mr-[1.35rem] sm:min-h-[1.8rem] sm:min-w-[1.8rem]"
             />
             <label for="agree-promotion" class="text-sm-group font-semibold leading-[150%]">
-              [ 필수 ] 프로필 정보 노출 영역 확인
+              <h4>[ 필수 ] 프로필 정보 노출 영역 확인</h4>
             </label>
           </div>
           <a
@@ -193,7 +197,7 @@ ProfileDetailTemplate.innerHTML = `
           </a>
         </div>
 
-        <div role="group" class="flex">
+        <div role="group" class="flex items-start">
           <input
             type="checkbox"
             id="agree-marketing"
@@ -201,7 +205,7 @@ ProfileDetailTemplate.innerHTML = `
             class="mr-3 min-h-4 min-w-4 cursor-pointer xs:mr-[1.05rem] xs:min-h-[1.4rem] xs:min-w-[1.4rem] sm:mr-[1.35rem] sm:min-h-[1.8rem] sm:min-w-[1.8rem]"
           />
           <label for="agree-marketing" class="text-sm-group font-semibold leading-[150%]">
-            [ 필수 ] 사실과 다른 정보를 기재하여 발생한 문제에 대해서는 본인이 일체의 책임을 부담하겠습니다.
+            <h4>[ 필수 ] 사실과 다른 정보를 기재하여 발생한 문제에 대해서는 본인이 일체의 책임을 부담하겠습니다.</h4>
           </label>
         </div>
       </div>
