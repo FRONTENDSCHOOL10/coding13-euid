@@ -35,7 +35,7 @@ MainTemplate.innerHTML = `
       <img
         src="/slideImage.webp"
         alt="슬라이드1"
-        class="absolute bottom-0 right-0 w-[63.125vw] [aspect-ratio:1.086021505376344]"
+        class="absolute bottom-0 right-0 w-[63.125vw] [aspect-ratio:392/372]"
       />
     </article>
     <!-- 슬라이드 2 -->
@@ -48,8 +48,8 @@ MainTemplate.innerHTML = `
       </div>
       <img
         src="/slideImage.webp"
-        alt="슬라이드1"
-        class="absolute bottom-0 right-0 w-[63.125vw] [aspect-ratio:12.625/11.625]"
+        alt="슬라이드2"
+        class="absolute bottom-0 right-0 w-[63.125vw] [aspect-ratio:392/372]"
       />
     </article>
   </div>

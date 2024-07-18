@@ -45,6 +45,7 @@ function createChatTemplate({ chatId, username, avatarURL, address, timeAgo, pho
   return `
     <a href="/pages/chat-content/index.html?chat=${chatId}" class="flex gap-3 border-b p-3">
       <img
+        loading="lazy"
         class="h-11 w-11 flex-shrink-0 overflow-hidden rounded-full xs:h-[3.85rem] xs:w-[3.85rem] sm:h-[4.95rem] sm:w-[4.95rem]"
         src="${avatarURL}"
         alt="채팅 상대 프로필"
@@ -66,6 +67,7 @@ function createChatTemplate({ chatId, username, avatarURL, address, timeAgo, pho
         photoURL
           ? `
         <img
+          loading="lazy"
           src="${photoURL}"
           class="h-9 w-9 xs:h-[3.15rem] xs:w-[3.15rem] sm:h-[4.05rem] sm:w-[4.05rem]"
           alt="채팅방 내의 이미지 미리보기"
