@@ -1,6 +1,8 @@
 import calcTimeDifference from '/utils/calcTimeDifference';
 import pb from '/api/pocketbase';
 import { UserService } from '/service/UserService';
+import { Spinner } from '/components/spinner/spinner';
+import { Navigation } from '/components/navigation/navigation';
 
 const chatContainer = document.querySelector('.chatContainer');
 
@@ -81,55 +83,59 @@ async function renderChatList() {
   const chatList = await fetchChatList();
   const currentUser = await UserService.currentUser();
 
-  const chatDetails = (await Promise.all(chatList.map(async (chat) => {
-    try {
-      // 각 채팅에 대한 최신 메시지 가져오기
-      const message = await pb.collection('messages').getFirstListItem(`chat_id = "${chat.id}"`, {
-        sort: '-created',
-      });
+  const chatDetails = (
+    await Promise.all(
+      chatList.map(async (chat) => {
+        try {
+          // 각 채팅에 대한 최신 메시지 가져오기
+          const message = await pb.collection('messages').getFirstListItem(`chat_id = "${chat.id}"`, {
+            sort: '-created',
+          });
 
-      return {
-        chat,
-        message,
-      };
-    } catch (err) {
-      if (err.status === 404) {
-        // 메시지 없는 채팅방은 건너뛰기
-        return;
-      } else {
-        console.error('Error fetching message:', err);
-      }
-    }
-  }))).filter(chat => !!chat);
+          return {
+            chat,
+            message,
+          };
+        } catch (err) {
+          if (err.status === 404) {
+            // 메시지 없는 채팅방은 건너뛰기
+            return;
+          } else {
+            console.error('Error fetching message:', err);
+          }
+        }
+      })
+    )
+  ).filter((chat) => !!chat);
 
   // loading 완료
   const spinnerContainer = document.querySelector('.spinner-container');
   spinnerContainer.remove();
 
-  for (const {chat, message} of chatDetails) {
+  for (const { chat, message } of chatDetails) {
     const user = chat.sender_id === currentUser.id ? chat.expand.receiver_id : chat.expand.sender_id;
     const post = chat.expand.post_id;
 
     // 각 채팅에 대한 최신 메시지 가져오기
     // try {
-      // const message = await pb.collection('messages').getFirstListItem(`chat_id = "${chat.id}"`, {
-      //   sort: '-created',
-      // });
+    // const message = await pb.collection('messages').getFirstListItem(`chat_id = "${chat.id}"`, {
+    //   sort: '-created',
+    // });
 
-      let latestMessageContent = message.content;
+    let latestMessageContent = message.content;
 
-      const chatData = {
-        chatId: chat.id,
-        username: user.username,
-        avatarURL: getAvatarURL(user),
-        address: user.address,
-        timeAgo: calcTimeDifference(chat.updated),
-        photoURL: getPhotoURL(post),
-        latestMessage: latestMessageContent,
-      };
+    const chatData = {
+      chatId: chat.id,
+      username: user.username,
+      avatarURL: getAvatarURL(user),
+      address: user.address,
+      timeAgo: calcTimeDifference(chat.updated),
+      photoURL: getPhotoURL(post),
+      latestMessage: latestMessageContent,
+    };
 
-      const template = createChatTemplate(chatData);
-      chatContainer.insertAdjacentHTML('afterbegin', template);
+    const template = createChatTemplate(chatData);
+    chatContainer.insertAdjacentHTML('afterbegin', template);
     // } catch (err) {
     //   if (err.status === 404) {
     //     // 메시지 없는 채팅방은 건너뛰기

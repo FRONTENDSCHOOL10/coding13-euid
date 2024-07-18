@@ -1,6 +1,6 @@
 import '/components/loading-button/loading-button';
 
-import { UserService } from '@/service/UserService';
+import { UserService } from '/service/UserService';
 
 const verificationNumberInput = document.querySelector('#verification-number');
 const loginButton = document.querySelector('#login');
