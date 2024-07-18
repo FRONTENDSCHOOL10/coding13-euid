@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Enter EUID</title>
+    <title>Enter EUID | 검색</title>
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <link rel="stylesheet" href="/styles/tailwind.css" />
     <script type="module" src="/pages/search/search.js"></script>
@@ -11,6 +11,9 @@
   <body>
     <div id="app">
       <h1 class="sr-only">검색 페이지</h1>
+
+      <!-- 렌더 스피너 -->
+      <div class="spinner-container h-screen w-screen"><c-spinner></c-spinner></div>
 
       <!-- 검색어 입력부 -->
       <header class="fixed top-0 z-10 w-full bg-background">
@@ -22,7 +25,7 @@
             <img src="/icon/direction-left.svg" alt="뒤로가기" class="w-5 xs:w-[1.75rem] sm:w-[2.25rem]" />
           </a>
           <form class="w-full">
-            <label for="search" class="sr-only">검색</label>
+            <label for="search" class="sr-only">검색어 입력창</label>
             <input
               type="text"
               id="search"
