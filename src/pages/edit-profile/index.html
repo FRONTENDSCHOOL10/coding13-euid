@@ -12,23 +12,20 @@
     <div id="app" class="box-border flex flex-col pb-[4.3rem] xs:pb-[5.949375rem] sm:pb-[7.249375rem]">
       <h1 class="sr-only">내 정보</h1>
       <!-- 별도의 헤더 없음 -->
-
-      <!-- navigation: 홈, 게시판, 내 근처, 채팅, 나의 이듬 -->
-      <c-navigation data-page="나의 이듬" tabindex="0"></c-navigation
-      ><!-- navigation: 홈, 게시판, 내 근처, 채팅, 나의 이듬 -->
-
       <div
         class="fixed top-0 z-50 flex w-full flex-row items-center bg-background px-[0.75rem] pb-[0.8125rem] pt-4 xs:px-[1.05rem] xs:pb-[1.1375rem] xs:pt-[1.4rem] sm:px-[1.35rem] sm:pb-[1.4625rem] sm:pt-[1.8rem]"
       >
         <a
           aria-label="나의 이듬으로 돌아가기"
           href="/pages/profile/"
-          tabindex="1"
           class="aspect-square w-4 xs:w-[1.4rem] sm:w-[1.8rem]"
           ><img aria-hidden="true" src="/icon/direction-left.svg" alt="뒤로 가기" class="h-full w-full"
         /></a>
       </div>
-      <c-edit-profile tabindex="2" class="focus:outline-none focus:ring-0"></c-edit-profile>
+      <c-edit-profile class="focus:outline-none focus:ring-0"></c-edit-profile>
+      <!-- navigation: 홈, 게시판, 내 근처, 채팅, 나의 이듬 -->
+      <c-navigation data-page="나의 이듬"></c-navigation
+      ><!-- navigation: 홈, 게시판, 내 근처, 채팅, 나의 이듬 -->
     </div>
   </body>
 </html>
