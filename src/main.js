@@ -111,7 +111,7 @@ class Main extends HTMLElement {
     this.shadowRoot.innerHTML = '';
 
     if (this.loading || !this.currentUser) {
-      this.shadowRoot.innerHTML = '<c-spinner></c-spinner>';
+      // this.shadowRoot.innerHTML = '<c-spinner></c-spinner>';
       return;
     } else if (this.error) {
       this.shadowRoot.innerHTML = `<p>${this.error}</p>`;

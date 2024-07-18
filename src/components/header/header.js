@@ -41,7 +41,7 @@ class Header extends HTMLElement {
     if (this.hasAttribute('has-local')) {
       currentUser = UserService.localCurrentUser();
     } else {
-      this.shadowRoot.innerHTML = '<c-spinner></c-spinner>';
+      // this.shadowRoot.innerHTML = '<c-spinner></c-spinner>';
       try {
         currentUser = await UserService.currentUser();
       } catch {

@@ -10,20 +10,19 @@ export class UserService {
       try {
         // 많이 느림, await 대신 async로 그냥.. 데이터를 나중에 rerender해야하나...
         await pb.collection('users').authRefresh();
-
         return pb.authStore.model;
       } catch (error) {
-        if (error?.response?.code === 401) {
-          window.location.href = '/pages/start/';
-          pb.authStore.clear();
-        } else {
-          throw error;
-        }
+        // if (error?.response?.code === 401) {
+        // window.location.href = '/pages/start/';
+        // pb.authStore.clear();
+        // } else {
+        //   throw error;
+        // }
       }
     }
 
     if (shouldRedirect) {
-      window.location.href = '/pages/start/';
+      // window.location.href = '/pages/start/';
     } else {
       return null;
     }
@@ -36,7 +35,7 @@ export class UserService {
     }
 
     if (shouldRedirect) {
-      window.location.href = '/pages/start/';
+      // window.location.href = '/pages/start/';
     } else {
       return null;
     }
@@ -44,7 +43,7 @@ export class UserService {
 
   static logout() {
     pb.authStore.clear();
-    window.location.href = '/pages/start/';
+    // window.location.href = '/pages/start/';
   }
 
   static async login(phoneNumber) {
