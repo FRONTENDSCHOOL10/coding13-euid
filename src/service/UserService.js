@@ -29,6 +29,19 @@ export class UserService {
     }
   }
 
+  static localCurrentUser(shouldRedirect = true) {
+    // https://github.com/pocketbase/pocketbase/discussions/1390#discussioncomment-4498324
+    if (pb.authStore.isValid) {
+      return pb.authStore.model;
+    }
+
+    if (shouldRedirect) {
+      window.location.href = '/pages/start/';
+    } else {
+      return null;
+    }
+  }
+
   static logout() {
     pb.authStore.clear();
     window.location.href = '/pages/start/';

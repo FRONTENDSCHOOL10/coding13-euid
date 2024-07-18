@@ -1,3 +1,5 @@
+import '/components/spinner/spinner';
+
 import tailwindCSS from '/styles/tailwind.css?inline'; // css 파일 inline 가져오기
 import { UserService } from '/service/UserService.js';
 
@@ -34,8 +36,15 @@ class Header extends HTMLElement {
 
   // data-page="홈"
   async renderHomeHeader() {
-    // 이 부분은 페이지에서도 실행하면 두번인데 어떻게 하지.......
-    const currentUser = await UserService.currentUser();
+    let currentUser;
+    if (this.hasAttribute('has-local')) {
+      currentUser = UserService.localCurrentUser();
+    } else {
+      this.shadowRoot.innerHTML = '<c-spinner></c-spinner>';
+      currentUser = await UserService.currentUser();
+    }
+
+    this.shadowRoot.innerHTML = '';
 
     const template = document.createElement('template');
     template.innerHTML = `
