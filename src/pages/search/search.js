@@ -127,6 +127,7 @@ async function searchPage() {
     }
   }
 
+  searchInput.placeholder = `${currentUser.address} 근처에서 검색`;
   recentSearchList.addEventListener('click', handleRecentList);
 }
 

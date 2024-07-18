@@ -40,8 +40,16 @@ async function searchResultPage() {
   const searchParams = new URLSearchParams(location.search);
   const recentSearchText = searchParams.get('search');
 
+  /* ------------------------------ 중첩 필터링을 위한 문자열 ----------------------------- */
+  let optionString = {
+    exchangable: '',
+    categoryOption: '',
+    priceOption: '',
+  };
+
   // 검색어를 검색창에 입력
   searchInput.value = recentSearchText;
+  searchInput.placeholder = `${currentUser.address} 근처에서 검색`;
 
   // html title 설정
   document.title = `Enter EUID | ${recentSearchText} 검색 결과`;
@@ -111,13 +119,14 @@ async function searchResultPage() {
 
   // 렌더링 함수
   async function renderSearchResult(option, sort = 'created') {
+    console.log(option);
     const searchTextArray = recentSearchText.split(' ');
-    const searchText = searchTextArray.map((item) => `title ~ '${item}'`).join(' && ');
-
+    const searchText = searchTextArray.map((item) => `title ~ "${item}"`).join(' && ');
+    console.log(searchText);
     const postList = await pb.collection('posts').getFullList({
       sort,
       expand: 'user_id',
-      filter: `address = "${currentUser.address}" && (${searchText})${option}`,
+      filter: `address = "${currentUser.address}" && (${searchText}) ${option.exchangable} ${option.categoryOption} ${option.priceOption}`,
     });
 
     exchangeList.textContent = '';
@@ -186,14 +195,16 @@ async function searchResultPage() {
     }
   }
 
-  renderSearchResult('').then(noSearchResult);
+  renderSearchResult(optionString).then(noSearchResult);
 
   // '거래가능만 보기' 체크 시
   possibleCheck.addEventListener('click', () => {
     if (possibleCheck.checked) {
-      renderSearchResult(" && state = ''").then(noSearchResult);
+      optionString.exchangable = " && state = ''";
+      renderSearchResult(optionString).then(noSearchResult);
     } else {
-      renderSearchResult('').then(noSearchResult);
+      optionString.exchangable = '';
+      renderSearchResult(optionString).then(noSearchResult);
     }
   });
 
@@ -256,7 +267,8 @@ async function searchResultPage() {
 
     // 어떤 카테고리도 선택되지 않았을 때
     if (checkedCategories.length === 0) {
-      renderSearchResult('').then(noSearchResult);
+      optionString.categoryOption = '';
+      renderSearchResult(optionString).then(noSearchResult);
       return;
     }
 
@@ -265,9 +277,10 @@ async function searchResultPage() {
       filteringTextArray.push(item.nextElementSibling.textContent);
     }
 
-    const filteringText = filteringTextArray.map((item) => `category = '${item}'`).join(' || ');
-
-    renderSearchResult(` && (${filteringText})`).then(noSearchResult);
+    const filteringText = filteringTextArray.map((item) => `category = "${item}"`).join(' || ');
+    console.log(filteringText);
+    optionString.categoryOption = ` && (${filteringText})`;
+    renderSearchResult(optionString).then(noSearchResult);
   }
 
   // 카테고리 선택 초기화 함수
@@ -298,7 +311,8 @@ async function searchResultPage() {
     }
 
     modalPrice.close();
-    renderSearchResult(priceOption).then(noSearchResult);
+    optionString.priceOption = priceOption;
+    renderSearchResult(optionString).then(noSearchResult);
   }
 
   // 가격 범위 입력 초기화 함수
@@ -334,9 +348,9 @@ async function searchResultPage() {
     modalOrder.close();
 
     if (selectText === '오래된순') {
-      renderSearchResult('', '-created').then(noSearchResult);
+      renderSearchResult(optionString, '-created').then(noSearchResult);
     } else {
-      renderSearchResult('').then(noSearchResult);
+      renderSearchResult(optionString).then(noSearchResult);
     }
   }
 
