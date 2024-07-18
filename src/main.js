@@ -21,9 +21,6 @@ MainTemplate.innerHTML = `
 <!-- 헤더 -->
 <c-header data-page="홈" has-local></c-header>
 
-<!-- 네비게이션 -->
-<c-navigation data-page="홈"></c-navigation>
-
 <!-- 추천 글 슬라이더 -->
 <div role="region" aria-label="추천 글 슬라이더" class="swiper h-[66.875vw]">
   <div class="swiper-wrapper">
@@ -191,6 +188,9 @@ MainTemplate.innerHTML = `
     </article>
   </li>
 </ul>
+
+<!-- 네비게이션 -->
+<c-navigation data-page="홈"></c-navigation>
 `;
 
 class Main extends HTMLElement {
