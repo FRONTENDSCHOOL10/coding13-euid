@@ -23,8 +23,9 @@ async function writePost() {
 
   /* ------------------------------ pocketbase 동작 ----------------------------- */
   // pocketbase에 post생성
-  async function createPost({ user_id, category, photo, title, price, description }) {
-    await pb.collection('posts')
+  async function createPost({ user_id, category, photo, title, price, description, address }) {
+    await pb
+      .collection('posts')
       .create({
         user_id,
         category,
@@ -32,6 +33,7 @@ async function writePost() {
         title,
         description,
         price,
+        address,
       })
       .then((res) => {
         alert('거래글이 등록되었습니다.');
@@ -79,6 +81,7 @@ async function writePost() {
       title: formTitle.value,
       price: formPrice.value,
       description: formDescription.value,
+      address: currentUser.address,
     });
   }
 
@@ -100,7 +103,6 @@ async function writePost() {
     completeBtn.toggleAttribute('disabled', false);
     completeBtn.classList.remove('cursor-not-allowed');
   });
-  console.log(!photoList);
 }
 
 writePost();
