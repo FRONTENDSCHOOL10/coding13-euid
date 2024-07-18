@@ -106,7 +106,7 @@ class Main extends HTMLElement {
     this.items = list.items;
   }
 
-  async render() {
+  render() {
     // 렌더링 전 초기화
     this.shadowRoot.innerHTML = '';
 
