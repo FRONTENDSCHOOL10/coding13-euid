@@ -1,9 +1,14 @@
 import pb from '/api/pocketbase/';
 import { getPbImagesURL } from '/api/getPbImageURL/';
+import '/components/navigation/navigation';
+import '/components/header/header';
 
+/* ---------------------- DOM 요소 선택 --------------------- */
 const ul = document.querySelector('#exchange-list');
 const plusButton = document.querySelector('#plus-button');
 
+/* ---------------------- 거래 목록 렌더링 --------------------- */
+// 게시글 상태 반영 함수
 function renderState(item) {
   const state = ul.querySelector('li > a > section > div > span');
 
@@ -22,6 +27,7 @@ function renderState(item) {
   }
 }
 
+// 시간 반영 함수
 function renderTime(item) {
   // 31일, 28일 등 달마다 날짜가 다른 것, 윤달 등은 반영되지 않는 코드입니다.
   const time = ul.querySelector('li > a > section > span');
@@ -32,15 +38,13 @@ function renderTime(item) {
     const nowTimestamp = now.getTime();
 
     const seconds = Math.floor((nowTimestamp - createTimestamp) / 1000);
-    if (seconds < 60) return '방금 전';
-
     const minutes = seconds / 60;
-    if (minutes < 60) return `${Math.floor(minutes)}분 전`;
-
     const hours = minutes / 60;
-    if (hours < 24) return `${Math.floor(hours)}시간 전`;
-
     const days = hours / 24;
+
+    if (seconds < 60) return '방금 전';
+    if (minutes < 60) return `${Math.floor(minutes)}분 전`;
+    if (hours < 24) return `${Math.floor(hours)}시간 전`;
     if (days < 7) return `${Math.floor(days)}일 전`;
     else if (days < 30) return `${Math.floor(days / 7)}주 전`;
     else if (days < 365) return `${Math.floor(days / 30)}달 전`;
@@ -50,6 +54,7 @@ function renderTime(item) {
   time.insertAdjacentHTML('beforeend', elapsedTime());
 }
 
+// 렌더링 함수
 async function renderPostList() {
   const postList = await pb.collection('posts').getFullList({
     sort: 'created',
@@ -69,9 +74,9 @@ async function renderPostList() {
           <figure
             class="aspect-square w-[5.625rem] flex-shrink-0 overflow-hidden rounded-md bg-gray-200 xs:w-[7.875rem] sm:w-[10.125rem]"
           >
-            <img class="object-cover" src="${getPbImagesURL(item, 0)}" alt="거래 물품 대표 사진" />
+            <img class="object-cover" src="${getPbImagesURL(item, 0)}" alt="${item.title} 대표 사진" />
           </figure>
-          <section class="flex w-full flex-col justify-center overflow-hidden" aria-label="거래 물품 정보">
+          <section class="flex w-full flex-col justify-center overflow-hidden">
             <h2 class="text-base-group truncate leading-[1.6] text-contentPrimary">
               ${item.title}
             </h2>
@@ -91,8 +96,9 @@ async function renderPostList() {
           </section>
           <span
             class="text-sm-group absolute bottom-2 right-3 flex items-center gap-0.5 leading-[1.6] xs:bottom-[0.7rem] xs:right-[1.05rem] xs:gap-[0.175rem] sm:bottom-[0.9rem] sm:right-[1.35rem] sm:gap-[0.225rem]"
+            aria-label="좋아요 개수"
           >
-            <img src="/icon/heart.svg" alt="좋아요" class="w-[0.875rem] xs:w-[1.225rem] sm:w-[1.575rem]" />
+            <img src="/icon/heart.svg" alt="" class="w-[0.875rem] xs:w-[1.225rem] sm:w-[1.575rem]" />
             4
           </span>
         </a>
@@ -107,6 +113,7 @@ async function renderPostList() {
   }
 }
 
+/* ---------------------- + 버튼 이벤트 ---------------------- */
 function handleClick() {
   const writeButtonList = document.querySelector('#write-button-list');
 

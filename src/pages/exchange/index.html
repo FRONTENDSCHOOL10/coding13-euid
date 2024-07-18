@@ -6,22 +6,29 @@
     <title>Enter EUID</title>
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <link rel="stylesheet" href="/styles/tailwind.css" />
-    <script type="module" src="/components/header/header.js"></script>
-    <script type="module" src="/components/navigation/navigation.js"></script>
     <script type="module" src="/pages/exchange/exchange.js"></script>
   </head>
   <body>
     <div id="app" class="pb-[4.3rem] xs:pb-[5.949375rem] sm:pb-[7.249375rem]">
       <h1 class="sr-only">거래 목록 페이지</h1>
+
+      <!-- 헤더 컴포넌트 -->
       <c-header data-page="내 근처"></c-header>
+
+      <!-- 내비게이션 컴포넌트 -->
+      <c-navigation data-page="내 근처"></c-navigation>
+
+      <!-- 거래 물품 리스트 -->
       <ul id="exchange-list" aria-label="거래 물품"></ul>
+
+      <!-- 거래 게시글 작성 버튼 -->
       <button
         type="button"
         id="plus-button"
-        class="fixed bottom-[5.175rem] right-3.5 flex aspect-square w-12 items-center justify-center rounded-full bg-primary shadow-[0_0.25rem_0.25rem_0_rgba(0,0,0,0.25)] transition-all before:h-4 before:w-0.5 before:bg-background before:transition-all after:absolute after:h-0.5 after:w-4 after:bg-background after:transition-all xs:bottom-[7.175rem] xs:right-[1.225rem] xs:w-[4.2rem] xs:shadow-[0_0.35rem_0.35rem_0_rgba(0,0,0,0.25)] xs:before:h-[1.4rem] xs:before:w-[0.175rem] xs:after:h-[0.175rem] xs:after:w-[1.4rem] sm:bottom-[8.825rem] sm:right-[1.575rem] sm:w-[5.4rem] sm:shadow-[0_0.45rem_0.45rem_0_rgba(0,0,0,0.25)] sm:before:h-[1.8rem] sm:before:w-[0.225rem] sm:after:h-[0.225rem] sm:after:w-[1.8rem]"
+        class="fixed bottom-[5.175rem] right-3.5 flex aspect-square w-12 items-center justify-center rounded-full bg-primary shadow-[0_0.25rem_0.25rem_0_rgba(0,0,0,0.25)] transition-all before:h-4 before:w-0.5 before:bg-background before:transition-all after:absolute after:h-0.5 after:w-4 after:bg-background after:transition-all focus:outline-offset-2 xs:bottom-[7.175rem] xs:right-[1.225rem] xs:w-[4.2rem] xs:shadow-[0_0.35rem_0.35rem_0_rgba(0,0,0,0.25)] xs:before:h-[1.4rem] xs:before:w-[0.175rem] xs:after:h-[0.175rem] xs:after:w-[1.4rem] sm:bottom-[8.825rem] sm:right-[1.575rem] sm:w-[5.4rem] sm:shadow-[0_0.45rem_0.45rem_0_rgba(0,0,0,0.25)] sm:before:h-[1.8rem] sm:before:w-[0.225rem] sm:after:h-[0.225rem] sm:after:w-[1.8rem]"
         aria-label="게시글 추가"
       ></button>
-      <!-- 추후 게시글 작성 페이지로 연결 필요 -->
+      <!-- 각 카테고리 게시글 작성 버튼 리스트 -->
       <ul
         id="write-button-list"
         class="fixed bottom-[8.625rem] right-3.5 hidden w-32 flex-col gap-1 xs:bottom-[12.005rem] xs:right-[1.225rem] xs:w-[11.2rem] xs:gap-[0.35rem] sm:bottom-[15.035rem] sm:right-[1.575rem] sm:w-[14.4rem] sm:gap-[0.45rem]"
@@ -30,7 +37,7 @@
         <li class="w-full">
           <a
             role="button"
-            href="#"
+            href="/pages/write-post/index.html?category=헤드셋"
             class="text-base-group block w-full rounded-xl bg-primary px-5 py-2.5 text-start font-pretendard font-semibold leading-[1.6] text-background focus:bg-background focus:text-contentPrimary xs:px-[1.75rem] xs:py-[0.875rem] sm:px-[2.25rem] sm:py-[1.125rem]"
           >
             <span class="sr-only">거래 품목</span>
@@ -40,49 +47,44 @@
         <li class="w-full">
           <a
             role="button"
-            href="#"
+            href="/pages/write-post/index.html?category=키보드"
             class="text-base-group block w-full rounded-xl bg-primary px-5 py-2.5 text-start font-pretendard font-semibold leading-[1.6] text-background focus:bg-background focus:text-contentPrimary xs:px-[1.75rem] xs:py-[0.875rem] sm:px-[2.25rem] sm:py-[1.125rem]"
           >
             <span class="sr-only">거래 품목</span>
             ⌨️ 키보드
           </a>
-          </a>
         </li>
         <li class="w-full">
           <a
             role="button"
-            href="#"
+            href="/pages/write-post/index.html?category=마우스"
             class="text-base-group block w-full rounded-xl bg-primary px-5 py-2.5 text-start font-pretendard font-semibold leading-[1.6] text-background focus:bg-background focus:text-contentPrimary xs:px-[1.75rem] xs:py-[0.875rem] sm:px-[2.25rem] sm:py-[1.125rem]"
           >
             <span class="sr-only">거래 품목</span>
             🖱️ 마우스
           </a>
-          </a>
         </li>
         <li class="w-full">
           <a
             role="button"
-            href="#"
+            href="/pages/write-post/index.html?category=컴퓨터"
             class="text-base-group block w-full rounded-xl bg-primary px-5 py-2.5 text-start font-pretendard font-semibold leading-[1.6] text-background focus:bg-background focus:text-contentPrimary xs:px-[1.75rem] xs:py-[0.875rem] sm:px-[2.25rem] sm:py-[1.125rem]"
           >
             <span class="sr-only">거래 품목</span>
             💻 컴퓨터
           </a>
-          </a>
         </li>
         <li class="w-full">
           <a
             role="button"
-            href="#"
+            href="/pages/write-post/index.html?category=기타"
             class="text-base-group block w-full rounded-xl bg-primary px-5 py-2.5 text-start font-pretendard font-semibold leading-[1.6] text-background focus:bg-background focus:text-contentPrimary xs:px-[1.75rem] xs:py-[0.875rem] sm:px-[2.25rem] sm:py-[1.125rem]"
           >
             <span class="sr-only">거래 품목</span>
             🎈 기타 등등
           </a>
-          </a>
         </li>
       </ul>
-      <c-navigation data-page="내 근처"></c-navigation>
     </div>
   </body>
 </html>
