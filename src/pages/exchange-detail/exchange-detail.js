@@ -91,33 +91,35 @@ async function exchangeDetail() {
   }
 
   // 연관 글 목록 렌더링 함수
-  async function renderRelatedList({ id, category }) {
+  async function renderRelatedList({ id: postId, category }) {
     try {
-      const list = await pb.collection('posts').getList(1, 4, {
-        filter: `category = "${category}" && id != "${id}"`,
+      const list = await pb.collection('posts').getList(0, 6, {
+        filter: `category = "${category}" && id != "${postId}"`,
         sort: '-created',
       });
       const { items } = list;
 
       items.forEach((item, index) => {
         const liTemplate = `
-      <li class="mb-5 w-[43.125vw] xs:mb-[1.75rem] sm:mb-[2.25rem]">
-        <article>
-          <img
-            src=${getPbImagesURL(item, index)}
-            alt="관련 글${index + 1}"
-            class="mb-3 w-[43.125vw] object-cover rounded-[5.797101449275362%] [aspect-ratio:8.625/6.5] xs:mb-[1.05rem] sm:mb-[1.35rem]"
-          />
-          <h4 class="text-sm-group leading-[160%]">${item.title}</h4>
-          <strong class="text-sm-group font-semibold">${item.price.toLocaleString()}원</strong>
-        </article>
-      </li>
-    `;
+          <li class="mb-5 w-[43.125vw] xs:mb-[1.75rem] sm:mb-[2.25rem]">
+            <article>
+              <a href="/pages/exchange-detail/index.html?post=${item.id}">
+                <img
+                  src=${getPbImageURL(item)}
+                  alt="관련 글${index + 1}"
+                  class="mb-3 w-[43.125vw] object-cover rounded-[5.797101449275362%] [aspect-ratio:8.625/6.5] xs:mb-[1.05rem] sm:mb-[1.35rem]"
+                />
+                <h4 class="text-sm-group leading-[160%]">${item.title}</h4>
+                <strong class="text-sm-group font-semibold">${item.price.toLocaleString()}원</strong>
+              </a>
+            </article>
+          </li>
+        `;
 
         relatedList.insertAdjacentHTML('beforeend', liTemplate);
       });
     } catch (err) {
-      console.error(err);
+      alert('알 수 없는 오류로 연관 글 목록을 불러오는데 실패했습니다.');
     }
   }
 
@@ -150,7 +152,7 @@ async function exchangeDetail() {
             })
             // 채팅방 생성 실패
             .catch((err) => {
-              console.error(err);
+              alert('알 수 없는 오류로 채팅방 생성에 실패했습니다.');
             });
         } else {
           console.error(err);
@@ -181,7 +183,7 @@ async function exchangeDetail() {
       await pb.collection('users').update(userId, { interesting: user.interesting });
       await pb.collection('posts').update(postId, { interested: post.interested });
     } catch (error) {
-      console.error('Error toggling interest:', error);
+      alert('알 수 없는 오류로 관심글 등록 또는 해제에 실패했습니다.');
     }
   }
   // '관심글' 서버 업데이트 함수를 0.5초 디바운스

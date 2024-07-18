@@ -7,6 +7,11 @@ import '/components/header/header';
 async function exchange() {
   const currentUser = await UserService.localCurrentUser();
 
+  if (!currentUser.address) {
+    alert('주소 정보를 등록해주세요.');
+    location.href = '/pages/edit-profile/';
+  }
+
   /* ---------------------- DOM 요소 선택 --------------------- */
   const exchangeList = document.querySelector('#exchange-list');
   const plusButton = document.querySelector('#plus-button');
@@ -75,6 +80,7 @@ async function exchange() {
           class="relative flex gap-3 border-b border-gray-200 bg-background p-3 outline-0 focus:shadow-[inset_0_0_0_2px_#719cf7] xs:gap-[1.05rem] xs:p-[1.05rem] sm:gap-[1.35rem] sm:p-[1.35rem]"
         >
           <img 
+            loading="lazy"
             class="aspect-square w-[5.625rem] flex-shrink-0 rounded-md xs:w-[7.875rem] sm:w-[10.125rem] object-cover" 
             src="${getPbImagesURL(item, 0)}" 
             alt="${item.title} 대표"
@@ -101,7 +107,7 @@ async function exchange() {
             class="text-sm-group absolute bottom-2 right-3 flex items-center gap-0.5 leading-[1.6] xs:bottom-[0.7rem] xs:right-[1.05rem] xs:gap-[0.175rem] sm:bottom-[0.9rem] sm:right-[1.35rem] sm:gap-[0.225rem]"
             aria-label="좋아요 개수"
           >
-            <img src="/icon/heart.svg" alt="" class="w-[0.875rem] xs:w-[1.225rem] sm:w-[1.575rem]" />
+            <img src="/icon/heart.svg" alt="" class=" h-[0.875rem] w-[0.875rem] xs:h-[1.225rem] xs:w-[1.225rem] sm:h-[1.575rem] sm:w-[1.575rem]" />
             ${item.interested.length}
           </span>
         </a>

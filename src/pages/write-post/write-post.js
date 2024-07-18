@@ -24,9 +24,8 @@ async function writePost() {
   /* ------------------------------ pocketbase 동작 ----------------------------- */
   // pocketbase에 post생성
   async function createPost({ user_id, category, photo, title, price, description, address }) {
-    await pb
-      .collection('posts')
-      .create({
+    try {
+      await pb.collection('posts').create({
         user_id,
         category,
         photo,
@@ -34,14 +33,12 @@ async function writePost() {
         description,
         price,
         address,
-      })
-      .then((res) => {
-        alert('거래글이 등록되었습니다.');
-        location.href = '/pages/exchange/';
-      })
-      .catch((err) => {
-        console.error(err);
       });
+      alert('거래글이 등록되었습니다.');
+      location.href = '/pages/exchange/';
+    } catch {
+      alert('알 수 없는 오류로 거래글 등록에 실패했습니다.');
+    }
   }
 
   /* ------------------------------- 이벤트 핸들링 함수 ------------------------------- */

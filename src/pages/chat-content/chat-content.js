@@ -59,10 +59,10 @@ async function chatContent() {
         receiver_id: receiverId,
         content: content,
       };
-      const record = await pb.collection('messages').create(messageData);
+      await pb.collection('messages').create(messageData);
       messageInput.value = '';
     } catch (error) {
-      console.error('메시지 전송 실패:', error);
+      alert('알 수 없는 오류로 메세지를 전송하는데 실패했습니다.');
     }
   }
 
@@ -228,6 +228,10 @@ async function chatContent() {
       .update(postId, { state: newState })
       .then(() => {
         location.reload();
+      })
+      .catch((err) => {
+        alert('알 수 없는 오류로 거래글의 상태를 업데이트 하는데 실패했습니다.');
+        return;
       });
   }
   // '예약하기 / 예약취소', '거래완료' 버튼 클릭 핸들링함수

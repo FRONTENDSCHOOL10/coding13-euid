@@ -21,9 +21,6 @@ MainTemplate.innerHTML = `
 <!-- 헤더 -->
 <c-header data-page="홈" has-local></c-header>
 
-<!-- 네비게이션 -->
-<c-navigation data-page="홈"></c-navigation>
-
 <!-- 추천 글 슬라이더 -->
 <div role="region" aria-label="추천 글 슬라이더" class="swiper h-[66.875vw]">
   <div class="swiper-wrapper">
@@ -38,7 +35,7 @@ MainTemplate.innerHTML = `
       <img
         src="/slideImage.webp"
         alt="슬라이드1"
-        class="absolute bottom-0 right-0 w-[63.125vw] [aspect-ratio:1.086021505376344]"
+        class="absolute bottom-0 right-0 w-[63.125vw] [aspect-ratio:392/372]"
       />
     </article>
     <!-- 슬라이드 2 -->
@@ -51,8 +48,8 @@ MainTemplate.innerHTML = `
       </div>
       <img
         src="/slideImage.webp"
-        alt="슬라이드1"
-        class="absolute bottom-0 right-0 w-[63.125vw] [aspect-ratio:12.625/11.625]"
+        alt="슬라이드2"
+        class="absolute bottom-0 right-0 w-[63.125vw] [aspect-ratio:392/372]"
       />
     </article>
   </div>
@@ -191,6 +188,9 @@ MainTemplate.innerHTML = `
     </article>
   </li>
 </ul>
+
+<!-- 네비게이션 -->
+<c-navigation data-page="홈"></c-navigation>
 `;
 
 class Main extends HTMLElement {
