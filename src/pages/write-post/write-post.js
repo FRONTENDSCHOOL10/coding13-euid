@@ -65,7 +65,7 @@ async function writePost() {
   // 완료 버튼 클릭 -> post 등록
   function handleCompleteClick() {
     // form이 모두 입력되어야 함
-    if (!category || !photoList || !formTitle.value || !formPrice || !formDescription) {
+    if (!category || !photoList.length || !formTitle.value || !formPrice || !formDescription) {
       alert('모든 내용을 입력해주세요.');
       return;
     }
@@ -89,6 +89,7 @@ async function writePost() {
     e.preventDefault();
     handleCompleteClick();
   });
+  console.log(!photoList);
 }
 
 writePost();
