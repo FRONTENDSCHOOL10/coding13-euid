@@ -126,7 +126,7 @@ class Main extends HTMLElement {
         const liTemplate = `
           <li class="mb-7 w-[43.125vw] xs:mb-[2.45rem] sm:mb-[3.15rem]">
             <article>
-              <a href="#">
+              <a href="/pages/exchange-detail/index.html?post=${item.id}">
                 <img
                   loading="lazy"
                   src=${getPbImagesURL(item, 0)}
