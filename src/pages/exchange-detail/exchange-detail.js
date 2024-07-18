@@ -91,28 +91,30 @@ async function exchangeDetail() {
   }
 
   // 연관 글 목록 렌더링 함수
-  async function renderRelatedList({ id, category }) {
+  async function renderRelatedList({ id: postId, category }) {
     try {
-      const list = await pb.collection('posts').getList(1, 4, {
-        filter: `category = "${category}" && id != "${id}"`,
+      const list = await pb.collection('posts').getList(0, 6, {
+        filter: `category = "${category}" && id != "${postId}"`,
         sort: '-created',
       });
       const { items } = list;
 
       items.forEach((item, index) => {
         const liTemplate = `
-      <li class="mb-5 w-[43.125vw] xs:mb-[1.75rem] sm:mb-[2.25rem]">
-        <article>
-          <img
-            src=${getPbImagesURL(item, index)}
-            alt="관련 글${index + 1}"
-            class="mb-3 w-[43.125vw] object-cover rounded-[5.797101449275362%] [aspect-ratio:8.625/6.5] xs:mb-[1.05rem] sm:mb-[1.35rem]"
-          />
-          <h4 class="text-sm-group leading-[160%]">${item.title}</h4>
-          <strong class="text-sm-group font-semibold">${item.price.toLocaleString()}원</strong>
-        </article>
-      </li>
-    `;
+          <li class="mb-5 w-[43.125vw] xs:mb-[1.75rem] sm:mb-[2.25rem]">
+            <article>
+              <a href="/pages/exchange-detail/index.html?post=${item.id}">
+                <img
+                  src=${getPbImageURL(item)}
+                  alt="관련 글${index + 1}"
+                  class="mb-3 w-[43.125vw] object-cover rounded-[5.797101449275362%] [aspect-ratio:8.625/6.5] xs:mb-[1.05rem] sm:mb-[1.35rem]"
+                />
+                <h4 class="text-sm-group leading-[160%]">${item.title}</h4>
+                <strong class="text-sm-group font-semibold">${item.price.toLocaleString()}원</strong>
+              </a>
+            </article>
+          </li>
+        `;
 
         relatedList.insertAdjacentHTML('beforeend', liTemplate);
       });
