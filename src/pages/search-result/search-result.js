@@ -10,7 +10,7 @@ async function searchResultPage() {
   /* ---------------------- 포켓베이스 데이터 --------------------- */
   const user = await pb.collection('users').getOne(currentUser.id);
   const recentSearch = user.recent_search;
-  const recentSearchArray = recentSearch.split(',');
+  const recentSearchArray = recentSearch?.split(',');
 
   /* ---------------------- DOM 요소 선택 --------------------- */
   // 검색 결과 관련 요소
