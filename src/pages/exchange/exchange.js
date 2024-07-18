@@ -77,7 +77,7 @@ async function exchange() {
           <img 
             class="aspect-square w-[5.625rem] flex-shrink-0 rounded-md xs:w-[7.875rem] sm:w-[10.125rem] object-cover" 
             src="${getPbImagesURL(item, 0)}" 
-            alt="${item.title} 대표 사진"
+            alt="${item.title} 대표"
           />
           <section class="flex w-full flex-col justify-center overflow-hidden">
             <h2 class="text-base-group truncate leading-[1.6] text-contentPrimary">

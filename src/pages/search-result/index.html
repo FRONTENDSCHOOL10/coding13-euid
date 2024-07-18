@@ -15,7 +15,7 @@
       <!-- 렌더 스피너 -->
       <div class="spinner-container h-screen w-screen"><c-spinner></c-spinner></div>
 
-      <!-- 검색어 입력 및 필터링 버튼 -->
+      <!-- 검색어 입력 및 필터링/정렬 버튼 -->
       <header class="fixed top-0 z-10 w-full bg-background">
         <div
           role="group"
@@ -92,7 +92,7 @@
               type="button"
               class="text-sm-group group flex flex-shrink-0 items-center gap-1 rounded-full border border-contentTertiary bg-background px-3 py-1.5 font-normal leading-[1.6] text-contentPrimary xs:gap-[0.35rem] xs:px-[1.05rem] xs:py-[0.525rem] sm:gap-[0.45rem] sm:px-[1.35rem] sm:py-[0.675rem]"
               data-name="order"
-              aria-label="순서 정렬 필터"
+              aria-label="순서 정렬"
             >
               최신순
               <svg
@@ -125,7 +125,7 @@
       <!-- 검색 결과 리스트 -->
       <ul id="exchange-list" aria-label="거래 물품"></ul>
 
-      <!-- 검색 결과 필터링 모달창 -->
+      <!-- 검색 결과 필터링 혹은 정렬 모달창 -->
       <div role="group">
         <dialog class="mb-0 w-full max-w-full rounded-t-2xl outline-none" id="category">
           <section class="relative" aria-label="핸들">
