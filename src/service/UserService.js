@@ -49,11 +49,12 @@ export class UserService {
     return authData.model;
   }
 
-  static async registerUser(phoneNumber) {
+  static async registerUser(phoneNumber, selectedCategories) {
     const user = await pb.collection('users').create({
       phone_number: phoneNumber,
       password: phoneNumber,
       passwordConfirm: phoneNumber,
+      category: selectedCategories,
     });
     return user;
   }
