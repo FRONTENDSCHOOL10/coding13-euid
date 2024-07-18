@@ -1,4 +1,4 @@
-![header](https://capsule-render.vercel.app/api?type=slice&color=0:373F67,100:5A85EE&text=Enter%20EUID&fontSize=55&rotate=8&fontAlign=80&fontAlignY=25&fontColor=ffffff)
+<!-- ![header](https://capsule-render.vercel.app/api?type=wave&color=373F67) -->
 
 <br/>
 
