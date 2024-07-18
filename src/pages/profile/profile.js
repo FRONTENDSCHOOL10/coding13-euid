@@ -11,6 +11,7 @@ ProfileTemplate.innerHTML = `
     <section
       class="px-[1.9375rem] pb-[1.125rem] pt-[2.625rem] xs:px-[2.7125rem] xs:pb-[1.575rem] xs:pt-[3.675rem] sm:px-[3.4875rem] sm:pb-[2.025rem] sm:pt-[4.725rem]"
     >
+      <h2 class="sr-only">프로필 카드</h2>
       <div
         id="profileSummary"
         class="mb-[0.9375rem] flex flex-col items-center xs:mb-[1.3125rem] sm:mb-[1.6875rem]"
@@ -30,13 +31,12 @@ ProfileTemplate.innerHTML = `
           >
         </div>
         <span class="text-sm-group leading-[1.6] text-contentSecondary"
-          ><span class="sr-only">내가 남긴 답변</span>답변 35</span
+          ><span class="sr-only">내가 남긴</span>답변 35<span class="sr-only">개</span></span
         >
       </div>
 
-      <nav class="mx-auto">
+      <nav aria-label="프로필 메뉴" class="mx-auto">
         <ul
-          aria-label="프로필 메뉴"
           class="flex h-[3.25rem] justify-center space-x-[3.875rem] xs:h-[4.55rem] xs:space-x-[5.425rem] sm:h-[5.85rem] sm:space-x-[6.975rem]"
         >
           <li>
@@ -89,7 +89,7 @@ ProfileTemplate.innerHTML = `
       <!-- passion temperature -->
       <div id="passionTemperature" class="-space-y-[0.3125rem] xs:-space-y-[0.4375rem] sm:-space-y-[0.5625rem]">
         <div class="flex flex-row items-center">
-          <span class="text-[0.75rem] xs:text-[1.05rem] sm:text-[1.35rem]">열정온도</span>
+          <h2 class="inline-flex text-[0.75rem] xs:text-[1.05rem] sm:text-[1.35rem]">열정온도</h2>
           <img
             src="/icon/information.svg"
             alt="tooltip"
@@ -182,8 +182,8 @@ ProfileTemplate.innerHTML = `
         aria-label="내 활동배지 자세히 보기"
         class="flex w-full flex-row items-center justify-between px-[1.3125rem] py-4 xs:px-[1.8375rem] xs:py-[1.4rem] sm:px-[2.3625rem] sm:py-[1.8rem]"
       >
-        <span class="text-base-group font-semibold leading-[1.5]"
-          ><span class="sr-only">내 활동배지 수</span>활동배지 10개</span
+        <h2 class="inline-flex text-base-group font-semibold leading-[1.5]"
+          ><span class="sr-only">내 활동배지 수</span><span aria-hidden="true">활동배지</span>&nbsp;10개</h2
         >
         <img
           aria-hidden="true"
@@ -202,7 +202,7 @@ ProfileTemplate.innerHTML = `
         aria-label="내 판매상품 바로가기"
         class="flex w-full flex-row items-center justify-between px-[1.3125rem] py-4 xs:px-[1.8375rem] xs:py-[1.4rem] sm:px-[2.3625rem] sm:py-[1.8rem]"
       >
-        <span class="text-base-group font-semibold leading-[1.5]">판매상품 3개</span>
+        <h2 class="inline-flex text-base-group font-semibold leading-[1.5]">판매상품 3개</h2>
         <img
           aria-hidden="true"
           src="/icon/right.svg"
@@ -220,7 +220,7 @@ ProfileTemplate.innerHTML = `
         href="#"
         class="flex flex-row items-center justify-between px-[1.3125rem] py-4 xs:px-[1.8375rem] xs:py-[1.4rem] sm:px-[2.3625rem] sm:py-[1.8rem]"
       >
-        <span class="text-base-group font-semibold leading-[1.5]">받은 매너 평가</span>
+        <h2 class="flex-inline text-base-group font-semibold leading-[1.5]">받은 매너 평가</h2>
         <img
           aria-hidden="true"
           src="/icon/right.svg"
@@ -231,7 +231,7 @@ ProfileTemplate.innerHTML = `
 
       <!-- manner reviews -->
       <ul
-        aria-label="받은 매너 평가 리스트"
+        aria-label="매너 평가 리스트"
         class="space-y-2 px-[0.625rem] py-[0.875rem] xs:space-y-[0.7rem] xs:px-[0.875rem] xs:py-[1.225rem] sm:space-y-[0.9rem] sm:px-[1.125rem] sm:py-[1.575rem]"
       >
         <li class="flex items-center space-x-2 xs:space-x-[0.7rem] sm:space-x-[0.9rem]">
@@ -244,7 +244,7 @@ ProfileTemplate.innerHTML = `
 
           <span
             class="text-base-group mt-[0.125rem] w-[1.125rem] font-semibold leading-[1.5] xs:mt-[0.175rem] xs:w-[1.575rem] sm:mt-[0.225rem] sm:w-[2.025rem]"
-            ><span class="sr-only">평가자 수</span>10</span
+            >10<span class="sr-only">명이 평가</span></span
           >
           <div
             class="flex h-[2.375rem] items-center rounded-[0.5rem] rounded-tl-none bg-tertiary p-2 xs:h-[3.325rem] xs:rounded-[0.7rem] xs:p-[0.7rem] sm:h-[4.275rem] sm:rounded-[0.9rem] sm:p-[0.9rem]"
@@ -262,7 +262,7 @@ ProfileTemplate.innerHTML = `
 
           <span
             class="text-base-group mt-[0.125rem] w-[1.125rem] font-semibold leading-[1.5] xs:mt-[0.175rem] xs:w-[1.575rem] sm:mt-[0.225rem] sm:w-[2.025rem]"
-            ><span class="sr-only">평가자 수</span>9</span
+            >9<span class="sr-only">명이 평가</span></span
           >
           <div
             class="flex h-[2.375rem] items-center rounded-[0.5rem] rounded-tl-none bg-tertiary p-2 xs:h-[3.325rem] xs:rounded-[0.7rem] xs:p-[0.7rem] sm:h-[4.275rem] sm:rounded-[0.9rem] sm:p-[0.9rem]"
@@ -280,7 +280,7 @@ ProfileTemplate.innerHTML = `
 
           <span
             class="text-base-group mt-[0.125rem] w-[1.125rem] font-semibold leading-[1.5] xs:mt-[0.175rem] xs:w-[1.575rem] sm:mt-[0.225rem] sm:w-[2.025rem]"
-            ><span class="sr-only">평가자 수</span>8</span
+            >8<span class="sr-only">명이 평가</span></span
           >
           <div
             class="flex h-[2.375rem] items-center rounded-[0.5rem] rounded-tl-none bg-tertiary p-2 xs:h-[3.325rem] xs:rounded-[0.7rem] xs:p-[0.7rem] sm:h-[4.275rem] sm:rounded-[0.9rem] sm:p-[0.9rem]"
@@ -300,7 +300,7 @@ ProfileTemplate.innerHTML = `
         href="#"
         class="flex flex-row items-center justify-between border-b-[0.01875rem] border-contentSecondary px-[1.125rem] py-4 xs:px-[1.575rem] xs:py-[1.4rem] sm:px-[2.025rem] sm:py-[1.8rem]"
       >
-        <span class="text-base-group font-semibold leading-[1.5]">받은 거래 후기 1</span>
+        <h2 class="inline-flex text-base-group font-semibold leading-[1.5]">받은 거래 후기 1<span class="sr-only">개</span></h2>
         <img
           aria-hidden="true"
           src="/icon/right.svg"
@@ -309,7 +309,7 @@ ProfileTemplate.innerHTML = `
         />
       </a>
       <!-- reviews list -->
-      <ul aria-label="받은 리뷰 리스트">
+      <ul aria-label="거래 후기 리스트">
         <li
           class="flex items-start justify-between px-[0.625rem] pb-[1.25rem] pt-[0.875rem] xs:px-[0.875rem] xs:pb-[1.75rem] xs:pt-[1.225rem] sm:px-[1.125rem] sm:pb-[2.25rem] sm:pt-[1.575rem]"
         >
@@ -350,27 +350,20 @@ ProfileTemplate.innerHTML = `
 
     <!-- additional info -->
     <section id="additional-info" class="pt-[0.4375rem] xs:pt-[0.6125rem] sm:pt-[0.7875rem]">
-      <ul aria-label="부가정보">
+      <h2 class="sr-only">설정 및 지원</h2>
+      <ul>
         <li class="flex flex-row">
           <a
             href="#"
             class="text-base-group w-full py-[0.5625rem] pl-[1.125rem] pr-[0.75rem] leading-[1.6] xs:py-[0.7875rem] xs:pl-[1.575rem] xs:pr-[1.05rem] sm:py-[1.0125rem] sm:pl-[2.025rem] sm:pr-[1.35rem]"
-            >보관 질문</a
+            ><h3>보관 질문</h3></a
           >
         </li>
         <li class="flex flex-row">
           <a
             href="#"
             class="text-base-group w-full py-[0.5625rem] pl-[1.125rem] pr-[0.75rem] leading-[1.6] xs:py-[0.7875rem] xs:pl-[1.575rem] xs:pr-[1.05rem] sm:py-[1.0125rem] sm:pl-[2.025rem] sm:pr-[1.35rem]"
-            >설정</a
-          >
-        </li>
-
-        <li class="flex flex-row">
-          <a
-            href="#"
-            class="text-base-group w-full py-[0.5625rem] pl-[1.125rem] pr-[0.75rem] leading-[1.6] xs:py-[0.7875rem] xs:pl-[1.575rem] xs:pr-[1.05rem] sm:py-[1.0125rem] sm:pl-[2.025rem] sm:pr-[1.35rem]"
-            >지식 iN 공식 블로그</a
+            ><h3>설정</h3></a
           >
         </li>
 
@@ -378,14 +371,22 @@ ProfileTemplate.innerHTML = `
           <a
             href="#"
             class="text-base-group w-full py-[0.5625rem] pl-[1.125rem] pr-[0.75rem] leading-[1.6] xs:py-[0.7875rem] xs:pl-[1.575rem] xs:pr-[1.05rem] sm:py-[1.0125rem] sm:pl-[2.025rem] sm:pr-[1.35rem]"
-            >서비스 정보</a
+            ><h3>지식 iN 공식 블로그</h3></a
+          >
+        </li>
+
+        <li class="flex flex-row">
+          <a
+            href="#"
+            class="text-base-group w-full py-[0.5625rem] pl-[1.125rem] pr-[0.75rem] leading-[1.6] xs:py-[0.7875rem] xs:pl-[1.575rem] xs:pr-[1.05rem] sm:py-[1.0125rem] sm:pl-[2.025rem] sm:pr-[1.35rem]"
+            ><h3>서비스 정보</h3></a
           >
         </li>
         <li class="flex flex-row">
           <a
             href="#"
             class="text-base-group w-full py-[0.5625rem] pl-[1.125rem] pr-[0.75rem] leading-[1.6] xs:py-[0.7875rem] xs:pl-[1.575rem] xs:pr-[1.05rem] sm:py-[1.0125rem] sm:pl-[2.025rem] sm:pr-[1.35rem]"
-            >공지사항</a
+            ><h3>공지사항</h3></a
           >
         </li>
         <li class="flex flex-row">
@@ -394,8 +395,7 @@ ProfileTemplate.innerHTML = `
             type="button"
             class="text-base-group flex w-full flex-row justify-between py-[0.5625rem] pl-[1.125rem] pr-[0.75rem] leading-[1.6] xs:py-[0.7875rem] xs:pl-[1.575rem] xs:pr-[1.05rem] sm:py-[1.0125rem] sm:pl-[2.025rem] sm:pr-[1.35rem]"
           >
-            <span>로그아웃</span
-            ><span class="text-secondary"
+            <h3 class="inline-flex">로그아웃</h3><span class="text-secondary"
               ><span class="sr-only">현재 사용자</span><span id="logout-button__username"></span
             ></span>
           </button>

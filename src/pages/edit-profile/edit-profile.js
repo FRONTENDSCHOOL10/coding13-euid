@@ -14,10 +14,11 @@ EditProfileTemplate.innerHTML = `
     <section
       class="flex items-center justify-between rounded-[0.5rem] border-[0.01875rem] border-gray-300 p-3 shadow-md xs:rounded-[0.7rem] xs:p-[1.05rem] sm:rounded-[0.9rem] sm:p-[1.35rem]"
     >
+      <h2 class="sr-only">프로필 카드</h2>
       <div class="flex flex-col space-y-1 xs:space-y-[0.35rem] sm:space-y-[0.45rem]">
-        <h3 class="username text-base-group font-semibold leading-[1.5]">
-          <span class="sr-only">사용자 닉네임</span>
-        </h3>
+        <span class="sr-only">사용자 닉네임</span>
+        <span class="username text-base-group font-semibold leading-[1.5]">
+        </span>
         <span
           class="text-sm-group h-[1.0625rem] w-fit rounded-full border-[0.04375rem] border-secondary px-1 text-center leading-[1.6] text-secondary xs:h-[1.4875rem] xs:px-[0.35rem] xs:pt-[0.125rem] sm:h-[1.9125rem] sm:w-[2.7rem] sm:pt-[0.0625rem]"
           ><span class="sr-only">내 기수</span>4기</span
@@ -25,7 +26,7 @@ EditProfileTemplate.innerHTML = `
       </div>
       <img
         src="/assets/avatar-placeholder.png"
-        alt="프로필 이미지"
+        alt="유저 프로필 이미지"
         class="avatar-image aspect-square w-[15.625vw] rounded-full [box-shadow:0.25rem_0.25rem_0.25rem_0px_rgba(0,_0,_0,_0.10)]"
       />
     </section>
@@ -38,51 +39,52 @@ EditProfileTemplate.innerHTML = `
       <div
         class="flex flex-row items-center justify-between border-b-[0.01875rem] border-contentSecondary p-3 pr-4 xs:p-[1.05rem] xs:pr-[1.4rem] sm:p-[1.35rem] sm:pr-[1.8rem]"
       >
-        <h3 class="text-base-group font-semibold leading-[1.5]">기본 정보</h3>
+        <h2 class="text-base-group font-semibold leading-[1.5]">기본 정보</h2>
         <a href="/pages/profile-detail/" class="text-sm-group text-secondary">수정하기</a>
       </div>
       <ul
-        aria-label="기본 정보 리스트"
+        aria-label="기본 정보 항목"
         class="space-y-[1.0625rem] px-[0.8125rem] py-[0.625rem] xs:space-y-[1.4875rem] xs:px-[1.1375rem] xs:py-[0.875rem] sm:space-y-[1.9125rem] sm:px-[1.4625rem] sm:py-[1.125rem]"
       >
         <li class="flex h-6 flex-row items-center justify-between xs:h-[2.1rem] sm:h-[2.7rem]">
-          <h4 class="text-base-group font-semibold leading-[1.5]">프로필 사진</h4>
+          <h3 class="text-base-group font-semibold leading-[1.5]">프로필 사진</h3>
           <img
+            aria-hidden="true"
             src="/assets/avatar-placeholder.png"
             alt="프로필 이미지"
             class="avatar-image aspect-square w-6 rounded-full [box-shadow:0.125rem_0.125rem_0.125rem_0px_rgba(0,_0,_0,_0.10)] xs:w-[2.1rem] sm:w-[2.7rem]"
           />
         </li>
         <li class="flex flex-row items-center justify-between">
-          <h4 class="text-base-group font-semibold leading-[1.5]">이름(별명)</h4>
+          <h3 class="text-base-group font-semibold leading-[1.5]">이름(별명)</h3>
           <span class="username text-sm-group font-semibold leading-[1.5]"></span>
         </li>
         <li class="flex flex-row items-center justify-between">
-          <h4 class="text-base-group font-semibold leading-[1.5]">하는일</h4>
+          <h3 class="text-base-group font-semibold leading-[1.5]">하는일</h3>
           <span class="text-sm-group font-semibold leading-[1.5] text-contentSecondary">미입력</span>
         </li>
         <li class="flex flex-row items-center justify-between">
-          <h4 class="text-base-group font-semibold leading-[1.5]">프로필 키워드</h4>
+          <h3 class="text-base-group font-semibold leading-[1.5]">프로필 키워드</h3>
           <span class="text-sm-group font-semibold leading-[1.5] text-contentSecondary">미입력</span>
         </li>
         <li class="flex flex-row items-center justify-between">
-          <h4 class="text-base-group font-semibold leading-[1.5]">성별</h4>
+          <h3 class="text-base-group font-semibold leading-[1.5]">성별</h3>
           <span id="user-gender" class="text-sm-group font-semibold leading-[1.5] text-contentSecondary">미입력</span>
         </li>
         <li class="flex flex-row items-center justify-between">
-          <h4 class="text-base-group font-semibold leading-[1.5]">연령</h4>
+          <h3 class="text-base-group font-semibold leading-[1.5]">연령</h3>
           <span class="text-sm-group font-semibold leading-[1.5] text-contentSecondary">미입력</span>
         </li>
         <li class="flex flex-row items-center justify-between">
-          <h4 class="text-base-group font-semibold leading-[1.5]">회사</h4>
+          <h3 class="text-base-group font-semibold leading-[1.5]">회사</h3>
           <span class="text-sm-group font-semibold leading-[1.5] text-contentSecondary">미입력</span>
         </li>
         <li class="flex flex-row items-center justify-between">
-          <h4 class="text-base-group font-semibold leading-[1.5]">학교</h4>
+          <h3 class="text-base-group font-semibold leading-[1.5]">학교</h3>
           <span class="text-sm-group font-semibold leading-[1.5] text-contentSecondary">미입력</span>
         </li>
         <li class="flex flex-row items-center justify-between">
-          <h4 class="text-base-group font-semibold leading-[1.5]">자격</h4>
+          <h3 class="text-base-group font-semibold leading-[1.5]">자격</h3>
           <span class="text-sm-group font-semibold leading-[1.5] text-contentSecondary">미입력</span>
         </li>
       </ul>
@@ -96,7 +98,7 @@ EditProfileTemplate.innerHTML = `
       <div
         class="flex flex-row items-center justify-between border-b-[0.01875rem] border-contentSecondary p-3 pr-4 xs:p-[1.05rem] xs:pr-[1.4rem] sm:p-[1.35rem] sm:pr-[1.8rem]"
       >
-        <h3 class="text-base-group font-semibold leading-[1.5]">추가 정보</h3>
+        <h2 class="text-base-group font-semibold leading-[1.5]">추가 정보</h2>
         <a href="/pages/profile-detail/" class="text-sm-group text-secondary">수정하기</a>
       </div>
       <ul
@@ -104,19 +106,19 @@ EditProfileTemplate.innerHTML = `
         class="space-y-[1.0625rem] px-[0.8125rem] pb-8 pt-[0.625rem] xs:space-y-[1.4875rem] xs:px-[1.1375rem] xs:pb-[2.8rem] xs:pt-[0.875rem] sm:space-y-[1.9125rem] sm:px-[1.4625rem] sm:pb-[3.6rem] sm:pt-[1.125rem]"
       >
         <li class="flex flex-row items-center justify-between">
-          <h4 class="text-base-group font-semibold leading-[1.5]">소개</h4>
+          <h3 class="text-base-group font-semibold leading-[1.5]">소개</h3>
           <span class="text-sm-group font-semibold leading-[1.5] text-contentSecondary">미입력</span>
         </li>
         <li class="flex flex-row items-center justify-between">
-          <h4 class="text-base-group font-semibold leading-[1.5]">연관 링크</h4>
+          <h3 class="text-base-group font-semibold leading-[1.5]">연관 링크</h3>
           <span class="text-sm-group font-semibold leading-[1.5] text-contentSecondary">미입력</span>
         </li>
         <li class="flex flex-row items-center justify-between">
-          <h4 class="text-base-group font-semibold leading-[1.5]">활동 분야</h4>
+          <h3 class="text-base-group font-semibold leading-[1.5]">활동 분야</h3>
           <span class="text-sm-group font-semibold leading-[1.5] text-contentSecondary">미입력</span>
         </li>
         <li class="flex flex-row items-center justify-between">
-          <h4 class="text-base-group font-semibold leading-[1.5]">업체 정보</h4>
+          <h3 class="text-base-group font-semibold leading-[1.5]">업체 정보</h3>
           <span class="text-sm-group font-semibold leading-[1.5] text-contentSecondary">미입력</span>
         </li>
       </ul>
