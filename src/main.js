@@ -133,13 +133,10 @@ class Main extends HTMLElement {
                   alt="메인 글${index - 1}"
                   class="mb-3 w-[43.125vw] rounded-[5.797101449275362%] [aspect-ratio:8.625/6.5] xs:mb-[1.05rem] sm:mb-[1.35rem] border object-cover"
                 />
-                <h2 class="text-sm-group mb-1 leading-[160%] xs:mb-[0.35rem] sm:mb-[0.45rem]">
+                <h2 class="text-sm-group mb-1 leading-[160%] xs:mb-[0.35rem] sm:mb-[0.45rem] line-clamp-1">
                   ${item.title}
                 </h2>
-                <p class="text-sm-group leading-[160%] text-contentSecondary">
-                  <span class="sr-only">카테고리: </span>
-                  ${item.expand.user_id.category[0]}
-                  <span aria-hidden="true">&#124;</span>
+                <p class="text-sm-group leading-[160%] text-contentSecondary ">
                   <span class="sr-only">작성자: </span>
                   ${item.expand.user_id.username}
                 </p>
