@@ -63,8 +63,8 @@ async function exchangeDetail() {
       });
 
       // 판매자 정보 삽입
-      const { username, address } = data.expand.user_id;
-      userAvatar.src = getPbImageURL(data.expand.user_id, 'avatar');
+      const { avatar, username, address } = data.expand.user_id;
+      userAvatar.src = avatar ? getPbImageURL(data.expand.user_id, 'avatar') : '/profile-placeholder.webp';
       userName.textContent = username;
       userAddress.textContent = address;
 
@@ -105,7 +105,7 @@ async function exchangeDetail() {
             <article>
               <a href="/pages/exchange-detail/index.html?post=${item.id}">
                 <img
-                  src=${getPbImageURL(item)}
+                  src=${getPbImagesURL(item, 0)}
                   alt="관련 글${index + 1}"
                   class="mb-3 w-[43.125vw] object-cover rounded-[5.797101449275362%] [aspect-ratio:8.625/6.5] xs:mb-[1.05rem] sm:mb-[1.35rem]"
                 />
