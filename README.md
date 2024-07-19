@@ -12,7 +12,7 @@
 
 ### ![slime](/public/slime.webp){width=35px} <span style="color:#5A85EE">중고거래 플랫폼 Enter EUID(엔터 이듬)</span>
 
-- 멋쟁이 사자처럼 FE 10기 - (13조: 코딩을 일삼조 :computer:)
+- 멋쟁이 사자처럼 FE 10기 - 13조: 코딩을 일삼조 :computer:
 - 개발 기간: 2024.07.05 ~ 2024.07.19
   <br/>
 
@@ -62,7 +62,7 @@
 
 #### 2. 메인 화면
 
-[메인 화면](src/index.html)
+[메인 화면 index.html](src/index.html)
 
 - 메인 상품 **Swiper**로 구현
 - 사용자 **지역 정보** 표시
@@ -75,13 +75,13 @@
   - 판매자가 이미지 2장 이상 등록 -> **Swiper**로 구현
   - 채팅하기 클릭 시 해당 상품의 **채팅방으로 이동**
 
-[채팅 목록](src/pages/chat/index.html)
+[채팅 목록 chat/index.html](src/pages/chat/index.html)
 
 - 채팅방 **최신순 정렬**
 
 #### 3. 사용자 프로필
 
-[프로필](/src/pages/profile/index.html)
+[프로필 profile/index.html](/src/pages/profile/index.html)
 
 - 유저가 설정한 **프로필 이미지 상단 표시**
 - 유저의 **열정온도** 표시
@@ -94,7 +94,7 @@
 
 #### 4. 검색
 
-[검색](/src/pages/search/index.html)
+[검색 search/index.html](/src/pages/search/index.html)
 
 - **키워드**를 이용한 검색 -> **검색 결과 페이지**로 이동
 - **최근 검색** 클릭 -> 해당 검색 결과 페이지로 이동
@@ -107,7 +107,7 @@
 
 #### 5.글쓰기</span>
 
-[글쓰기](/src/pages/write-post/index.html)
+[글쓰기 write-post/index.html](/src/pages/write-post/index.html)
 
 - 카메라 아이콘 클릭 시 **사진 업로드** 기능
 - 사진 업로드 시 **미리보기**
