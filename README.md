@@ -1,115 +1,50 @@
-<!-- ![header](https://capsule-render.vercel.app/api?type=wave&color=373F67) -->
-
-<br/>
-
-<div style="text-align: center">
+<!-- ![header](https://capsule-render.vercel.app/api?type=wave&color=5A85EE) -->
+<br />
+<div align="center">
 <img src="https://github.com/user-attachments/assets/83a7da13-7696-45d2-976e-0036e0570432" width="200px">
-</div>
 
- <h2 style="text-align: center; color:#373F67">coding13-euid Vanilla Project</h2>
- <h5 style="text-align:center; color: #373F67">장주원 김가현 용애경 이지수</h5>
- <br/>
+## $\large{\rm{\color{#5A85EE}Coding13-euid\ Vanilla\ Project}}$
+</div align="center">
 
-### ![slime](/public/slime.webp){width=35px} <span style="color:#5A85EE">중고거래 플랫폼 Enter EUID(엔터 이듬)</span>
+<br />
 
-- 멋쟁이 사자처럼 FE 10기 - 13조: 코딩을 일삼조 :computer:
-- 개발 기간: 2024.07.05 ~ 2024.07.19
-  <br/>
+### <img src="/public/slime.webp" alt="slime" width="30px" /> Enter EUID (엔터 이듬)
+- 멋쟁이 사자처럼 FE 10기 - 13조 _**코딩을 일삼조**_ :computer:
 
-### ![slime](/public/slime.webp){width=35px} <span style="color:#5A85EE">Project Goal</span>
+- **당근마켓** Clone 중고거래 플랫폼
 
-- **공동**
-  - 시안에 있는 것을 다 하진 못해도 요구사항에 충실하자. 요구사항 만큼은 완벽히!
-- **가현**
-  - 협업 과정에서 컨벤션을 잘 지키기
-  - 코드의 재사용성 최대한 고려하기
-- **주원**
-  - 수업시간에 배웠던 것들을 최대한으로 활용하기
-- **지수**
-  - 맡은 부분 최대한 구현하기..
-  - 컨벤션 잘 지키기
-  - 코드 통일성 고려하기
-- **애경**
-  - 수업시간에 놓친 부분, 이해가 안 가던 부분을 이번 기회로 확실히 짚고 넘어가기.
-  - ..... 해내기... 밤새서라도 해내기.... 탈주 금지,,,
-    <br/>
+- **개발 기간**: 2024.07.05 ~ 2024.07.19
 
-### ![slime](/public/slime.webp){width=35px} <span style="color:#5A85EE">Project URL</span>
+<br />
 
-[Enter EUID](https://enter-euid.netlify.app/)
-<br/>
+### 🌐 Deploy
+- **URL** : https://enter-euid.netlify.app/
 
-### ![slime](/public/slime.webp){width=35px} <span style="color: #5A85EE">Link</span>
+- **QR** <br /> <img src="https://github.com/user-attachments/assets/ef80f6fc-60ad-450b-b16a-aba72d32b610" alt="배포 사이트 QR" width="200px" />
 
-[wiki 방문](https://github.com/FRONTENDSCHOOL10/coding13-euid/wiki)
-[노션 방문](https://www.notion.so/13-41c83e44c06c4f1787cad96ca3d1a40b)
-<br/>
+<br />
 
-### ![slime](/public/slime.webp){width=35px} <span style="color:#5A85EE">DB Model</span>
+### 📄 Docs
+- [프로젝트 과정 및 기능 정리](https://www.canva.com/design/DAGLSnNVmzo/T5qAd2ddH7zv2WT_7n5xWA/view?utm_content=DAGLSnNVmzo&utm_campaign=designshare&utm_medium=link&utm_source=editor)
 
-![db](/public/db.png){width=500px}
-<br/>
+- [WIKI](https://github.com/FRONTENDSCHOOL10/coding13-euid/wiki)
 
-### ![slime](/public/slime.webp){width=35px} <span style="color: #5A85EE">Project Feature
+<br />
 
-#### 1. 회원 가입 / 로그인
+### 🛠️ Techniques
+| Category                            | Tools                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| ----------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Languages**                       | ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)                                                                                                 |
+| **DB**                              | ![alt text](https://img.shields.io/badge/PocketBase-B8DBE4.svg?style=for-the-badge&logo=PocketBase&logoColor=black)                                                                                                                                                                                                                                                                                                                           |
+| **IDE**                             | ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)                                                                                                                                                                                                                                                                                             |
+| **Framework / Platform / Library**  | ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white) ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white) ![alt text](https://img.shields.io/badge/Swiper-6332F6.svg?style=for-the-badge&logo=Swiper&logoColor=white)                                                                                               |
+| **API**                             | DAUM 우편번호 API                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| **Design**                          | ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)                                                                                                                                                                                                                                                                                                                                     |
+| **Collaboration / Version Control** | ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white) ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white) ![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white) ![Notion](https://img.shields.io/badge/Notion-%23000000.svg?style=for-the-badge&logo=notion&logoColor=white) |
 
-[시작하기(Start)](src/pages/start/index.html) -> [관심분야 선택(Category)](src/pages/category/index.html) -> [전화번호 인증(SignUp)](/src/pages/signup/index.html)
+<br />
 
-- **전화번호 검증**을 통해 회원가입
-- 전화번호를 **localStorage의 key 값**으로 저장
-- 선택한 **관심분야 localStorage에 저장**
+### 🕸️ DB Model
+<img src="/public/db.png" alt="데이터베이스 구조" width="500px" />
 
-#### 2. 메인 화면
-
-[메인 화면 index.html](src/index.html)
-
-- 메인 상품 **Swiper**로 구현
-- 사용자 **지역 정보** 표시
-- 상품 목록 렌더링
-  - 상품 **상태 조회** 가능(예약중, 거래완료)
-  - 상품 **검색** 기능
-  - **기기 종류 별 조회** 기능 구현
-- **하트** 클릭 시 상태 저장
-- 상품 클릭 시 **상세 페이지로** 이동
-  - 판매자가 이미지 2장 이상 등록 -> **Swiper**로 구현
-  - 채팅하기 클릭 시 해당 상품의 **채팅방으로 이동**
-
-[채팅 목록 chat/index.html](src/pages/chat/index.html)
-
-- 채팅방 **최신순 정렬**
-
-#### 3. 사용자 프로필
-
-[프로필 profile/index.html](/src/pages/profile/index.html)
-
-- 유저가 설정한 **프로필 이미지 상단 표시**
-- 유저의 **열정온도** 표시
-- 프로필 **조회, 수정** 기능 -> 수정 클릭 시 프로필 수정 페이지로 이동
-- 프로필 수정
-  - **사진 수정** 가능
-  - radiobutton을 이용한 **성별 선택**
-  - 수정 사항 저장 후 confirm 메시지를 **modal로 구현**
-- **로그아웃** 기능
-
-#### 4. 검색
-
-[검색 search/index.html](/src/pages/search/index.html)
-
-- **키워드**를 이용한 검색 -> **검색 결과 페이지**로 이동
-- **최근 검색** 클릭 -> 해당 검색 결과 페이지로 이동
-  - 최근 검색어 **삭제** 기능
-  - 최근 검색어 **전체 삭제** 기능
-- 검색창 아래 **드롭다운** 클릭 -> **모달창** 구현
-  - 카테고리, 가격 **필터링**
-  - 거래 가능/거래완료 선택 시 필터링 후 리렌더링
-  - 검색 물품 정렬
-
-#### 5.글쓰기</span>
-
-[글쓰기 write-post/index.html](/src/pages/write-post/index.html)
-
-- 카메라 아이콘 클릭 시 **사진 업로드** 기능
-- 사진 업로드 시 **미리보기**
-- **제목, 가격, 내용** 입력
-- 작성 완료 시 **서버에 등록**
+<br />
